@@ -26,6 +26,8 @@ class ScenarioState:
     pipe_damage_detected: bool = False
     pooled_liquid_detected: bool = False
     anomaly_confidence: float = 0.0
+    historical_baseline: Optional[float] = None
+    historical_severity: Optional[str] = None  # "mild" | "medium" | "severe" | None
 
 
 class PhysicalStateSimulator:
@@ -55,6 +57,9 @@ class PhysicalStateSimulator:
         low, high = float(gauge_range[0]), float(gauge_range[1])
         span = high - low
 
+        historical_baseline: Optional[float] = None
+        historical_severity: Optional[str] = None
+
         if scenario_type == "normal":
             gauge_value = low + self._rng.uniform(0.20, 0.80) * span
             spill, leakage = False, False
@@ -63,8 +68,27 @@ class PhysicalStateSimulator:
             gauge_value = low + self._rng.uniform(0.70, 0.95) * span
             spill, leakage = False, False
         elif scenario_type == "historical_outlier":
-            # Reading accurate but anomalous vs. asset history (FM-7c)
-            gauge_value = low + self._rng.uniform(0.85, 0.99) * span
+            # Reading accurate but anomalous vs. asset history.
+            # Gap-based formula guarantees H range by construction:
+            #   severe  (15%): gap = 0.86–0.94·span → H < 0.15, historical outlier annotation fires
+            #   medium  (25%): gap = 0.64–0.80·span → H 0.18–0.36, ESCALATE
+            #   mild    (60%): gap = 0.35–0.55·span → H 0.40–0.65, COMMIT or ESCALATE
+            historical_severity = self._rng.choices(
+                ["mild", "medium", "severe"],
+                weights=[0.60, 0.25, 0.15],
+            )[0]
+            if historical_severity == "severe":
+                historical_baseline = low + self._rng.uniform(0.01, 0.04) * span
+                gauge_value = historical_baseline + self._rng.uniform(0.86, 0.94) * span
+                gauge_value = min(gauge_value, high * 0.98)
+            elif historical_severity == "medium":
+                historical_baseline = low + self._rng.uniform(0.05, 0.14) * span
+                gauge_value = historical_baseline + self._rng.uniform(0.64, 0.80) * span
+                gauge_value = min(gauge_value, high * 0.98)
+            else:  # mild
+                historical_baseline = low + self._rng.uniform(0.15, 0.30) * span
+                gauge_value = historical_baseline + self._rng.uniform(0.35, 0.55) * span
+                gauge_value = min(gauge_value, high * 0.98)
             spill, leakage = False, False
         elif scenario_type == "spill":
             gauge_value = low + self._rng.uniform(0.30, 0.70) * span
@@ -92,6 +116,8 @@ class PhysicalStateSimulator:
             pipe_damage_detected=pipe_damage,
             pooled_liquid_detected=pooled,
             anomaly_confidence=anomaly_conf,
+            historical_baseline=round(historical_baseline, 3) if historical_baseline is not None else None,
+            historical_severity=historical_severity,
         )
         self._state[profile_key] = state
         return state
