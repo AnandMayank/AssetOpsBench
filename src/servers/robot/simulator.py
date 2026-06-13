@@ -143,11 +143,9 @@ class PhysicalStateSimulator:
         # CRITICAL: gauge_value is NOT in the returned dict
         return {"reading": reading, "confidence": confidence, "occlusion_flag": occlusion}
 
-    def simulate_panel_open(self, panel_stuck_prob: float) -> tuple:
-        """Returns (success: bool, angle_deg: int)."""
-        success = self._rng.random() > panel_stuck_prob
-        angle_deg = self._rng.randint(85, 95) if success else self._rng.randint(0, 15)
-        return success, angle_deg
+    def simulate_panel_open(self, panel_stuck_prob: float) -> bool:
+        """Returns True if panel opened successfully, False if stuck."""
+        return self._rng.random() > panel_stuck_prob
 
     def get_anomaly_state(self, profile_key: str) -> dict:
         """Returns current anomaly flags. Anomalies are seeded by generate_scenario()."""

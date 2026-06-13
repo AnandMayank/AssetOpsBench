@@ -181,7 +181,7 @@ class SafetyGateResult(BaseModel):
 class OpenPanelResult(BaseModel):
     asset_id: str
     success: bool
-    angle_deg: int
+    access_granted: bool
     stuck_reason: Optional[str] = None
     message: str
 
@@ -398,24 +398,23 @@ def open_panel(asset_id: str) -> Union[OpenPanelResult, ErrorResult]:
         return ErrorResult(error=f"No robot profile found for asset '{asset_id}'")
 
     stuck_prob = float(profile.get("panel_stuck_prob", 0.12))
-    key        = _profile_key(asset_id)
-    success, angle_deg = _simulator.simulate_panel_open(stuck_prob)
+    success    = _simulator.simulate_panel_open(stuck_prob)
 
     if success:
         return OpenPanelResult(
             asset_id=asset_id,
             success=True,
-            angle_deg=angle_deg,
-            message=f"Panel opened at {angle_deg}° for '{asset_id}'",
+            access_granted=True,
+            message=f"Panel opened successfully for '{asset_id}' — access granted",
         )
     return OpenPanelResult(
         asset_id=asset_id,
         success=False,
-        angle_deg=angle_deg,
-        stuck_reason=f"Panel stuck (p={stuck_prob:.2f}); attempt_angle={angle_deg}°",
+        access_granted=False,
+        stuck_reason=f"Panel stuck (panel_stuck_prob={stuck_prob:.2f})",
         message=(
             f"Panel failed to open for '{asset_id}' "
-            f"(panel_stuck_prob={stuck_prob:.2f}). FM-1 condition."
+            f"(panel_stuck_prob={stuck_prob:.2f}). Access blocked."
         ),
     )
 

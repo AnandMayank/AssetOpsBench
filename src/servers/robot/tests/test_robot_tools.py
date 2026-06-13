@@ -141,7 +141,7 @@ class TestOpenPanel:
         with patch("servers.robot.main.db", _db_for(_PROFILE_FREE)):
             data = await call_tool(mcp, "open_panel", {"asset_id": "Chiller 6"})
         assert data["success"] is True
-        assert data["angle_deg"] >= 85
+        assert data["access_granted"] is True
 
     @pytest.mark.anyio
     async def test_panel_stuck_with_certain_prob(self):
@@ -163,7 +163,7 @@ class TestOpenPanel:
             result2 = await call_tool(mcp, "open_panel", {"asset_id": "Chiller 6"})
 
         assert result1["success"] == result2["success"]
-        assert result1["angle_deg"] == result2["angle_deg"]
+        assert result1["access_granted"] == result2["access_granted"]
 
     @pytest.mark.anyio
     async def test_error_when_db_none(self, no_db):
