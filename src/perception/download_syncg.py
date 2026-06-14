@@ -56,6 +56,8 @@ def download() -> None:
         repo_id=REPO_ID,
         repo_type="dataset",
         local_dir=str(TARGET_DIR),
+        # scene_file/ contains HDRI maps needed only for re-generating images (not evaluation)
+        ignore_patterns=["scene_file/**", "scene_file/*"],
     )
 
     n_files = sum(1 for f in TARGET_DIR.rglob("*") if f.is_file())

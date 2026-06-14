@@ -22,9 +22,9 @@ echo "==> Activating env"
 source "$($CONDA_BIN info --base)/etc/profile.d/conda.sh"
 conda activate "$ENV_PREFIX"
 
-echo "==> Installing PyTorch 2.0.0"
-conda install pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
-    -c pytorch -c nvidia -y
+echo "==> Installing PyTorch 2.0.0 (via pip — faster than conda for CUDA builds)"
+pip install torch==2.0.0 torchvision==0.15.1 \
+    --index-url https://download.pytorch.org/whl/cu118
 
 echo "==> Installing OpenMMLab stack"
 pip install -U openmim
