@@ -51,6 +51,70 @@ where:
 
 ---
 
+## Generating Synthetic Gauge Images (SyncG / Blender)
+
+SyncG images are produced by a Blender Python script that:
+1. Loads a 3D gauge model (dial + needle) from the SyncG `.blend` scene
+2. Sets `pointer_rotate_degree` — the needle's rotation angle from scale start
+3. Applies a random HDRI environment map for lighting (from `scene_file/`)
+4. Renders a 1920×1080 image and writes the annotation JSON
+
+### Generation script location
+
+The Blender generation scripts are part of the
+[SyncG repository](https://github.com/yl-data/SyncG).
+Clone that repo to get the generation pipeline:
+
+```bash
+git clone https://github.com/yl-data/SyncG.git
+```
+
+Local HDRI scene files (downloaded with the dataset):
+```
+/media/<drive>/syncg_data/scene_file/*.hdr    ← 50+ HDRI environment maps
+```
+These are referenced by `scene_name` in each annotation JSON
+(e.g. `"scene_name": "empty_play_room_4k.hdr"`).
+
+### Controlling needle position for new images
+
+The single parameter that determines the needle reading is `pointer_rotate_degree`.
+To generate a gauge image with a specific reading:
+
+```python
+# Target reading = 80, scale = [16, 263], arc_span = 130°
+target_reading      = 80.0
+start_value         = 16.0
+arc_span_degrees    = 10 * 13   # long_interval_degree × long_num = 130°
+gauge_range         = 19 * 13   # long_interval_value × long_num  = 247 units
+
+pointer_rotate_degree = (target_reading - start_value) / gauge_range * arc_span_degrees
+# = (80 - 16) / 247 × 130 = 33.68°
+```
+
+Pass `pointer_rotate_degree = 33.68` to the Blender script → image renders with
+needle pointing at exactly 80.
+
+### Verification
+
+After rendering, the stored `ground_truth` in the output JSON should satisfy:
+```
+ground_truth = start_value + (pointer_rotate_degree / arc_span_degrees) × gauge_range
+             = 16 + (33.68 / 130) × 247 = 80.0  ✓
+```
+
+### Gauge types in SyncG
+
+| Type | Example scale | Notes |
+|------|--------------|-------|
+| `temperature` | 16–263 | °C / °F gauges |
+| `pressure` | 0–270 | bar / PSI |
+| `bar` | −26–637 | wide range, some negative min |
+| `oil` | 0–600 | lubrication gauges |
+| `sf6gas` | −42–354 | insulating gas pressure |
+
+---
+
 ## Visualizing Needle Drift
 
 The "needle drift" visualization shows the gap between where Blender placed the
