@@ -1,0 +1,734 @@
+{
+  "metrics": {
+    "model": "eth_vlm_hybrid",
+    "n_evaluated": 20,
+    "n_parse_failed": 0,
+    "accuracy_2pct": 0.0,
+    "accuracy_5pct": 0.1,
+    "accuracy_10pct": 0.1,
+    "mean_rel_error": 0.3651,
+    "fm3_rate": 0.2,
+    "fm4_rate": 0.15,
+    "worst_5": [
+      {
+        "image": "sync_17690",
+        "gauge_type": "pressure",
+        "gt": 28.729,
+        "pred": 347.0,
+        "abs_err": 318.271,
+        "rel_err": 0.8442,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_17789",
+        "gauge_type": "temperature",
+        "gt": 11.773,
+        "pred": 237.502,
+        "abs_err": 225.729,
+        "rel_err": 0.8299,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18436",
+        "gauge_type": "sf6gas",
+        "gt": 93.355,
+        "pred": 210.0,
+        "abs_err": 116.645,
+        "rel_err": 0.6409,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18634",
+        "gauge_type": "pressure",
+        "gt": 12.46,
+        "pred": 120.493,
+        "abs_err": 108.033,
+        "rel_err": 0.5144,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_17664",
+        "gauge_type": "sf6gas",
+        "gt": -19.49,
+        "pred": 246.674,
+        "abs_err": 266.164,
+        "rel_err": 0.4451,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      }
+    ],
+    "best_5": [
+      {
+        "image": "sync_18853",
+        "gauge_type": "bar",
+        "gt": 26.052,
+        "pred": 23.959,
+        "abs_err": 2.093,
+        "rel_err": 0.0272,
+        "within_2pct": false,
+        "within_5pct": true,
+        "within_10pct": true
+      },
+      {
+        "image": "sync_19084",
+        "gauge_type": "bar",
+        "gt": 323.85,
+        "pred": 304.075,
+        "abs_err": 19.775,
+        "rel_err": 0.0353,
+        "within_2pct": false,
+        "within_5pct": true,
+        "within_10pct": true
+      },
+      {
+        "image": "sync_16299",
+        "gauge_type": "sf6gas",
+        "gt": 58.987,
+        "pred": 68.0,
+        "abs_err": 9.013,
+        "rel_err": 0.1073,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_19178",
+        "gauge_type": "temperature",
+        "gt": -15.153,
+        "pred": -1.918,
+        "abs_err": 13.235,
+        "rel_err": 0.1891,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_16934",
+        "gauge_type": "pressure",
+        "gt": 188.182,
+        "pred": 141.543,
+        "abs_err": 46.639,
+        "rel_err": 0.1904,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      }
+    ],
+    "per_image": [
+      {
+        "image": "sync_17990",
+        "gauge_type": "bar",
+        "gt": 48.283,
+        "pred": 285.9,
+        "abs_err": 237.617,
+        "rel_err": 0.4169,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_16599",
+        "gauge_type": "temperature",
+        "gt": 398.44,
+        "pred": 264.227,
+        "abs_err": 134.213,
+        "rel_err": 0.2322,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_19756",
+        "gauge_type": "bar",
+        "gt": 23.271,
+        "pred": 124.616,
+        "abs_err": 101.345,
+        "rel_err": 0.3898,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_17664",
+        "gauge_type": "sf6gas",
+        "gt": -19.49,
+        "pred": 246.674,
+        "abs_err": 266.164,
+        "rel_err": 0.4451,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_16934",
+        "gauge_type": "pressure",
+        "gt": 188.182,
+        "pred": 141.543,
+        "abs_err": 46.639,
+        "rel_err": 0.1904,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_19464",
+        "gauge_type": "temperature",
+        "gt": 18.855,
+        "pred": 2.379,
+        "abs_err": 16.476,
+        "rel_err": 0.3362,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18853",
+        "gauge_type": "bar",
+        "gt": 26.052,
+        "pred": 23.959,
+        "abs_err": 2.093,
+        "rel_err": 0.0272,
+        "within_2pct": false,
+        "within_5pct": true,
+        "within_10pct": true
+      },
+      {
+        "image": "sync_16189",
+        "gauge_type": "sf6gas",
+        "gt": 1299.889,
+        "pred": 700.203,
+        "abs_err": 599.686,
+        "rel_err": 0.4179,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18944",
+        "gauge_type": "pressure",
+        "gt": 823.219,
+        "pred": 461.532,
+        "abs_err": 361.687,
+        "rel_err": 0.3574,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_17690",
+        "gauge_type": "pressure",
+        "gt": 28.729,
+        "pred": 347.0,
+        "abs_err": 318.271,
+        "rel_err": 0.8442,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18436",
+        "gauge_type": "sf6gas",
+        "gt": 93.355,
+        "pred": 210.0,
+        "abs_err": 116.645,
+        "rel_err": 0.6409,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18714",
+        "gauge_type": "temperature",
+        "gt": 493.825,
+        "pred": 288.301,
+        "abs_err": 205.524,
+        "rel_err": 0.3556,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18261",
+        "gauge_type": "pressure",
+        "gt": 79.554,
+        "pred": 358.954,
+        "abs_err": 279.4,
+        "rel_err": 0.3822,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_16299",
+        "gauge_type": "sf6gas",
+        "gt": 58.987,
+        "pred": 68.0,
+        "abs_err": 9.013,
+        "rel_err": 0.1073,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18219",
+        "gauge_type": "oil",
+        "gt": 188.591,
+        "pred": 109.763,
+        "abs_err": 78.828,
+        "rel_err": 0.3312,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_18634",
+        "gauge_type": "pressure",
+        "gt": 12.46,
+        "pred": 120.493,
+        "abs_err": 108.033,
+        "rel_err": 0.5144,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_19181",
+        "gauge_type": "temperature",
+        "gt": 5.159,
+        "pred": 1.534,
+        "abs_err": 3.625,
+        "rel_err": 0.2589,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_19178",
+        "gauge_type": "temperature",
+        "gt": -15.153,
+        "pred": -1.918,
+        "abs_err": 13.235,
+        "rel_err": 0.1891,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_17789",
+        "gauge_type": "temperature",
+        "gt": 11.773,
+        "pred": 237.502,
+        "abs_err": 225.729,
+        "rel_err": 0.8299,
+        "within_2pct": false,
+        "within_5pct": false,
+        "within_10pct": false
+      },
+      {
+        "image": "sync_19084",
+        "gauge_type": "bar",
+        "gt": 323.85,
+        "pred": 304.075,
+        "abs_err": 19.775,
+        "rel_err": 0.0353,
+        "within_2pct": false,
+        "within_5pct": true,
+        "within_10pct": true
+      }
+    ]
+  },
+  "method_counts": {
+    "eth_angle+vlm_scale": 20
+  },
+  "results": [
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_17990.jpg",
+      "image_name": "sync_17990",
+      "gt_reading": 48.282866283698525,
+      "gauge_min": 3.0,
+      "gauge_max": 573.0,
+      "gauge_range": 570.0,
+      "gauge_type": "bar",
+      "vlm_reading": 285.9,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": 8.576961504748553,
+      "vlm_scale": {
+        "min": 3.0,
+        "max": 535.0,
+        "raw": "3,535",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_16599.jpg",
+      "image_name": "sync_16599",
+      "gt_reading": 398.43977615985085,
+      "gauge_min": 1.0,
+      "gauge_max": 579.0,
+      "gauge_range": 578.0,
+      "gauge_type": "temperature",
+      "vlm_reading": 264.227,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -4.354490758917834,
+      "vlm_scale": {
+        "min": 1.0,
+        "max": 545.0,
+        "raw": "1,545",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_19756.jpg",
+      "image_name": "sync_19756",
+      "gt_reading": 23.270649403386606,
+      "gauge_min": 17.0,
+      "gauge_max": 277.0,
+      "gauge_range": 260.0,
+      "gauge_type": "bar",
+      "vlm_reading": 124.616,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -10.827474191280174,
+      "vlm_scale": {
+        "min": 17.0,
+        "max": 251.0,
+        "raw": "17,251",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_17664.jpg",
+      "image_name": "sync_17664",
+      "gt_reading": -19.48977668545307,
+      "gauge_min": -28.0,
+      "gauge_max": 570.0,
+      "gauge_range": 598.0,
+      "gauge_type": "sf6gas",
+      "vlm_reading": 246.674,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -0.6486778686183072,
+      "vlm_scale": {
+        "min": -28.0,
+        "max": 524.0,
+        "raw": "-28,524",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_16934.jpg",
+      "image_name": "sync_16934",
+      "gt_reading": 188.18204657643267,
+      "gauge_min": 33.0,
+      "gauge_max": 278.0,
+      "gauge_range": 245.0,
+      "gauge_type": "pressure",
+      "vlm_reading": 141.543,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -11.863526700852702,
+      "vlm_scale": {
+        "min": 33.0,
+        "max": 271.0,
+        "raw": "33,271",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_19464.jpg",
+      "image_name": "sync_19464",
+      "gt_reading": 18.85484806130527,
+      "gauge_min": 7.0,
+      "gauge_max": 56.0,
+      "gauge_range": 49.0,
+      "gauge_type": "temperature",
+      "vlm_reading": 2.379,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -123.52970397097931,
+      "vlm_scale": {
+        "min": 0.0,
+        "max": 56.0,
+        "raw": "0,56",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_18853.jpg",
+      "image_name": "sync_18853",
+      "gt_reading": 26.052385216088503,
+      "gauge_min": -7.0,
+      "gauge_max": 70.0,
+      "gauge_range": 77.0,
+      "gauge_type": "bar",
+      "vlm_reading": 23.959,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -15.588098238320072,
+      "vlm_scale": {
+        "min": -7.0,
+        "max": 63.0,
+        "raw": "-7,63",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_16189.jpg",
+      "image_name": "sync_16189",
+      "gt_reading": 1299.8885857289697,
+      "gauge_min": -48.0,
+      "gauge_max": 1387.0,
+      "gauge_range": 1435.0,
+      "gauge_type": "sf6gas",
+      "vlm_reading": 700.203,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": 9.917402329257612,
+      "vlm_scale": {
+        "min": -48.0,
+        "max": 1346.0,
+        "raw": "-48,1346",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_18944.jpg",
+      "image_name": "sync_18944",
+      "gt_reading": 823.2188779299678,
+      "gauge_min": -25.0,
+      "gauge_max": 987.0,
+      "gauge_range": 1012.0,
+      "gauge_type": "pressure",
+      "vlm_reading": 461.532,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": 0.7062938451278882,
+      "vlm_scale": {
+        "min": -25.0,
+        "max": 943.0,
+        "raw": "-25,943",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_17690.jpg",
+      "image_name": "sync_17690",
+      "gt_reading": 28.72929433832698,
+      "gauge_min": -1.0,
+      "gauge_max": 376.0,
+      "gauge_range": 377.0,
+      "gauge_type": "pressure",
+      "vlm_reading": 347.0,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -181.92305839079472,
+      "vlm_scale": {
+        "min": -1.0,
+        "max": 347.0,
+        "raw": "-1,347",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_18436.jpg",
+      "image_name": "sync_18436",
+      "gt_reading": 93.35518911985085,
+      "gauge_min": 21.0,
+      "gauge_max": 203.0,
+      "gauge_range": 182.0,
+      "gauge_type": "sf6gas",
+      "vlm_reading": 210.0,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -180.79139116750406,
+      "vlm_scale": {
+        "min": 0.0,
+        "max": 210.0,
+        "raw": "0,210",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_18714.jpg",
+      "image_name": "sync_18714",
+      "gt_reading": 493.8254417077644,
+      "gauge_min": 46.0,
+      "gauge_max": 624.0,
+      "gauge_range": 578.0,
+      "gauge_type": "temperature",
+      "vlm_reading": 288.301,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -14.74033565783229,
+      "vlm_scale": {
+        "min": 46.0,
+        "max": 590.0,
+        "raw": "46,590",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_18261.jpg",
+      "image_name": "sync_18261",
+      "gt_reading": 79.5538988051604,
+      "gauge_min": 24.0,
+      "gauge_max": 755.0,
+      "gauge_range": 731.0,
+      "gauge_type": "pressure",
+      "vlm_reading": 358.954,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -3.550132536986098,
+      "vlm_scale": {
+        "min": 24.0,
+        "max": 712.0,
+        "raw": "24,712",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_16299.jpg",
+      "image_name": "sync_16299",
+      "gt_reading": 58.9873268824917,
+      "gauge_min": -4.0,
+      "gauge_max": 80.0,
+      "gauge_range": 84.0,
+      "gauge_type": "sf6gas",
+      "vlm_reading": 68.0,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -184.5474258733424,
+      "vlm_scale": {
+        "min": -4.0,
+        "max": 68.0,
+        "raw": "-4,68",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_18219.jpg",
+      "image_name": "sync_18219",
+      "gt_reading": 188.59121989534103,
+      "gauge_min": 0.0,
+      "gauge_max": 238.0,
+      "gauge_range": 238.0,
+      "gauge_type": "oil",
+      "vlm_reading": 109.763,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -0.900682511746453,
+      "vlm_scale": {
+        "min": 0.0,
+        "max": 221.0,
+        "raw": "0,221",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_18634.jpg",
+      "image_name": "sync_18634",
+      "gt_reading": 12.459656415581719,
+      "gauge_min": -13.0,
+      "gauge_max": 197.0,
+      "gauge_range": 210.0,
+      "gauge_type": "pressure",
+      "vlm_reading": 120.493,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": 49.83642070270267,
+      "vlm_scale": {
+        "min": -13.0,
+        "max": 182.0,
+        "raw": "-13,182",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_19181.jpg",
+      "image_name": "sync_19181",
+      "gt_reading": 5.158890107335635,
+      "gauge_min": -3.0,
+      "gauge_max": 11.0,
+      "gauge_range": 14.0,
+      "gauge_type": "temperature",
+      "vlm_reading": 1.534,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -32.98107364863931,
+      "vlm_scale": {
+        "min": -3.0,
+        "max": 9.0,
+        "raw": "-3,9",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_19178.jpg",
+      "image_name": "sync_19178",
+      "gt_reading": -15.153179004856074,
+      "gauge_min": -32.0,
+      "gauge_max": 38.0,
+      "gauge_range": 70.0,
+      "gauge_type": "temperature",
+      "vlm_reading": -1.918,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": 0.3699560742510215,
+      "vlm_scale": {
+        "min": -32.0,
+        "max": 28.0,
+        "raw": "-32,28",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_17789.jpg",
+      "image_name": "sync_17789",
+      "gt_reading": 11.772899500004996,
+      "gauge_min": 0.0,
+      "gauge_max": 272.0,
+      "gauge_range": 272.0,
+      "gauge_type": "temperature",
+      "vlm_reading": 237.502,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": -244.5091576884932,
+      "vlm_scale": {
+        "min": 0.0,
+        "max": 256.0,
+        "raw": "0,256",
+        "success": true
+      }
+    },
+    {
+      "image_path": "src/perception/data/syncg/syncG/syncG/images/test/sync_19084.jpg",
+      "image_name": "sync_19084",
+      "gt_reading": 323.84974628000214,
+      "gauge_min": 44.0,
+      "gauge_max": 604.0,
+      "gauge_range": 560.0,
+      "gauge_type": "bar",
+      "vlm_reading": 304.075,
+      "vlm_success": true,
+      "method": "eth_angle+vlm_scale",
+      "eth_angle": 0.03908912751074922,
+      "vlm_scale": {
+        "min": 44.0,
+        "max": 564.0,
+        "raw": "44,564",
+        "success": true
+      }
+    }
+  ]
+}

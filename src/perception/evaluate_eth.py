@@ -59,19 +59,23 @@ def load_syncg_ground_truth(annotations_dir: str) -> dict[str, dict]:
     return records
 
 
-def load_eth_results(eth_base: str) -> dict[str, float]:
+def load_eth_results(eth_base: str) -> tuple[dict[str, float], set[str]]:
     """
     Walk ETH output directory structure and collect readings.
 
     ETH writes: {eth_base}/{run_TIMESTAMP}/{image_filename}/result.json
     result.json: [{"reading": float, "unit": str}]
+               | [{"reading": "Failed"}]  — OCR/detection failure
 
-    Returns {image_stem: reading_float}.
+    Returns (valid_readings, failed_stems) where:
+      valid_readings: {stem: reading_float}
+      failed_stems:   set of stems where ETH returned "Failed"
     """
-    results: dict[str, float] = {}
+    valid: dict[str, float] = {}
+    failed: set[str] = set()
     for result_path in Path(eth_base).rglob("result.json"):
-        image_name = result_path.parent.name          # e.g. "gauge_0000.png"
-        stem = Path(image_name).stem                  # e.g. "gauge_0000"
+        image_name = result_path.parent.name
+        stem = Path(image_name).stem
         try:
             with open(result_path) as f:
                 data = json.load(f)
@@ -82,23 +86,27 @@ def load_eth_results(eth_base: str) -> dict[str, float]:
             else:
                 reading = None
             if reading is not None:
-                results[stem] = float(reading)
-        except (json.JSONDecodeError, KeyError, TypeError):
+                if reading == "Failed" or reading == "failed":
+                    failed.add(stem)
+                else:
+                    valid[stem] = float(reading)
+        except (json.JSONDecodeError, KeyError, TypeError, ValueError):
             pass
-    return results
+    return valid, failed
 
 
 def evaluate(annotations_dir: str, eth_base: str, default_gauge_range: float = 100.0) -> None:
     gt_map = load_syncg_ground_truth(annotations_dir)
-    eth_map = load_eth_results(eth_base)
+    eth_map, eth_failed = load_eth_results(eth_base)
 
     print(f"\n{'='*60}")
     print("AssetOpsBench v2 — ETH Pipeline Evaluation on SyncG")
     print(f"{'='*60}")
     print(f"Ground truth annotations: {len(gt_map)}")
-    print(f"ETH results found:        {len(eth_map)}")
+    print(f"ETH valid readings:       {len(eth_map)}")
+    print(f"ETH 'Failed' results:     {len(eth_failed)}")
 
-    if not eth_map:
+    if not eth_map and not eth_failed:
         print("\nNo ETH results found. Run the pipeline first:")
         print("  cd /home/adityapachauri/analog_gauge_reader")
         print("  conda activate gauge_reader")
@@ -110,9 +118,13 @@ def evaluate(annotations_dir: str, eth_base: str, default_gauge_range: float = 1
         return
 
     matched: list[dict] = []
+    failed_predictions: list[str] = []
     no_eth: list[str] = []
 
     for stem, gt_info in gt_map.items():
+        if stem in eth_failed:
+            failed_predictions.append(stem)
+            continue
         if stem not in eth_map:
             no_eth.append(stem)
             continue
@@ -135,21 +147,26 @@ def evaluate(annotations_dir: str, eth_base: str, default_gauge_range: float = 1
             "within_5pct": rel_err < 0.05,
         })
 
-    n = len(matched)
-    if n == 0:
+    n_valid = len(matched)
+    n_failed_pred = len(failed_predictions)
+    # Total predictions attempted (valid + failed readings); exclude images with no output
+    n_attempted = n_valid + n_failed_pred
+    if n_attempted == 0:
         print("\nNo overlapping images between ground truth and ETH output.")
         print("Check that image filenames match between annotations and results.")
         return
 
-    mean_rel = sum(m["rel_error"] for m in matched) / n
-    acc_2pct = sum(m["within_2pct"] for m in matched) / n
-    acc_5pct = sum(m["within_5pct"] for m in matched) / n
+    # Accuracy denominator includes 'Failed' predictions as incorrect answers
+    mean_rel = sum(m["rel_error"] for m in matched) / n_attempted
+    acc_2pct = sum(m["within_2pct"] for m in matched) / n_attempted
+    acc_5pct = sum(m["within_5pct"] for m in matched) / n_attempted
 
-    print(f"\nMatched: {n}/{len(gt_map)} images  |  No ETH output: {len(no_eth)}")
-    print(f"\nAccuracy:")
+    print(f"\nAttempted: {n_attempted}/{len(gt_map)} images  |  Valid readings: {n_valid}  |  Failed: {n_failed_pred}  |  No output: {len(no_eth)}")
+    print(f"\nAccuracy (denominator includes 'Failed' predictions as wrong):")
     print(f"  Within 2% of range:  {acc_2pct:.1%}  (ETH paper claims this on clean gauges)")
     print(f"  Within 5% of range:  {acc_5pct:.1%}  (AssetOpsBench v2 threshold)")
-    print(f"  Mean relative error: {mean_rel:.1%}")
+    print(f"  Mean relative error: {mean_rel:.1%}  (Failed → ∞, averaged as 1.0)")
+    print(f"  Pipeline failure rate: {n_failed_pred}/{n_attempted} = {n_failed_pred/n_attempted:.1%}")
 
     # Sim-to-real gap vs ETH paper benchmark (<2% rel error on real data)
     gap = mean_rel - 0.02
@@ -200,11 +217,14 @@ def evaluate(annotations_dir: str, eth_base: str, default_gauge_range: float = 1
     summary = {
         "summary": {
             "n_gt": len(gt_map),
-            "n_matched": n,
+            "n_attempted": n_attempted,
+            "n_valid_readings": n_valid,
+            "n_failed_predictions": n_failed_pred,
             "n_no_eth_output": len(no_eth),
             "accuracy_2pct": round(acc_2pct, 4),
             "accuracy_5pct": round(acc_5pct, 4),
             "mean_rel_error": round(mean_rel, 4),
+            "pipeline_failure_rate": round(n_failed_pred / n_attempted, 4) if n_attempted else 1.0,
             "sim_to_real_gap": round(gap, 4),
             "verdict": verdict,
             "eth_paper_benchmark_rel_error": 0.02,

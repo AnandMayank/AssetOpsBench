@@ -1,0 +1,78 @@
+{
+  "summary": {
+    "n_gt": 1567,
+    "n_attempted": 39,
+    "n_valid_readings": 6,
+    "n_failed_predictions": 33,
+    "n_no_eth_output": 1528,
+    "accuracy_2pct": 0.0256,
+    "accuracy_5pct": 0.0513,
+    "mean_rel_error": 0.1016,
+    "pipeline_failure_rate": 0.8462,
+    "sim_to_real_gap": 0.0816,
+    "verdict": "insufficient",
+    "eth_paper_benchmark_rel_error": 0.02
+  },
+  "per_image_sample": [
+    {
+      "image": "sync_19058",
+      "gt": 193.717,
+      "eth": -268.441,
+      "abs_error": 462.158,
+      "rel_error": 1.1056,
+      "gauge_type": "bar",
+      "within_2pct": false,
+      "within_5pct": false
+    },
+    {
+      "image": "sync_16534",
+      "gt": 35.459,
+      "eth": 8.798,
+      "abs_error": 26.661,
+      "rel_error": 0.1102,
+      "gauge_type": "temperature",
+      "within_2pct": false,
+      "within_5pct": false
+    },
+    {
+      "image": "sync_18714",
+      "gt": 493.825,
+      "eth": 476.244,
+      "abs_error": 17.581,
+      "rel_error": 0.0304,
+      "gauge_type": "temperature",
+      "within_2pct": false,
+      "within_5pct": true
+    },
+    {
+      "image": "sync_16189",
+      "gt": 1299.889,
+      "eth": -762.146,
+      "abs_error": 2062.035,
+      "rel_error": 1.437,
+      "gauge_type": "sf6gas",
+      "within_2pct": false,
+      "within_5pct": false
+    },
+    {
+      "image": "sync_17664",
+      "gt": -19.49,
+      "eth": 745.376,
+      "abs_error": 764.866,
+      "rel_error": 1.279,
+      "gauge_type": "sf6gas",
+      "within_2pct": false,
+      "within_5pct": false
+    },
+    {
+      "image": "sync_18261",
+      "gt": 79.554,
+      "eth": 79.505,
+      "abs_error": 0.049,
+      "rel_error": 0.0001,
+      "gauge_type": "pressure",
+      "within_2pct": true,
+      "within_5pct": true
+    }
+  ]
+}

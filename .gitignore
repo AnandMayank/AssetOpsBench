@@ -205,6 +205,15 @@ src/tmp/
 # Observability artifacts (OTLP-JSON traces + per-run trajectory JSON).
 traces/
 
-# Perception pipeline — large data and ETH run outputs
+# Perception pipeline — large data and ETH run outputs (data stays local)
 src/perception/data/
 src/perception/eth_results/
+# Results are tracked (needed for paper reproducibility)
+# src/perception/vlm_results/
+# src/perception/evaluation_results.json
+
+# API key files (never commit)
+*_api_key.txt
+*_Key.txt
+anthropic_Key.txt
+gemini_api_key.txt
