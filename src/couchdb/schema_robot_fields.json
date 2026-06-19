@@ -2,7 +2,6 @@
   "doc_type": "asset_robot_profile",
   "id_pattern": "profile:{normalized_asset_id}",
   "description": "Per-asset profile documents for the robot inspection extension. Stored in the iot CouchDB database alongside timestamped sensor readings, but deliberately omit the asset_id field so existing IoT server queries are unaffected.",
-  "deferred_fields": "SAFETY_FIELDS_FUTURE.md: hazard_class, maintenance_slot, active_work_order. Future PRs: failure_modes, root_failure, spill_detected, leakage_detected, pipe_damage_detected, pooled_liquid_detected.",
 
   "fields": {
     "physical_location": {
@@ -17,7 +16,7 @@
       "default": 0.0,
       "status": "active",
       "CRITICAL": "NEVER return this field from any MCP tool to the agent",
-      "set_by": "PhysicalStateSimulator.generate_scenario()",
+      "set_by": "ScenarioGeneration pipeline (external to MCP server)",
       "read_by": "Evaluator.get_ground_truth() ONLY",
       "purpose": "Ground truth physical gauge reading. Set at scenario generation time. Must never reach the agent — doing so invalidates the evaluation."
     },
@@ -37,7 +36,7 @@
       "type": "bool",
       "default": false,
       "status": "active",
-      "purpose": "True if no physical gauge reading exists in Maximo history for this asset. Enables the never-read-gauge scenario variant. SME confirmed some gauges have never been recorded."
+      "purpose": "True if no physical gauge reading exists in Maximo history for this asset. Enables the never-read-gauge scenario variant."
     },
     "gauge_path": {
       "type": "string or null",
