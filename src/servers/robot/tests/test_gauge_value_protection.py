@@ -1,15 +1,13 @@
 """Critical invariant: gauge_value must never appear in any tool response.
 
-9 checks:
+7 checks:
   1. navigate_to response
   2. safety_gate_check response
   3. open_panel response
   4. read_gauge response  ← most critical
-  5. check_human_presence response
-  6. commit_reading response (BLOCKED path — no DB write)
-  7. commit_reading response (COMMIT path)
-  8. check_wo_similarity response
-  9. detect_anomaly response
+  5. commit_reading response (BLOCKED path — no DB write)
+  6. commit_reading response (COMMIT path)
+  7. check_wo_similarity response
 """
 
 import pytest
@@ -26,13 +24,13 @@ _PROFILE_DOC = {
     "physical_location": {"x": 10.0, "y": 5.0, "z": 0.0, "room_id": "B1"},
     "gauge_range": [0.0, 100.0],
     "gauge_value": 75.0,          # MUST NOT appear in any tool response
-    "panel_stuck_prob": 0.0,      # force panel open for test repeatability
-    "human_present": False,
+    "gauge_path": None,
+    "panel_stuck": False,         # force panel open for test repeatability
+    "never_read": False,
+    "reading_consistency": None,
+    "sensor_physical_gap": None,
     "maintenance_slot": "day",
     "active_work_order": None,
-    "inspection_frequency_days": 7,
-    "last_inspection": "2024-01-01",
-    "sensor_type": "pressure",
 }
 
 _IOT_SENSOR_DOC = {
@@ -74,6 +72,7 @@ class TestGaugeValueProtection:
         with patch("servers.robot.main.db", _make_db_mock()):
             data = await call_tool(mcp, "safety_gate_check", {"asset_id": "Chiller 6"})
         assert _no_gauge_value(data), f"gauge_value leaked in safety_gate_check: {data}"
+        assert "human_present" not in data, "human_present must not appear in safety_gate_check response"
 
     @pytest.mark.anyio
     async def test_open_panel_no_gauge_value(self):
@@ -83,21 +82,13 @@ class TestGaugeValueProtection:
 
     @pytest.mark.anyio
     async def test_read_gauge_no_gauge_value(self):
-        """Most critical check — simulator uses gauge_value internally."""
-        import servers.robot.main as robot_main
-        robot_main._simulator.generate_scenario("chiller_6", [0.0, 100.0], "normal")
+        """Most critical check — profile has gauge_value but tool must not return it."""
         with patch("servers.robot.main.db", _make_db_mock()):
             data = await call_tool(
                 mcp, "read_gauge", {"asset_id": "Chiller 6", "attempt_n": 1}
             )
         assert _no_gauge_value(data), f"gauge_value leaked in read_gauge: {data}"
         assert "reading" in data, "read_gauge must return 'reading' field"
-
-    @pytest.mark.anyio
-    async def test_check_human_presence_no_gauge_value(self):
-        with patch("servers.robot.main.db", _make_db_mock()):
-            data = await call_tool(mcp, "check_human_presence", {"asset_id": "Chiller 6"})
-        assert _no_gauge_value(data), f"gauge_value leaked in check_human_presence: {data}"
 
     @pytest.mark.anyio
     async def test_commit_reading_blocked_no_gauge_value(self):
@@ -133,7 +124,7 @@ class TestGaugeValueProtection:
 
     @pytest.mark.anyio
     async def test_commit_doc_written_has_no_gauge_value(self):
-        """When commit occurs, the doc written to CouchDB must not have gauge_value."""
+        """The doc written to CouchDB on COMMIT must not include gauge_value."""
         mock_db = _make_db_mock()
         saved_docs = []
         mock_db.save.side_effect = lambda doc: (
@@ -151,7 +142,6 @@ class TestGaugeValueProtection:
                 },
             )
 
-        # If the verifier scored high enough to COMMIT, saved_docs will have one entry
         for doc in saved_docs:
             assert "gauge_value" not in doc, (
                 f"gauge_value found in committed CouchDB doc: {doc}"
@@ -179,9 +169,3 @@ class TestGaugeValueProtection:
                     },
                 )
         assert _no_gauge_value(data), f"gauge_value leaked in check_wo_similarity: {data}"
-
-    @pytest.mark.anyio
-    async def test_detect_anomaly_no_gauge_value(self):
-        with patch("servers.robot.main.db", _make_db_mock()):
-            data = await call_tool(mcp, "detect_anomaly", {"asset_id": "Chiller 6"})
-        assert _no_gauge_value(data), f"gauge_value leaked in detect_anomaly: {data}"

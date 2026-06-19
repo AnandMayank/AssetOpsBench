@@ -9,7 +9,7 @@ Document shape:
     _id        = "profile:{normalized_asset_id}"   e.g. "profile:chiller_6"
     doc_type   = "asset_robot_profile"
     display_name = "Chiller 6"                     original asset_id string
-    + 9 robot fields (see ROBOT_FIELD_DEFAULTS)
+    + 8 robot fields (see ROBOT_FIELD_DEFAULTS)
 
 Usage:
     python src/couchdb/seed_robot_profiles.py             # apply
@@ -44,12 +44,11 @@ ROBOT_FIELD_DEFAULTS: dict = {
     "physical_location":   None,
     "gauge_value":         0.0,    # ground truth — NEVER expose to agent via MCP
     "gauge_range":         [0, 100],
-    "panel_stuck_prob":    0.12,
-    "human_present":       False,
+    "gauge_path":          None,   # path to real facility image (field collection)
     "never_read":          False,
-    "real_gauge_images":   [],
-    "reading_consistency": None,
-    "sensor_physical_gap": None,
+    "reading_consistency": None,   # empirical σ/span; populated by grounding pipeline
+    "sensor_physical_gap": None,   # empirical |iot-gauge|/span; scenario metadata
+    "panel_stuck":         False,  # deterministic panel state; set by scenario generation
 }
 
 ROBOT_FIELDS = list(ROBOT_FIELD_DEFAULTS.keys())
@@ -215,7 +214,7 @@ def verify() -> bool:
             print(f"  [OK] {doc_id}")
             for k, v in present.items():
                 flag = "  *** GROUND TRUTH — never expose ***" if k == "gauge_value" else ""
-                print(f"       {k}: {v}{flag}")
+                print(f"       {k}: {v!r}{flag}")
         print()
 
     if all_ok:

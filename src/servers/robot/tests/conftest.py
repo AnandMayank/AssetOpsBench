@@ -35,24 +35,13 @@ requires_couchdb = pytest.mark.skipif(
 # --- Fixtures ---
 
 
-@pytest.fixture
-def simulator():
-    """Fresh PhysicalStateSimulator with seed=42."""
-    from servers.robot.simulator import PhysicalStateSimulator
-    return PhysicalStateSimulator(seed=42)
-
-
 @pytest.fixture(autouse=True)
-def reset_simulator_rng():
-    """Reset module-level simulator RNG before every test.
-
-    open_panel() and simulate_read_gauge() consume RNG state; without a reset
-    the outcome of tests depends on execution order.
-    """
+def reset_rng():
+    """Reset module-level _rng before every test for deterministic read_gauge() output."""
     import servers.robot.main as robot_main
-    robot_main._simulator._rng = random.Random(42)
+    robot_main._rng = random.Random(42)
     yield
-    robot_main._simulator._rng = random.Random(42)
+    robot_main._rng = random.Random(42)
 
 
 @pytest.fixture
