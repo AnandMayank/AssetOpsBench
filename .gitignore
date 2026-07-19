@@ -204,3 +204,16 @@ src/tmp/
 
 # Observability artifacts (OTLP-JSON traces + per-run trajectory JSON).
 traces/
+anthropic_Key.txt
+gemini_api_key.txt
+
+# PMC gauge-inspection data + Cosmos checkpoints/videos: large binaries and/or
+# machine-local symlinks (second_drive), not portable across machines.
+# See docs/pmc_reproduction/ for the code + steps to regenerate these.
+src/orchestrator/data/pmc_cache/
+src/orchestrator/data/pmc_videos
+src/orchestrator/data/pmc_windows_clean
+src/orchestrator/data/pmc_windows_filtered
+src/orchestrator/data/pmc_windows_raw
+src/orchestrator/data/cosmos_ckpts
+src/orchestrator/data/cosmos_roundtrip_out
