@@ -1,0 +1,14 @@
+scenario_id,category,asset,query_source,reference_source,match_tier,ts_diff_seconds
+AOBv2-REAL-002,gauge_degradation,Chemical plant piping system,data_detection/images/test/IMG_20220106_104236.jpg,data_detection/images/test/IMG_20220106_104042.jpg,cat_only,114
+AOBv2-REAL-003,occlusion,Chemical plant pipeline,data_detection/images/test/IMG_20220106_104253.jpg,data_detection/images/test/IMG_20220106_104042.jpg,timestamp,131
+AOBv2-REAL-004,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_104256.jpg,data_detection/images/test/IMG_20220106_105051.jpg,cat+asset,475
+AOBv2-REAL-005,gauge_degradation,Chemical plant pipeline,data_detection/images/test/IMG_20220106_104312.jpg,data_detection/images/test/IMG_20220106_104042.jpg,cat_only,150
+AOBv2-REAL-006,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_104433.jpg,data_detection/images/test/IMG_20220106_105051.jpg,cat+asset,378
+AOBv2-REAL-007,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_104436.jpg,data_detection/images/test/IMG_20220106_104844.jpg,cat+asset,248
+AOBv2-REAL-008,occlusion,Boiler,data_detection/images/test/IMG_20220106_104447.jpg,data_detection/images/test/IMG_20220106_104844.jpg,timestamp,237
+AOBv2-REAL-009,gauge_degradation,Chemical storage tank,data_detection/images/test/IMG_20220106_104507.jpg,data_detection/images/test/IMG_20220106_104844.jpg,cat_only,217
+AOBv2-REAL-010,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_104509.jpg,data_detection/images/test/IMG_20220106_104844.jpg,cat+asset,215
+AOBv2-REAL-011,occlusion,Boiler,data_detection/images/test/IMG_20220106_104557.jpg,data_detection/images/test/IMG_20220106_104844.jpg,timestamp,167
+AOBv2-REAL-013,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_104909_1.jpg,data_detection/images/test/IMG_20220106_104844.jpg,cat+asset,25
+AOBv2-REAL-015,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_105111.jpg,data_detection/images/test/IMG_20220106_105051.jpg,timestamp,20
+AOBv2-REAL-016,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_105132.jpg,data_detection/images/test/IMG_20220106_105051.jpg,cat+asset,41
