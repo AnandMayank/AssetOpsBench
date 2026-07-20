@@ -1,19 +1,27 @@
-"""Scale-up version of split_windows_by_scene.py: reads pmc_windows_raw_full/run*
-(all 144 timestamp-clustered raw runs) and the already-trusted
-pmc_windows_filtered/window_{A,B} (manual ground truth for the splitter's own
-validation), auto-splits every run on scene changes, writes clean single-asset
-windows + manifest.json under pmc_windows_clean_full/."""
+"""Scale-up version of split_windows_by_scene.py: reads <RAW_DIR>/run*
+(timestamp-clustered raw runs, each a directory of .jpg frames extracted from
+your own raw PMC photo archive -- see docs/pmc_reproduction/README.md for
+where that archive comes from) and any already-trusted <FILTERED_DIR>/window_*
+(manually verified ground-truth windows, optional), auto-splits every run on
+scene changes, writes clean single-asset windows + manifest.json under
+<CLEAN_DIR>/.
+
+Usage:
+    python split_windows_by_scene_full.py <RAW_DIR> <CLEAN_DIR> [FILTERED_DIR]
+Or via env vars: PMC_RAW_DIR, PMC_CLEAN_DIR, PMC_FILTERED_DIR (optional).
+"""
 import json
+import os
 import re
 import shutil
+import sys
 from pathlib import Path
 
 import cv2
 
-DEST = Path("/media/adityapachauri/second_drive/aditya_pmc_work")
-RAW_DIR = DEST / "pmc_windows_raw_full"
-FILTERED_DIR = DEST / "pmc_windows_filtered"
-CLEAN_DIR = DEST / "pmc_windows_clean_full"
+RAW_DIR = Path(sys.argv[1] if len(sys.argv) > 1 else os.environ.get("PMC_RAW_DIR", "pmc_windows_raw_full"))
+CLEAN_DIR = Path(sys.argv[2] if len(sys.argv) > 2 else os.environ.get("PMC_CLEAN_DIR", "pmc_windows_clean_full"))
+FILTERED_DIR = Path(sys.argv[3] if len(sys.argv) > 3 else os.environ.get("PMC_FILTERED_DIR", "")) or None
 CORR_THRESHOLD = 0.55
 MIN_SUBWINDOW_LEN = 3
 
@@ -87,18 +95,19 @@ def main():
         if (i + 1) % 20 == 0:
             print(f"  ...{i+1}/{len(run_dirs)} raw runs processed, {len(manifest)} clean windows so far")
 
-    for win_dir in sorted(FILTERED_DIR.glob("window_*")):
-        name = win_dir.name
-        frames = sorted(win_dir.glob("*.jpg"), key=natural_ts_key)
-        outdir = CLEAN_DIR / name
-        outdir.mkdir(parents=True, exist_ok=True)
-        for p in frames:
-            shutil.copy(p, outdir / p.name)
-        manifest[name] = {
-            "source": "manually_verified",
-            "n_frames": len(frames),
-            "frames": [p.name for p in frames],
-        }
+    if FILTERED_DIR is not None:
+        for win_dir in sorted(FILTERED_DIR.glob("window_*")):
+            name = win_dir.name
+            frames = sorted(win_dir.glob("*.jpg"), key=natural_ts_key)
+            outdir = CLEAN_DIR / name
+            outdir.mkdir(parents=True, exist_ok=True)
+            for p in frames:
+                shutil.copy(p, outdir / p.name)
+            manifest[name] = {
+                "source": "manually_verified",
+                "n_frames": len(frames),
+                "frames": [p.name for p in frames],
+            }
 
     (CLEAN_DIR / "manifest.json").write_text(json.dumps(manifest, indent=2))
     print(f"\n{total_raw_windows} raw runs -> {len(manifest)} clean single-asset windows")

@@ -10,14 +10,16 @@ calibrate.py's docstring and the paper's success-only CP-calibration split.
 Failure-labeled windows are left out for later score_ood.py testing instead.
 """
 import json
+import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path.home() / "GaugeFailClassification" / "scripts" / "data_processing"))
+sys.path.insert(0, os.environ.get(
+    "GAUGE_FAIL_CLASSIFICATION_DIR", str(Path.home() / "GaugeFailClassification")) + "/scripts/data_processing")
 from frames_to_video import frames_to_video  # noqa: E402
 
-CLEAN = Path("/media/adityapachauri/second_drive/aditya_pmc_work/pmc_windows_clean_full")
-OUT_DIR = Path("/media/adityapachauri/second_drive/aditya_pmc_work/pmc_calibration_videos_success")
+CLEAN = Path(os.environ.get("PMC_CLEAN_DIR", "pmc_windows_clean_full"))
+OUT_DIR = Path(os.environ.get("PMC_CALIB_VIDEOS_OUT", "pmc_calibration_videos_success"))
 FPS = 2.0  # matches the rough photo-burst cadence observed in windowA/windowB (3-5fps at higher frame counts)
 
 manifest = json.loads((CLEAN / "manifest.json").read_text())

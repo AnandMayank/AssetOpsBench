@@ -1,0 +1,4 @@
+src/orchestrator/data/pmc_calibration_videos_success/*.mp4 filter=lfs diff=lfs merge=lfs -text
+src/orchestrator/data/pmc_test_videos_failure/*.mp4 filter=lfs diff=lfs merge=lfs -text
+docs/pmc_reproduction/checkpoints/*.ckpt filter=lfs diff=lfs merge=lfs -text
+src/orchestrator/data/pmc_windows_clean_full/**/*.jpg filter=lfs diff=lfs merge=lfs -text

@@ -8,11 +8,38 @@ the [GaugeFailClassification](https://github.com/autoinspection-classification/G
 repo's `CosmosWorld`/`CosmosWorldClassifier` models.
 
 **Current status: pipeline is fully real and runs end-to-end (training →
-calibration → OOD scoring), but the checkpoint trained here (3 epochs, 678
-frame pairs) shows no measurable success/failure separation yet** — see
-[Known result](#known-result-no-separation-yet) below. This is included
+calibration → OOD scoring), but neither the 3-epoch nor a 100-epoch checkpoint
+trained here shows measurable success/failure separation** — see
+[Known result](#known-result-no-separation-yet) below, including a structural
+finding (5 of 7 CP metrics are computed from the *frozen* Cosmos encoder and
+literally cannot reflect any amount of training). This is included
 un-sanitized so whoever continues this can pick up from a verified-correct
 baseline instead of re-debugging the same issues.
+
+## Included data
+
+This repo bundles the actual training/calibration/test data and both trained
+checkpoints via **Git LFS** (~4.2GB total — run `git lfs pull` after cloning,
+or `git lfs install` before cloning), so you can start training/calibrating
+immediately without re-labeling (which costs real VLM API calls) or
+re-rendering:
+
+| Path | Contents | Size |
+|---|---|---|
+| `src/orchestrator/data/pmc_windows_clean_full/` | 180 labeled PMC windows (`manifest.json` + `labels_vlm.json` + all frame `.jpg`s) — the direct input to `PMCWindowDataset`/`train_cosmos_world_pmc.py` | 3.2GB |
+| `src/orchestrator/data/pmc_calibration_videos_success/` | 140 rendered `.mp4`s (success-labeled windows) — the `calibrate.py --calibration_dir` input | 545MB |
+| `src/orchestrator/data/pmc_test_videos_failure/` | 40 rendered `.mp4`s (failure-labeled windows) — the `classify.py --test_dir` input | 142MB |
+| `docs/pmc_reproduction/checkpoints/cosmos_world_pmc_3epoch.ckpt` | 3-epoch `CosmosWorld` checkpoint (baseline) | 166MB |
+| `docs/pmc_reproduction/checkpoints/cosmos_world_pmc_100epoch.ckpt` | 100-epoch checkpoint (same result, see below) | 166MB |
+
+**Data provenance / license note**: the underlying photos originate from two
+third-party real-world gauge-image collections (internally referred to as
+"AssetOps Gauge" and "RPM-10K") gathered outside this repo. Their original
+license terms were not independently re-verified before including these
+derivatives (labeled window crops + rendered low-fps video clips) here — if
+you plan to redistribute further or use commercially, verify provenance
+first. The raw, un-windowed source archive itself is *not* included; only the
+already-split/labeled derivatives above are.
 
 **Hardware note**: NVIDIA's own Cosmos-Tokenizer model card states BF16 was
 only tested on Ampere (A100) and Hopper (H100) GPUs. Everything below was run
@@ -175,20 +202,32 @@ to success-only videos.
 
 `train_cosmos_world_pmc.py` (copied into
 [`gauge_fail_classification_changes/`](gauge_fail_classification_changes/))
-does a manual training loop (not `pl.Trainer`, for direct control/logging):
+does a manual training loop (not `pl.Trainer`, for direct control/logging).
+It checkpoints every `CKPT_EVERY` epochs (default 10, atomic temp+rename) so
+a crash mid-run on a long job doesn't lose all progress — it does **not**
+auto-resume from a checkpoint, though; a restart begins training from scratch.
+
+Quickstart using this repo's bundled data (skips relabeling/rerendering):
 
 ```bash
 export PYTHONPATH=/path/to/cosmos_tokenizer_src
 cd /path/to/GaugeFailClassification
-EPOCHS=3 BATCH_SIZE=8 python -u train_cosmos_world_pmc.py
-# env vars: PMC_CLEAN_DIR (default: pmc_windows_clean_full), COSMOS_WORLD_CKPT_OUT,
-# EPOCHS, BATCH_SIZE
+PMC_CLEAN_DIR=/path/to/AssetOpsBench/src/orchestrator/data/pmc_windows_clean_full \
+COSMOS_WORLD_CKPT_OUT=/tmp/cosmos_world_pmc.ckpt \
+EPOCHS=100 BATCH_SIZE=8 CKPT_EVERY=10 python -u train_cosmos_world_pmc.py
 ```
 
-Result on this run (3 epochs, 84 batches/epoch, batch_size=8, Quadro RTX
-6000): mean_loss **2.2446 → 2.0307 → 1.9401** — real, consistent downward
-trend, no NaN/explosion, ~280s/epoch (~14 min total for all 3 epochs).
-Checkpoint saved as `{"state_dict": model.state_dict()}` (compatible with
+Results on this GPU (Quadro RTX 6000, 84 batches/epoch, batch_size=8):
+
+| Run | Epochs | mean_loss trajectory | Wall time |
+|---|---|---|---|
+| Baseline | 3 | 2.2446 → 2.0307 → 1.9401 | ~14 min |
+| Longer run | 100 | 2.2687 → ... → **1.3509** (monotonic decrease throughout) | ~8.5 hours |
+
+Both converge cleanly (no NaN/explosion) — this is real, working
+optimization. As shown below, **that convergence does not translate into any
+success/failure separation**, in either run. Checkpoint saved as
+`{"state_dict": model.state_dict(), "epoch": N}` (compatible with
 `calibrate.py`'s `torch.load(...)['state_dict']` loading).
 
 ## 5. Conformal-prediction calibration
@@ -205,15 +244,27 @@ PYTHONPATH=/path/to/cosmos_tokenizer_src python scripts/inference/calibrate.py \
 Real thresholds obtained (95th percentile, α=0.05, 140 calibration videos),
 **after** the Mahalanobis fix:
 
-| Metric | Threshold |
-|---|---|
-| `reconstruction_error` | 2.1388 |
-| `training_loss` | 2.8209 |
-| `mahalanobis` | 3968.09 |
-| `l2_to_mean` | 83.9382 |
-| `cosine_to_mean` | 0.8274 |
-| `latent_pred_error` | 64.4365 |
-| `latent_std` | 0.8538 |
+| Metric | Threshold (3-epoch) | Threshold (100-epoch) |
+|---|---|---|
+| `reconstruction_error` | 2.1388 | 2.0086 |
+| `training_loss` | 2.8209 | 2.5774 |
+| `mahalanobis` | 3968.09 | 3968.09 (identical) |
+| `l2_to_mean` | 83.9382 | 83.9382 (identical) |
+| `cosine_to_mean` | 0.8274 | 0.8274 (identical) |
+| `latent_pred_error` | 64.4365 | 64.4365 (identical) |
+| `latent_std` | 0.8538 | 0.8538 (identical) |
+
+**Important structural finding**: `process_video()` in both `calibrate.py`
+and `classify.py` records `z_images` — the output of `model(...)`'s **frozen**
+Cosmos encoder step — as the `latents` array used by `mahalanobis`,
+`l2_to_mean`, `cosine_to_mean`, `latent_pred_error`, and `latent_std`. It
+never uses `z_images_next` (the trained `LatentWorld` prediction). Since the
+Cosmos encoder is frozen and never trained, **these 5 of 7 metrics are
+structurally incapable of reflecting any amount of `CosmosWorld` training** —
+confirmed empirically above (bit-for-bit identical thresholds at 3 vs. 100
+epochs). Only `reconstruction_error` and `training_loss` (derived from
+`x_images_next_hat`, which does depend on the trained world model + frozen
+decoder) can possibly change with training.
 
 ## 6. OOD scoring (does it actually separate success from failure?)
 
@@ -229,43 +280,40 @@ PYTHONPATH=/path/to/cosmos_tokenizer_src python scripts/inference/classify.py \
 (Note: despite the docstring at the top of `classify.py` calling itself
 `score_ood.py`, that's the actual, current filename to run.)
 
-### Known result: no separation yet
+### Known result: no separation, even after 100 epochs
 
-Running this against the 40 known-failure videos:
+Running this against the 40 known-failure videos, 3-epoch vs. 100-epoch:
 
-| Metric | OOD flagged (of 40) |
-|---|---|
-| `reconstruction_error` | 1 (2.5%) |
-| `training_loss` | 4 (10.0%) |
-| `mahalanobis` | 0 (0.0%) |
-| `l2_to_mean` | 1 (2.5%) |
-| `cosine_to_mean` | 1 (2.5%) |
-| `latent_pred_error` | 2 (5.0%) |
-| `latent_std` | 3 (7.5%) |
+| Metric | OOD flagged, 3-epoch | OOD flagged, 100-epoch | Depends on training? |
+|---|---|---|---|
+| `reconstruction_error` | 1/40 (2.5%) | 2/40 (5.0%) | yes |
+| `training_loss` | 4/40 (10.0%) | 3/40 (7.5%) | yes |
+| `mahalanobis` | 0/40 (0.0%) | 0/40 (0.0%) | no (frozen encoder) |
+| `l2_to_mean` | 1/40 (2.5%) | 1/40 (2.5%) | no |
+| `cosine_to_mean` | 1/40 (2.5%) | 1/40 (2.5%) | no |
+| `latent_pred_error` | 2/40 (5.0%) | 2/40 (5.0%) | no |
+| `latent_std` | 3/40 (7.5%) | 3/40 (7.5%) | no |
 
 Since the threshold is itself the calibration set's 95th percentile, ~5% of
 success videos trigger OOD by construction — a well-separated model should
 flag failure videos far above that baseline (ideally near 100%). Every
-metric here sits at or near 5%, and mean/median score distributions for
-success vs. failure overlap almost completely per-metric (checked directly,
-not just via the flag counts) — `mahalanobis` is even inverted (failure mean
-666 vs. success mean 1418, the wrong direction for anomaly detection).
+metric sits at or near 5% in **both** runs. The 5 frozen-encoder metrics are
+identical or near-identical between runs, exactly as predicted by the
+structural finding above. Critically, **even the 2 metrics that do depend on
+the trained model show no real improvement** — `reconstruction_error` and
+`training_loss` moved by ±1 video out of 40 between the 3-epoch and
+100-epoch checkpoints, which is noise, not signal, and both remain at
+chance level. Mean/median score distributions for success vs. failure
+overlap almost completely in both runs (checked directly, not just via flag
+counts) — `mahalanobis` is even inverted (failure mean 666 vs. success mean
+1418, the wrong direction for anomaly detection).
 
-**This is a genuine negative result, not a pipeline bug** — every stage
-(training → calibration → OOD scoring) runs correctly and produces sane,
-well-formed numbers; the trained model just hasn't learned a usable
-success/failure signal yet. Most likely causes, roughly in order of expected
-impact:
+**This rules out "just needed more training" as the explanation.** A 33x
+longer run (3→100 epochs) produced real, monotonic optimization (training
+loss 2.27→1.35) but literally zero change in downstream separation quality.
+The problem is very likely architectural/data-side, not training-duration:
 
-1. **Far too little training** — 3 epochs on 678 pairs is minimal for a
-   `LatentWorld` predictor trained from scratch (only the Cosmos
-   encoder/decoder are pretrained; the world-model head is random-init).
-   Next step: run substantially longer — 50-100+ epochs. At ~93s/epoch-per-10-batches
-   observed rate this is a few hours on a single 24GB GPU, not something
-   that requires bigger hardware, just more wall-clock time (or an
-   A100/H100 to shorten that wait and match NVIDIA's officially-tested BF16
-   path).
-2. **`ensure_length_300` padding dilutes the temporal signal** — PMC windows
+1. **`ensure_length_300` padding dilutes the temporal signal** — PMC windows
    are native 2-18 frames; padding to 300 by repeating the last frame means
    most of every "video" fed to the model is a frozen duplicate, likely
    washing out whatever real success/failure signal exists in the few
@@ -273,7 +321,7 @@ impact:
    (or the video-length assumption generally — the source paper this
    pipeline follows targets ~10s/290 native videos, not 1-9s photo bursts
    padded 15-150x).
-3. **Weak supervision on the *test*-split labels** — the success/failure
+2. **Weak supervision on the *test*-split labels** — the success/failure
    labels used to decide the calibration/test split come from single-pass
    VLM judgments (whole-window, 4 sampled frames), not curated ground truth.
    `CosmosWorld` itself trains unsupervised so this doesn't affect training,

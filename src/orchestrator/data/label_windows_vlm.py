@@ -32,10 +32,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tokenrouter_backend import call_tokenrouter, load_tokenrouter_credentials  # noqa: E402
 
-DEST = Path("/media/adityapachauri/second_drive/aditya_pmc_work")
-CLEAN = DEST / "pmc_windows_clean_full"
-PERCEPTION_CSV = Path.home() / "AssetOpsBench/src/orchestrator/data/perception_real.csv"
-ENV_FILE = Path.home() / "AssetOpsBench/.env"
+# CLEAN must point at the manifest.json produced by split_windows_by_scene_full.py.
+# PERCEPTION_CSV/ENV_FILE default to this script's own directory / repo .env.
+CLEAN = Path(os.environ.get("PMC_CLEAN_DIR", "pmc_windows_clean_full"))
+PERCEPTION_CSV = Path(os.environ.get(
+    "PERCEPTION_CSV", str(Path(__file__).resolve().parent / "perception_real.csv")))
+ENV_FILE = Path(os.environ.get(
+    "PMC_ENV_FILE", str(Path(__file__).resolve().parents[3] / ".env")))
 
 VALID_CATEGORIES = {
     "gauge_degradation", "occlusion", "scale_interpretation",

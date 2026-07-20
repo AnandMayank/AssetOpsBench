@@ -5,14 +5,16 @@ to score against the conformal-prediction bands fit on success-only videos
 (see render_success_windows_to_video.py / cp_bands/).
 """
 import json
+import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path.home() / "GaugeFailClassification" / "scripts" / "data_processing"))
+sys.path.insert(0, os.environ.get(
+    "GAUGE_FAIL_CLASSIFICATION_DIR", str(Path.home() / "GaugeFailClassification")) + "/scripts/data_processing")
 from frames_to_video import frames_to_video  # noqa: E402
 
-CLEAN = Path("/media/adityapachauri/second_drive/aditya_pmc_work/pmc_windows_clean_full")
-OUT_DIR = Path("/media/adityapachauri/second_drive/aditya_pmc_work/pmc_test_videos_failure")
+CLEAN = Path(os.environ.get("PMC_CLEAN_DIR", "pmc_windows_clean_full"))
+OUT_DIR = Path(os.environ.get("PMC_TEST_VIDEOS_OUT", "pmc_test_videos_failure"))
 FPS = 2.0
 
 manifest = json.loads((CLEAN / "manifest.json").read_text())
