@@ -126,10 +126,11 @@ def _build_vision_provider(backend: str, manifest: ProviderManifest, bus: EventB
 async def run_one(scenario, backend: str, api_key: str, model_name: str,
                   min_reads: int, seed: str, audit_path: Path,
                   ollama_base_url: str, prompt_variant: str = "baseline",
-                  framing: str = "neutral") -> Dict[str, Any]:
+                  framing: str = "neutral",
+                  channels: tuple = ("rgb", "iot")) -> Dict[str, Any]:
     bus = EventBus()
     audit = AuditLogger(bus, audit_path)
-    RealPMCCalibrationGate(bus, scenario)
+    RealPMCCalibrationGate(bus, scenario, channels=channels)
     manifest = ProviderManifest(name="gauge_vision", version="0.1.0", type="vlm",
                                 capabilities=["vlm.gauge_reading_real"])
 
@@ -198,9 +199,38 @@ async def main_async(args: argparse.Namespace) -> int:
                   f"with the moondream model pulled (`ollama pull moondream`).", file=sys.stderr)
             return 2
 
+    # Split selection happens *before* --n truncation, so "--split B_pilot --n 20"
+    # means the first 20 of the pilot split rather than the first 20 rows of the
+    # catalog that happen to be in it.
+    split_ids = None
+    if args.split:
+        splits_path = Path(__file__).resolve().parents[2] / "config" / "splits" / "splits.json"
+        if not splits_path.exists():
+            print(f"ERROR: {splits_path} missing (run scripts/build_splits.py).",
+                  file=sys.stderr)
+            return 2
+        manifest = json.loads(splits_path.read_text())["splits"]
+        if args.split.startswith("C_test"):
+            if not args.allow_test_split:
+                print("ERROR: C_test is the fixed test set and must never be used for "
+                      "tuning, pilots or threshold selection. Pass --allow-test-split "
+                      "to run the final evaluation deliberately.", file=sys.stderr)
+                return 2
+            key = ("view_balanced" if args.split == "C_test_balanced"
+                   else "view_natural_prior")
+            split_ids = set(manifest["C_test"][key])
+        else:
+            split_ids = set(manifest[args.split]["ids"])
+        if not split_ids:
+            print(f"ERROR: split {args.split} is empty.", file=sys.stderr)
+            return 2
+
     scenarios = build_scenarios(
         perception_csv=args.perception_csv, pairs_csv=args.pairs_csv,
-        zip_path=args.zip, cache_dir=args.cache_dir, limit=args.n)
+        zip_path=args.zip, cache_dir=args.cache_dir,
+        limit=None if split_ids else args.n)
+    if split_ids is not None:
+        scenarios = [s for s in scenarios if s.scenario_id in split_ids][:args.n]
     if not scenarios:
         print("ERROR: no scenarios resolved from the CSVs.", file=sys.stderr)
         return 2
@@ -225,7 +255,8 @@ async def main_async(args: argparse.Namespace) -> int:
                               seed=f"{args.seed}_{scenario.scenario_id}",
                               audit_path=audit_path, ollama_base_url=args.ollama_url,
                               prompt_variant=args.prompt_variant,
-                              framing=args.framing)
+                              framing=args.framing,
+                              channels=tuple(args.channels.split(",")))
         except Exception as exc:  # noqa: BLE001 - one scenario's failure must not sink the batch
             msg = str(exc)
             print(f"[{i+1}/{len(scenarios)}] {scenario.scenario_id:18s} "
@@ -293,7 +324,7 @@ async def main_async(args: argparse.Namespace) -> int:
         system_prompt_id=f"gauge_read/{args.prompt_variant}",
         prompt_variant=args.prompt_variant,
         framing=args.framing,
-        channels=("rgb", "iot"),
+        channels=tuple(args.channels.split(",")),
         max_observations=args.min_reads,
         image_max_width=FROZEN.get("decoding", {}).get("image_max_width", 800),
         tool_surface="pmc_real/v1",
@@ -373,6 +404,20 @@ def main() -> None:
     parser.add_argument("--google-api-key", default="", help="overrides $GOOGLE_API_KEY")
     parser.add_argument("--ollama-url", default="http://localhost:11434")
     parser.add_argument("--model", default="", help="defaults per --backend if omitted")
+    parser.add_argument("--channels", default="rgb,iot",
+                        choices=["rgb,iot", "rgb"],
+                        help="V1 modality ablation. 'rgb' drops the independent "
+                             "IoT cross-check (A component + G2 override), leaving "
+                             "the gate on model-reported confidence alone.")
+    parser.add_argument("--split", default="",
+                        choices=["", "A_development", "B_pilot", "C_test",
+                                 "C_test_balanced", "D_regenerated"],
+                        help="restrict to a split from config/splits/splits.json. "
+                             "C_test is the fixed test set and must never be used for "
+                             "tuning or pilots (P0-5).")
+    parser.add_argument("--allow-test-split", action="store_true",
+                        help="required alongside --split C_test; guards the "
+                             "never-tuned property of the fixed test set")
     parser.add_argument("--framing", default="neutral",
                         choices=["neutral", "deployment", "benchmark", "safety_audit"],
                         help="E3 evaluation-context framing; 'neutral' is the control "

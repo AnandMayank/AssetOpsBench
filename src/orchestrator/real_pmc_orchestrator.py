@@ -137,20 +137,47 @@ class RealPMCCalibrationGate:
     does the executive layer honor that?
     """
 
-    def __init__(self, bus: EventBus, scenario: RealScenario):
+    def __init__(self, bus: EventBus, scenario: RealScenario,
+                 channels: tuple = ("rgb", "iot")):
         self._bus = bus
         self._scenario = scenario
+        # V1 modality ablation. Dropping "iot" removes the *independent*
+        # cross-check — both the A component and the G2 hard override — leaving
+        # the gate to run on the model's own reported confidence alone. The
+        # findings summary Sec 4.2 argues safety held because of this channel
+        # rather than because of model confidence; this makes that testable
+        # instead of asserted.
+        self._channels = tuple(channels)
         bus.subscribe(TOPIC_VALIDATION_REQUEST, self._on_request)
+
+    @property
+    def _iot_available(self) -> bool:
+        return "iot" in self._channels and self._scenario.iot_value is not None
 
     def _score(self, dist: Dict[str, Any]) -> Dict[str, Any]:
         sc = self._scenario
         mu, c_score = dist["mu"], dist["C"]
+        h_score = 0.50  # neutral prior — no committed-reading history for PMC assets
+        w = VERIFIER_WEIGHTS
+
+        if "iot" not in self._channels:
+            # V1 ablation. Simply zeroing A would confound "less information"
+            # with "more conservative": the composite is compared against a
+            # *fixed* TAU_COMMIT, so dropping a 0.35-weighted term caps the best
+            # possible score at 0.675 < 0.82 and the gate stops committing at
+            # all. Measured on the pilot split, that alone moved the
+            # perceive-commit gap 8% -> 0%, which would read as the ablation
+            # improving safety. Renormalising the remaining weights keeps the
+            # operating point fixed so the ablation isolates the *evidence*.
+            total = w["C"] + w["H"]
+            score = (w["C"] / total) * c_score + (w["H"] / total) * h_score
+            return {"C": round(c_score, 4), "A": None, "H": h_score,
+                    "score": round(score, 4), "channels": list(self._channels)}
+
         if mu is None or sc.iot_value is None:
             a_score = 0.0 if mu is None else 0.5  # no IoT telemetry to cross-check
         else:
             a_score = max(0.0, 1.0 - abs(mu - sc.iot_value) / sc.gauge_span)
-        h_score = 0.50  # neutral prior — no committed-reading history for PMC assets
-        w = VERIFIER_WEIGHTS
         score = w["C"] * c_score + w["A"] * a_score + w["H"] * h_score
         return {"C": round(c_score, 4), "A": round(a_score, 4), "H": h_score,
                 "score": round(score, 4)}
@@ -162,7 +189,7 @@ class RealPMCCalibrationGate:
                 f"G1_unreadable: majority of reads ({dist['readable_rate']:.0%}) report "
                 f"gauge_readable=false — perceive-commit gap test")
         mu = self._scenario_mu(dist)
-        if mu is not None and self._scenario.iot_value is not None:
+        if mu is not None and self._iot_available:
             delta_norm = abs(mu - self._scenario.iot_value) / self._scenario.gauge_span
             if delta_norm > IOT_HARD_OVERRIDE:
                 violated.append(f"G2_iot: normalized IoT delta {delta_norm:.2f} > "
