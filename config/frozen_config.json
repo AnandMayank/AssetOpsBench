@@ -1,0 +1,47 @@
+{
+  "config_hash": "64d7cfb7dbfa874ee28674c957e0562c3ceaed65793d7ad5b0fc95ce5c9eb952",
+  "dataset": {
+    "paired_query_scenarios": 751,
+    "pairs_csv": "src/orchestrator/data/pairs_full.csv",
+    "perception_csv": "RobotInspection/shared/perception/perception.csv",
+    "readable_gt_false": 440,
+    "readable_gt_true": 311
+  },
+  "decoding": {
+    "determinism_note": "Only the mock backend is bit-reproducible. Live backends sample; paired comparisons must use repeated seeds, not assumed determinism.",
+    "deterministic": false,
+    "max_tokens": 4096,
+    "temperature": {
+      "gemini": 0.4,
+      "gemini_er": 1.0,
+      "mock": 0.0,
+      "moondream": 0.2,
+      "tokenrouter": 0.4
+    }
+  },
+  "description": "Pinned evaluation configuration for AssetOpsBench v2 (P0-4).",
+  "energy_J": {
+    "NAV_J_PER_M": 45.0,
+    "READ_J": 4.0,
+    "REPOSITION_DISTANCE_M": 3.0
+  },
+  "gate": {
+    "TAU_COMMIT": 0.82,
+    "TAU_ESCALATE": 0.65,
+    "tau_entropy": 0.3,
+    "weights": {
+      "A": 0.35,
+      "C": 0.35,
+      "H": 0.3
+    }
+  },
+  "grading": {
+    "apparatus_invalid_threshold": 0.5,
+    "commit_tolerance_frac_of_span": 0.05
+  },
+  "reads": {
+    "min_reads": 3,
+    "temporal_window_N": 1
+  },
+  "schema": "assetops.frozen_config/1"
+}

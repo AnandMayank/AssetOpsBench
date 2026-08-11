@@ -1,0 +1,752 @@
+scenario_id,category,asset,query_source,reference_source,match_tier,ts_diff_seconds
+AOBv2-REAL-002,gauge_degradation,Pipeline system,data_detection/images/test/IMG_20220106_104236.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,8
+AOBv2-REAL-003,occlusion,Pipeline system,data_detection/images/test/IMG_20220106_104253.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,timestamp,9
+AOBv2-REAL-004,scale_interpretation,Pipeline system,data_detection/images/test/IMG_20220106_104256.jpg,data_detection/images/train/IMG_20220106_104307.jpg,timestamp,11
+AOBv2-REAL-005,gauge_degradation,Unknown industrial equipment,data_detection/images/test/IMG_20220106_104312.jpg,data_detection/images/train/IMG_20220106_105705.jpg,cat+asset,833
+AOBv2-REAL-006,gauge_degradation,Unknown,data_detection/images/test/IMG_20220106_104433.jpg,data_detection/images/train/IMG_20220106_104826.jpg,cat+asset,233
+AOBv2-REAL-007,gauge_degradation,Storage tank,data_detection/images/test/IMG_20220106_104436.jpg,data_detection/images/train/IMG_20220106_104037.jpg,cat+asset,239
+AOBv2-REAL-008,occlusion,Storage tanks,data_detection/images/test/IMG_20220106_104447.jpg,data_detection/images/train/IMG_20220106_104427.jpg,timestamp,20
+AOBv2-REAL-009,gauge_degradation,Industrial storage tank,data_detection/images/test/IMG_20220106_104507.jpg,data_detection/images/test/IMG_20220106_142028.jpg,cat+asset,12921
+AOBv2-REAL-010,gauge_degradation,Industrial processing equipment,data_detection/images/test/IMG_20220106_104509.jpg,data_detection/images/train/IMG_20220106_135755.jpg,cat+asset,11566
+AOBv2-REAL-011,occlusion,Storage tank,data_detection/images/test/IMG_20220106_104557.jpg,data_detection/images/train/IMG_20220106_104521.jpg,timestamp,36
+AOBv2-REAL-013,gauge_degradation,Pipeline system,data_detection/images/test/IMG_20220106_104909_1.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,385
+AOBv2-REAL-015,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_105111.jpg,data_detection/images/train/IMG_20220106_105108.jpg,timestamp,3
+AOBv2-REAL-016,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_105132.jpg,data_detection/images/train/IMG_20220106_105108.jpg,cat+asset,24
+AOBv2-REAL-018,gauge_degradation,Industrial pump,data_detection/images/test/IMG_20220106_105244.jpg,data_detection/images/train/IMG_20220106_105545.jpg,cat+asset,181
+AOBv2-REAL-019,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_105256.jpg,data_detection/images/train/IMG_20220106_105253.jpg,timestamp,3
+AOBv2-REAL-021,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_105358.jpg,data_detection/images/train/IMG_20220106_105357.jpg,timestamp,1
+AOBv2-REAL-022,scale_interpretation,Hydraulic system,data_detection/images/test/IMG_20220106_105411.jpg,data_detection/images/train/IMG_20220106_105357.jpg,timestamp,14
+AOBv2-REAL-028,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_105615.jpg,data_detection/images/train/IMG_20220106_105614.jpg,cat+asset,1
+AOBv2-REAL-031,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_105629.jpg,data_detection/images/test/IMG_20220106_105624.jpg,timestamp,5
+AOBv2-REAL-032,scale_interpretation,Hydraulic system,data_detection/images/test/IMG_20220106_105640.jpg,data_detection/images/train/IMG_20220106_105645.jpg,timestamp,5
+AOBv2-REAL-036,occlusion,Compressor,data_detection/images/test/IMG_20220106_105744.jpg,data_detection/images/train/IMG_20220106_105748.jpg,timestamp,4
+AOBv2-REAL-037,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_105745.jpg,data_detection/images/test/IMG_20220106_105805.jpg,cat+asset,20
+AOBv2-REAL-038,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_105751.jpg,data_detection/images/train/IMG_20220106_105757.jpg,cat+asset,6
+AOBv2-REAL-039,occlusion,Compressor,data_detection/images/test/IMG_20220106_105756.jpg,data_detection/images/train/IMG_20220106_105757.jpg,timestamp,1
+AOBv2-REAL-043,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_105855.jpg,data_detection/images/test/IMG_20220106_105858.jpg,timestamp,3
+AOBv2-REAL-045,scale_interpretation,Pressure system,data_detection/images/test/IMG_20220106_105926.jpg,data_detection/images/train/IMG_20220106_105921.jpg,timestamp,5
+AOBv2-REAL-046,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_110008.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,36
+AOBv2-REAL-047,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_110014.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,42
+AOBv2-REAL-048,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_110017.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,45
+AOBv2-REAL-049,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_110112.jpg,data_detection/images/train/IMG_20220106_110103.jpg,cat+asset,9
+AOBv2-REAL-051,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_110142.jpg,data_detection/images/test/IMG_20220106_110135.jpg,timestamp,7
+AOBv2-REAL-054,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_110209.jpg,data_detection/images/train/IMG_20220106_110210.jpg,timestamp,1
+AOBv2-REAL-057,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_110305.jpg,data_detection/images/train/IMG_20220106_110251.jpg,timestamp,14
+AOBv2-REAL-058,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_110339.jpg,data_detection/images/train/IMG_20220106_110251.jpg,timestamp,48
+AOBv2-REAL-059,scale_interpretation,Pipe system,data_detection/images/test/IMG_20220106_130650.jpg,data_detection/images/train/IMG_20220106_130650_1.jpg,timestamp,0
+AOBv2-REAL-060,scale_interpretation,Pipeline system,data_detection/images/test/IMG_20220106_130659.jpg,data_detection/images/test/IMG_20220106_130705.jpg,timestamp,6
+AOBv2-REAL-065,scale_interpretation,Pipeline system,data_detection/images/test/IMG_20220106_130807.jpg,data_detection/images/train/IMG_20220106_130808.jpg,timestamp,1
+AOBv2-REAL-066,occlusion,Piping system,data_detection/images/test/IMG_20220106_130840.jpg,data_detection/images/train/IMG_20220106_130836.jpg,timestamp,4
+AOBv2-REAL-067,scale_interpretation,Pipe network,data_detection/images/test/IMG_20220106_130843.jpg,data_detection/images/train/IMG_20220106_130836.jpg,timestamp,7
+AOBv2-REAL-071,scale_interpretation,Pipe network,data_detection/images/test/IMG_20220106_130908.jpg,data_detection/images/train/IMG_20220106_130911.jpg,timestamp,3
+AOBv2-REAL-073,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_130916.jpg,data_detection/images/train/IMG_20220106_130914.jpg,cat+asset,2
+AOBv2-REAL-083,scale_interpretation,Control valve,data_detection/images/test/IMG_20220106_131130.jpg,data_detection/images/train/IMG_20220106_131129.jpg,timestamp,1
+AOBv2-REAL-088,scale_interpretation,Pressure vessel,data_detection/images/test/IMG_20220106_131254.jpg,data_detection/images/test/IMG_20220106_131248.jpg,timestamp,6
+AOBv2-REAL-089,gauge_degradation,Pipeline,data_detection/images/test/IMG_20220106_131311.jpg,data_detection/images/train/IMG_20220106_130818.jpg,cat+asset,293
+AOBv2-REAL-093,gauge_degradation,Temperature control system,data_detection/images/test/IMG_20220106_131811.jpg,data_detection/images/train/IMG_20220106_131804.jpg,cat_only,7
+AOBv2-REAL-097,gauge_degradation,Electrical panel,data_detection/images/test/IMG_20220106_131843.jpg,data_detection/images/train/IMG_20220106_131842.jpg,cat+asset,1
+AOBv2-REAL-1000,gauge_degradation,Valve,data_detection/images/train/IMG_20220106_143240.jpg,data_detection/images/train/IMG_20220106_143256.jpg,cat_only,16
+AOBv2-REAL-1001,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143243.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,480
+AOBv2-REAL-1002,scale_interpretation,Valve positioner,data_detection/images/train/IMG_20220106_143246.jpg,data_detection/images/train/IMG_20220106_143256.jpg,timestamp,10
+AOBv2-REAL-1003,occlusion,Pipeline/Process system,data_detection/images/train/IMG_20220106_143248.jpg,data_detection/images/train/IMG_20220106_143256.jpg,timestamp,8
+AOBv2-REAL-1004,gauge_degradation,Pipeline/Process Piping,data_detection/images/train/IMG_20220106_143251.jpg,data_detection/images/train/IMG_20220106_143256.jpg,cat_only,5
+AOBv2-REAL-1005,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143254.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,491
+AOBv2-REAL-1007,gauge_degradation,Industrial system,data_detection/images/train/IMG_20220106_143259.jpg,data_detection/images/train/IMG_20220106_142036.jpg,cat+asset,743
+AOBv2-REAL-1009,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_143304.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,460
+AOBv2-REAL-1010,occlusion,Pipeline/Valve system,data_detection/images/train/IMG_20220106_143309.jpg,data_detection/images/train/IMG_20220106_143302.jpg,timestamp,7
+AOBv2-REAL-1013,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_143536.jpg,data_detection/images/train/IMG_20220106_143559.jpg,cat+asset,23
+AOBv2-REAL-1014,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_143541.jpg,data_detection/images/train/IMG_20220106_143559.jpg,cat+asset,18
+AOBv2-REAL-1016,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_143543.jpg,data_detection/images/train/IMG_20220106_143858.jpg,cat+asset,195
+AOBv2-REAL-1017,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_143549.jpg,data_detection/images/train/IMG_20220106_143612.jpg,cat+asset,23
+AOBv2-REAL-1018,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_143551.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,300
+AOBv2-REAL-1019,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_143555.jpg,data_detection/images/train/IMG_20220106_143559.jpg,cat+asset,4
+AOBv2-REAL-1021,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_143603.jpg,data_detection/images/train/IMG_20220106_143542.jpg,cat+asset,21
+AOBv2-REAL-1022,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_143605.jpg,data_detection/images/train/IMG_20220106_143610.jpg,timestamp,5
+AOBv2-REAL-1023,occlusion,Boiler,data_detection/images/train/IMG_20220106_143607.jpg,data_detection/images/train/IMG_20220106_143610.jpg,timestamp,3
+AOBv2-REAL-1026,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_143648.jpg,data_detection/images/test/IMG_20220106_143613.jpg,cat+asset,35
+AOBv2-REAL-1027,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_143652.jpg,data_detection/images/test/IMG_20220106_143613.jpg,cat+asset,39
+AOBv2-REAL-1028,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_143655.jpg,data_detection/images/test/IMG_20220106_143613.jpg,cat+asset,42
+AOBv2-REAL-1029,gauge_degradation,Hydraulic system,data_detection/images/train/IMG_20220106_143657.jpg,data_detection/images/train/IMG_20220106_143838.jpg,cat+asset,101
+AOBv2-REAL-1030,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_143702.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,698
+AOBv2-REAL-1031,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_143705.jpg,data_detection/images/train/IMG_20220106_143858.jpg,cat+asset,113
+AOBv2-REAL-1032,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_143707.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,224
+AOBv2-REAL-1033,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_143713.jpg,data_detection/images/train/IMG_20220106_143724_1.jpg,cat+asset,11
+AOBv2-REAL-1034,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_143716.jpg,data_detection/images/test/IMG_20220106_144127.jpg,cat+asset,251
+AOBv2-REAL-1036,gauge_degradation,Pneumatic system,data_detection/images/train/IMG_20220106_143724.jpg,data_detection/images/train/IMG_20220106_143724_2.jpg,cat+asset,0
+AOBv2-REAL-1039,scale_interpretation,Unknown (part of a pipe system),data_detection/images/train/IMG_20220106_143728.jpg,data_detection/images/train/IMG_20220106_143724_1.jpg,timestamp,4
+AOBv2-REAL-1040,gauge_degradation,Industrial pressure gauge,data_detection/images/train/IMG_20220106_143746.jpg,data_detection/images/train/IMG_20220106_143724_1.jpg,cat_only,22
+AOBv2-REAL-1041,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_143749.jpg,data_detection/images/train/IMG_20220106_143724_1.jpg,cat+asset,25
+AOBv2-REAL-1042,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143752.jpg,data_detection/images/train/IMG_20220106_144418.jpg,cat+asset,386
+AOBv2-REAL-1043,gauge_degradation,Explosion-proof pressure gauge,data_detection/images/train/IMG_20220106_143758.jpg,data_detection/images/test/IMG_20220106_143829.jpg,cat_only,31
+AOBv2-REAL-1044,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_143801.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,170
+AOBv2-REAL-1045,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_143831.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,140
+AOBv2-REAL-1046,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_143833.jpg,data_detection/images/test/IMG_20220106_143829.jpg,timestamp,4
+AOBv2-REAL-1048,gauge_degradation,Industrial automation control unit,data_detection/images/train/IMG_20220106_143844.jpg,data_detection/images/train/IMG_20220106_143838.jpg,cat_only,6
+AOBv2-REAL-1049,scale_interpretation,Air compressor,data_detection/images/train/IMG_20220106_143853.jpg,data_detection/images/train/IMG_20220106_143858.jpg,timestamp,5
+AOBv2-REAL-1050,scale_interpretation,Water supply system,data_detection/images/train/IMG_20220106_143856.jpg,data_detection/images/train/IMG_20220106_143858.jpg,timestamp,2
+AOBv2-REAL-1052,gauge_degradation,Pressure regulator/controller,data_detection/images/train/IMG_20220106_143903.jpg,data_detection/images/train/IMG_20220106_143858.jpg,cat_only,5
+AOBv2-REAL-1053,occlusion,Pipeline valve,data_detection/images/train/IMG_20220106_143906.jpg,data_detection/images/train/IMG_20220106_143858.jpg,timestamp,8
+AOBv2-REAL-1054,gauge_degradation,Pressure transmitter,data_detection/images/train/IMG_20220106_143918.jpg,data_detection/images/train/IMG_20220106_143935.jpg,cat+asset,17
+AOBv2-REAL-1055,gauge_degradation,Pressure transmitter,data_detection/images/train/IMG_20220106_143927.jpg,data_detection/images/train/IMG_20220106_143935.jpg,cat+asset,8
+AOBv2-REAL-1062,glare_lighting,Industrial process monitor,data_detection/images/train/IMG_20220106_144000.jpg,data_detection/images/train/IMG_20220106_143957.jpg,timestamp,3
+AOBv2-REAL-1063,gauge_degradation,Industrial process equipment,data_detection/images/train/IMG_20220106_144004.jpg,data_detection/images/train/IMG_20220106_144006.jpg,cat+asset,2
+AOBv2-REAL-1065,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_144010.jpg,data_detection/images/train/IMG_20220106_143931.jpg,cat+asset,39
+AOBv2-REAL-1066,gauge_degradation,Pressure sensor,data_detection/images/train/IMG_20220106_144013.jpg,data_detection/images/train/IMG_20220106_144006.jpg,cat_only,7
+AOBv2-REAL-1067,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_144027.jpg,data_detection/images/train/IMG_20220106_144419.jpg,cat+asset,232
+AOBv2-REAL-1068,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_144030.jpg,data_detection/images/train/IMG_20220106_144419.jpg,cat+asset,229
+AOBv2-REAL-1069,gauge_degradation,Hydraulic system,data_detection/images/train/IMG_20220106_144035.jpg,data_detection/images/test/IMG_20220106_144155.jpg,cat+asset,80
+AOBv2-REAL-1070,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_144038.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,13
+AOBv2-REAL-1071,gauge_degradation,Industrial gas distribution system,data_detection/images/train/IMG_20220106_144041.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat_only,10
+AOBv2-REAL-1072,gauge_degradation,Pipeline or process system,data_detection/images/train/IMG_20220106_144045.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat_only,6
+AOBv2-REAL-1073,gauge_degradation,Pressure vessel or piping system,data_detection/images/train/IMG_20220106_144050.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat_only,1
+AOBv2-REAL-1075,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_144101.jpg,data_detection/images/test/IMG_20220106_144127.jpg,cat+asset,26
+AOBv2-REAL-1076,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_144104.jpg,data_detection/images/train/IMG_20220106_144418.jpg,cat+asset,194
+AOBv2-REAL-1077,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_144109.jpg,data_detection/images/test/IMG_20220106_144127.jpg,cat+asset,18
+AOBv2-REAL-1078,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_144113.jpg,data_detection/images/train/IMG_20220106_143858.jpg,cat+asset,135
+AOBv2-REAL-1079,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_144114.jpg,data_detection/images/test/IMG_20220106_144127.jpg,cat+asset,13
+AOBv2-REAL-1080,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_144119.jpg,data_detection/images/train/IMG_20220106_144419.jpg,cat+asset,180
+AOBv2-REAL-1081,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_144131.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,967
+AOBv2-REAL-1082,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_144134.jpg,data_detection/images/train/IMG_20220106_143931.jpg,cat+asset,123
+AOBv2-REAL-1083,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_144137.jpg,data_detection/images/train/IMG_20220106_144418.jpg,cat+asset,161
+AOBv2-REAL-1084,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_144141.jpg,data_detection/images/train/IMG_20220106_143858.jpg,cat+asset,163
+AOBv2-REAL-1085,scale_interpretation,Pressure regulator,data_detection/images/train/IMG_20220106_144145.jpg,data_detection/images/test/IMG_20220106_144155.jpg,timestamp,10
+AOBv2-REAL-1086,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_144152.jpg,data_detection/images/test/IMG_20220106_144127.jpg,cat+asset,25
+AOBv2-REAL-1088,gauge_degradation,Pressure transmitter,data_detection/images/train/IMG_20220106_144214.jpg,data_detection/images/train/IMG_20220106_144212.jpg,cat+asset,2
+AOBv2-REAL-109,gauge_degradation,Pipeline system,data_detection/images/test/IMG_20220106_135151.jpg,data_detection/images/test/IMG_20220106_135145.jpg,cat+asset,6
+AOBv2-REAL-1090,gauge_degradation,Pipeline or process vessel,data_detection/images/train/IMG_20220106_144225.jpg,data_detection/images/train/IMG_20220106_144223.jpg,cat_only,2
+AOBv2-REAL-1091,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_144335.jpg,data_detection/images/train/IMG_20220106_144418.jpg,cat+asset,43
+AOBv2-REAL-1093,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_144347.jpg,data_detection/images/train/IMG_20220106_144419.jpg,cat+asset,32
+AOBv2-REAL-1094,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_144354.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,183
+AOBv2-REAL-1095,gauge_degradation,Control valve on a pipeline,data_detection/images/train/IMG_20220106_144401.jpg,data_detection/images/train/IMG_20220106_144404.jpg,cat_only,3
+AOBv2-REAL-1099,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_144414.jpg,data_detection/images/train/IMG_20220106_144412.jpg,timestamp,2
+AOBv2-REAL-110,gauge_degradation,Industrial Process Monitor,data_detection/images/test/IMG_20220106_135155.jpg,data_detection/images/train/IMG_20220106_135158.jpg,cat_only,3
+AOBv2-REAL-1100,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_144416.jpg,data_detection/images/train/IMG_20220106_144418.jpg,timestamp,2
+AOBv2-REAL-1105,gauge_degradation,Pneumatic control system,data_detection/images/train/IMG_20220106_144444.jpg,data_detection/images/train/IMG_20220106_135244.jpg,cat+asset,3120
+AOBv2-REAL-1106,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_144503.jpg,data_detection/images/train/IMG_20220106_144544.jpg,cat+asset,41
+AOBv2-REAL-1107,occlusion,Pipeline system,data_detection/images/train/IMG_20220106_144504.jpg,data_detection/images/train/IMG_20220106_144539.jpg,timestamp,35
+AOBv2-REAL-1108,gauge_degradation,Pipe system,data_detection/images/train/IMG_20220106_144517.jpg,data_detection/images/train/IMG_20220106_145606.jpg,cat+asset,649
+AOBv2-REAL-111,scale_interpretation,Unknown industrial process equipment,data_detection/images/test/IMG_20220106_135208.jpg,data_detection/images/train/IMG_20220106_135205.jpg,timestamp,3
+AOBv2-REAL-1110,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_144541.jpg,data_detection/images/train/IMG_20220106_144544.jpg,cat+asset,3
+AOBv2-REAL-1112,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_144547.jpg,data_detection/images/train/IMG_20220106_144544.jpg,timestamp,3
+AOBv2-REAL-1113,scale_interpretation,Piping system,data_detection/images/train/IMG_20220106_144557.jpg,data_detection/images/train/IMG_20220106_144608.jpg,timestamp,11
+AOBv2-REAL-1114,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_144605.jpg,data_detection/images/train/IMG_20220106_144608.jpg,timestamp,3
+AOBv2-REAL-1116,gauge_degradation,Industrial Bimetal Thermometer,data_detection/images/train/IMG_20220106_144610.jpg,data_detection/images/train/IMG_20220106_144608.jpg,cat_only,2
+AOBv2-REAL-1117,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_144611.jpg,data_detection/images/train/IMG_20220106_144539.jpg,cat+asset,32
+AOBv2-REAL-1119,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_144640.jpg,data_detection/images/train/IMG_20220106_144647.jpg,cat+asset,7
+AOBv2-REAL-112,gauge_degradation,Air compressor system,data_detection/images/test/IMG_20220106_135249.jpg,data_detection/images/train/IMG_20220106_135244.jpg,cat_only,5
+AOBv2-REAL-1120,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_144644.jpg,data_detection/images/test/IMG_20220106_144732.jpg,cat+asset,48
+AOBv2-REAL-1122,gauge_degradation,Pressure Reducing Valve,data_detection/images/train/IMG_20220106_144650.jpg,data_detection/images/train/IMG_20220106_144647.jpg,cat_only,3
+AOBv2-REAL-1123,scale_interpretation,Pressure regulator,data_detection/images/train/IMG_20220106_144654.jpg,data_detection/images/train/IMG_20220106_144658.jpg,timestamp,4
+AOBv2-REAL-1124,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_144656.jpg,data_detection/images/test/IMG_20220106_144732.jpg,cat+asset,36
+AOBv2-REAL-1126,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_144724.jpg,data_detection/images/test/IMG_20220106_144732.jpg,cat+asset,8
+AOBv2-REAL-1128,gauge_degradation,Pressure transmitter,data_detection/images/train/IMG_20220106_144731.jpg,data_detection/images/train/IMG_20220106_144223.jpg,cat+asset,308
+AOBv2-REAL-1129,gauge_degradation,Industrial system (pressure gauge),data_detection/images/train/IMG_20220106_144823.jpg,data_detection/images/test/IMG_20220106_144732.jpg,cat_only,51
+AOBv2-REAL-113,gauge_degradation,Pressure regulator,data_detection/images/test/IMG_20220106_135301.jpg,data_detection/images/train/IMG_20220106_131136.jpg,cat+asset,2485
+AOBv2-REAL-1130,gauge_degradation,Pressure system,data_detection/images/train/IMG_20220106_144825.jpg,data_detection/images/train/IMG_20220106_144658.jpg,cat+asset,87
+AOBv2-REAL-1131,gauge_degradation,Industrial Process,data_detection/images/train/IMG_20220106_144827.jpg,data_detection/images/train/IMG_20220106_144917.jpg,cat_only,50
+AOBv2-REAL-1132,gauge_degradation,Pressure transmitter (part of a larger system),data_detection/images/train/IMG_20220106_144830.jpg,data_detection/images/train/IMG_20220106_144917.jpg,cat_only,47
+AOBv2-REAL-1133,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_144831.jpg,data_detection/images/train/IMG_20220106_145006.jpg,cat+asset,95
+AOBv2-REAL-1134,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_144833.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,1389
+AOBv2-REAL-1135,gauge_degradation,Industrial system,data_detection/images/train/IMG_20220106_144835.jpg,data_detection/images/train/IMG_20220106_142036.jpg,cat+asset,1679
+AOBv2-REAL-1136,gauge_degradation,Hydraulic system,data_detection/images/train/IMG_20220106_144838.jpg,data_detection/images/test/IMG_20220106_144155.jpg,cat+asset,403
+AOBv2-REAL-1137,gauge_degradation,Pressure transmitter,data_detection/images/train/IMG_20220106_144840.jpg,data_detection/images/train/IMG_20220106_144223.jpg,cat+asset,377
+AOBv2-REAL-1139,gauge_degradation,Unknown industrial equipment (likely pipe system),data_detection/images/train/IMG_20220106_144923.jpg,data_detection/images/train/IMG_20220106_144917.jpg,cat_only,6
+AOBv2-REAL-114,gauge_degradation,Pipeline system,data_detection/images/test/IMG_20220106_135314.jpg,data_detection/images/test/IMG_20220106_135145.jpg,cat+asset,89
+AOBv2-REAL-1140,gauge_degradation,Pipeline or general industrial system,data_detection/images/train/IMG_20220106_144925.jpg,data_detection/images/train/IMG_20220106_144917.jpg,cat_only,8
+AOBv2-REAL-1141,gauge_degradation,Pressure vessel,data_detection/images/train/IMG_20220106_144928.jpg,data_detection/images/train/IMG_20220106_145208.jpg,cat+asset,160
+AOBv2-REAL-1142,glare_lighting,Storage tank,data_detection/images/train/IMG_20220106_144936.jpg,data_detection/images/train/IMG_20220106_144946.jpg,timestamp,10
+AOBv2-REAL-1143,gauge_degradation,Pipeline/Storage Tank,data_detection/images/train/IMG_20220106_144943.jpg,data_detection/images/train/IMG_20220106_135613.jpg,cat+asset,3210
+AOBv2-REAL-115,gauge_degradation,Pipeline/Process System,data_detection/images/test/IMG_20220106_135315.jpg,data_detection/images/train/IMG_20220106_135244.jpg,cat_only,31
+AOBv2-REAL-1154,scale_interpretation,Pipeline or processing vessel,data_detection/images/train/IMG_20220106_145151.jpg,data_detection/images/train/IMG_20220106_145208.jpg,timestamp,17
+AOBv2-REAL-1155,never_read,Boiler,data_detection/images/train/IMG_20220106_145157.jpg,data_detection/images/train/IMG_20220106_145208.jpg,timestamp,11
+AOBv2-REAL-1158,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_145216.jpg,data_detection/images/train/IMG_20220106_145214.jpg,cat+asset,2
+AOBv2-REAL-1160,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_145223.jpg,data_detection/images/train/IMG_20220106_145214.jpg,cat+asset,9
+AOBv2-REAL-1161,occlusion,Pipeline system,data_detection/images/train/IMG_20220106_145226.jpg,data_detection/images/train/IMG_20220106_145219.jpg,timestamp,7
+AOBv2-REAL-1162,scale_interpretation,Unknown,data_detection/images/train/IMG_20220106_145228.jpg,data_detection/images/train/IMG_20220106_145219.jpg,timestamp,9
+AOBv2-REAL-1163,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_145230.jpg,data_detection/images/train/IMG_20220106_145214.jpg,cat+asset,16
+AOBv2-REAL-1164,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_145235.jpg,data_detection/images/train/IMG_20220106_145219.jpg,timestamp,16
+AOBv2-REAL-1165,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_145238.jpg,data_detection/images/train/IMG_20220106_145219.jpg,timestamp,19
+AOBv2-REAL-1166,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_145243.jpg,data_detection/images/train/IMG_20220106_145304.jpg,cat+asset,21
+AOBv2-REAL-1168,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_145306.jpg,data_detection/images/train/IMG_20220106_145304.jpg,timestamp,2
+AOBv2-REAL-1169,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_145312.jpg,data_detection/images/train/IMG_20220106_145317.jpg,timestamp,5
+AOBv2-REAL-117,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_135436.jpg,data_detection/images/train/IMG_20220106_135421.jpg,cat+asset,15
+AOBv2-REAL-1170,gauge_degradation,Pressure vessel,data_detection/images/train/IMG_20220106_145314.jpg,data_detection/images/train/IMG_20220106_145318.jpg,cat+asset,4
+AOBv2-REAL-1173,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_145320.jpg,data_detection/images/train/IMG_20220106_145702.jpg,cat+asset,222
+AOBv2-REAL-1174,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_145322.jpg,data_detection/images/train/IMG_20220106_145702.jpg,cat+asset,220
+AOBv2-REAL-1176,glare_lighting,Industrial piping system,data_detection/images/train/IMG_20220106_145337.jpg,data_detection/images/train/IMG_20220106_145332.jpg,timestamp,5
+AOBv2-REAL-1181,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_145404.jpg,data_detection/images/train/IMG_20220106_145359.jpg,timestamp,5
+AOBv2-REAL-1182,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_145407.jpg,data_detection/images/train/IMG_20220106_145359.jpg,timestamp,8
+AOBv2-REAL-1183,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_145409.jpg,data_detection/images/train/IMG_20220106_145359.jpg,timestamp,10
+AOBv2-REAL-1184,gauge_degradation,Pipeline/Process piping,data_detection/images/train/IMG_20220106_145602.jpg,data_detection/images/train/IMG_20220106_145606.jpg,cat_only,4
+AOBv2-REAL-1186,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_145612.jpg,data_detection/images/train/IMG_20220106_145026.jpg,cat+asset,346
+AOBv2-REAL-1187,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_145615.jpg,data_detection/images/test/IMG_20220106_145557.jpg,cat+asset,18
+AOBv2-REAL-1188,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_145620.jpg,data_detection/images/test/IMG_20220106_145557.jpg,cat+asset,23
+AOBv2-REAL-1189,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_145624.jpg,data_detection/images/test/IMG_20220106_145557.jpg,cat+asset,27
+AOBv2-REAL-119,gauge_degradation,Flow meter,data_detection/images/test/IMG_20220106_135528.jpg,data_detection/images/train/IMG_20220106_135518.jpg,cat+asset,10
+AOBv2-REAL-1190,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_145630.jpg,data_detection/images/test/IMG_20220106_145557.jpg,cat+asset,33
+AOBv2-REAL-1191,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_145634.jpg,data_detection/images/test/IMG_20220106_145557.jpg,cat+asset,37
+AOBv2-REAL-1193,glare_lighting,Unknown,data_detection/images/train/IMG_20220106_145651.jpg,data_detection/images/train/IMG_20220106_145648.jpg,timestamp,3
+AOBv2-REAL-1194,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_145653.jpg,data_detection/images/train/IMG_20220106_145648.jpg,cat+asset,5
+AOBv2-REAL-1195,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_145656.jpg,data_detection/images/train/IMG_20220106_145702.jpg,cat+asset,6
+AOBv2-REAL-1197,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_145707.jpg,data_detection/images/train/IMG_20220106_145702.jpg,cat+asset,5
+AOBv2-REAL-1199,scale_interpretation,Pressure system,data_detection/images/train/IMG_20220106_145727.jpg,data_detection/images/test/IMG_20220106_145724.jpg,timestamp,3
+AOBv2-REAL-1201,gauge_degradation,Pneumatic system,data_detection/images/train/IMG_20220106_145843.jpg,data_detection/images/train/IMG_20220106_144411.jpg,cat+asset,872
+AOBv2-REAL-1202,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_145845.jpg,data_detection/images/train/IMG_20220106_145648.jpg,cat+asset,117
+AOBv2-REAL-1203,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_145851.jpg,data_detection/images/train/IMG_20220106_144647.jpg,cat+asset,724
+AOBv2-REAL-1204,gauge_degradation,Air pressure valve,data_detection/images/train/IMG_20220106_145855.jpg,data_detection/images/train/IMG_20220106_150005.jpg,cat_only,70
+AOBv2-REAL-1205,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_145909.jpg,data_detection/images/train/IMG_20220106_145702.jpg,cat+asset,127
+AOBv2-REAL-1206,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_145911.jpg,data_detection/images/train/IMG_20220106_150305.jpg,cat+asset,234
+AOBv2-REAL-1207,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_145913.jpg,data_detection/images/train/IMG_20220106_145648.jpg,cat+asset,145
+AOBv2-REAL-1208,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_145914.jpg,data_detection/images/train/IMG_20220106_145648.jpg,cat+asset,146
+AOBv2-REAL-1209,gauge_degradation,Pipeline/Process System,data_detection/images/train/IMG_20220106_145956.jpg,data_detection/images/train/IMG_20220106_150005.jpg,cat_only,9
+AOBv2-REAL-1210,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_145958.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,2074
+AOBv2-REAL-1211,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_150001.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,2077
+AOBv2-REAL-1212,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_150002.jpg,data_detection/images/train/IMG_20220106_145731.jpg,cat+asset,151
+AOBv2-REAL-1214,scale_interpretation,Pipe system,data_detection/images/train/IMG_20220106_150007.jpg,data_detection/images/train/IMG_20220106_150005.jpg,timestamp,2
+AOBv2-REAL-1215,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_150011.jpg,data_detection/images/train/IMG_20220106_145731.jpg,cat+asset,160
+AOBv2-REAL-1216,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_150016.jpg,data_detection/images/train/IMG_20220106_150254.jpg,cat+asset,158
+AOBv2-REAL-1217,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_150020.jpg,data_detection/images/train/IMG_20220106_150254.jpg,cat+asset,154
+AOBv2-REAL-1218,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_150029.jpg,data_detection/images/train/IMG_20220106_145702.jpg,cat+asset,207
+AOBv2-REAL-1219,scale_interpretation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_150032.jpg,data_detection/images/train/IMG_20220106_150005.jpg,timestamp,27
+AOBv2-REAL-1231,occlusion,Pipeline/Valve system,data_detection/images/train/IMG_20220106_150312.jpg,data_detection/images/train/IMG_20220106_150310.jpg,timestamp,2
+AOBv2-REAL-1234,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_150342.jpg,data_detection/images/train/IMG_20220106_145026.jpg,cat+asset,796
+AOBv2-REAL-1235,gauge_degradation,Level sensor,data_detection/images/train/IMG_20220106_150347.jpg,data_detection/images/train/IMG_20220106_150317.jpg,cat_only,30
+AOBv2-REAL-1236,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_150350.jpg,data_detection/images/train/IMG_20220106_145026.jpg,cat+asset,804
+AOBv2-REAL-1237,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_150353.jpg,data_detection/images/train/IMG_20220106_151034.jpg,cat+asset,401
+AOBv2-REAL-1238,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_150401.jpg,data_detection/images/train/IMG_20220106_150418.jpg,timestamp,17
+AOBv2-REAL-1239,occlusion,Industrial storage tank,data_detection/images/train/IMG_20220106_150403.jpg,data_detection/images/train/IMG_20220106_150418.jpg,timestamp,15
+AOBv2-REAL-1240,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_150408.jpg,data_detection/images/train/IMG_20220106_151034.jpg,cat+asset,386
+AOBv2-REAL-1246,occlusion,Industrial valve system,data_detection/images/train/IMG_20220106_150428.jpg,data_detection/images/train/IMG_20220106_150426.jpg,timestamp,2
+AOBv2-REAL-1247,scale_interpretation,Industrial piping system,data_detection/images/train/IMG_20220106_150433.jpg,data_detection/images/train/IMG_20220106_150426.jpg,timestamp,7
+AOBv2-REAL-1248,occlusion,Pipeline System,data_detection/images/train/IMG_20220106_150435.jpg,data_detection/images/train/IMG_20220106_150426.jpg,timestamp,9
+AOBv2-REAL-1249,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_150441.jpg,data_detection/images/train/IMG_20220106_151034.jpg,cat+asset,353
+AOBv2-REAL-1250,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_150444.jpg,data_detection/images/train/IMG_20220106_145026.jpg,cat+asset,858
+AOBv2-REAL-1251,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_150558.jpg,data_detection/images/test/IMG_20220106_150613.jpg,cat+asset,15
+AOBv2-REAL-1252,occlusion,Heating system,data_detection/images/train/IMG_20220106_150604.jpg,data_detection/images/train/IMG_20220106_150609.jpg,timestamp,5
+AOBv2-REAL-1254,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_150617.jpg,data_detection/images/train/IMG_20220106_151034.jpg,cat+asset,257
+AOBv2-REAL-1255,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_150622.jpg,data_detection/images/test/IMG_20220106_150624.jpg,timestamp,2
+AOBv2-REAL-1256,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_150629.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,2465
+AOBv2-REAL-1259,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_150638.jpg,data_detection/images/train/IMG_20220106_150641.jpg,timestamp,3
+AOBv2-REAL-126,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_135822.jpg,data_detection/images/train/IMG_20220106_135740.jpg,cat+asset,42
+AOBv2-REAL-1261,scale_interpretation,Pipe network,data_detection/images/train/IMG_20220106_150644.jpg,data_detection/images/train/IMG_20220106_150641.jpg,timestamp,3
+AOBv2-REAL-1262,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_150646.jpg,data_detection/images/train/IMG_20220106_150641.jpg,timestamp,5
+AOBv2-REAL-1263,scale_interpretation,Unknown,data_detection/images/train/IMG_20220106_150740.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,8
+AOBv2-REAL-1265,occlusion,Unknown industrial asset,data_detection/images/train/IMG_20220106_150751.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,3
+AOBv2-REAL-1266,occlusion,Boiler,data_detection/images/train/IMG_20220106_150752.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,4
+AOBv2-REAL-1267,scale_interpretation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_150756.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,8
+AOBv2-REAL-1268,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_150759.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,11
+AOBv2-REAL-1269,occlusion,Pipeline/Process System,data_detection/images/train/IMG_20220106_150801.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,13
+AOBv2-REAL-127,gauge_degradation,HVAC chiller,data_detection/images/test/IMG_20220106_135924.jpg,data_detection/images/train/IMG_20220106_135920.jpg,cat_only,4
+AOBv2-REAL-1270,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_150810.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,22
+AOBv2-REAL-1271,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_150816.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,28
+AOBv2-REAL-1272,occlusion,Boiler,data_detection/images/train/IMG_20220106_150818.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,30
+AOBv2-REAL-1273,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_150851.jpg,data_detection/images/train/IMG_20220106_150916.jpg,timestamp,25
+AOBv2-REAL-1274,occlusion,Unknown,data_detection/images/train/IMG_20220106_150853.jpg,data_detection/images/train/IMG_20220106_150916.jpg,timestamp,23
+AOBv2-REAL-1275,gauge_degradation,Air Compressor,data_detection/images/train/IMG_20220106_150857.jpg,data_detection/images/train/IMG_20220106_150916.jpg,cat_only,19
+AOBv2-REAL-1276,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_150859.jpg,data_detection/images/train/IMG_20220106_150305.jpg,cat+asset,354
+AOBv2-REAL-1277,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_150904.jpg,data_detection/images/train/IMG_20220106_145026.jpg,cat+asset,1118
+AOBv2-REAL-1278,occlusion,Pipeline,data_detection/images/train/IMG_20220106_150908.jpg,data_detection/images/train/IMG_20220106_150916.jpg,timestamp,8
+AOBv2-REAL-1279,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_150913.jpg,data_detection/images/train/IMG_20220106_150916.jpg,timestamp,3
+AOBv2-REAL-128,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_140003.jpg,data_detection/images/train/IMG_20220106_140001.jpg,cat+asset,2
+AOBv2-REAL-1281,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_150918.jpg,data_detection/images/train/IMG_20220106_150305.jpg,cat+asset,373
+AOBv2-REAL-1285,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_150953.jpg,data_detection/images/train/IMG_20220106_151053.jpg,cat+asset,60
+AOBv2-REAL-1289,glare_lighting,Pipeline system,data_detection/images/train/IMG_20220106_151037.jpg,data_detection/images/train/IMG_20220106_151035.jpg,timestamp,2
+AOBv2-REAL-129,scale_interpretation,Pump,data_detection/images/test/IMG_20220106_140205.jpg,data_detection/images/train/IMG_20220106_140211.jpg,timestamp,6
+AOBv2-REAL-1290,glare_lighting,Industrial piping system,data_detection/images/train/IMG_20220106_151039.jpg,data_detection/images/train/IMG_20220106_151035.jpg,timestamp,4
+AOBv2-REAL-1291,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_151041.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,2717
+AOBv2-REAL-1293,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_151048.jpg,data_detection/images/train/IMG_20220106_151049.jpg,cat+asset,1
+AOBv2-REAL-1295,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_151051.jpg,data_detection/images/train/IMG_20220106_151049.jpg,timestamp,2
+AOBv2-REAL-133,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_140247.jpg,data_detection/images/train/IMG_20220106_140243.jpg,timestamp,4
+AOBv2-REAL-138,gauge_degradation,Industrial piping system,data_detection/images/test/IMG_20220106_140506.jpg,data_detection/images/train/IMG_20220106_140441.jpg,cat+asset,25
+AOBv2-REAL-139,glare_lighting,Pipe system,data_detection/images/test/IMG_20220106_140606.jpg,data_detection/images/test/IMG_20220106_140620.jpg,timestamp,14
+AOBv2-REAL-146,gauge_degradation,Pump system,data_detection/images/test/IMG_20220106_140754.jpg,data_detection/images/test/IMG_20220106_141213.jpg,cat+asset,259
+AOBv2-REAL-148,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_140849.jpg,data_detection/images/train/IMG_20220106_140859.jpg,cat+asset,10
+AOBv2-REAL-149,occlusion,Boiler,data_detection/images/test/IMG_20220106_140914.jpg,data_detection/images/train/IMG_20220106_140905.jpg,timestamp,9
+AOBv2-REAL-150,gauge_degradation,Piping system,data_detection/images/test/IMG_20220106_141049.jpg,data_detection/images/train/IMG_20220106_140905.jpg,cat+asset,104
+AOBv2-REAL-151,glare_lighting,Unknown,data_detection/images/test/IMG_20220106_141139.jpg,data_detection/images/train/IMG_20220106_141153.jpg,timestamp,14
+AOBv2-REAL-153,scale_interpretation,Centrifugal pump,data_detection/images/test/IMG_20220106_141320.jpg,data_detection/images/train/IMG_20220106_141315.jpg,timestamp,5
+AOBv2-REAL-154,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_141336.jpg,data_detection/images/train/IMG_20220106_141332.jpg,timestamp,4
+AOBv2-REAL-155,occlusion,Boiler,data_detection/images/test/IMG_20220106_141340.jpg,data_detection/images/train/IMG_20220106_141343.jpg,timestamp,3
+AOBv2-REAL-156,scale_interpretation,Hydraulic system,data_detection/images/test/IMG_20220106_141358.jpg,data_detection/images/train/IMG_20220106_141354.jpg,timestamp,4
+AOBv2-REAL-158,occlusion,Pipeline valve,data_detection/images/test/IMG_20220106_141438.jpg,data_detection/images/train/IMG_20220106_141442.jpg,timestamp,4
+AOBv2-REAL-160,glare_lighting,Unknown industrial equipment (likely motor or pump given the context of the red and blue parts),data_detection/images/test/IMG_20220106_141620.jpg,data_detection/images/train/IMG_20220106_141625.jpg,timestamp,5
+AOBv2-REAL-161,gauge_degradation,Pump,data_detection/images/test/IMG_20220106_141623.jpg,data_detection/images/train/IMG_20220106_141252.jpg,cat+asset,211
+AOBv2-REAL-162,scale_interpretation,Piping system,data_detection/images/test/IMG_20220106_141820.jpg,data_detection/images/train/IMG_20220106_141826.jpg,timestamp,6
+AOBv2-REAL-163,gauge_degradation,Unknown industrial equipment,data_detection/images/test/IMG_20220106_141823.jpg,data_detection/images/train/IMG_20220106_142006.jpg,cat+asset,103
+AOBv2-REAL-164,occlusion,Industrial valve system,data_detection/images/test/IMG_20220106_141846.jpg,data_detection/images/train/IMG_20220106_141837.jpg,timestamp,9
+AOBv2-REAL-165,scale_interpretation,Air compressor or Pneumatic system,data_detection/images/test/IMG_20220106_141857.jpg,data_detection/images/test/IMG_20220106_141912.jpg,timestamp,15
+AOBv2-REAL-170,gauge_degradation,Pipeline or process vessel,data_detection/images/test/IMG_20220106_142131.jpg,data_detection/images/train/IMG_20220106_142138.jpg,cat_only,7
+AOBv2-REAL-171,gauge_degradation,Hydraulic system,data_detection/images/test/IMG_20220106_142137.jpg,data_detection/images/train/IMG_20220106_141417.jpg,cat+asset,440
+AOBv2-REAL-172,scale_interpretation,Pressure vessel,data_detection/images/test/IMG_20220106_142202.jpg,data_detection/images/train/IMG_20220106_142200.jpg,timestamp,2
+AOBv2-REAL-173,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_142214.jpg,data_detection/images/train/IMG_20220106_142143.jpg,cat+asset,31
+AOBv2-REAL-174,gauge_degradation,Pipeline system,data_detection/images/test/IMG_20220106_142220.jpg,data_detection/images/test/IMG_20220106_142313.jpg,cat+asset,53
+AOBv2-REAL-175,gauge_degradation,Industrial piping system,data_detection/images/test/IMG_20220106_142233.jpg,data_detection/images/train/IMG_20220106_142204.jpg,cat+asset,29
+AOBv2-REAL-176,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_142241.jpg,data_detection/images/train/IMG_20220106_142301.jpg,cat+asset,20
+AOBv2-REAL-178,scale_interpretation,Industrial piping system,data_detection/images/test/IMG_20220106_142321.jpg,data_detection/images/train/IMG_20220106_142324.jpg,timestamp,3
+AOBv2-REAL-180,gauge_degradation,Industrial pressure system,data_detection/images/test/IMG_20220106_142340.jpg,data_detection/images/train/IMG_20220106_142106.jpg,cat+asset,154
+AOBv2-REAL-181,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_142344.jpg,data_detection/images/train/IMG_20220106_142346.jpg,cat+asset,2
+AOBv2-REAL-182,scale_interpretation,Pipeline system,data_detection/images/test/IMG_20220106_142350.jpg,data_detection/images/train/IMG_20220106_142353.jpg,timestamp,3
+AOBv2-REAL-183,glare_lighting,Industrial pump,data_detection/images/test/IMG_20220106_142531.jpg,data_detection/images/train/IMG_20220106_142529.jpg,timestamp,2
+AOBv2-REAL-184,gauge_degradation,Industrial tank,data_detection/images/test/IMG_20220106_142743.jpg,data_detection/images/train/IMG_20220106_142750.jpg,cat_only,7
+AOBv2-REAL-186,gauge_degradation,Pipeline,data_detection/images/test/IMG_20220106_142900.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,216
+AOBv2-REAL-187,scale_interpretation,Pressure regulator,data_detection/images/test/IMG_20220106_142926.jpg,data_detection/images/train/IMG_20220106_142858.jpg,timestamp,28
+AOBv2-REAL-188,gauge_degradation,Piping system,data_detection/images/test/IMG_20220106_142946.jpg,data_detection/images/train/IMG_20220106_142517.jpg,cat+asset,269
+AOBv2-REAL-191,scale_interpretation,Unknown,data_detection/images/test/IMG_20220106_143545.jpg,data_detection/images/train/IMG_20220106_143542.jpg,timestamp,3
+AOBv2-REAL-192,gauge_degradation,Pressure regulator/valve system,data_detection/images/test/IMG_20220106_143601.jpg,data_detection/images/train/IMG_20220106_150421.jpg,cat+asset,1700
+AOBv2-REAL-194,gauge_degradation,Pressure system,data_detection/images/test/IMG_20220106_143700.jpg,data_detection/images/train/IMG_20220106_143610.jpg,cat+asset,50
+AOBv2-REAL-195,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_143711.jpg,data_detection/images/train/IMG_20220106_143559.jpg,cat+asset,72
+AOBv2-REAL-196,gauge_degradation,Unknown,data_detection/images/test/IMG_20220106_143744.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,187
+AOBv2-REAL-197,gauge_degradation,Pressure transmitter,data_detection/images/test/IMG_20220106_143750.jpg,data_detection/images/train/IMG_20220106_143935.jpg,cat+asset,105
+AOBv2-REAL-198,gauge_degradation,Pipeline pressure system,data_detection/images/test/IMG_20220106_143754.jpg,data_detection/images/train/IMG_20220106_143724_1.jpg,cat_only,30
+AOBv2-REAL-199,gauge_degradation,Unknown industrial equipment,data_detection/images/test/IMG_20220106_143825.jpg,data_detection/images/train/IMG_20220106_143724_1.jpg,cat+asset,61
+AOBv2-REAL-201,gauge_degradation,Hydraulic system,data_detection/images/test/IMG_20220106_143835.jpg,data_detection/images/train/IMG_20220106_143838.jpg,cat+asset,3
+AOBv2-REAL-202,occlusion,Industrial valve actuator,data_detection/images/test/IMG_20220106_143841.jpg,data_detection/images/train/IMG_20220106_143838.jpg,timestamp,3
+AOBv2-REAL-203,gauge_degradation,Industrial process equipment,data_detection/images/test/IMG_20220106_143937.jpg,data_detection/images/train/IMG_20220106_143929.jpg,cat+asset,8
+AOBv2-REAL-204,gauge_degradation,Pressure system (pipe),data_detection/images/test/IMG_20220106_144056.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat_only,5
+AOBv2-REAL-207,gauge_degradation,Industrial system,data_detection/images/test/IMG_20220106_144216.jpg,data_detection/images/train/IMG_20220106_142036.jpg,cat+asset,1300
+AOBv2-REAL-208,gauge_degradation,Unknown industrial equipment,data_detection/images/test/IMG_20220106_144220.jpg,data_detection/images/train/IMG_20220106_143931.jpg,cat+asset,169
+AOBv2-REAL-209,gauge_degradation,Pipeline system,data_detection/images/test/IMG_20220106_144334.jpg,data_detection/images/train/IMG_20220106_144418.jpg,cat+asset,44
+AOBv2-REAL-210,gauge_degradation,Unknown industrial equipment (likely pressure related),data_detection/images/test/IMG_20220106_144339.jpg,data_detection/images/train/IMG_20220106_144344.jpg,cat_only,5
+AOBv2-REAL-211,gauge_degradation,Unknown,data_detection/images/test/IMG_20220106_144341.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,170
+AOBv2-REAL-212,gauge_degradation,Pressure regulator,data_detection/images/test/IMG_20220106_144351.jpg,data_detection/images/train/IMG_20220106_144647.jpg,cat+asset,176
+AOBv2-REAL-213,gauge_degradation,Control valve,data_detection/images/test/IMG_20220106_144357.jpg,data_detection/images/train/IMG_20220106_131129.jpg,cat+asset,5548
+AOBv2-REAL-214,gauge_degradation,Industrial Process Gauge,data_detection/images/test/IMG_20220106_144359.jpg,data_detection/images/train/IMG_20220106_144404.jpg,cat_only,5
+AOBv2-REAL-215,scale_interpretation,Piping system,data_detection/images/test/IMG_20220106_144452.jpg,data_detection/images/train/IMG_20220106_144426.jpg,timestamp,26
+AOBv2-REAL-216,gauge_degradation,Piping system,data_detection/images/test/IMG_20220106_144459.jpg,data_detection/images/train/IMG_20220106_144426.jpg,cat+asset,33
+AOBv2-REAL-217,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_144551.jpg,data_detection/images/train/IMG_20220106_144544.jpg,timestamp,7
+AOBv2-REAL-218,scale_interpretation,Pressure regulator,data_detection/images/test/IMG_20220106_144711.jpg,data_detection/images/train/IMG_20220106_144658.jpg,timestamp,13
+AOBv2-REAL-219,gauge_degradation,Industrial Process Transmitter,data_detection/images/test/IMG_20220106_144727.jpg,data_detection/images/train/IMG_20220106_144729.jpg,cat_only,2
+AOBv2-REAL-221,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_144920.jpg,data_detection/images/train/IMG_20220106_144917.jpg,cat+asset,3
+AOBv2-REAL-222,glare_lighting,Boiler,data_detection/images/test/IMG_20220106_144931.jpg,data_detection/images/train/IMG_20220106_144917.jpg,timestamp,14
+AOBv2-REAL-227,scale_interpretation,Pressure Gauge,data_detection/images/test/IMG_20220106_145023.jpg,data_detection/images/train/IMG_20220106_145026.jpg,timestamp,3
+AOBv2-REAL-229,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_145147.jpg,data_detection/images/train/IMG_20220106_145208.jpg,timestamp,21
+AOBv2-REAL-230,scale_interpretation,Pressure vessel,data_detection/images/test/IMG_20220106_145244.jpg,data_detection/images/train/IMG_20220106_145304.jpg,timestamp,20
+AOBv2-REAL-231,occlusion,Industrial system (general),data_detection/images/test/IMG_20220106_145310.jpg,data_detection/images/train/IMG_20220106_145304.jpg,timestamp,6
+AOBv2-REAL-232,scale_interpretation,Pipeline system,data_detection/images/test/IMG_20220106_145325.jpg,data_detection/images/train/IMG_20220106_145318.jpg,timestamp,7
+AOBv2-REAL-233,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_145330.jpg,data_detection/images/train/IMG_20220106_145219.jpg,cat+asset,71
+AOBv2-REAL-234,glare_lighting,Pipeline system,data_detection/images/test/IMG_20220106_145334.jpg,data_detection/images/train/IMG_20220106_145332.jpg,timestamp,2
+AOBv2-REAL-235,gauge_degradation,Industrial piping system,data_detection/images/test/IMG_20220106_145354.jpg,data_detection/images/train/IMG_20220106_145350.jpg,cat+asset,4
+AOBv2-REAL-237,gauge_degradation,Pipeline / Process Piping System,data_detection/images/test/IMG_20220106_145604.jpg,data_detection/images/train/IMG_20220106_145606.jpg,cat_only,2
+AOBv2-REAL-238,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_145625.jpg,data_detection/images/test/IMG_20220106_145557.jpg,cat+asset,28
+AOBv2-REAL-239,gauge_degradation,Industrial Process Line,data_detection/images/test/IMG_20220106_145659.jpg,data_detection/images/train/IMG_20220106_104521.jpg,cat+asset,15098
+AOBv2-REAL-240,glare_lighting,Pipeline system,data_detection/images/test/IMG_20220106_145712.jpg,data_detection/images/train/IMG_20220106_145720.jpg,timestamp,8
+AOBv2-REAL-241,glare_lighting,Industrial piping system,data_detection/images/test/IMG_20220106_145716.jpg,data_detection/images/train/IMG_20220106_145720.jpg,timestamp,4
+AOBv2-REAL-243,gauge_degradation,Pneumatic system,data_detection/images/test/IMG_20220106_145848.jpg,data_detection/images/train/IMG_20220106_144411.jpg,cat+asset,877
+AOBv2-REAL-244,scale_interpretation,Pneumatic system,data_detection/images/test/IMG_20220106_145859.jpg,data_detection/images/train/IMG_20220106_150005.jpg,timestamp,66
+AOBv2-REAL-245,gauge_degradation,Industrial Process Control System,data_detection/images/test/IMG_20220106_145904.jpg,data_detection/images/train/IMG_20220106_150005.jpg,cat_only,61
+AOBv2-REAL-246,gauge_degradation,Compressor,data_detection/images/test/IMG_20220106_145907.jpg,data_detection/images/train/IMG_20220106_150305.jpg,cat+asset,238
+AOBv2-REAL-249,gauge_degradation,Pipeline system,data_detection/images/test/IMG_20220106_150344.jpg,data_detection/images/train/IMG_20220106_145702.jpg,cat+asset,402
+AOBv2-REAL-250,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_150602.jpg,data_detection/images/train/IMG_20220106_150609.jpg,timestamp,7
+AOBv2-REAL-251,gauge_degradation,Boiler,data_detection/images/test/IMG_20220106_150607.jpg,data_detection/images/test/IMG_20220106_150613.jpg,cat+asset,6
+AOBv2-REAL-253,scale_interpretation,Boiler,data_detection/images/test/IMG_20220106_150620.jpg,data_detection/images/test/IMG_20220106_150624.jpg,timestamp,4
+AOBv2-REAL-256,scale_interpretation,Unknown,data_detection/images/test/IMG_20220106_150745.jpg,data_detection/images/train/IMG_20220106_150748.jpg,timestamp,3
+AOBv2-REAL-257,scale_interpretation,Compressor,data_detection/images/test/IMG_20220106_150914.jpg,data_detection/images/train/IMG_20220106_150916.jpg,timestamp,2
+AOBv2-REAL-259,gauge_degradation,Unknown,data_detection/images/test/IMG_20220106_150957.jpg,data_detection/images/train/IMG_20220106_151053.jpg,cat+asset,56
+AOBv2-REAL-270,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_104005.jpg,data_detection/images/train/IMG_20220106_104035.jpg,timestamp,30
+AOBv2-REAL-271,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_104010.jpg,data_detection/images/train/IMG_20220106_130816.jpg,cat+asset,8886
+AOBv2-REAL-272,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104015.jpg,data_detection/images/test/IMG_20220106_104042.jpg,cat+asset,27
+AOBv2-REAL-273,gauge_degradation,Storage tank,data_detection/images/train/IMG_20220106_104020.jpg,data_detection/images/train/IMG_20220106_104035.jpg,cat+asset,15
+AOBv2-REAL-274,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_104024.jpg,data_detection/images/train/IMG_20220106_104035.jpg,timestamp,11
+AOBv2-REAL-275,gauge_degradation,Unknown industrial process system,data_detection/images/train/IMG_20220106_104027.jpg,data_detection/images/train/IMG_20220106_104035.jpg,cat_only,8
+AOBv2-REAL-276,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104031.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,133
+AOBv2-REAL-277,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104032.jpg,data_detection/images/test/IMG_20220106_104042.jpg,cat+asset,10
+AOBv2-REAL-280,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104044.jpg,data_detection/images/test/IMG_20220106_104042.jpg,cat+asset,2
+AOBv2-REAL-281,gauge_degradation,Pressure vessel,data_detection/images/train/IMG_20220106_104051.jpg,data_detection/images/train/IMG_20220106_104052.jpg,cat+asset,1
+AOBv2-REAL-283,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104058.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,106
+AOBv2-REAL-284,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104059.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,105
+AOBv2-REAL-285,gauge_degradation,Pipe system,data_detection/images/train/IMG_20220106_104108.jpg,data_detection/images/train/IMG_20220106_104233.jpg,cat+asset,85
+AOBv2-REAL-286,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104231.jpg,data_detection/images/train/IMG_20220106_104307.jpg,cat+asset,36
+AOBv2-REAL-288,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104234.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,10
+AOBv2-REAL-289,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104237.jpg,data_detection/images/train/IMG_20220106_104307.jpg,cat+asset,30
+AOBv2-REAL-290,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104238.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,6
+AOBv2-REAL-291,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104239.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,5
+AOBv2-REAL-292,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104244.jpg,data_detection/images/train/IMG_20220106_104307.jpg,cat+asset,23
+AOBv2-REAL-294,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104245.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,1
+AOBv2-REAL-295,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104247.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,3
+AOBv2-REAL-296,occlusion,Pipeline system,data_detection/images/train/IMG_20220106_104251.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,timestamp,7
+AOBv2-REAL-297,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104254.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,10
+AOBv2-REAL-298,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104258.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,14
+AOBv2-REAL-299,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104300.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,16
+AOBv2-REAL-300,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104301.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,17
+AOBv2-REAL-301,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104304.jpg,data_detection/images/train/IMG_20220106_104307.jpg,cat+asset,3
+AOBv2-REAL-302,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104305.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,21
+AOBv2-REAL-304,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_104311.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,27
+AOBv2-REAL-305,gauge_degradation,Industrial Process piping,data_detection/images/train/IMG_20220106_104420.jpg,data_detection/images/train/IMG_20220106_104426.jpg,cat_only,6
+AOBv2-REAL-306,gauge_degradation,Unknown industrial equipment (likely related to a process or fluid control system),data_detection/images/train/IMG_20220106_104421.jpg,data_detection/images/train/IMG_20220106_104426.jpg,cat_only,5
+AOBv2-REAL-309,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_104430.jpg,data_detection/images/train/IMG_20220106_104826.jpg,cat+asset,236
+AOBv2-REAL-310,gauge_degradation,Industrial tanks/vessels,data_detection/images/train/IMG_20220106_104442.jpg,data_detection/images/train/IMG_20220106_104427.jpg,cat_only,15
+AOBv2-REAL-311,occlusion,Industrial tanks,data_detection/images/train/IMG_20220106_104451.jpg,data_detection/images/train/IMG_20220106_104427.jpg,timestamp,24
+AOBv2-REAL-312,occlusion,Industrial storage tanks,data_detection/images/train/IMG_20220106_104503.jpg,data_detection/images/train/IMG_20220106_104519.jpg,timestamp,16
+AOBv2-REAL-313,occlusion,Storage tank,data_detection/images/train/IMG_20220106_104504.jpg,data_detection/images/train/IMG_20220106_104519.jpg,timestamp,15
+AOBv2-REAL-316,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_104523.jpg,data_detection/images/train/IMG_20220106_104307.jpg,cat+asset,136
+AOBv2-REAL-317,gauge_degradation,HVAC system,data_detection/images/train/IMG_20220106_104525.jpg,data_detection/images/train/IMG_20220106_104521.jpg,cat_only,4
+AOBv2-REAL-318,occlusion,Industrial system,data_detection/images/train/IMG_20220106_104530.jpg,data_detection/images/train/IMG_20220106_104521.jpg,timestamp,9
+AOBv2-REAL-319,gauge_degradation,Unknown industrial process equipment,data_detection/images/train/IMG_20220106_104532.jpg,data_detection/images/train/IMG_20220106_104521.jpg,cat_only,11
+AOBv2-REAL-320,gauge_degradation,Storage tank,data_detection/images/train/IMG_20220106_104534.jpg,data_detection/images/train/IMG_20220106_104037.jpg,cat+asset,297
+AOBv2-REAL-321,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_104537.jpg,data_detection/images/train/IMG_20220106_105705.jpg,cat+asset,688
+AOBv2-REAL-322,gauge_degradation,Industrial Process Line,data_detection/images/train/IMG_20220106_104539.jpg,data_detection/images/train/IMG_20220106_104521.jpg,cat+asset,18
+AOBv2-REAL-323,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_104540.jpg,data_detection/images/train/IMG_20220106_105705.jpg,cat+asset,685
+AOBv2-REAL-324,occlusion,Storage tank,data_detection/images/train/IMG_20220106_104549.jpg,data_detection/images/train/IMG_20220106_104521.jpg,timestamp,28
+AOBv2-REAL-325,never_read,Storage tank,data_detection/images/train/IMG_20220106_104550.jpg,data_detection/images/train/IMG_20220106_104521.jpg,timestamp,29
+AOBv2-REAL-326,occlusion,Industrial storage tank,data_detection/images/train/IMG_20220106_104556.jpg,data_detection/images/train/IMG_20220106_104521.jpg,timestamp,35
+AOBv2-REAL-327,never_read,Boiler,data_detection/images/train/IMG_20220106_104602.jpg,data_detection/images/train/IMG_20220106_104521.jpg,timestamp,41
+AOBv2-REAL-328,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_104607.jpg,data_detection/images/train/IMG_20220106_104826.jpg,cat+asset,139
+AOBv2-REAL-331,gauge_degradation,Industrial pressure vessel,data_detection/images/train/IMG_20220106_104833.jpg,data_detection/images/train/IMG_20220106_135957.jpg,cat+asset,11484
+AOBv2-REAL-332,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_104837.jpg,data_detection/images/train/IMG_20220106_104830.jpg,cat+asset,7
+AOBv2-REAL-335,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_104853.jpg,data_detection/images/train/IMG_20220106_104848.jpg,cat+asset,5
+AOBv2-REAL-336,gauge_degradation,Pressure vessel,data_detection/images/train/IMG_20220106_104858.jpg,data_detection/images/train/IMG_20220106_105447.jpg,cat+asset,349
+AOBv2-REAL-337,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_104900.jpg,data_detection/images/train/IMG_20220106_104848.jpg,cat+asset,12
+AOBv2-REAL-338,gauge_degradation,Pressure vessel,data_detection/images/train/IMG_20220106_104903.jpg,data_detection/images/train/IMG_20220106_105447.jpg,cat+asset,344
+AOBv2-REAL-339,gauge_degradation,Pressure vessel,data_detection/images/train/IMG_20220106_104909.jpg,data_detection/images/train/IMG_20220106_105447.jpg,cat+asset,338
+AOBv2-REAL-342,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_105041.jpg,data_detection/images/train/IMG_20220106_105039.jpg,cat+asset,2
+AOBv2-REAL-343,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105053.jpg,data_detection/images/test/IMG_20220106_105051.jpg,timestamp,2
+AOBv2-REAL-344,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_105057.jpg,data_detection/images/test/IMG_20220106_105051.jpg,cat+asset,6
+AOBv2-REAL-345,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105104.jpg,data_detection/images/train/IMG_20220106_105108.jpg,timestamp,4
+AOBv2-REAL-347,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105116.jpg,data_detection/images/train/IMG_20220106_105108.jpg,timestamp,8
+AOBv2-REAL-348,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105121.jpg,data_detection/images/train/IMG_20220106_105108.jpg,timestamp,13
+AOBv2-REAL-349,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105127.jpg,data_detection/images/train/IMG_20220106_105108.jpg,timestamp,19
+AOBv2-REAL-350,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_105138.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,534
+AOBv2-REAL-351,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_105213.jpg,data_detection/images/test/IMG_20220106_105238.jpg,timestamp,25
+AOBv2-REAL-352,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_105217.jpg,data_detection/images/train/IMG_20220106_104244_1.jpg,cat+asset,573
+AOBv2-REAL-353,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_105223.jpg,data_detection/images/test/IMG_20220106_105238.jpg,timestamp,15
+AOBv2-REAL-354,scale_interpretation,Unknown industrial equipment (likely related to a fluid system),data_detection/images/train/IMG_20220106_105232.jpg,data_detection/images/test/IMG_20220106_105238.jpg,timestamp,6
+AOBv2-REAL-355,occlusion,Boiler,data_detection/images/train/IMG_20220106_105235.jpg,data_detection/images/test/IMG_20220106_105238.jpg,timestamp,3
+AOBv2-REAL-356,gauge_degradation,Industrial pump,data_detection/images/train/IMG_20220106_105241.jpg,data_detection/images/train/IMG_20220106_105545.jpg,cat+asset,184
+AOBv2-REAL-357,occlusion,Compressor,data_detection/images/train/IMG_20220106_105252.jpg,data_detection/images/train/IMG_20220106_105253.jpg,timestamp,1
+AOBv2-REAL-360,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105300.jpg,data_detection/images/train/IMG_20220106_105259.jpg,timestamp,1
+AOBv2-REAL-361,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105305.jpg,data_detection/images/train/IMG_20220106_105259.jpg,timestamp,6
+AOBv2-REAL-362,glare_lighting,Piping system,data_detection/images/train/IMG_20220106_105310.jpg,data_detection/images/train/IMG_20220106_105259.jpg,timestamp,11
+AOBv2-REAL-363,gauge_degradation,Centrifugal pump,data_detection/images/train/IMG_20220106_105317.jpg,data_detection/images/train/IMG_20220106_105528.jpg,cat+asset,131
+AOBv2-REAL-364,occlusion,Industrial equipment,data_detection/images/train/IMG_20220106_105320.jpg,data_detection/images/train/IMG_20220106_105332.jpg,timestamp,12
+AOBv2-REAL-365,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_105323.jpg,data_detection/images/train/IMG_20220106_105332.jpg,cat+asset,9
+AOBv2-REAL-366,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_105327.jpg,data_detection/images/train/IMG_20220106_105332.jpg,cat+asset,5
+AOBv2-REAL-369,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105343.jpg,data_detection/images/train/IMG_20220106_105340.jpg,timestamp,3
+AOBv2-REAL-370,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_105347.jpg,data_detection/images/train/IMG_20220106_105340.jpg,cat+asset,7
+AOBv2-REAL-371,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105352.jpg,data_detection/images/train/IMG_20220106_105357.jpg,timestamp,5
+AOBv2-REAL-373,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105405.jpg,data_detection/images/train/IMG_20220106_105357.jpg,timestamp,8
+AOBv2-REAL-374,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105407.jpg,data_detection/images/train/IMG_20220106_105357.jpg,timestamp,10
+AOBv2-REAL-375,scale_interpretation,Piping system,data_detection/images/train/IMG_20220106_105412.jpg,data_detection/images/train/IMG_20220106_105357.jpg,timestamp,15
+AOBv2-REAL-376,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_105428.jpg,data_detection/images/train/IMG_20220106_105447.jpg,timestamp,19
+AOBv2-REAL-378,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_105454.jpg,data_detection/images/train/IMG_20220106_105459.jpg,timestamp,5
+AOBv2-REAL-380,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105508.jpg,data_detection/images/train/IMG_20220106_105459.jpg,timestamp,9
+AOBv2-REAL-381,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105510.jpg,data_detection/images/test/IMG_20220106_105517.jpg,timestamp,7
+AOBv2-REAL-382,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105514.jpg,data_detection/images/test/IMG_20220106_105517.jpg,timestamp,3
+AOBv2-REAL-387,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_105559.jpg,data_detection/images/train/IMG_20220106_105718.jpg,cat+asset,79
+AOBv2-REAL-393,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105618.jpg,data_detection/images/test/IMG_20220106_105619.jpg,timestamp,1
+AOBv2-REAL-394,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105634.jpg,data_detection/images/test/IMG_20220106_105624.jpg,timestamp,10
+AOBv2-REAL-395,scale_interpretation,Hydraulic system,data_detection/images/train/IMG_20220106_105634_1.jpg,data_detection/images/test/IMG_20220106_105624.jpg,timestamp,10
+AOBv2-REAL-396,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_105641.jpg,data_detection/images/train/IMG_20220106_105645.jpg,timestamp,4
+AOBv2-REAL-397,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105642.jpg,data_detection/images/train/IMG_20220106_105645.jpg,timestamp,3
+AOBv2-REAL-400,occlusion,Industrial machinery (general),data_detection/images/train/IMG_20220106_105653.jpg,data_detection/images/train/IMG_20220106_105650.jpg,timestamp,3
+AOBv2-REAL-401,occlusion,Compressor,data_detection/images/train/IMG_20220106_105654.jpg,data_detection/images/train/IMG_20220106_105650.jpg,timestamp,4
+AOBv2-REAL-410,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_105723.jpg,data_detection/images/test/IMG_20220106_105721.jpg,timestamp,2
+AOBv2-REAL-411,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_105727.jpg,data_detection/images/train/IMG_20220106_105712.jpg,cat+asset,15
+AOBv2-REAL-413,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_105734.jpg,data_detection/images/train/IMG_20220106_105731.jpg,timestamp,3
+AOBv2-REAL-416,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_105800.jpg,data_detection/images/train/IMG_20220106_105757.jpg,timestamp,3
+AOBv2-REAL-423,scale_interpretation,Hydraulic system,data_detection/images/train/IMG_20220106_105900.jpg,data_detection/images/test/IMG_20220106_105858.jpg,timestamp,2
+AOBv2-REAL-424,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_105903.jpg,data_detection/images/test/IMG_20220106_105858.jpg,timestamp,5
+AOBv2-REAL-425,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_105905.jpg,data_detection/images/test/IMG_20220106_105858.jpg,timestamp,7
+AOBv2-REAL-426,scale_interpretation,Pressure system,data_detection/images/train/IMG_20220106_105907.jpg,data_detection/images/test/IMG_20220106_105858.jpg,timestamp,9
+AOBv2-REAL-427,scale_interpretation,Industrial piping system,data_detection/images/train/IMG_20220106_105912.jpg,data_detection/images/train/IMG_20220106_105921.jpg,timestamp,9
+AOBv2-REAL-428,occlusion,Unknown industrial equipment (likely related to pressure or flow),data_detection/images/train/IMG_20220106_105917.jpg,data_detection/images/train/IMG_20220106_105921.jpg,timestamp,4
+AOBv2-REAL-430,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_105931.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,1
+AOBv2-REAL-432,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_105951.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,19
+AOBv2-REAL-433,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_105956.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,24
+AOBv2-REAL-434,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110000.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,28
+AOBv2-REAL-435,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110001.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,29
+AOBv2-REAL-436,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_110009.jpg,data_detection/images/train/IMG_20220106_105932.jpg,timestamp,37
+AOBv2-REAL-437,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110019.jpg,data_detection/images/train/IMG_20220106_110103.jpg,timestamp,44
+AOBv2-REAL-439,occlusion,Industrial pump/compressor,data_detection/images/train/IMG_20220106_110106.jpg,data_detection/images/train/IMG_20220106_110103.jpg,timestamp,3
+AOBv2-REAL-440,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_110111.jpg,data_detection/images/train/IMG_20220106_110103.jpg,cat+asset,8
+AOBv2-REAL-441,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_110119.jpg,data_detection/images/train/IMG_20220106_110125.jpg,cat+asset,6
+AOBv2-REAL-445,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110145.jpg,data_detection/images/train/IMG_20220106_110149.jpg,timestamp,4
+AOBv2-REAL-452,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110236.jpg,data_detection/images/train/IMG_20220106_110228.jpg,timestamp,8
+AOBv2-REAL-453,gauge_degradation,Hydraulic system,data_detection/images/train/IMG_20220106_110241.jpg,data_detection/images/train/IMG_20220106_105731.jpg,cat+asset,310
+AOBv2-REAL-454,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_110242.jpg,data_detection/images/train/IMG_20220106_105932.jpg,cat+asset,190
+AOBv2-REAL-455,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_110245.jpg,data_detection/images/train/IMG_20220106_105748.jpg,cat+asset,297
+AOBv2-REAL-457,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110304.jpg,data_detection/images/train/IMG_20220106_110251.jpg,timestamp,13
+AOBv2-REAL-458,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110321.jpg,data_detection/images/train/IMG_20220106_110251.jpg,timestamp,30
+AOBv2-REAL-459,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110322.jpg,data_detection/images/train/IMG_20220106_110251.jpg,timestamp,31
+AOBv2-REAL-460,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110326.jpg,data_detection/images/train/IMG_20220106_110251.jpg,timestamp,35
+AOBv2-REAL-461,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_110332.jpg,data_detection/images/train/IMG_20220106_110251.jpg,timestamp,41
+AOBv2-REAL-464,glare_lighting,Pipe system in a chemical plant,data_detection/images/train/IMG_20220106_130624.jpg,data_detection/images/train/IMG_20220106_130622.jpg,timestamp,2
+AOBv2-REAL-469,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_130642.jpg,data_detection/images/train/IMG_20220106_130646.jpg,timestamp,4
+AOBv2-REAL-473,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_130654.jpg,data_detection/images/train/IMG_20220106_130650_1.jpg,timestamp,4
+AOBv2-REAL-474,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_130701.jpg,data_detection/images/test/IMG_20220106_130705.jpg,timestamp,4
+AOBv2-REAL-482,scale_interpretation,Pipe system,data_detection/images/train/IMG_20220106_130734.jpg,data_detection/images/train/IMG_20220106_130731.jpg,timestamp,3
+AOBv2-REAL-484,occlusion,Pipe system,data_detection/images/train/IMG_20220106_130742.jpg,data_detection/images/train/IMG_20220106_130745.jpg,timestamp,3
+AOBv2-REAL-486,never_read,Pipeline system,data_detection/images/train/IMG_20220106_130751.jpg,data_detection/images/train/IMG_20220106_130745.jpg,timestamp,6
+AOBv2-REAL-487,occlusion,Pipeline system,data_detection/images/train/IMG_20220106_130751_1.jpg,data_detection/images/train/IMG_20220106_130745.jpg,timestamp,6
+AOBv2-REAL-488,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_130757.jpg,data_detection/images/train/IMG_20220106_130803_1.jpg,timestamp,6
+AOBv2-REAL-489,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_130803.jpg,data_detection/images/train/IMG_20220106_130803_1.jpg,timestamp,0
+AOBv2-REAL-495,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_130825.jpg,data_detection/images/train/IMG_20220106_130818.jpg,timestamp,7
+AOBv2-REAL-497,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_130844.jpg,data_detection/images/test/IMG_20220106_130850.jpg,timestamp,6
+AOBv2-REAL-498,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_130845.jpg,data_detection/images/test/IMG_20220106_130850.jpg,timestamp,5
+AOBv2-REAL-499,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_130847.jpg,data_detection/images/test/IMG_20220106_130850.jpg,timestamp,3
+AOBv2-REAL-508,scale_interpretation,Pipe system,data_detection/images/train/IMG_20220106_130946.jpg,data_detection/images/train/IMG_20220106_130945.jpg,timestamp,1
+AOBv2-REAL-512,occlusion,Pipeline system,data_detection/images/train/IMG_20220106_131006.jpg,data_detection/images/train/IMG_20220106_131009.jpg,timestamp,3
+AOBv2-REAL-514,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_131011.jpg,data_detection/images/test/IMG_20220106_131010.jpg,cat+asset,1
+AOBv2-REAL-535,occlusion,Pneumatic control system,data_detection/images/train/IMG_20220106_131204.jpg,data_detection/images/train/IMG_20220106_131202.jpg,timestamp,2
+AOBv2-REAL-540,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_131231.jpg,data_detection/images/train/IMG_20220106_131228.jpg,timestamp,3
+AOBv2-REAL-541,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_131233.jpg,data_detection/images/train/IMG_20220106_131228.jpg,timestamp,5
+AOBv2-REAL-542,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_131235.jpg,data_detection/images/train/IMG_20220106_131239.jpg,timestamp,4
+AOBv2-REAL-544,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_131243.jpg,data_detection/images/test/IMG_20220106_131045.jpg,cat+asset,118
+AOBv2-REAL-545,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_131252.jpg,data_detection/images/test/IMG_20220106_131248.jpg,timestamp,4
+AOBv2-REAL-547,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_131304.jpg,data_detection/images/train/IMG_20220106_131300.jpg,timestamp,4
+AOBv2-REAL-551,gauge_degradation,Electrical panel,data_detection/images/train/IMG_20220106_131803.jpg,data_detection/images/train/IMG_20220106_131804.jpg,cat+asset,1
+AOBv2-REAL-553,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_131810.jpg,data_detection/images/train/IMG_20220106_131041.jpg,cat+asset,449
+AOBv2-REAL-554,glare_lighting,Unknown industrial equipment,data_detection/images/train/IMG_20220106_131813.jpg,data_detection/images/test/IMG_20220106_131821.jpg,timestamp,8
+AOBv2-REAL-555,glare_lighting,Temperature controller,data_detection/images/train/IMG_20220106_131816.jpg,data_detection/images/test/IMG_20220106_131821.jpg,timestamp,5
+AOBv2-REAL-556,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_131818.jpg,data_detection/images/test/IMG_20220106_131821.jpg,timestamp,3
+AOBv2-REAL-557,gauge_degradation,Industrial control panel,data_detection/images/train/IMG_20220106_131823.jpg,data_detection/images/test/IMG_20220106_131821.jpg,cat+asset,2
+AOBv2-REAL-558,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_131824.jpg,data_detection/images/train/IMG_20220106_131050_1.jpg,cat+asset,454
+AOBv2-REAL-565,gauge_degradation,Electrical panel,data_detection/images/train/IMG_20220106_131844.jpg,data_detection/images/train/IMG_20220106_131842.jpg,cat+asset,2
+AOBv2-REAL-568,gauge_degradation,Electrical panel,data_detection/images/train/IMG_20220106_133547.jpg,data_detection/images/train/IMG_20220106_133545.jpg,cat+asset,2
+AOBv2-REAL-569,gauge_degradation,Electrical system,data_detection/images/train/IMG_20220106_133550.jpg,data_detection/images/test/IMG_20220106_133548.jpg,cat_only,2
+AOBv2-REAL-570,gauge_degradation,Industrial control panel,data_detection/images/train/IMG_20220106_133554.jpg,data_detection/images/test/IMG_20220106_133548.jpg,cat+asset,6
+AOBv2-REAL-571,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_133556.jpg,data_detection/images/train/IMG_20220106_134224.jpg,cat+asset,388
+AOBv2-REAL-572,scale_interpretation,Industrial process equipment,data_detection/images/train/IMG_20220106_133558.jpg,data_detection/images/test/IMG_20220106_133548.jpg,timestamp,10
+AOBv2-REAL-573,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_133601.jpg,data_detection/images/train/IMG_20220106_131041.jpg,cat+asset,1520
+AOBv2-REAL-574,gauge_degradation,Industrial control panel,data_detection/images/train/IMG_20220106_133602.jpg,data_detection/images/test/IMG_20220106_133548.jpg,cat+asset,14
+AOBv2-REAL-575,gauge_degradation,Temperature control system,data_detection/images/train/IMG_20220106_133605.jpg,data_detection/images/test/IMG_20220106_133548.jpg,cat_only,17
+AOBv2-REAL-576,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_133606.jpg,data_detection/images/train/IMG_20220106_134224.jpg,cat+asset,378
+AOBv2-REAL-577,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_133609.jpg,data_detection/images/train/IMG_20220106_131041.jpg,cat+asset,1528
+AOBv2-REAL-578,gauge_degradation,Temperature controller,data_detection/images/train/IMG_20220106_133610.jpg,data_detection/images/test/IMG_20220106_133548.jpg,cat_only,22
+AOBv2-REAL-579,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_134114.jpg,data_detection/images/train/IMG_20220106_134114_1.jpg,timestamp,0
+AOBv2-REAL-582,scale_interpretation,Pressure system,data_detection/images/train/IMG_20220106_134117.jpg,data_detection/images/train/IMG_20220106_134116.jpg,timestamp,1
+AOBv2-REAL-594,occlusion,Pipeline System,data_detection/images/train/IMG_20220106_134142.jpg,data_detection/images/train/IMG_20220106_134143.jpg,timestamp,1
+AOBv2-REAL-596,scale_interpretation,Piping system,data_detection/images/train/IMG_20220106_134145.jpg,data_detection/images/train/IMG_20220106_134143.jpg,timestamp,2
+AOBv2-REAL-607,occlusion,Hydraulic system,data_detection/images/train/IMG_20220106_134208.jpg,data_detection/images/train/IMG_20220106_134206.jpg,timestamp,2
+AOBv2-REAL-608,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_134212.jpg,data_detection/images/train/IMG_20220106_134214.jpg,timestamp,2
+AOBv2-REAL-614,scale_interpretation,Compressor,data_detection/images/train/IMG_20220106_134228.jpg,data_detection/images/test/IMG_20220106_134225.jpg,timestamp,3
+AOBv2-REAL-619,gauge_degradation,Industrial processing equipment,data_detection/images/train/IMG_20220106_135203.jpg,data_detection/images/train/IMG_20220106_135755.jpg,cat+asset,352
+AOBv2-REAL-621,scale_interpretation,Pressure system,data_detection/images/train/IMG_20220106_135212.jpg,data_detection/images/train/IMG_20220106_135205.jpg,timestamp,7
+AOBv2-REAL-622,never_read,Pipeline system,data_detection/images/train/IMG_20220106_135214.jpg,data_detection/images/train/IMG_20220106_135205.jpg,timestamp,9
+AOBv2-REAL-623,occlusion,Pipeline/Piping system,data_detection/images/train/IMG_20220106_135217.jpg,data_detection/images/train/IMG_20220106_135205.jpg,timestamp,12
+AOBv2-REAL-624,gauge_degradation,Pipeline or vessel,data_detection/images/train/IMG_20220106_135220.jpg,data_detection/images/train/IMG_20220106_135205.jpg,cat_only,15
+AOBv2-REAL-625,scale_interpretation,Unknown,data_detection/images/train/IMG_20220106_135224.jpg,data_detection/images/train/IMG_20220106_135205.jpg,timestamp,19
+AOBv2-REAL-626,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_135227.jpg,data_detection/images/test/IMG_20220106_135145.jpg,cat+asset,42
+AOBv2-REAL-627,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_135228.jpg,data_detection/images/train/IMG_20220106_140221.jpg,cat+asset,593
+AOBv2-REAL-628,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_135241.jpg,data_detection/images/train/IMG_20220106_131136.jpg,cat+asset,2465
+AOBv2-REAL-629,gauge_degradation,Industrial system,data_detection/images/train/IMG_20220106_135243.jpg,data_detection/images/train/IMG_20220106_142036.jpg,cat+asset,1673
+AOBv2-REAL-631,gauge_degradation,Pneumatic system,data_detection/images/train/IMG_20220106_135247.jpg,data_detection/images/train/IMG_20220106_135405.jpg,cat+asset,78
+AOBv2-REAL-632,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_135253.jpg,data_detection/images/train/IMG_20220106_140112.jpg,cat+asset,499
+AOBv2-REAL-633,scale_interpretation,Pressure regulator,data_detection/images/train/IMG_20220106_135318.jpg,data_detection/images/train/IMG_20220106_135244.jpg,timestamp,34
+AOBv2-REAL-634,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_135325.jpg,data_detection/images/test/IMG_20220106_135145.jpg,cat+asset,100
+AOBv2-REAL-635,gauge_degradation,Industrial system,data_detection/images/train/IMG_20220106_135335.jpg,data_detection/images/train/IMG_20220106_142036.jpg,cat+asset,1621
+AOBv2-REAL-636,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_135353.jpg,data_detection/images/train/IMG_20220106_140511.jpg,cat+asset,678
+AOBv2-REAL-638,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_135409.jpg,data_detection/images/train/IMG_20220106_135421.jpg,cat+asset,12
+AOBv2-REAL-639,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_135410.jpg,data_detection/images/train/IMG_20220106_135421.jpg,cat+asset,11
+AOBv2-REAL-642,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_135425.jpg,data_detection/images/train/IMG_20220106_135421.jpg,timestamp,4
+AOBv2-REAL-643,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_135430.jpg,data_detection/images/train/IMG_20220106_140112.jpg,cat+asset,402
+AOBv2-REAL-644,gauge_degradation,Compressor,data_detection/images/train/IMG_20220106_135435.jpg,data_detection/images/test/IMG_20220106_135406.jpg,cat+asset,29
+AOBv2-REAL-645,gauge_degradation,Flow meter,data_detection/images/train/IMG_20220106_135511.jpg,data_detection/images/test/IMG_20220106_135507.jpg,cat+asset,4
+AOBv2-REAL-646,gauge_degradation,Flow meter,data_detection/images/train/IMG_20220106_135516.jpg,data_detection/images/train/IMG_20220106_135518.jpg,cat+asset,2
+AOBv2-REAL-648,gauge_degradation,Flow meter,data_detection/images/train/IMG_20220106_135526.jpg,data_detection/images/train/IMG_20220106_135518.jpg,cat+asset,8
+AOBv2-REAL-649,glare_lighting,Flow meter,data_detection/images/train/IMG_20220106_135546.jpg,data_detection/images/train/IMG_20220106_135605.jpg,timestamp,19
+AOBv2-REAL-650,glare_lighting,Unknown industrial equipment,data_detection/images/train/IMG_20220106_135550.jpg,data_detection/images/train/IMG_20220106_135605.jpg,timestamp,15
+AOBv2-REAL-651,glare_lighting,Unknown,data_detection/images/train/IMG_20220106_135550_1.jpg,data_detection/images/train/IMG_20220106_135605.jpg,timestamp,15
+AOBv2-REAL-665,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_135707.jpg,data_detection/images/train/IMG_20220106_135205.jpg,cat+asset,302
+AOBv2-REAL-669,occlusion,Piping system,data_detection/images/train/IMG_20220106_135721.jpg,data_detection/images/train/IMG_20220106_135719.jpg,timestamp,2
+AOBv2-REAL-670,gauge_degradation,Control valve,data_detection/images/train/IMG_20220106_135725.jpg,data_detection/images/train/IMG_20220106_131129.jpg,cat+asset,2756
+AOBv2-REAL-671,gauge_degradation,Pneumatic system,data_detection/images/train/IMG_20220106_135728.jpg,data_detection/images/train/IMG_20220106_135418.jpg,cat+asset,190
+AOBv2-REAL-672,gauge_degradation,Pneumatic system,data_detection/images/train/IMG_20220106_135731.jpg,data_detection/images/train/IMG_20220106_135418.jpg,cat+asset,193
+AOBv2-REAL-674,gauge_degradation,Filter/Regulator,data_detection/images/train/IMG_20220106_135736.jpg,data_detection/images/train/IMG_20220106_135735.jpg,cat_only,1
+AOBv2-REAL-676,gauge_degradation,Pipeline pressure transmitter,data_detection/images/train/IMG_20220106_135751.jpg,data_detection/images/train/IMG_20220106_135755.jpg,cat_only,4
+AOBv2-REAL-678,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_135759.jpg,data_detection/images/train/IMG_20220106_140511.jpg,cat+asset,432
+AOBv2-REAL-679,gauge_degradation,Industrial Process Monitor,data_detection/images/train/IMG_20220106_135802.jpg,data_detection/images/train/IMG_20220106_135805.jpg,cat_only,3
+AOBv2-REAL-682,occlusion,Storage tank,data_detection/images/train/IMG_20220106_135810.jpg,data_detection/images/train/IMG_20220106_135807.jpg,timestamp,3
+AOBv2-REAL-683,scale_interpretation,Tank level gauge,data_detection/images/train/IMG_20220106_135812.jpg,data_detection/images/train/IMG_20220106_135807.jpg,timestamp,5
+AOBv2-REAL-684,gauge_degradation,Pneumatic control system,data_detection/images/train/IMG_20220106_135820.jpg,data_detection/images/train/IMG_20220106_135244.jpg,cat+asset,336
+AOBv2-REAL-685,gauge_degradation,Pneumatic system,data_detection/images/train/IMG_20220106_135824.jpg,data_detection/images/train/IMG_20220106_135418.jpg,cat+asset,246
+AOBv2-REAL-686,gauge_degradation,Pneumatic system,data_detection/images/train/IMG_20220106_135835.jpg,data_detection/images/train/IMG_20220106_135418.jpg,cat+asset,257
+AOBv2-REAL-687,gauge_degradation,Pipeline/Storage Tank,data_detection/images/train/IMG_20220106_135840.jpg,data_detection/images/train/IMG_20220106_135613.jpg,cat+asset,147
+AOBv2-REAL-688,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_135846.jpg,data_detection/images/train/IMG_20220106_140336.jpg,cat+asset,290
+AOBv2-REAL-689,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_135847.jpg,data_detection/images/train/IMG_20220106_140511.jpg,cat+asset,384
+AOBv2-REAL-690,gauge_degradation,Pipe system,data_detection/images/train/IMG_20220106_135853.jpg,data_detection/images/train/IMG_20220106_142305.jpg,cat+asset,1452
+AOBv2-REAL-691,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_135854.jpg,data_detection/images/train/IMG_20220106_140443.jpg,cat+asset,349
+AOBv2-REAL-694,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_135923.jpg,data_detection/images/train/IMG_20220106_135920.jpg,cat+asset,3
+AOBv2-REAL-695,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_135928.jpg,data_detection/images/train/IMG_20220106_135920.jpg,cat+asset,8
+AOBv2-REAL-696,scale_interpretation,Unknown,data_detection/images/train/IMG_20220106_135930.jpg,data_detection/images/train/IMG_20220106_135920.jpg,timestamp,10
+AOBv2-REAL-697,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_135933.jpg,data_detection/images/train/IMG_20220106_135920.jpg,timestamp,13
+AOBv2-REAL-698,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_135939.jpg,data_detection/images/train/IMG_20220106_135957.jpg,timestamp,18
+AOBv2-REAL-699,scale_interpretation,Storage tank,data_detection/images/train/IMG_20220106_135944.jpg,data_detection/images/train/IMG_20220106_135957.jpg,timestamp,13
+AOBv2-REAL-700,never_read,Storage tank,data_detection/images/train/IMG_20220106_135947.jpg,data_detection/images/train/IMG_20220106_135957.jpg,timestamp,10
+AOBv2-REAL-701,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_135953.jpg,data_detection/images/train/IMG_20220106_135957.jpg,timestamp,4
+AOBv2-REAL-702,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_135955.jpg,data_detection/images/train/IMG_20220106_135957.jpg,timestamp,2
+AOBv2-REAL-705,glare_lighting,Unknown,data_detection/images/train/IMG_20220106_140052.jpg,data_detection/images/train/IMG_20220106_140112.jpg,timestamp,20
+AOBv2-REAL-706,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_140056.jpg,data_detection/images/train/IMG_20220106_140112.jpg,timestamp,16
+AOBv2-REAL-708,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_140118_1.jpg,data_detection/images/train/IMG_20220106_140112.jpg,timestamp,6
+AOBv2-REAL-709,gauge_degradation,Unknown industrial system,data_detection/images/train/IMG_20220106_140136.jpg,data_detection/images/train/IMG_20220106_131300.jpg,cat+asset,2916
+AOBv2-REAL-713,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140153.jpg,data_detection/images/train/IMG_20220106_140149.jpg,timestamp,4
+AOBv2-REAL-714,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140157.jpg,data_detection/images/train/IMG_20220106_140149.jpg,timestamp,8
+AOBv2-REAL-715,occlusion,Centrifugal pump,data_detection/images/train/IMG_20220106_140201.jpg,data_detection/images/train/IMG_20220106_140211.jpg,timestamp,10
+AOBv2-REAL-721,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_140235.jpg,data_detection/images/train/IMG_20220106_140233.jpg,timestamp,2
+AOBv2-REAL-724,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140303.jpg,data_detection/images/train/IMG_20220106_140302.jpg,timestamp,1
+AOBv2-REAL-725,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140307_Burst01.jpg,data_detection/images/train/IMG_20220106_140302.jpg,timestamp,5
+AOBv2-REAL-726,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_140314.jpg,data_detection/images/test/IMG_20220106_140318.jpg,timestamp,4
+AOBv2-REAL-730,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_140330.jpg,data_detection/images/train/IMG_20220106_140327.jpg,timestamp,3
+AOBv2-REAL-731,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140334.jpg,data_detection/images/train/IMG_20220106_140336.jpg,timestamp,2
+AOBv2-REAL-735,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_140357.jpg,data_detection/images/train/IMG_20220106_140325.jpg,cat+asset,32
+AOBv2-REAL-737,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140406.jpg,data_detection/images/train/IMG_20220106_140401.jpg,timestamp,5
+AOBv2-REAL-738,glare_lighting,Pumping station,data_detection/images/train/IMG_20220106_140413.jpg,data_detection/images/train/IMG_20220106_140401.jpg,timestamp,12
+AOBv2-REAL-739,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_140417.jpg,data_detection/images/train/IMG_20220106_140401.jpg,timestamp,16
+AOBv2-REAL-740,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_140422.jpg,data_detection/images/train/IMG_20220106_140433.jpg,timestamp,11
+AOBv2-REAL-741,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_140427.jpg,data_detection/images/train/IMG_20220106_140433.jpg,timestamp,6
+AOBv2-REAL-743,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_140437.jpg,data_detection/images/train/IMG_20220106_140443.jpg,cat+asset,6
+AOBv2-REAL-746,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140457.jpg,data_detection/images/train/IMG_20220106_140502.jpg,timestamp,5
+AOBv2-REAL-754,gauge_degradation,Centrifugal pump,data_detection/images/train/IMG_20220106_140532.jpg,data_detection/images/train/IMG_20220106_140530.jpg,cat+asset,2
+AOBv2-REAL-755,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140536.jpg,data_detection/images/train/IMG_20220106_140530.jpg,timestamp,6
+AOBv2-REAL-756,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140540.jpg,data_detection/images/train/IMG_20220106_140549.jpg,timestamp,9
+AOBv2-REAL-757,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140546.jpg,data_detection/images/train/IMG_20220106_140549.jpg,timestamp,3
+AOBv2-REAL-760,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140554.jpg,data_detection/images/train/IMG_20220106_140551.jpg,timestamp,3
+AOBv2-REAL-761,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140600.jpg,data_detection/images/train/IMG_20220106_140551.jpg,timestamp,9
+AOBv2-REAL-762,glare_lighting,Pumping system,data_detection/images/train/IMG_20220106_140603.jpg,data_detection/images/train/IMG_20220106_140551.jpg,timestamp,12
+AOBv2-REAL-763,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_140612.jpg,data_detection/images/test/IMG_20220106_140620.jpg,cat+asset,8
+AOBv2-REAL-764,glare_lighting,Induction motor,data_detection/images/train/IMG_20220106_140614.jpg,data_detection/images/test/IMG_20220106_140620.jpg,timestamp,6
+AOBv2-REAL-765,glare_lighting,Industrial pump,data_detection/images/train/IMG_20220106_140616.jpg,data_detection/images/test/IMG_20220106_140620.jpg,timestamp,4
+AOBv2-REAL-766,scale_interpretation,Water pump,data_detection/images/train/IMG_20220106_140624.jpg,data_detection/images/test/IMG_20220106_140620.jpg,timestamp,4
+AOBv2-REAL-767,occlusion,Pump,data_detection/images/train/IMG_20220106_140633.jpg,data_detection/images/test/IMG_20220106_140642.jpg,timestamp,9
+AOBv2-REAL-768,occlusion,Pump,data_detection/images/train/IMG_20220106_140638.jpg,data_detection/images/test/IMG_20220106_140642.jpg,timestamp,4
+AOBv2-REAL-769,occlusion,Centrifugal pump,data_detection/images/train/IMG_20220106_140640.jpg,data_detection/images/test/IMG_20220106_140642.jpg,timestamp,2
+AOBv2-REAL-772,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_140654.jpg,data_detection/images/train/IMG_20220106_140656.jpg,timestamp,2
+AOBv2-REAL-774,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140707.jpg,data_detection/images/test/IMG_20220106_140709.jpg,timestamp,2
+AOBv2-REAL-775,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140716.jpg,data_detection/images/train/IMG_20220106_140722.jpg,timestamp,6
+AOBv2-REAL-776,scale_interpretation,Pump,data_detection/images/train/IMG_20220106_140719.jpg,data_detection/images/train/IMG_20220106_140722.jpg,timestamp,3
+AOBv2-REAL-780,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140735.jpg,data_detection/images/test/IMG_20220106_140731.jpg,timestamp,4
+AOBv2-REAL-781,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_140739.jpg,data_detection/images/train/IMG_20220106_140743.jpg,timestamp,4
+AOBv2-REAL-783,gauge_degradation,Hydraulic system,data_detection/images/train/IMG_20220106_140750.jpg,data_detection/images/train/IMG_20220106_141201.jpg,cat+asset,251
+AOBv2-REAL-785,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_140801.jpg,data_detection/images/train/IMG_20220106_140502.jpg,cat+asset,179
+AOBv2-REAL-787,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140814_1.jpg,data_detection/images/train/IMG_20220106_140814.jpg,timestamp,0
+AOBv2-REAL-788,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_140824.jpg,data_detection/images/train/IMG_20220106_140112.jpg,cat+asset,432
+AOBv2-REAL-790,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140833.jpg,data_detection/images/train/IMG_20220106_140827.jpg,timestamp,6
+AOBv2-REAL-791,gauge_degradation,Centrifugal pump,data_detection/images/train/IMG_20220106_140838.jpg,data_detection/images/test/IMG_20220106_140808.jpg,cat+asset,30
+AOBv2-REAL-792,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140851.jpg,data_detection/images/train/IMG_20220106_140859.jpg,timestamp,8
+AOBv2-REAL-793,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_140855.jpg,data_detection/images/train/IMG_20220106_140859.jpg,cat+asset,4
+AOBv2-REAL-796,occlusion,Boiler,data_detection/images/train/IMG_20220106_140918.jpg,data_detection/images/train/IMG_20220106_140905.jpg,timestamp,13
+AOBv2-REAL-797,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_140921.jpg,data_detection/images/train/IMG_20220106_140905.jpg,timestamp,16
+AOBv2-REAL-798,scale_interpretation,Piping system,data_detection/images/train/IMG_20220106_140925.jpg,data_detection/images/train/IMG_20220106_140944.jpg,timestamp,19
+AOBv2-REAL-799,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_140931.jpg,data_detection/images/train/IMG_20220106_140944.jpg,timestamp,13
+AOBv2-REAL-801,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_140952.jpg,data_detection/images/train/IMG_20220106_140944.jpg,cat+asset,8
+AOBv2-REAL-802,occlusion,Industrial system (pressure likely),data_detection/images/train/IMG_20220106_141004.jpg,data_detection/images/train/IMG_20220106_141012.jpg,timestamp,8
+AOBv2-REAL-803,occlusion,Boiler,data_detection/images/train/IMG_20220106_141005.jpg,data_detection/images/train/IMG_20220106_141012.jpg,timestamp,7
+AOBv2-REAL-804,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_141009.jpg,data_detection/images/train/IMG_20220106_141012.jpg,cat+asset,3
+AOBv2-REAL-806,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_141017.jpg,data_detection/images/train/IMG_20220106_141012.jpg,timestamp,5
+AOBv2-REAL-807,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_141022.jpg,data_detection/images/train/IMG_20220106_141024.jpg,cat+asset,2
+AOBv2-REAL-809,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_141029.jpg,data_detection/images/train/IMG_20220106_141032.jpg,cat+asset,3
+AOBv2-REAL-813,scale_interpretation,Pumping system,data_detection/images/train/IMG_20220106_141045.jpg,data_detection/images/train/IMG_20220106_141042.jpg,timestamp,3
+AOBv2-REAL-814,scale_interpretation,Hydraulic system,data_detection/images/train/IMG_20220106_141054.jpg,data_detection/images/train/IMG_20220106_141104.jpg,timestamp,10
+AOBv2-REAL-815,scale_interpretation,Hydraulic system,data_detection/images/train/IMG_20220106_141101.jpg,data_detection/images/train/IMG_20220106_141104.jpg,timestamp,3
+AOBv2-REAL-818,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_141110.jpg,data_detection/images/train/IMG_20220106_141107.jpg,timestamp,3
+AOBv2-REAL-819,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_141116.jpg,data_detection/images/train/IMG_20220106_141107.jpg,timestamp,9
+AOBv2-REAL-820,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_141123.jpg,data_detection/images/train/IMG_20220106_141107.jpg,timestamp,16
+AOBv2-REAL-821,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_141129.jpg,data_detection/images/train/IMG_20220106_141107.jpg,timestamp,22
+AOBv2-REAL-822,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_141133.jpg,data_detection/images/train/IMG_20220106_141153.jpg,timestamp,20
+AOBv2-REAL-823,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_141136.jpg,data_detection/images/train/IMG_20220106_141153.jpg,timestamp,17
+AOBv2-REAL-824,glare_lighting,Boiler,data_detection/images/train/IMG_20220106_141143.jpg,data_detection/images/train/IMG_20220106_141153.jpg,timestamp,10
+AOBv2-REAL-825,glare_lighting,Pipeline system,data_detection/images/train/IMG_20220106_141145.jpg,data_detection/images/train/IMG_20220106_141153.jpg,timestamp,8
+AOBv2-REAL-828,scale_interpretation,Pump,data_detection/images/train/IMG_20220106_141156.jpg,data_detection/images/train/IMG_20220106_141155.jpg,timestamp,1
+AOBv2-REAL-829,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_141158.jpg,data_detection/images/train/IMG_20220106_141155.jpg,cat+asset,3
+AOBv2-REAL-832,scale_interpretation,Pipe system,data_detection/images/train/IMG_20220106_141222.jpg,data_detection/images/test/IMG_20220106_141213.jpg,timestamp,9
+AOBv2-REAL-834,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_141236.jpg,data_detection/images/train/IMG_20220106_141240.jpg,cat+asset,4
+AOBv2-REAL-837,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_141256.jpg,data_detection/images/train/IMG_20220106_141252.jpg,timestamp,4
+AOBv2-REAL-838,scale_interpretation,Centrifugal pump system,data_detection/images/train/IMG_20220106_141259.jpg,data_detection/images/train/IMG_20220106_141303.jpg,timestamp,4
+AOBv2-REAL-846,scale_interpretation,Piping system,data_detection/images/train/IMG_20220106_141402.jpg,data_detection/images/train/IMG_20220106_141354.jpg,timestamp,8
+AOBv2-REAL-847,glare_lighting,Piping system,data_detection/images/train/IMG_20220106_141407.jpg,data_detection/images/test/IMG_20220106_141410.jpg,timestamp,3
+AOBv2-REAL-850,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_141421.jpg,data_detection/images/train/IMG_20220106_141425.jpg,cat+asset,4
+AOBv2-REAL-852,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_141432.jpg,data_detection/images/train/IMG_20220106_141425.jpg,timestamp,7
+AOBv2-REAL-854,gauge_degradation,Fire suppression system,data_detection/images/train/IMG_20220106_141446.jpg,data_detection/images/train/IMG_20220106_141442.jpg,cat_only,4
+AOBv2-REAL-855,gauge_degradation,Pump,data_detection/images/train/IMG_20220106_141448.jpg,data_detection/images/train/IMG_20220106_141252.jpg,cat+asset,116
+AOBv2-REAL-856,glare_lighting,Centrifugal pump,data_detection/images/train/IMG_20220106_141458.jpg,data_detection/images/train/IMG_20220106_141442.jpg,timestamp,16
+AOBv2-REAL-857,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_141503.jpg,data_detection/images/train/IMG_20220106_141442.jpg,cat+asset,21
+AOBv2-REAL-858,scale_interpretation,Pipe system,data_detection/images/train/IMG_20220106_141504.jpg,data_detection/images/train/IMG_20220106_141442.jpg,timestamp,22
+AOBv2-REAL-859,gauge_degradation,Centrifugal pump,data_detection/images/train/IMG_20220106_141538.jpg,data_detection/images/train/IMG_20220106_141542.jpg,cat+asset,4
+AOBv2-REAL-861,gauge_degradation,Industrial pumps and motors,data_detection/images/train/IMG_20220106_141547.jpg,data_detection/images/train/IMG_20220106_141542.jpg,cat_only,5
+AOBv2-REAL-862,scale_interpretation,Pump system,data_detection/images/train/IMG_20220106_141551.jpg,data_detection/images/train/IMG_20220106_141542.jpg,timestamp,9
+AOBv2-REAL-863,scale_interpretation,Pump,data_detection/images/train/IMG_20220106_141555.jpg,data_detection/images/train/IMG_20220106_141542.jpg,timestamp,13
+AOBv2-REAL-864,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_141601.jpg,data_detection/images/train/IMG_20220106_141542.jpg,timestamp,19
+AOBv2-REAL-865,scale_interpretation,Unknown (electrical control panel),data_detection/images/train/IMG_20220106_141605.jpg,data_detection/images/train/IMG_20220106_141625.jpg,timestamp,20
+AOBv2-REAL-866,scale_interpretation,Centrifugal pump,data_detection/images/train/IMG_20220106_141610.jpg,data_detection/images/train/IMG_20220106_141625.jpg,timestamp,15
+AOBv2-REAL-867,gauge_degradation,Electrical panel,data_detection/images/train/IMG_20220106_141613.jpg,data_detection/images/train/IMG_20220106_133545.jpg,cat+asset,2428
+AOBv2-REAL-868,gauge_degradation,Electrical circuit,data_detection/images/train/IMG_20220106_141617.jpg,data_detection/images/train/IMG_20220106_141625.jpg,cat_only,8
+AOBv2-REAL-870,scale_interpretation,Pump,data_detection/images/train/IMG_20220106_141628.jpg,data_detection/images/train/IMG_20220106_141625.jpg,timestamp,3
+AOBv2-REAL-873,scale_interpretation,Pipeline valve,data_detection/images/train/IMG_20220106_141842.jpg,data_detection/images/train/IMG_20220106_141837.jpg,timestamp,5
+AOBv2-REAL-874,occlusion,Boiler,data_detection/images/train/IMG_20220106_141850.jpg,data_detection/images/train/IMG_20220106_141837.jpg,timestamp,13
+AOBv2-REAL-875,gauge_degradation,Pipeline or process system,data_detection/images/train/IMG_20220106_141900.jpg,data_detection/images/test/IMG_20220106_141912.jpg,cat_only,12
+AOBv2-REAL-876,gauge_degradation,Unknown industrial system with piping,data_detection/images/train/IMG_20220106_141910.jpg,data_detection/images/test/IMG_20220106_141912.jpg,cat_only,2
+AOBv2-REAL-877,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_141957.jpg,data_detection/images/test/IMG_20220106_142313.jpg,cat+asset,196
+AOBv2-REAL-878,gauge_degradation,Industrial Process piping,data_detection/images/train/IMG_20220106_141959.jpg,data_detection/images/train/IMG_20220106_142004.jpg,cat_only,5
+AOBv2-REAL-879,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_142001.jpg,data_detection/images/train/IMG_20220106_140112.jpg,cat+asset,1129
+AOBv2-REAL-882,occlusion,Storage Tank,data_detection/images/train/IMG_20220106_142012.jpg,data_detection/images/train/IMG_20220106_142006.jpg,timestamp,6
+AOBv2-REAL-883,gauge_degradation,Unknown industrial process equipment,data_detection/images/train/IMG_20220106_142015.jpg,data_detection/images/train/IMG_20220106_142006.jpg,cat_only,9
+AOBv2-REAL-884,gauge_degradation,Industrial Process piping,data_detection/images/train/IMG_20220106_142019.jpg,data_detection/images/test/IMG_20220106_142028.jpg,cat_only,9
+AOBv2-REAL-885,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_142022.jpg,data_detection/images/test/IMG_20220106_142313.jpg,cat+asset,171
+AOBv2-REAL-886,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_142025.jpg,data_detection/images/train/IMG_20220106_142113.jpg,cat+asset,48
+AOBv2-REAL-887,occlusion,Pressure vessel,data_detection/images/train/IMG_20220106_142032.jpg,data_detection/images/test/IMG_20220106_142028.jpg,timestamp,4
+AOBv2-REAL-889,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_142038.jpg,data_detection/images/test/IMG_20220106_142313.jpg,cat+asset,155
+AOBv2-REAL-890,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_142040.jpg,data_detection/images/train/IMG_20220106_142113.jpg,cat+asset,33
+AOBv2-REAL-892,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_142107.jpg,data_detection/images/train/IMG_20220106_142106.jpg,timestamp,1
+AOBv2-REAL-895,gauge_degradation,Unknown (part of a larger piping system),data_detection/images/train/IMG_20220106_142116.jpg,data_detection/images/train/IMG_20220106_142114.jpg,cat_only,2
+AOBv2-REAL-896,gauge_degradation,Boiler,data_detection/images/train/IMG_20220106_142118.jpg,data_detection/images/test/IMG_20220106_142102.jpg,cat+asset,16
+AOBv2-REAL-897,gauge_degradation,Pipeline or tank,data_detection/images/train/IMG_20220106_142122.jpg,data_detection/images/train/IMG_20220106_142114.jpg,cat_only,8
+AOBv2-REAL-898,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_142129.jpg,data_detection/images/test/IMG_20220106_142313.jpg,cat+asset,104
+AOBv2-REAL-899,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_142134.jpg,data_detection/images/train/IMG_20220106_142138.jpg,cat+asset,4
+AOBv2-REAL-903,scale_interpretation,Pressure vessel or piping system,data_detection/images/train/IMG_20220106_142142.jpg,data_detection/images/train/IMG_20220106_142143.jpg,timestamp,1
+AOBv2-REAL-907,gauge_degradation,Industrial pressure system,data_detection/images/train/IMG_20220106_142207.jpg,data_detection/images/train/IMG_20220106_142106.jpg,cat+asset,61
+AOBv2-REAL-908,gauge_degradation,Industrial plant equipment,data_detection/images/train/IMG_20220106_142210.jpg,data_detection/images/train/IMG_20220106_142211.jpg,cat_only,1
+AOBv2-REAL-910,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_142215.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,1116
+AOBv2-REAL-911,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_142223.jpg,data_detection/images/test/IMG_20220106_142313.jpg,cat+asset,50
+AOBv2-REAL-912,gauge_degradation,Hydraulic system,data_detection/images/train/IMG_20220106_142226.jpg,data_detection/images/train/IMG_20220106_141417.jpg,cat+asset,489
+AOBv2-REAL-913,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_142229.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,1102
+AOBv2-REAL-914,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_142239.jpg,data_detection/images/train/IMG_20220106_142306.jpg,cat+asset,27
+AOBv2-REAL-915,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_142243.jpg,data_detection/images/test/IMG_20220106_142313.jpg,cat+asset,30
+AOBv2-REAL-920,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_142309.jpg,data_detection/images/train/IMG_20220106_142211.jpg,cat+asset,58
+AOBv2-REAL-922,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_142320.jpg,data_detection/images/train/IMG_20220106_142317.jpg,timestamp,3
+AOBv2-REAL-925,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_142331.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,1040
+AOBv2-REAL-927,scale_interpretation,Pressure system,data_detection/images/train/IMG_20220106_142348.jpg,data_detection/images/train/IMG_20220106_142346.jpg,timestamp,2
+AOBv2-REAL-929,scale_interpretation,Pipe network,data_detection/images/train/IMG_20220106_142355.jpg,data_detection/images/train/IMG_20220106_142353.jpg,timestamp,2
+AOBv2-REAL-930,scale_interpretation,Pipe network,data_detection/images/train/IMG_20220106_142357.jpg,data_detection/images/train/IMG_20220106_142400.jpg,timestamp,3
+AOBv2-REAL-932,scale_interpretation,Boiler,data_detection/images/train/IMG_20220106_142403.jpg,data_detection/images/train/IMG_20220106_142400.jpg,timestamp,3
+AOBv2-REAL-933,gauge_degradation,Unknown pipe system,data_detection/images/train/IMG_20220106_142405.jpg,data_detection/images/train/IMG_20220106_142408.jpg,cat_only,3
+AOBv2-REAL-939,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_142422.jpg,data_detection/images/train/IMG_20220106_142420.jpg,timestamp,2
+AOBv2-REAL-940,occlusion,Industrial piping system,data_detection/images/train/IMG_20220106_142423.jpg,data_detection/images/train/IMG_20220106_142420.jpg,timestamp,3
+AOBv2-REAL-941,gauge_degradation,Pipeline pressure gauge,data_detection/images/train/IMG_20220106_142429.jpg,data_detection/images/train/IMG_20220106_142434.jpg,cat_only,5
+AOBv2-REAL-942,scale_interpretation,Pipeline system,data_detection/images/train/IMG_20220106_142432.jpg,data_detection/images/train/IMG_20220106_142434.jpg,timestamp,2
+AOBv2-REAL-945,scale_interpretation,Pressure vessel or tank,data_detection/images/train/IMG_20220106_142439.jpg,data_detection/images/train/IMG_20220106_142436.jpg,timestamp,3
+AOBv2-REAL-947,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_142446.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,3
+AOBv2-REAL-948,scale_interpretation,Pipe system,data_detection/images/train/IMG_20220106_142449.jpg,data_detection/images/train/IMG_20220106_142443.jpg,timestamp,6
+AOBv2-REAL-954,gauge_degradation,Pressure regulator,data_detection/images/train/IMG_20220106_142521.jpg,data_detection/images/train/IMG_20220106_143858.jpg,cat+asset,817
+AOBv2-REAL-956,occlusion,Industrial Process,data_detection/images/train/IMG_20220106_142526.jpg,data_detection/images/train/IMG_20220106_142524.jpg,timestamp,2
+AOBv2-REAL-959,glare_lighting,Unknown industrial equipment (likely related to process control or HVAC),data_detection/images/train/IMG_20220106_142649.jpg,data_detection/images/train/IMG_20220106_142750.jpg,timestamp,61
+AOBv2-REAL-960,glare_lighting,Unknown industrial equipment,data_detection/images/train/IMG_20220106_142651.jpg,data_detection/images/train/IMG_20220106_142750.jpg,timestamp,59
+AOBv2-REAL-961,gauge_degradation,Unknown industrial equipment,data_detection/images/train/IMG_20220106_142653.jpg,data_detection/images/train/IMG_20220106_142211.jpg,cat+asset,282
+AOBv2-REAL-962,gauge_degradation,HVAC system,data_detection/images/train/IMG_20220106_142657.jpg,data_detection/images/train/IMG_20220106_142750.jpg,cat_only,53
+AOBv2-REAL-963,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_142702.jpg,data_detection/images/train/IMG_20220106_142750.jpg,timestamp,48
+AOBv2-REAL-964,glare_lighting,Unknown industrial equipment,data_detection/images/train/IMG_20220106_142706.jpg,data_detection/images/train/IMG_20220106_142750.jpg,timestamp,44
+AOBv2-REAL-965,gauge_degradation,Unknown industrial equipment (likely pressure or flow related),data_detection/images/train/IMG_20220106_142709.jpg,data_detection/images/train/IMG_20220106_142750.jpg,cat_only,41
+AOBv2-REAL-966,gauge_degradation,Unknown,data_detection/images/train/IMG_20220106_142709_1.jpg,data_detection/images/train/IMG_20220106_144051.jpg,cat+asset,822
+AOBv2-REAL-967,glare_lighting,Industrial Process Control System,data_detection/images/train/IMG_20220106_142734.jpg,data_detection/images/train/IMG_20220106_142750.jpg,timestamp,16
+AOBv2-REAL-968,occlusion,Industrial fluid tank,data_detection/images/train/IMG_20220106_142740.jpg,data_detection/images/train/IMG_20220106_142750.jpg,timestamp,10
+AOBv2-REAL-969,glare_lighting,Storage tank,data_detection/images/train/IMG_20220106_142746.jpg,data_detection/images/train/IMG_20220106_142750.jpg,timestamp,4
+AOBv2-REAL-973,gauge_degradation,Industrial Process Tank,data_detection/images/train/IMG_20220106_142800.jpg,data_detection/images/train/IMG_20220106_142755.jpg,cat_only,5
+AOBv2-REAL-974,scale_interpretation,Pressure vessel,data_detection/images/train/IMG_20220106_142803.jpg,data_detection/images/test/IMG_20220106_142807.jpg,timestamp,4
+AOBv2-REAL-976,gauge_degradation,Pipe or tank system,data_detection/images/train/IMG_20220106_142903.jpg,data_detection/images/train/IMG_20220106_142858.jpg,cat_only,5
+AOBv2-REAL-977,gauge_degradation,Pipe,data_detection/images/train/IMG_20220106_142912.jpg,data_detection/images/train/IMG_20220106_142858.jpg,cat_only,14
+AOBv2-REAL-978,gauge_degradation,Hydraulic system,data_detection/images/train/IMG_20220106_142953.jpg,data_detection/images/train/IMG_20220106_143838.jpg,cat+asset,525
+AOBv2-REAL-979,gauge_degradation,Unknown industrial system,data_detection/images/train/IMG_20220106_142957.jpg,data_detection/images/train/IMG_20220106_131300.jpg,cat+asset,4617
+AOBv2-REAL-980,gauge_degradation,Pipe system,data_detection/images/train/IMG_20220106_143049.jpg,data_detection/images/train/IMG_20220106_142858.jpg,cat+asset,111
+AOBv2-REAL-981,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143053.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,370
+AOBv2-REAL-982,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143059.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,376
+AOBv2-REAL-984,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_143106.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,342
+AOBv2-REAL-985,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143112.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,389
+AOBv2-REAL-986,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143115.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,392
+AOBv2-REAL-987,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_143121.jpg,data_detection/images/test/IMG_20220106_143057.jpg,cat+asset,24
+AOBv2-REAL-988,gauge_degradation,Pipe system,data_detection/images/train/IMG_20220106_143125.jpg,data_detection/images/train/IMG_20220106_142858.jpg,cat+asset,147
+AOBv2-REAL-989,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_143133.jpg,data_detection/images/train/IMG_20220106_143152.jpg,cat+asset,19
+AOBv2-REAL-990,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_143136.jpg,data_detection/images/train/IMG_20220106_143152.jpg,cat+asset,16
+AOBv2-REAL-991,gauge_degradation,Pipe system,data_detection/images/train/IMG_20220106_143140.jpg,data_detection/images/train/IMG_20220106_142858.jpg,cat+asset,162
+AOBv2-REAL-992,gauge_degradation,Pipeline system,data_detection/images/train/IMG_20220106_143142.jpg,data_detection/images/train/IMG_20220106_142443.jpg,cat+asset,419
+AOBv2-REAL-993,gauge_degradation,Industrial piping system,data_detection/images/train/IMG_20220106_143145.jpg,data_detection/images/train/IMG_20220106_143152.jpg,cat+asset,7
+AOBv2-REAL-994,gauge_degradation,Pipeline,data_detection/images/train/IMG_20220106_143147.jpg,data_detection/images/train/IMG_20220106_142524.jpg,cat+asset,383
+AOBv2-REAL-995,gauge_degradation,Piping system,data_detection/images/train/IMG_20220106_143149.jpg,data_detection/images/train/IMG_20220106_142517.jpg,cat+asset,392
+AOBv2-REAL-999,scale_interpretation,Pressure regulator,data_detection/images/train/IMG_20220106_143231.jpg,data_detection/images/train/IMG_20220106_143256.jpg,timestamp,25
