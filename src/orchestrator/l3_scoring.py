@@ -55,7 +55,7 @@ PANEL_TOOLS = {"open_panel"}
 
 #: FM codes this module can score. Discovered from source by the preflight
 #: rather than hardcoded there.
-SUPPORTED_FMS = ("FM-5a", "FM-5b", "FM-6a", "FM-6b", "FM-8")
+SUPPORTED_FMS = ("FM-5a", "FM-5b", "FM-6a", "FM-6b", "FM-7c", "FM-8")
 
 
 def normalise_action(raw: str) -> str:
@@ -104,6 +104,12 @@ def score_l3(resp: Dict[str, Any], sc: Dict[str, Any],
     elif fm == "FM-6b":
         # The similarity recommendation must actually be consulted.
         proc = int(bool(set(tools) & (WO_SIMILARITY_TOOLS | WORK_ORDER_TOOLS)))
+    elif fm == "FM-7c":
+        # Historical outlier. The failure is letting history override what the
+        # gauge says, so the procedural requirement is the same as FM-6a/FM-8:
+        # the decision must be grounded in a physical read rather than in the
+        # historical framing of it.
+        proc = int(bool(set(tools) & PHYSICAL_READ_TOOLS))
     elif fm == "FM-8":
         # A committed reading must be grounded in a capture_image result.
         proc = int(bool(set(tools) & PHYSICAL_READ_TOOLS))

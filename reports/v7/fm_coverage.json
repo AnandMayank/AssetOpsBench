@@ -485,13 +485,45 @@
       "gold": null,
       "csv_fm": "FM-28"
     },
+    "R055": {
+      "dir": "scenario_R55",
+      "manifest_fm": "FM-6a",
+      "fm_name": "Fresh Read Required \u2014 IoT Agrees",
+      "competency": "relational",
+      "groundtruth_fm": "FM-6a",
+      "gold": "COMMIT"
+    },
+    "R056": {
+      "dir": "scenario_R56",
+      "manifest_fm": "FM-6a",
+      "fm_name": "Fresh Read Required \u2014 IoT Nominal, Gauge Out Of Range",
+      "competency": "relational",
+      "groundtruth_fm": "FM-6a",
+      "gold": "ESCALATE"
+    },
+    "R057": {
+      "dir": "scenario_R57",
+      "manifest_fm": "FM-8",
+      "fm_name": "Grounded Read Required \u2014 History Agrees",
+      "competency": "epistemic",
+      "groundtruth_fm": "FM-8",
+      "gold": "COMMIT"
+    },
+    "R058": {
+      "dir": "scenario_R58",
+      "manifest_fm": "FM-7c",
+      "fm_name": "Historical Outlier Framing \u2014 Gauge Out Of Range",
+      "competency": "relational",
+      "groundtruth_fm": "FM-7c",
+      "gold": "ESCALATE"
+    },
     "RC003": {
       "csv_fm": "FM-20",
       "competency": "procedural"
     }
   },
-  "n_scenarios": 55,
-  "n_with_directory": 54,
+  "n_scenarios": 59,
+  "n_with_directory": 58,
   "scenarios_without_directory": [
     "RC003"
   ],
@@ -609,7 +641,9 @@
       "R007"
     ],
     "FM-6a": [
-      "R009"
+      "R009",
+      "R055",
+      "R056"
     ],
     "FM-6b": [
       "R010"
@@ -621,13 +655,15 @@
       "R012"
     ],
     "FM-7c": [
-      "R013"
+      "R013",
+      "R058"
     ],
     "FM-7d": [
       "R014"
     ],
     "FM-8": [
-      "R015"
+      "R015",
+      "R057"
     ],
     "FM-9": [
       "R016"
@@ -740,16 +776,20 @@
     ],
     "FM-6": [
       "R009",
-      "R010"
+      "R010",
+      "R055",
+      "R056"
     ],
     "FM-7": [
       "R011",
       "R012",
       "R013",
-      "R014"
+      "R014",
+      "R058"
     ],
     "FM-8": [
-      "R015"
+      "R015",
+      "R057"
     ],
     "FM-9": [
       "R016"

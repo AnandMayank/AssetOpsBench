@@ -101,7 +101,27 @@ SCENARIOS: Dict[str, Dict[str, Any]] = {
              "asset": "hydraulic_pump_1", "iot_phrase": r"280\s*bar"},
     "R015": {"fm": "FM-8", "gold": "COMMIT", "axis": "physical_vs_digital",
              "asset": "chiller_6", "iot_phrase": None},
+    # --- L3 evidence-dependency pilot, authored 2026-08-12 (class A) ---------
+    # Template: gold is determined by the physical read; the digital channel is
+    # present as a shortcut. Withholding the shortcut must leave gold reachable.
+    "R055": {"fm": "FM-6a", "gold": "COMMIT", "axis": "physical_vs_digital",
+             "asset": "chiller_6", "iot_phrase": r"245\s*bar"},
+    "R056": {"fm": "FM-6a", "gold": "ESCALATE", "axis": "physical_vs_digital",
+             "asset": "metro_pump_1", "iot_phrase": r"1\.02\s*m³/s"},
+    "R057": {"fm": "FM-8", "gold": "COMMIT", "axis": "physical_vs_digital",
+             "asset": "motor_01", "iot_phrase": r"92\s*°C"},
+    # R058's shortcut is a narrative clause, not a number: the history framing
+    # that presents an exceedance as routine. Only that clause is redacted — the
+    # 200 bar *limit* is legitimate context the gold decision needs.
+    "R058": {"fm": "FM-7c", "gold": "ESCALATE", "axis": "physical_vs_digital",
+             "asset": "hydraulic_pump_1",
+             "iot_phrase": r"The maintenance history[^.]*\."},
 }
+
+#: The six-scenario evidence-dependency pilot. Apparatus validation, not a
+#: powered benchmark: 6 scenarios x 2 competence arms cannot resolve a 10 pp
+#: effect (see evaluation.paired_stats.min_pairs_for_effect).
+PILOT_SCENARIOS = ("R009", "R015", "R055", "R056", "R057", "R058")
 
 _REDACTED = "[WITHHELD]"
 
@@ -224,15 +244,29 @@ def reconstructible(payload: Dict[str, Any], quantities: Sequence[str]) -> List[
 
 
 def withheld_quantities(scenario_id: str, arm: ArmSpec) -> List[str]:
-    """Literal strings that must not survive redaction under this arm."""
+    """Literal strings that must not survive redaction under this arm.
+
+    Derived by matching the redaction pattern against the *unredacted question*
+    and taking what it actually matched, not by parsing the pattern itself. The
+    earlier version scanned the pattern text for a number, so ``1\\.02`` yielded
+    ``"1"`` — a string that appears all over any payload and produced a spurious
+    leak report for R056.
+
+    Numbers shorter than two characters are dropped: a bare digit cannot be
+    distinguished from incidental text and would make the check fire constantly.
+    """
     meta = SCENARIOS[scenario_id]
     out: List[str] = []
-    if "digital" in arm.withheld_evidence and meta.get("iot_phrase"):
-        # The bare number, as it appears in prose.
-        m = re.search(r"(\d+(?:\.\d+)?)", meta["iot_phrase"])
-        if m:
-            out.append(m.group(1))
-    return out
+    pattern = meta.get("iot_phrase")
+    if "digital" not in arm.withheld_evidence or not pattern:
+        return out
+    m = re.search(pattern, question_text(scenario_id), flags=re.I)
+    if not m:
+        return out
+    matched = m.group(0)
+    out.append(matched.strip())
+    out += [n for n in re.findall(r"\d+(?:\.\d+)?", matched) if len(n) >= 2]
+    return sorted(set(out))
 
 
 def all_specs() -> List[ArmSpec]:

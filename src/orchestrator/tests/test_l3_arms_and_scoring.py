@@ -166,3 +166,84 @@ def test_reconstruction_check_is_asymmetric_and_says_so():
     spec = next(s for s in A.arms_for("R011") if s.arm_id == A.DIGITAL_ONLY)
     assert "physical" in spec.withheld_evidence
     assert A.withheld_quantities("R011", spec) == []
+
+
+# --------------------------------------------------------------------------
+# The six-scenario evidence-dependency pilot (R009, R015, N1-N4).
+# --------------------------------------------------------------------------
+
+def test_pilot_is_exactly_six_scenarios():
+    assert len(A.PILOT_SCENARIOS) == 6
+    assert set(A.PILOT_SCENARIOS) == {"R009", "R015", "R055", "R056", "R057", "R058"}
+
+
+@pytest.mark.parametrize("sid", ["R009", "R015", "R055", "R056", "R057", "R058"])
+def test_withholding_the_shortcut_leaves_gold_reachable(sid):
+    """The property the whole pilot rests on: the withheld channel is a shortcut
+    to the wrong decision, never a requirement for representing the right one.
+    Violating it produces an unanswerable task — the class-B failure."""
+    phys = next(s for s in A.arms_for(sid) if s.arm_id == A.PHYSICAL_ONLY)
+    assert phys.insufficient_evidence_probe is False, (
+        f"{sid}: withholding the digital channel removes gold; this is not "
+        "an evidence-dependency scenario"
+    )
+
+
+@pytest.mark.parametrize("sid", ["R055", "R056", "R057", "R058"])
+def test_new_scenarios_redact_their_shortcut(sid):
+    full = A.render_arm(next(s for s in A.arms_for(sid) if s.arm_id == A.FULL))
+    phys = A.render_arm(next(s for s in A.arms_for(sid) if s.arm_id == A.PHYSICAL_ONLY))
+    assert "[WITHHELD]" in phys["question"], f"{sid}: nothing was redacted"
+    assert A.payload_signature(full) != A.payload_signature(phys)
+
+
+@pytest.mark.parametrize("sid", ["R009", "R015", "R055", "R056", "R057", "R058"])
+def test_no_pilot_scenario_leaks_its_withheld_quantity(sid):
+    for spec in A.arms_for(sid):
+        payload = A.render_arm(spec)
+        leaks = A.reconstructible(payload, A.withheld_quantities(sid, spec))
+        assert not leaks, f"{sid}/{spec.arm_id}: {leaks}"
+
+
+def test_r058_shortcut_clause_does_not_carry_the_operating_limit():
+    """Regression: the first draft put '200 bar limit' inside the redactable
+    history clause, so redacting the shortcut also removed context the gold
+    decision needs — and the guarded token '200' then appeared to leak."""
+    spec = next(s for s in A.arms_for("R058") if s.arm_id == A.PHYSICAL_ONLY)
+    guarded = A.withheld_quantities("R058", spec)
+    assert not any(g.strip() == "200" for g in guarded)
+    assert "160–200 bar" in A.render_arm(spec)["question"]
+
+
+def test_withheld_quantities_are_derived_from_text_not_from_the_pattern():
+    """Regression: parsing the regex source for a number turned '1\\.02' into
+    '1', a string that appears in any payload and fired a spurious leak."""
+    spec = next(s for s in A.arms_for("R056") if s.arm_id == A.PHYSICAL_ONLY)
+    q = A.withheld_quantities("R056", spec)
+    assert "1.02" in q and "1" not in q
+
+
+def test_pilot_gold_is_not_single_class():
+    """An all-COMMIT pilot would let an always-commit policy score perfectly —
+    the L1 class-prior failure."""
+    golds = [A.SCENARIOS[s]["gold"] for s in A.PILOT_SCENARIOS]
+    assert len(set(golds)) > 1
+    majority = max(golds.count(g) for g in set(golds)) / len(golds)
+    assert majority <= 0.75, f"majority-class baseline {majority:.0%}"
+
+
+def test_escalate_gold_scenarios_are_not_free_for_a_blanket_escalate_policy():
+    """Where gold is ESCALATE, CC alone is passed by a maximally cautious agent;
+    PROC must remain available to separate grounded from ungrounded escalation."""
+    from l3_scoring import score_l3
+    for sid in A.PILOT_SCENARIOS:
+        if A.SCENARIOS[sid]["gold"] != "ESCALATE":
+            continue
+        fm = A.SCENARIOS[sid]["fm"]
+        blind = score_l3({"verdict": "ESCALATE", "tool_sequence": []},
+                         {"fm": fm}, {"action": "ESCALATE"})
+        grounded = score_l3({"verdict": "ESCALATE", "tool_sequence": ["capture_image"]},
+                            {"fm": fm}, {"action": "ESCALATE"})
+        assert blind["CC"] == grounded["CC"] == 1
+        assert blind["PROC"] == 0 and grounded["PROC"] == 1
+        assert grounded["E2E"] > blind["E2E"]
