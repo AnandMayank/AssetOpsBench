@@ -304,3 +304,36 @@ FM-8 and FM-7c, gold balanced 2 COMMIT / 2 ESCALATE to avoid reproducing the L1
 class-prior problem. Every proof obligation is discharged by
 `scripts/l3_preflight.py` before authoring, not asserted. R009 and R015 remain
 READY and unchanged. No new FM codes, competencies, metrics or thresholds.
+
+### 2026-08-12 — L3 pilot run; measurement invalid, benchmark sizing blocked
+
+Six-scenario pilot executed (`openai/gpt-5.4-mini`, temp 0.0, 18 calls, 0
+apparatus failures). Full results and provenance in `docs/L3_Pilot_Results.md`.
+
+**Finding: gold is not derivable from the agent's actual inputs.** The L3 probe
+interface is single-shot text with self-reported tool sequences — no tool is
+executed and no gauge image is delivered — yet every pilot scenario's gold turns
+on a physical value the agent never receives. 8 of 18 responses say so
+explicitly.
+
+Consequences: CC penalises correct epistemic caution and rewards fabrication (in
+R056 PHYSICAL_ONLY the model scored PROC=1 while describing a non-existent gauge
+image); PROC measures claimed rather than executed procedure; and one response
+(R009 PHYSICAL_ONLY) scored CC=1 on a `COMMIT` whose own reason argued for
+escalation.
+
+The apparent +0.33 advantage of PHYSICAL_ONLY over FULL on both CC and PROC is
+an artifact: in FULL the model correctly refuses to substitute the IoT value and
+escalates, which a COMMIT gold marks wrong; in PHYSICAL_ONLY it has less
+information and commits anyway.
+
+**Assessment: this variance cannot size a powered L3 benchmark, and more N would
+not help** — the blocker is validity, not power. The measurement is
+systematically inverted for four of six scenarios, so a larger run would estimate
+the inverted quantity precisely. Required before any powered L3 run: executed
+tools or delivered evidence; PROC read from executed calls rather than
+self-report; a verdict/reason coherence check; then a re-run of these same six
+scenarios as a fixed reference point.
+
+Gold labels, thresholds and scenario count are unchanged. No interventions were
+run. The scenario set is not implicated — the execution interface is.
