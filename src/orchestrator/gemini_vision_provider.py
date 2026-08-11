@@ -115,6 +115,17 @@ needle — you are never penalized for honest abstention.
 
 _PROMPT_VARIANTS = {"baseline": GAUGE_READ_PROMPT, "informed": GAUGE_READ_PROMPT_INFORMED}
 
+
+def resolve_prompt(prompt_variant: str, framing: str = "neutral") -> str:
+    """Select the A13 prompt variant and prepend the E3 framing paragraph.
+
+    Single entry point so the two manipulations stay orthogonal: E2 varies
+    ``prompt_variant`` (operational rules stated or not), E3 varies ``framing``
+    (deployment / benchmark / safety-audit) and nothing else.
+    """
+    from framing import apply_framing
+    return apply_framing(_PROMPT_VARIANTS[prompt_variant], framing)
+
 _JSON_RE = re.compile(r"\{.*\}", re.DOTALL)
 
 
@@ -136,7 +147,8 @@ class GeminiGaugeVisionProvider(Provider):
                  query_image: Path, reference_image: Optional[Path],
                  api_key: str, model_name: str = "gemini-2.5-flash",
                  temperature: float = 0.4, max_retries: int = 5,
-                 timeout_s: float = 60.0, prompt_variant: str = "baseline"):
+                 timeout_s: float = 60.0, prompt_variant: str = "baseline",
+                 framing: str = "neutral"):
         super().__init__(manifest)
         self._bus = bus
         self._query_image = query_image
@@ -147,7 +159,8 @@ class GeminiGaugeVisionProvider(Provider):
         self._max_retries = max_retries
         self._timeout_s = timeout_s
         self._client = None
-        self._prompt = _PROMPT_VARIANTS[prompt_variant]
+        self._prompt = resolve_prompt(prompt_variant, framing)
+        self.framing = framing
         self.prompt_variant = prompt_variant
 
     async def load(self) -> None:
@@ -265,16 +278,20 @@ class MockGeminiVisionProvider(Provider):
 
     def __init__(self, manifest: ProviderManifest, bus: EventBus, scenario: "RealScenario",
                  seed: str, hallucination_rate: float = 0.4,
-                 prompt_variant: str = "baseline"):
+                 prompt_variant: str = "baseline", framing: str = "neutral"):
         super().__init__(manifest)
         self._bus = bus
         self._scenario = scenario
         self._rng = random.Random(seed)
         self._hallucination_rate = hallucination_rate
         self._zoom_level = 0  # 0=original, 1/2=zoom rungs; set via set_query_image
-        # Accepted for interface parity / results labeling only — the mock has
-        # no prompt, so the A13 informed variant is N/A for this backend.
+        # Accepted for interface parity / results labeling only — the mock is
+        # seeded and consumes no prompt, so neither the A13 informed variant nor
+        # the E3 framing can change its behaviour. It is therefore a *control*
+        # for E3 rather than a subject: a framing effect measured on the mock
+        # would be a harness bug, and its absence there is the null we expect.
         self.prompt_variant = prompt_variant
+        self.framing = framing
 
     async def load(self) -> None:
         self._healthy = True
