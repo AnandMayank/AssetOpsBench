@@ -203,3 +203,60 @@ would invalidate comparison with the retained traces.
 **Unaffected.** Read-level behaviour is measured before the gate and is
 unchanged by this: commit-on-GT-unreadable of 0.58/0.64 is a property of the
 model, not the threshold. The read-level channel remains the valid L1 measurement.
+
+### 2026-08-12 — decision: Option 3. Evidence dependency moves to L3; L3 preflight blocks the pilot
+
+**Decision.** Option 3 is adopted. `TAU_COMMIT` is **not** rescaled and no
+artificial committed-reading history is seeded — both would change the apparatus
+and invalidate comparison with the 351 retained traces backing A11/A12.
+
+Consequences, binding on all downstream reporting:
+
+1. The **L1 RGB-only commitment comparison is withdrawn** from every
+   evidence-dependency claim. It is structurally confounded by the fixed
+   `H = 0.50` state acting against a fixed `TAU_COMMIT`, and no result from that
+   arm may be cited as evidence about a model.
+2. The **L1 read-level measurement is retained as valid** — accuracy, F1,
+   commit-rate-on-GT-unreadable and calibration are all computed before the gate
+   and are unaffected by the threshold confound.
+3. The **evidence-dependency experiment moves to L3**, restricted to scenarios
+   whose gold decision causally depends on more than one channel: FM-7
+   (sensor–physical contradiction), FM-5a/5b (safety gate), FM-6/6a/6b
+   (work-order coordination), FM-8 (reasoning without physical verification).
+
+**Preflight, and it blocks the pilot.** A standing rule now applies before any
+modality ablation: prove every arm can express *both* the correct and the
+incorrect action under the fixed verifier/action interface. An arm that cannot
+emit the wrong answer is not measuring competence; one that cannot emit the
+right answer is not measuring anything. `scripts/l3_preflight.py` implements it
+and spends nothing.
+
+Result — **1 of 7 targeted scenarios is runnable**:
+
+| Scenario | FM | Gold | Runner support | Status |
+|---|---|---|---|---|
+| R011 | FM-7a | ESCALATE | yes | **READY** (3/3 arms express all verdicts; gold and non-gold both reachable) |
+| R006 | FM-5a | COMMIT | **no** | BLOCKED |
+| R007 | FM-5b | COMMIT | **no** | BLOCKED |
+| R008 | FM-6 | ESCALATE | **no** | BLOCKED |
+| R009 | FM-6a | COMMIT | **no** | BLOCKED |
+| R010 | FM-6b | ESCALATE | **no** | BLOCKED |
+| R015 | FM-8 | COMMIT | **no** | BLOCKED |
+
+Only `FM-7a`, `FM-14`, `FM-15` and `FM-21` have scoring branches in any runner.
+The six safety-gate, work-order and verification scenarios exist on disk with
+questions and ground truth, but nothing can grade them.
+
+**Scope limit of this preflight, stated so it is not over-read.** It proves the
+*action interface* admits every verdict and discriminates gold from non-gold. It
+does **not** prove arm-specific evidence pipelines are correct, because at L3
+they do not yet exist — `run_fm7_fm15_probe_eval.py` has no modality masking. So
+two things are required before the pilot, and neither is a model run:
+
+- scoring branches for FM-5a/5b, FM-6/6a/6b, FM-8;
+- modality-arm prompt construction at L3 that actually withholds the IoT value
+  or the physical reading, plus a re-run of this preflight against it.
+
+Running R011 alone would be n=1 and cannot support any claim. **No L3 API spend
+is authorised until the preflight reports ≥ 6 ready scenarios.** This is the
+same discipline that would have saved the ~120 calls spent on the L1 arm.
