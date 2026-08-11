@@ -260,3 +260,47 @@ two things are required before the pilot, and neither is a model run:
 Running R011 alone would be n=1 and cannot support any claim. **No L3 API spend
 is authorised until the preflight reports ≥ 6 ready scenarios.** This is the
 same discipline that would have saved the ~120 calls spent on the L1 arm.
+
+### 2026-08-12 — taxonomy correction; L3 scenarios classified; 4 new scenarios proposed
+
+**Taxonomy.** `Scenarios/RobotInspection_Scenarios.csv` has drifted from the
+per-scenario `manifest.json` and `groundtruth.txt`, which agree with each other
+and are authoritative. `scripts/fm_coverage_audit.py` regenerates the matrix.
+
+*`fm_code` wrong for four scenarios:* R005 (CSV FM-5 → **FM-5a**), R006 (FM-5a →
+**FM-5b**), R008 (FM-6 → **FM-5a**), R011 (FM-7 → **FM-7a**).
+
+*`fm_name` disagrees for 48 of 54*, several semantically rather than
+cosmetically: R009 is "Stale Reading Accepted", not "Duplicate WO Never Checked";
+R012 is "Plausible But Wrong Reading", not "Insufficient Readings (N<3)"; R008 is
+"Human Present — Safety Hazard", not "Hold Event Omission". Any analysis keyed on
+the CSV's names has been describing different scenarios from the ones that run.
+
+**Coverage, in three kinds that must not be conflated:**
+
+| Kind | Codes |
+|---|---|
+| family zero-coverage — no scenario, no harness | **FM-13** (improper abort), **FM-20** (CaP-X selection; its only claimed scenario RC003 has no directory) |
+| exact-code zero-coverage — family carried by lettered sub-codes, bare code unimplemented | **FM-5**, **FM-6** (Hold Event Omission), **FM-7** |
+| implemented outside the scenario tree | **FM-12** (stale state), in `agent_rc001_trial.py` as RC001, with archived results |
+
+**Correction to the previous amendment's wording.** It stated FM-6 "has no
+scenario at all". More precisely: the *family* is covered by FM-6a (R009) and
+FM-6b (R010); the **bare code FM-6, a distinct named failure mode, has none**.
+`docs/FM_Crosswalk.md` has been corrected; the frozen contract text above is
+unchanged.
+
+**Classification.** The seven L3 scenarios are not one experimental class
+(`docs/L3_ScenarioClassification.md`): A evidence-dependency (R009, R015) ·
+B insufficient-evidence (R011, R012, R014) · C procedural/tool-ordering (R001,
+R005–R007, R016–R018, R023, R024) · D relational/work-order (R008, R010,
+R021, R022, R025, R026) · E sequential/persistent (R013, R043, R044). Only class
+A supports a modality ablation, because only there is the gold reachable from the
+restricted channel while the withheld channel offers a shortcut. **The ≥6 gate is
+not forced**; classes B–E are different experiments and are not pooled.
+
+**Proposal.** Four new class-A scenarios (N1–N4) on existing FM codes FM-6a,
+FM-8 and FM-7c, gold balanced 2 COMMIT / 2 ESCALATE to avoid reproducing the L1
+class-prior problem. Every proof obligation is discharged by
+`scripts/l3_preflight.py` before authoring, not asserted. R009 and R015 remain
+READY and unchanged. No new FM codes, competencies, metrics or thresholds.
