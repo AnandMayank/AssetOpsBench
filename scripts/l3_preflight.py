@@ -1,31 +1,27 @@
 """l3_preflight.py — Apparatus preflight for the L3 evidence-dependency pilot.
 
 Mandated after the L1 failure. The L1 RGB-only arm was run, analysed and
-committed before anyone checked whether it could emit the action it was being
-scored on: with ``H`` pinned at 0.50, the renormalised composite tops out at
-0.769 against ``TAU_COMMIT = 0.82``, so that arm could never commit and its 0%
-perceive-commit gap measured the threshold rather than the model. ~120 API calls
-bought a number that meant nothing.
+committed before anyone checked whether it could emit the action it was scored
+on: with ``H`` pinned at 0.50 the renormalised composite tops out at 0.769
+against ``TAU_COMMIT = 0.82``, so that arm could never commit and its 0%
+perceive-commit gap measured the threshold rather than the model.
 
-The rule that follows: **before running a modality ablation, prove every arm can
-express both the correct and the incorrect action under the fixed
-verifier/action interface.** An arm that cannot emit the wrong answer is not
-measuring competence, and an arm that cannot emit the right one is not
-measuring anything.
+Five checks, none of which spends anything:
 
-This script checks, per scenario and per modality arm, and spends nothing:
+A. **scorer** — a scoring branch exists for the FM code, discovered from runner
+   source rather than a hardcoded list, so it cannot drift out of date;
+B. **arm rendering** — every declared arm renders an agent-input payload;
+C. **arm difference** — arms differ at the *rendered payload* level, and a
+   withheld quantity cannot be reconstructed from anything still exposed;
+D. **gold discrimination** — gold and at least one non-gold action are both
+   representable, so the arm neither forces nor forbids the right answer;
+E. **capability matrix** — scenario x arm status.
 
-1. *scenario present* — question, groundtruth and manifest resolve;
-2. *runner support* — a scoring branch exists for the FM code, so results can
-   be graded at all;
-3. *gold action recoverable* — the expected verdict parses out of groundtruth;
-4. *expressibility* — every verdict in the action space round-trips through the
-   real ``score()`` without error;
-5. *discrimination* — the gold verdict scores CC=1 and at least one non-gold
-   verdict scores CC=0, so correct and incorrect are both reachable and are
-   told apart.
-
-Exit code is non-zero if any targeted scenario fails, so this gates the pilot.
+A scenario is READY only if all of A-D hold for it and it has at least two
+genuinely differing arms. Arms that make gold unreachable by construction are
+labelled INSUFFICIENT_EVIDENCE_PROBE: legitimate (FM-6a and FM-8 are *about*
+acting without physical evidence) but a different measurement from competence,
+so they are counted separately and never used to reach the readiness gate.
 
 Usage::
 
@@ -44,201 +40,257 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SCEN_ROOT = (REPO_ROOT.parent / "AssetOpsBenchScenarioGeneration" / "RobotInspection")
 sys.path.insert(0, str(REPO_ROOT / "src" / "orchestrator"))
 
-#: The evidence-dependency targets: scenarios whose gold decision causally
-#: depends on more than one channel. Chosen because L1 cannot test the decision
-#: layer at all (V1 evidence contract Sec 0.1).
-TARGETS = [
-    ("R011", "FM-7a", "sensor-physical contradiction", ("rgb", "iot")),
-    ("R006", "FM-5a", "skipped safety gate", ("enterprise",)),
-    ("R007", "FM-5b", "proceeds despite safety_clearance=False", ("enterprise",)),
-    ("R008", "FM-6", "hold event omission", ("enterprise",)),
-    ("R009", "FM-6a", "duplicate WO never checked", ("enterprise",)),
-    ("R010", "FM-6b", "ignored WO similarity recommendation", ("enterprise",)),
-    ("R015", "FM-8", "reasoning without physical verification", ("rgb", "iot")),
-]
+import l3_arms  # noqa: E402
+from l3_arms import (  # noqa: E402
+    ALLOWED_ACTIONS, SCENARIOS, arms_for, payload_signature, reconstructible,
+    render_arm, scenario_dir, withheld_quantities,
+)
 
-#: The fixed action interface. ``COMMIT``/``DISPATCH`` normalise to ``PROCEED``.
-ACTION_SPACE = ("COMMIT", "ESCALATE", "ABORT")
+#: Sources scanned for scoring branches. Adding a module here is the only way to
+#: extend capability; the supported-FM list is never written down directly.
+SCORER_SOURCES = ("run_frm_probe_eval.py", "run_fm7_fm15_probe_eval.py",
+                  "l3_scoring.py")
 
 _GOLD_RE = re.compile(r"Expected verdict:\s*([A-Z_]+)", re.I)
 
-
-@dataclass
-class ArmCheck:
-    arm: str
-    expressible: List[str] = field(default_factory=list)
-    inexpressible: List[str] = field(default_factory=list)
-    gold_reachable: bool = False
-    wrong_reachable: bool = False
-
-    @property
-    def ok(self) -> bool:
-        return (not self.inexpressible) and self.gold_reachable and self.wrong_reachable
+READY = "READY"
+BLOCKED = "BLOCKED"
+INVALID = "INVALID-DESIGN"
+PROBE = "INSUFFICIENT_EVIDENCE_PROBE"
+NA = "N/A-no-ablation"
 
 
 @dataclass
-class ScenarioCheck:
+class ArmResult:
+    arm_id: str
+    rendered: bool = False
+    differs_from_full: Optional[bool] = None
+    reconstructible: List[str] = field(default_factory=list)
+    gold_representable: bool = False
+    nongold_representable: bool = False
+    forces_gold: bool = False
+    probe: bool = False
+    status: str = BLOCKED
+    notes: List[str] = field(default_factory=list)
+
+
+@dataclass
+class ScenarioResult:
     scenario_id: str
     fm: str
-    name: str
-    present: bool = False
-    runner_support: bool = False
-    gold_action: Optional[str] = None
-    arms: List[ArmCheck] = field(default_factory=list)
+    axis: str
+    gold: Optional[str] = None
+    scorer: bool = False
+    scorer_source: str = ""
+    arms: List[ArmResult] = field(default_factory=list)
+    status: str = BLOCKED
     blockers: List[str] = field(default_factory=list)
 
     @property
-    def ok(self) -> bool:
-        return (self.present and self.runner_support and bool(self.gold_action)
-                and bool(self.arms) and all(a.ok for a in self.arms))
+    def measurable_arms(self) -> List[ArmResult]:
+        return [a for a in self.arms if a.status == READY]
 
 
-def _scenario_dir(scenario_id: str) -> Optional[Path]:
-    """R011 -> scenario_R11 (the directories drop the leading zero)."""
-    num = int(scenario_id.lstrip("Rr"))
-    for cand in (SCEN_ROOT / f"scenario_R{num:02d}", SCEN_ROOT / f"scenario_R{num}"):
-        if cand.is_dir():
-            return cand
-    return None
-
-
-def _gold_action(path: Path) -> Optional[str]:
-    m = _GOLD_RE.search(path.read_text(errors="replace"))
-    return m.group(1).upper() if m else None
-
-
-def _scoring_branches() -> Dict[str, str]:
-    """FM codes with a real scoring branch, mapped to the runner providing it.
-
-    Derived from the source rather than hardcoded, so this cannot drift out of
-    date without the preflight noticing.
-    """
+def discover_scorers() -> Dict[str, str]:
+    """FM codes with a real scoring branch -> the module providing it."""
     found: Dict[str, str] = {}
-    for runner in ("run_frm_probe_eval.py", "run_fm7_fm15_probe_eval.py"):
-        src_path = REPO_ROOT / "src" / "orchestrator" / runner
-        if not src_path.exists():
+    for name in SCORER_SOURCES:
+        p = REPO_ROOT / "src" / "orchestrator" / name
+        if not p.exists():
             continue
-        src = src_path.read_text()
+        src = p.read_text()
         for fm in re.findall(r'fm\s*==\s*"(FM-[0-9a-z]+)"', src):
-            found.setdefault(fm, runner)
-        # The trailing else-branch of run_fm7_fm15 handles FM-7a explicitly.
-        if "FM-7a" in src and runner not in found.get("FM-7a", ""):
-            found.setdefault("FM-7a", runner)
+            found.setdefault(fm, name)
+        # FM-7a is the trailing else-branch of run_fm7_fm15_probe_eval.
+        if name == "run_fm7_fm15_probe_eval.py" and "FM-7a" in src:
+            found.setdefault("FM-7a", name)
     return found
 
 
-def _check_arms(fm: str, gold_action: str, channels) -> List[ArmCheck]:
-    """Drive the real scorer with a synthetic response per verdict per arm.
+def _score_fn(fm: str, source: str):
+    if source == "l3_scoring.py":
+        from l3_scoring import score_l3
+        return lambda resp, sc, gold: score_l3(resp, sc, gold)
+    from run_fm7_fm15_probe_eval import score as score_fm7
+    return score_fm7
 
-    Uses the live ``score()`` so the check tracks the scorer rather than a
-    reimplementation of it.
-    """
-    try:
-        from run_fm7_fm15_probe_eval import score as score_fm7
-    except Exception:
-        return []
 
-    arms: List[ArmCheck] = []
-    # "full" plus one single-channel arm per channel the scenario declares.
-    for arm_name in ("full",) + tuple(channels):
-        chk = ArmCheck(arm=arm_name)
-        gold_norm = "PROCEED" if gold_action in ("COMMIT", "DISPATCH") else gold_action
-        for verdict in ACTION_SPACE:
-            resp = {"verdict": verdict, "reason": "preflight probe",
-                    "tool_sequence": ["capture_image", "get_iot_reading"]}
-            try:
-                res = score_fm7(resp, {"fm": fm}, {"action": gold_action})
-                cc = res.get("CC")
-                if cc is None:
-                    raise ValueError("scorer returned no CC")
-                chk.expressible.append(verdict)
+def gold_action(scenario_id: str) -> Optional[str]:
+    d = scenario_dir(scenario_id)
+    if d is None:
+        return None
+    gt = d / "groundtruth.txt"
+    if not gt.exists():
+        return None
+    m = _GOLD_RE.search(gt.read_text(errors="replace"))
+    return m.group(1).upper() if m else None
+
+
+def check_scenario(scenario_id: str, scorers: Dict[str, str]) -> ScenarioResult:
+    meta = SCENARIOS[scenario_id]
+    res = ScenarioResult(scenario_id=scenario_id, fm=meta["fm"], axis=meta["axis"])
+
+    # --- A. scorer -------------------------------------------------------
+    res.scorer_source = scorers.get(res.fm, "")
+    res.scorer = bool(res.scorer_source)
+    if not res.scorer:
+        res.blockers.append(f"no scoring branch for {res.fm} "
+                            f"(supported: {sorted(scorers)})")
+
+    res.gold = gold_action(scenario_id)
+    if not res.gold:
+        res.blockers.append("expected verdict not recoverable from groundtruth.txt")
+
+    specs = arms_for(scenario_id)
+    if meta["axis"] == "procedural":
+        res.blockers.append("procedural axis: gold depends on tool ordering, not on "
+                            "evidence channel — no modality ablation is valid")
+
+    # --- B. rendering, C. difference, D. discrimination ------------------
+    signatures: Dict[str, str] = {}
+    for spec in specs:
+        ar = ArmResult(arm_id=spec.arm_id, probe=spec.insufficient_evidence_probe)
+        try:
+            payload = render_arm(spec)
+            ar.rendered = True
+        except Exception as exc:  # noqa: BLE001
+            ar.notes.append(f"render failed: {type(exc).__name__}: {exc}")
+            res.arms.append(ar)
+            continue
+
+        sig = payload_signature(payload)
+        signatures[spec.arm_id] = sig
+        if spec.arm_id != l3_arms.FULL and l3_arms.FULL in signatures:
+            ar.differs_from_full = sig != signatures[l3_arms.FULL]
+            if not ar.differs_from_full:
+                ar.notes.append("payload identical to FULL — arm is cosmetic")
+
+        leaks = reconstructible(payload, withheld_quantities(scenario_id, spec))
+        ar.reconstructible = leaks
+        if leaks:
+            ar.notes.append(f"withheld value still recoverable: {leaks}")
+
+        if res.scorer and res.gold:
+            fn = _score_fn(res.fm, res.scorer_source)
+            gold_norm = "PROCEED" if res.gold in ("COMMIT", "DISPATCH") else res.gold
+            for verdict in ALLOWED_ACTIONS:
+                resp = {"verdict": verdict, "reason": "preflight probe",
+                        "tool_sequence": ["get_pose", "open_panel", "capture_image",
+                                          "get_work_orders", "get_similar_work_orders",
+                                          "read_gauge"]}
+                try:
+                    cc = fn(resp, {"fm": res.fm}, {"action": res.gold}).get("CC")
+                except Exception as exc:  # noqa: BLE001
+                    ar.notes.append(f"{verdict} unscoreable: {type(exc).__name__}")
+                    continue
                 norm = "PROCEED" if verdict in ("COMMIT", "DISPATCH") else verdict
                 if norm == gold_norm and cc == 1:
-                    chk.gold_reachable = True
+                    ar.gold_representable = True
                 if norm != gold_norm and cc == 0:
-                    chk.wrong_reachable = True
-            except Exception as exc:  # noqa: BLE001 - report, do not raise
-                chk.inexpressible.append(f"{verdict}: {type(exc).__name__}: {exc}")
-        arms.append(chk)
-    return arms
+                    ar.nongold_representable = True
+            ar.forces_gold = ar.gold_representable and not ar.nongold_representable
 
+        # --- status ------------------------------------------------------
+        if not ar.rendered or ar.reconstructible:
+            ar.status = INVALID
+        elif ar.differs_from_full is False:
+            ar.status = INVALID
+        elif meta["axis"] == "procedural":
+            ar.status = NA
+        elif ar.probe:
+            ar.status = PROBE
+        elif ar.gold_representable and ar.nongold_representable:
+            ar.status = READY
+        else:
+            ar.status = BLOCKED
+            if not ar.gold_representable:
+                ar.notes.append("gold action not representable")
+            if not ar.nongold_representable:
+                ar.notes.append("no non-gold action representable — forces gold")
+        res.arms.append(ar)
 
-def run_preflight() -> List[ScenarioCheck]:
-    branches = _scoring_branches()
-    out: List[ScenarioCheck] = []
-    for sid, fm, name, channels in TARGETS:
-        chk = ScenarioCheck(scenario_id=sid, fm=fm, name=name)
-        d = _scenario_dir(sid)
-        if d is None:
-            chk.blockers.append("scenario directory not found")
-            out.append(chk)
-            continue
-        chk.present = True
-
-        gt = d / "groundtruth.txt"
-        if gt.exists():
-            chk.gold_action = _gold_action(gt)
-        if not chk.gold_action:
-            chk.blockers.append("expected verdict not recoverable from groundtruth.txt")
-
-        chk.runner_support = fm in branches
-        if not chk.runner_support:
-            chk.blockers.append(
-                f"no scoring branch for {fm} in any runner "
-                f"(supported: {sorted(branches)})")
-
-        if chk.runner_support and chk.gold_action:
-            chk.arms = _check_arms(fm, chk.gold_action, channels)
-            for a in chk.arms:
-                if a.inexpressible:
-                    chk.blockers.append(f"arm {a.arm}: inexpressible {a.inexpressible}")
-                elif not a.gold_reachable:
-                    chk.blockers.append(f"arm {a.arm}: gold action unreachable")
-                elif not a.wrong_reachable:
-                    chk.blockers.append(f"arm {a.arm}: incorrect action unreachable "
-                                        "- cannot measure competence")
-        out.append(chk)
-    return out
+    # --- scenario verdict ------------------------------------------------
+    invalid = [a for a in res.arms if a.status == INVALID]
+    if invalid:
+        res.status = INVALID
+        res.blockers += [f"arm {a.arm_id}: {'; '.join(a.notes)}" for a in invalid]
+    elif meta["axis"] == "procedural":
+        res.status = NA
+    elif res.blockers:
+        res.status = BLOCKED
+    elif len(res.measurable_arms) >= 2:
+        res.status = READY
+    else:
+        res.status = BLOCKED
+        res.blockers.append(
+            f"needs >=2 measurable arms, has {len(res.measurable_arms)} "
+            f"({[a.arm_id for a in res.arms if a.status == PROBE]} are "
+            "insufficient-evidence probes, not competence measurements)")
+    return res
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--json", type=Path, default=REPO_ROOT / "reports" / "v1"
-                    / "l3_preflight.json")
+    ap.add_argument("--json", type=Path,
+                    default=REPO_ROOT / "reports" / "v1" / "l3_preflight.json")
+    ap.add_argument("--gate", type=int, default=6,
+                    help="minimum READY scenarios before API spend is authorised")
     args = ap.parse_args()
 
-    checks = run_preflight()
-    print(f"{'scenario':9s} {'FM':7s} {'present':8s} {'runner':7s} {'gold':9s} "
-          f"{'arms ok':8s} status")
-    print("-" * 78)
-    for c in checks:
-        arms = (f"{sum(1 for a in c.arms if a.ok)}/{len(c.arms)}" if c.arms else "-")
-        print(f"{c.scenario_id:9s} {c.fm:7s} {'yes' if c.present else 'NO':8s} "
-              f"{'yes' if c.runner_support else 'NO':7s} {str(c.gold_action or '-'):9s} "
-              f"{arms:8s} {'READY' if c.ok else 'BLOCKED'}")
+    scorers = discover_scorers()
+    results = [check_scenario(sid, scorers) for sid in SCENARIOS]
 
-    blocked = [c for c in checks if not c.ok]
+    print(f"scoring branches discovered: {sorted(scorers)}\n")
+    hdr = (f"{'Scen':5s} {'FM':6s} {'Gold':9s} {'FULL':6s} {'PHYS':6s} {'DIGI':6s} "
+           f"{'ENT-':6s} {'Scor':5s} {'Diff':5s} {'Gold':5s} {'NonG':5s} Status")
+    print(hdr)
+    print("-" * len(hdr))
+    short = {READY: "ok", BLOCKED: "--", INVALID: "XX", PROBE: "probe", NA: "n/a"}
+    for r in results:
+        by = {a.arm_id: a for a in r.arms}
+        def cell(name):
+            a = by.get(name)
+            return short.get(a.status, "?") if a else "-"
+        any_arm = next((a for a in r.arms if a.arm_id == l3_arms.FULL), None)
+        diff = "yes" if any(a.differs_from_full for a in r.arms
+                            if a.differs_from_full is not None) else "-"
+        print(f"{r.scenario_id:5s} {r.fm:6s} {str(r.gold):9s} "
+              f"{cell('FULL'):6s} {cell('PHYSICAL_ONLY'):6s} {cell('DIGITAL_ONLY'):6s} "
+              f"{cell('NO_ENTERPRISE'):6s} "
+              f"{'yes' if r.scorer else 'NO':5s} {diff:5s} "
+              f"{'yes' if any_arm and any_arm.gold_representable else '-':5s} "
+              f"{'yes' if any_arm and any_arm.nongold_representable else '-':5s} "
+              f"{r.status}")
+
+    ready = [r.scenario_id for r in results if r.status == READY]
+    blocked = [r for r in results if r.status not in (READY,)]
     if blocked:
-        print("\nBLOCKERS")
-        for c in blocked:
-            for b in c.blockers:
-                print(f"  {c.scenario_id} [{c.fm}]: {b}")
+        print("\nBLOCKERS / NOTES")
+        for r in blocked:
+            for b in r.blockers:
+                print(f"  {r.scenario_id} [{r.fm}] {r.status}: {b}")
 
-    ready = [c.scenario_id for c in checks if c.ok]
-    print(f"\nready: {len(ready)}/{len(checks)}  {ready}")
+    print(f"\nREADY: {len(ready)}/{len(results)}  {ready}")
+    gate_ok = len(ready) >= args.gate
+    print(f"gate (>= {args.gate} READY): {'PASS' if gate_ok else 'FAIL'} "
+          f"— API spend {'authorised' if gate_ok else 'NOT authorised'}")
 
     args.json.parent.mkdir(parents=True, exist_ok=True)
-    args.json.write_text(json.dumps(
-        {"schema": "assetops.l3_preflight/1",
-         "action_space": list(ACTION_SPACE),
-         "ready": ready,
-         "checks": [asdict(c) for c in checks]}, indent=2) + "\n")
+    args.json.write_text(json.dumps({
+        "schema": "assetops.l3_preflight/2",
+        "action_space": list(ALLOWED_ACTIONS),
+        "scoring_branches": scorers,
+        "gate": args.gate,
+        "ready": ready,
+        "gate_pass": gate_ok,
+        "arm_manifest": l3_arms.manifest(),
+        "results": [asdict(r) for r in results],
+    }, indent=2) + "\n")
     print(f"-> {args.json}")
-    return 0 if not blocked else 1
+    return 0 if gate_ok else 1
 
 
 if __name__ == "__main__":

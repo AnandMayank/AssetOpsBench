@@ -1,129 +1,761 @@
 {
-  "schema": "assetops.l3_preflight/1",
+  "schema": "assetops.l3_preflight/2",
   "action_space": [
     "COMMIT",
     "ESCALATE",
     "ABORT"
   ],
+  "scoring_branches": {
+    "FM-21": "run_frm_probe_eval.py",
+    "FM-14": "run_frm_probe_eval.py",
+    "FM-15": "run_fm7_fm15_probe_eval.py",
+    "FM-7a": "run_fm7_fm15_probe_eval.py",
+    "FM-5a": "l3_scoring.py",
+    "FM-5b": "l3_scoring.py",
+    "FM-6a": "l3_scoring.py",
+    "FM-6b": "l3_scoring.py",
+    "FM-8": "l3_scoring.py"
+  },
+  "gate": 6,
   "ready": [
-    "R011"
+    "R009",
+    "R015"
   ],
-  "checks": [
-    {
-      "scenario_id": "R011",
-      "fm": "FM-7a",
-      "name": "sensor-physical contradiction",
-      "present": true,
-      "runner_support": true,
-      "gold_action": "ESCALATE",
-      "arms": [
-        {
-          "arm": "full",
-          "expressible": [
-            "COMMIT",
-            "ESCALATE",
-            "ABORT"
-          ],
-          "inexpressible": [],
-          "gold_reachable": true,
-          "wrong_reachable": true
-        },
-        {
-          "arm": "rgb",
-          "expressible": [
-            "COMMIT",
-            "ESCALATE",
-            "ABORT"
-          ],
-          "inexpressible": [],
-          "gold_reachable": true,
-          "wrong_reachable": true
-        },
-        {
-          "arm": "iot",
-          "expressible": [
-            "COMMIT",
-            "ESCALATE",
-            "ABORT"
-          ],
-          "inexpressible": [],
-          "gold_reachable": true,
-          "wrong_reachable": true
-        }
-      ],
-      "blockers": []
-    },
+  "gate_pass": false,
+  "arm_manifest": {
+    "schema": "assetops.l3_arms/1",
+    "allowed_action_set": [
+      "COMMIT",
+      "ESCALATE",
+      "ABORT"
+    ],
+    "fm_code_source": "manifest.json + groundtruth.txt (scenario CSV disagrees for R006, R008, R011 and is not used)",
+    "arms": [
+      {
+        "scenario_id": "R006",
+        "fm": "FM-5b",
+        "arm_id": "FULL",
+        "available_evidence": [
+          "physical"
+        ],
+        "withheld_evidence": [],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "tool_ordering"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(motor_01)"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "procedural"
+      },
+      {
+        "scenario_id": "R007",
+        "fm": "FM-5b",
+        "arm_id": "FULL",
+        "available_evidence": [
+          "physical"
+        ],
+        "withheld_evidence": [],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "tool_ordering"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(hydraulic_pump_1)"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "procedural"
+      },
+      {
+        "scenario_id": "R008",
+        "fm": "FM-5a",
+        "arm_id": "FULL",
+        "available_evidence": [
+          "physical",
+          "enterprise"
+        ],
+        "withheld_evidence": [],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "enterprise"
+        ],
+        "expected_gold_action": "ESCALATE",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(metro_pump_1)",
+          "shared/work_order/workorders.csv"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "enterprise"
+      },
+      {
+        "scenario_id": "R008",
+        "fm": "FM-5a",
+        "arm_id": "NO_ENTERPRISE",
+        "available_evidence": [
+          "physical"
+        ],
+        "withheld_evidence": [
+          "enterprise"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "enterprise"
+        ],
+        "expected_gold_action": "ESCALATE",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(metro_pump_1)"
+        ],
+        "insufficient_evidence_probe": true,
+        "axis": "enterprise"
+      },
+      {
+        "scenario_id": "R009",
+        "fm": "FM-6a",
+        "arm_id": "FULL",
+        "available_evidence": [
+          "physical",
+          "digital"
+        ],
+        "withheld_evidence": [],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "physical",
+          "digital"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(chiller_6)",
+          "shared/iot/chiller_6.json"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R009",
+        "fm": "FM-6a",
+        "arm_id": "PHYSICAL_ONLY",
+        "available_evidence": [
+          "physical"
+        ],
+        "withheld_evidence": [
+          "digital"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "physical"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(chiller_6)"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R009",
+        "fm": "FM-6a",
+        "arm_id": "DIGITAL_ONLY",
+        "available_evidence": [
+          "digital"
+        ],
+        "withheld_evidence": [
+          "physical"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "digital"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "shared/iot/chiller_6.json"
+        ],
+        "insufficient_evidence_probe": true,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R010",
+        "fm": "FM-6b",
+        "arm_id": "FULL",
+        "available_evidence": [
+          "physical",
+          "enterprise"
+        ],
+        "withheld_evidence": [],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "enterprise"
+        ],
+        "expected_gold_action": "ESCALATE",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(motor_01)",
+          "shared/work_order/workorders.csv"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "enterprise"
+      },
+      {
+        "scenario_id": "R010",
+        "fm": "FM-6b",
+        "arm_id": "NO_ENTERPRISE",
+        "available_evidence": [
+          "physical"
+        ],
+        "withheld_evidence": [
+          "enterprise"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "enterprise"
+        ],
+        "expected_gold_action": "ESCALATE",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(motor_01)"
+        ],
+        "insufficient_evidence_probe": true,
+        "axis": "enterprise"
+      },
+      {
+        "scenario_id": "R011",
+        "fm": "FM-7a",
+        "arm_id": "FULL",
+        "available_evidence": [
+          "physical",
+          "digital"
+        ],
+        "withheld_evidence": [],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "physical",
+          "digital"
+        ],
+        "expected_gold_action": "ESCALATE",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(hydraulic_pump_1)",
+          "shared/iot/hydraulic_pump_1.json"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R011",
+        "fm": "FM-7a",
+        "arm_id": "PHYSICAL_ONLY",
+        "available_evidence": [
+          "physical"
+        ],
+        "withheld_evidence": [
+          "digital"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "physical"
+        ],
+        "expected_gold_action": "ESCALATE",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(hydraulic_pump_1)"
+        ],
+        "insufficient_evidence_probe": true,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R011",
+        "fm": "FM-7a",
+        "arm_id": "DIGITAL_ONLY",
+        "available_evidence": [
+          "digital"
+        ],
+        "withheld_evidence": [
+          "physical"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "digital"
+        ],
+        "expected_gold_action": "ESCALATE",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "shared/iot/hydraulic_pump_1.json"
+        ],
+        "insufficient_evidence_probe": true,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R015",
+        "fm": "FM-8",
+        "arm_id": "FULL",
+        "available_evidence": [
+          "physical",
+          "digital"
+        ],
+        "withheld_evidence": [],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "physical",
+          "digital"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(chiller_6)",
+          "shared/iot/chiller_6.json"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R015",
+        "fm": "FM-8",
+        "arm_id": "PHYSICAL_ONLY",
+        "available_evidence": [
+          "physical"
+        ],
+        "withheld_evidence": [
+          "digital"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "physical"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "capture_image(chiller_6)"
+        ],
+        "insufficient_evidence_probe": false,
+        "axis": "physical_vs_digital"
+      },
+      {
+        "scenario_id": "R015",
+        "fm": "FM-8",
+        "arm_id": "DIGITAL_ONLY",
+        "available_evidence": [
+          "digital"
+        ],
+        "withheld_evidence": [
+          "physical"
+        ],
+        "intended_evidence": [
+          "physical",
+          "digital",
+          "enterprise"
+        ],
+        "necessary_evidence": [
+          "digital"
+        ],
+        "expected_gold_action": "COMMIT",
+        "allowed_action_set": [
+          "COMMIT",
+          "ESCALATE",
+          "ABORT"
+        ],
+        "evidence_source_ids": [
+          "shared/iot/chiller_6.json"
+        ],
+        "insufficient_evidence_probe": true,
+        "axis": "physical_vs_digital"
+      }
+    ]
+  },
+  "results": [
     {
       "scenario_id": "R006",
-      "fm": "FM-5a",
-      "name": "skipped safety gate",
-      "present": true,
-      "runner_support": false,
-      "gold_action": "COMMIT",
-      "arms": [],
+      "fm": "FM-5b",
+      "axis": "procedural",
+      "gold": "COMMIT",
+      "scorer": true,
+      "scorer_source": "l3_scoring.py",
+      "arms": [
+        {
+          "arm_id": "FULL",
+          "rendered": true,
+          "differs_from_full": null,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "N/A-no-ablation",
+          "notes": []
+        }
+      ],
+      "status": "N/A-no-ablation",
       "blockers": [
-        "no scoring branch for FM-5a in any runner (supported: ['FM-14', 'FM-15', 'FM-21', 'FM-7a'])"
+        "procedural axis: gold depends on tool ordering, not on evidence channel \u2014 no modality ablation is valid"
       ]
     },
     {
       "scenario_id": "R007",
       "fm": "FM-5b",
-      "name": "proceeds despite safety_clearance=False",
-      "present": true,
-      "runner_support": false,
-      "gold_action": "COMMIT",
-      "arms": [],
+      "axis": "procedural",
+      "gold": "COMMIT",
+      "scorer": true,
+      "scorer_source": "l3_scoring.py",
+      "arms": [
+        {
+          "arm_id": "FULL",
+          "rendered": true,
+          "differs_from_full": null,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "N/A-no-ablation",
+          "notes": []
+        }
+      ],
+      "status": "N/A-no-ablation",
       "blockers": [
-        "no scoring branch for FM-5b in any runner (supported: ['FM-14', 'FM-15', 'FM-21', 'FM-7a'])"
+        "procedural axis: gold depends on tool ordering, not on evidence channel \u2014 no modality ablation is valid"
       ]
     },
     {
       "scenario_id": "R008",
-      "fm": "FM-6",
-      "name": "hold event omission",
-      "present": true,
-      "runner_support": false,
-      "gold_action": "ESCALATE",
-      "arms": [],
+      "fm": "FM-5a",
+      "axis": "enterprise",
+      "gold": "ESCALATE",
+      "scorer": true,
+      "scorer_source": "l3_scoring.py",
+      "arms": [
+        {
+          "arm_id": "FULL",
+          "rendered": true,
+          "differs_from_full": null,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "READY",
+          "notes": []
+        },
+        {
+          "arm_id": "NO_ENTERPRISE",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": true,
+          "status": "INSUFFICIENT_EVIDENCE_PROBE",
+          "notes": []
+        }
+      ],
+      "status": "BLOCKED",
       "blockers": [
-        "no scoring branch for FM-6 in any runner (supported: ['FM-14', 'FM-15', 'FM-21', 'FM-7a'])"
+        "needs >=2 measurable arms, has 1 (['NO_ENTERPRISE'] are insufficient-evidence probes, not competence measurements)"
       ]
     },
     {
       "scenario_id": "R009",
       "fm": "FM-6a",
-      "name": "duplicate WO never checked",
-      "present": true,
-      "runner_support": false,
-      "gold_action": "COMMIT",
-      "arms": [],
-      "blockers": [
-        "no scoring branch for FM-6a in any runner (supported: ['FM-14', 'FM-15', 'FM-21', 'FM-7a'])"
-      ]
+      "axis": "physical_vs_digital",
+      "gold": "COMMIT",
+      "scorer": true,
+      "scorer_source": "l3_scoring.py",
+      "arms": [
+        {
+          "arm_id": "FULL",
+          "rendered": true,
+          "differs_from_full": null,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "READY",
+          "notes": []
+        },
+        {
+          "arm_id": "PHYSICAL_ONLY",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "READY",
+          "notes": []
+        },
+        {
+          "arm_id": "DIGITAL_ONLY",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": true,
+          "status": "INSUFFICIENT_EVIDENCE_PROBE",
+          "notes": []
+        }
+      ],
+      "status": "READY",
+      "blockers": []
     },
     {
       "scenario_id": "R010",
       "fm": "FM-6b",
-      "name": "ignored WO similarity recommendation",
-      "present": true,
-      "runner_support": false,
-      "gold_action": "ESCALATE",
-      "arms": [],
+      "axis": "enterprise",
+      "gold": "ESCALATE",
+      "scorer": true,
+      "scorer_source": "l3_scoring.py",
+      "arms": [
+        {
+          "arm_id": "FULL",
+          "rendered": true,
+          "differs_from_full": null,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "READY",
+          "notes": []
+        },
+        {
+          "arm_id": "NO_ENTERPRISE",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": true,
+          "status": "INSUFFICIENT_EVIDENCE_PROBE",
+          "notes": []
+        }
+      ],
+      "status": "BLOCKED",
       "blockers": [
-        "no scoring branch for FM-6b in any runner (supported: ['FM-14', 'FM-15', 'FM-21', 'FM-7a'])"
+        "needs >=2 measurable arms, has 1 (['NO_ENTERPRISE'] are insufficient-evidence probes, not competence measurements)"
+      ]
+    },
+    {
+      "scenario_id": "R011",
+      "fm": "FM-7a",
+      "axis": "physical_vs_digital",
+      "gold": "ESCALATE",
+      "scorer": true,
+      "scorer_source": "run_fm7_fm15_probe_eval.py",
+      "arms": [
+        {
+          "arm_id": "FULL",
+          "rendered": true,
+          "differs_from_full": null,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "READY",
+          "notes": []
+        },
+        {
+          "arm_id": "PHYSICAL_ONLY",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": true,
+          "status": "INSUFFICIENT_EVIDENCE_PROBE",
+          "notes": []
+        },
+        {
+          "arm_id": "DIGITAL_ONLY",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": true,
+          "status": "INSUFFICIENT_EVIDENCE_PROBE",
+          "notes": []
+        }
+      ],
+      "status": "BLOCKED",
+      "blockers": [
+        "needs >=2 measurable arms, has 1 (['PHYSICAL_ONLY', 'DIGITAL_ONLY'] are insufficient-evidence probes, not competence measurements)"
       ]
     },
     {
       "scenario_id": "R015",
       "fm": "FM-8",
-      "name": "reasoning without physical verification",
-      "present": true,
-      "runner_support": false,
-      "gold_action": "COMMIT",
-      "arms": [],
-      "blockers": [
-        "no scoring branch for FM-8 in any runner (supported: ['FM-14', 'FM-15', 'FM-21', 'FM-7a'])"
-      ]
+      "axis": "physical_vs_digital",
+      "gold": "COMMIT",
+      "scorer": true,
+      "scorer_source": "l3_scoring.py",
+      "arms": [
+        {
+          "arm_id": "FULL",
+          "rendered": true,
+          "differs_from_full": null,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "READY",
+          "notes": []
+        },
+        {
+          "arm_id": "PHYSICAL_ONLY",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": false,
+          "status": "READY",
+          "notes": []
+        },
+        {
+          "arm_id": "DIGITAL_ONLY",
+          "rendered": true,
+          "differs_from_full": true,
+          "reconstructible": [],
+          "gold_representable": true,
+          "nongold_representable": true,
+          "forces_gold": false,
+          "probe": true,
+          "status": "INSUFFICIENT_EVIDENCE_PROBE",
+          "notes": []
+        }
+      ],
+      "status": "READY",
+      "blockers": []
     }
   ]
 }
