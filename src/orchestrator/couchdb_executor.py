@@ -38,6 +38,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "src" / "servers" / "robot"))
 sys.path.insert(0, str(REPO_ROOT / "src" / "orchestrator"))
 
+from scenario_gen import to_enterprise_payload as G_to_enterprise  # noqa: E402
+from scenario_gen import to_iot_payload as G_to_iot  # noqa: E402
 from tool_executor import (  # noqa: E402
     STATUS_FAILED, STATUS_SUCCESS, STATUS_UNAVAILABLE, TOOL_MODALITY,
     ToolCall, ToolResult, mask_tools, observation_id, png_to_b64, render_gauge,
@@ -89,6 +91,7 @@ class CouchDBExecutor:
         self.arm_id: Optional[str] = None
         self._withheld: List[str] = []
         self._delivered: Dict[str, Dict[str, Any]] = {}
+        self._world = None   # set by reset_from_world
 
     # ------------------------------------------------------------------ setup
 
@@ -119,6 +122,34 @@ class CouchDBExecutor:
         import random
         self._robot._rng = random.Random(hash((scenario_id, arm_id, seed)) & 0xFFFF)
 
+    def reset_from_world(self, world, arm_id: str, seed: int = 0,
+                         withheld: Optional[List[str]] = None) -> None:
+        """Establish hidden state from a generated ``WorldState`` (P0).
+
+        The world-first counterpart of ``reset``: instead of looking a scenario
+        up in the hand-written ``SCENARIO_PHYSICAL`` table, the physical value,
+        band, telemetry and enterprise state all come from a world that was
+        sampled before any label existed. The executor never sees the label.
+        """
+        import scenario_gen as G
+
+        self.scenario_id, self.arm_id = world.scenario_id, arm_id
+        self._withheld = list(withheld or [])
+        self._delivered = {}
+        self._world = world
+
+        db = getattr(self._robot, "db", None)
+        if db is None:
+            raise RuntimeError("CouchDB unavailable - cannot establish hidden state")
+        key = f"profile:{world.asset}"
+        doc = db.get(key)
+        doc.update(G.to_couch_profile(world))
+        db.save(doc)
+
+        import random
+        self._robot._rng = random.Random(
+            hash((world.scenario_id, arm_id, seed)) & 0xFFFF)
+
     def available_tools(self) -> List[str]:
         return mask_tools(TOOLSET, self._withheld)
 
@@ -144,7 +175,13 @@ class CouchDBExecutor:
                          f"({modality} channel withheld)")
             return res
 
-        phys = SCENARIO_PHYSICAL[self.scenario_id]
+        world = getattr(self, "_world", None)
+        if world is not None:
+            phys = {"asset": world.asset, "value": world.physical_value,
+                    "unit": world.unit, "range": list(world.gauge_range),
+                    "band": list(world.operating_band)}
+        else:
+            phys = SCENARIO_PHYSICAL[self.scenario_id]
         asset = phys["asset"]
         try:
             res.executed = True
@@ -173,10 +210,13 @@ class CouchDBExecutor:
             elif tool in ("read_iot", "get_asset_state", "get_work_order"):
                 res.status = STATUS_SUCCESS
                 if tool == "read_iot":
-                    res.payload = dict(SCENARIO_DIGITAL[self.scenario_id])
+                    res.payload = (G_to_iot(world) if world is not None
+                                   else dict(SCENARIO_DIGITAL[self.scenario_id]))
                 elif tool == "get_asset_state":
                     res.payload = {"asset_id": asset, "operating_band": phys["band"],
                                    "gauge_range": phys["range"], "unit": phys["unit"]}
+                elif world is not None:
+                    res.payload = G_to_enterprise(world)
                 else:
                     out = self._robot.check_wo_similarity(asset_id=asset,
                                                           failure_description="inspection")

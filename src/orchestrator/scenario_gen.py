@@ -230,3 +230,78 @@ def check_generator_contract(sampler: Callable = sample_world) -> List[str]:
         if token in src:
             violations.append(f"{sampler.__name__} references verdict {token!r}")
     return violations
+
+
+# --------------------------------------------------------------------------
+# Projection into the executor (P0)
+# --------------------------------------------------------------------------
+
+#: Fields a rendered question must never contain, because stating them would
+#: let an agent reach gold without acquiring evidence.
+LEAKY_QUESTION_FIELDS = ("physical_value", "technician_present", "active_work_order")
+
+
+def render_question(world: WorldState) -> str:
+    """Render the agent-visible task from a WorldState.
+
+    Receives no label and cannot see one. Two omissions are deliberate:
+
+    Three omissions, all deliberate:
+
+    * the **physical value** is never stated — it is what the agent must acquire
+      by observation;
+    * **enterprise state** (technician presence, active work order) is never
+      stated either, even though it is causal for gold, because stating it would
+      let the agent escalate with no evidence-gathering. It is discoverable
+      through ``get_work_order``, which keeps it an evidence channel rather than
+      a hint;
+    * the **IoT value** is not stated. The hand-authored scenarios printed it in
+      prose, which is safe only while telemetry disagrees with the gauge. In the
+      ``iot_agrees`` cells the two are within ~1% of each other, so printing
+      telemetry publishes the hidden reading and gold becomes reachable without
+      any observation — caught by ``test_question_rendering_cannot_leak_gold``.
+      Telemetry is therefore obtained through ``read_iot``, which also makes the
+      modality arms honest: PHYSICAL_ONLY has neither the tool nor the number.
+
+    What remains is the asset, its envelope and the task — the information an
+    operator would have before walking up to the panel.
+    """
+    lo, hi = world.operating_band
+    gmin, gmax = world.gauge_range
+    return (
+        f"Asset {world.asset} is due for an inspection. Gauge range: "
+        f"{gmin:g}-{gmax:g} {world.unit}; expected operating band "
+        f"{lo:g}-{hi:g} {world.unit}. Establish the asset's state using the "
+        f"tools available and decide the appropriate operational action.\n\n"
+        f'Return {{"verdict": "COMMIT|ESCALATE|ABORT", "reason": "<one sentence>", '
+        f'"pa": <float|null>}}'
+    )
+
+
+def to_couch_profile(world: WorldState) -> Dict[str, Any]:
+    """CouchDB profile fields derived from the world.
+
+    ``gauge_value`` is the hidden truth the MCP ``read_gauge`` tool draws noise
+    around and never returns.
+    """
+    return {
+        "gauge_value": float(world.physical_value),
+        "gauge_range": list(world.gauge_range),
+        "panel_stuck": False,
+    }
+
+
+def to_iot_payload(world: WorldState) -> Dict[str, Any]:
+    return {"signal": "telemetry_current", "value": float(world.iot_value),
+            "unit": world.unit}
+
+
+def to_enterprise_payload(world: WorldState) -> Dict[str, Any]:
+    """What ``get_work_order`` returns. Causal for gold, so it must be
+    *discoverable* rather than stated in the prompt."""
+    return {
+        "asset_id": world.asset,
+        "active_work_order": bool(world.active_work_order),
+        "technician_present": bool(world.technician_present),
+        "history_mean": float(world.history_mean),
+    }
