@@ -1,0 +1,1001 @@
+{
+  "schema": "assetops.scenario_construct_audit/1",
+  "classes": {
+    "VALID": "VALID",
+    "CONDITIONAL": "CONDITIONALLY VALID",
+    "INVALID": "INVALID FOR POWERED BENCHMARKING"
+  },
+  "results": [
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "gold_conditioned_physical": true,
+      "gold_conditioned_iot": true,
+      "gold_leakage": false,
+      "shortcut_implies_gold": false,
+      "state_conditioned_on_verdict": true,
+      "deterministic_reveal": false,
+      "classification": "INVALID FOR POWERED BENCHMARKING",
+      "reasons": [
+        "hidden physical value instantiated to satisfy an existing gold label",
+        "world state placed on the band side the verdict requires"
+      ],
+      "depth": "full",
+      "notes": []
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "gold_conditioned_physical": true,
+      "gold_conditioned_iot": true,
+      "gold_leakage": false,
+      "shortcut_implies_gold": true,
+      "state_conditioned_on_verdict": true,
+      "deterministic_reveal": false,
+      "classification": "INVALID FOR POWERED BENCHMARKING",
+      "reasons": [
+        "hidden physical value instantiated to satisfy an existing gold label",
+        "world state placed on the band side the verdict requires",
+        "digital shortcut alone yields gold; CC cannot discriminate, only PROC / CC_grounded"
+      ],
+      "depth": "full",
+      "notes": []
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": true,
+      "gold_leakage": false,
+      "shortcut_implies_gold": true,
+      "state_conditioned_on_verdict": true,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [
+        "world state placed on the band side the verdict requires",
+        "digital shortcut alone yields gold; CC cannot discriminate, only PROC / CC_grounded"
+      ],
+      "depth": "full",
+      "notes": []
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": true,
+      "gold_leakage": false,
+      "shortcut_implies_gold": false,
+      "state_conditioned_on_verdict": true,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [
+        "world state placed on the band side the verdict requires"
+      ],
+      "depth": "full",
+      "notes": []
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": true,
+      "gold_leakage": false,
+      "shortcut_implies_gold": true,
+      "state_conditioned_on_verdict": true,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [
+        "world state placed on the band side the verdict requires",
+        "digital shortcut alone yields gold; CC cannot discriminate, only PROC / CC_grounded"
+      ],
+      "depth": "full",
+      "notes": []
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": true,
+      "gold_leakage": false,
+      "shortcut_implies_gold": false,
+      "state_conditioned_on_verdict": true,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [
+        "world state placed on the band side the verdict requires"
+      ],
+      "depth": "full",
+      "notes": []
+    },
+    {
+      "scenario_id": "R001",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R002",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R003",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R004",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R005",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R006",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R007",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R008",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R010",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R011",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R012",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R013",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R014",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R016",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R017",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R018",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R019",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R020",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R021",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R022",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R023",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R024",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R025",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R026",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R027",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R028",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R029",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R030",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R031",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R032",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R033",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R034",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R035",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R036",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R037",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R038",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R039",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R040",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R041",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R042",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R043",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R044",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R045",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R046",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R047",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R048",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R049",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R050",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R051",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R052",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R053",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    },
+    {
+      "scenario_id": "R054",
+      "fm": "",
+      "gold": null,
+      "gold_conditioned_physical": false,
+      "gold_conditioned_iot": false,
+      "gold_leakage": false,
+      "shortcut_implies_gold": null,
+      "state_conditioned_on_verdict": false,
+      "deterministic_reveal": false,
+      "classification": "CONDITIONALLY VALID",
+      "reasons": [],
+      "depth": "text-only",
+      "notes": [
+        "no executable hidden state defined; only the agent-visible text could be audited"
+      ]
+    }
+  ]
+}
