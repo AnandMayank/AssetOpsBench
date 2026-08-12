@@ -1,0 +1,103 @@
+{
+  "schema": "assetops.l3_execution_preflight/1",
+  "acceptance_condition": "a model must not receive credit for a physical observation that was never delivered to it",
+  "all_pass": true,
+  "checks": [
+    {
+      "id": "P0-0",
+      "name": "execution backend available",
+      "passed": true,
+      "detail": "CouchDB reachable"
+    },
+    {
+      "id": "1",
+      "name": "capture_image really executes",
+      "passed": true,
+      "detail": "status=success"
+    },
+    {
+      "id": "2",
+      "name": "capture_image delivers consumable pixels (not a path)",
+      "passed": true,
+      "detail": "7082 bytes, id=img_9fde1bc62eda"
+    },
+    {
+      "id": "3",
+      "name": "read_iot returns actual scenario state",
+      "passed": true,
+      "detail": "value=1.02"
+    },
+    {
+      "id": "4",
+      "name": "a failed/unexecuted tool is not counted as executed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "5",
+      "name": "PROC cannot be earned by self-report",
+      "passed": true,
+      "detail": "claimed=['capture_image', 'read_gauge'] executed=[] PROC=0"
+    },
+    {
+      "id": "6",
+      "name": "CC_grounded withheld when no observation was delivered",
+      "passed": true,
+      "detail": "CC=1 (preregistered, unchanged) CC_grounded=0"
+    },
+    {
+      "id": "7",
+      "name": "fabricated readings detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "8",
+      "name": "fabricated tool execution detected",
+      "passed": true,
+      "detail": "claimed-not-executed=['capture_image']"
+    },
+    {
+      "id": "9",
+      "name": "verdict/reason incoherence detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "10",
+      "name": "PHYSICAL_ONLY genuinely lacks IoT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "11",
+      "name": "DIGITAL_ONLY genuinely lacks the physical image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "12",
+      "name": "withheld value cannot leak through another tool",
+      "passed": true,
+      "detail": "no leak"
+    },
+    {
+      "id": "13",
+      "name": "all six scenarios reset deterministically",
+      "passed": true,
+      "detail": "6/6"
+    },
+    {
+      "id": "14",
+      "name": "six scenarios execute under the repaired executor",
+      "passed": true,
+      "detail": "6/6"
+    },
+    {
+      "id": "15",
+      "name": "trace reconstructs what the agent actually observed",
+      "passed": true,
+      "detail": "modalities=['digital', 'physical'] chain_valid=True"
+    }
+  ]
+}
