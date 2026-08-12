@@ -41,6 +41,26 @@ COMMIT = "COMMIT"
 ESCALATE = "ESCALATE"
 ABORT = "ABORT"
 
+#: Coordination base rates, frozen 2026-08-12 and NOT changed.
+#:
+#: Audit of provenance: these were introduced in commit 66b0d2e with no comment,
+#: citation or domain grounding - plausible-looking numbers, nothing more. The
+#: only real work-order data in the corpus is three rows, far too few to estimate
+#: a base rate (and it would imply ~67% active, not 25%).
+#:
+#: A proposal to raise ACTIVE_WO_RATE to 0.40 was therefore **rejected**: 0.40 has
+#: no more domain justification than 0.25, and its only motive was to thicken the
+#: coordination cell for statistical balance. Changing a world parameter to
+#: improve cell counts is gold-adjacent tuning of the kind this benchmark exists
+#: to avoid.
+#:
+#: The principled alternative, if coordination coverage proves too thin, is to
+#: **stratify** on coordination as a third world factor rather than inflate its
+#: probability - that guarantees cells without asserting a base rate. Recorded as
+#: a future option; not implemented, not approved.
+ACTIVE_WO_RATE = 0.25
+TECHNICIAN_PRESENT_RATE = 0.15
+
 #: Parameter names a world sampler must never accept. Checked automatically.
 FORBIDDEN_SAMPLER_PARAMS = {
     "gold", "gold_action", "label", "verdict", "expected", "answer",
@@ -150,8 +170,8 @@ def sample_world(seed: int, cell: Cell, asset_id: Optional[str] = None,
         gauge_range=[gmin, gmax], operating_band=[lo, hi],
         physical_value=physical, iot_value=iot,
         history_mean=round(iot + rng.gauss(0, 0.02 * span), 3),
-        active_work_order=rng.random() < 0.25,
-        technician_present=rng.random() < 0.15,
+        active_work_order=rng.random() < ACTIVE_WO_RATE,
+        technician_present=rng.random() < TECHNICIAN_PRESENT_RATE,
         cell=cell.name, seed=seed,
     )
 

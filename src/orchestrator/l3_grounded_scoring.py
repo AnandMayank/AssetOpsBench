@@ -33,6 +33,7 @@ from typing import Any, Dict, List, Optional, Sequence
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from composite_verdict import CompositeScore, is_composite, score_verdict  # noqa: E402
 from execution_trace import ExecutionTrace, Stage  # noqa: E402
 from l3_scoring import (  # noqa: E402
     PHYSICAL_READ_TOOLS, POSE_TOOLS, PANEL_TOOLS, WORK_ORDER_TOOLS,
@@ -111,10 +112,22 @@ def score_l3_grounded(resp: Dict[str, Any], sc: Dict[str, Any],
                       gold: Dict[str, Any], trace: ExecutionTrace) -> Dict[str, Any]:
     """Full L3 score. ``CC`` is the preregistered metric, unmodified."""
     fm = sc["fm"]
-    action_norm = normalise_action(str(resp.get("action") or resp.get("verdict") or ""))
-    gold_norm = normalise_action(str(gold["action"]))
+    gold_action = gold["action"]
+    composite: Optional[CompositeScore] = None
 
-    cc = int(action_norm == gold_norm)                       # preregistered, untouched
+    if is_composite(gold_action):
+        # Multi-asset scenario (R026). CC keeps its one meaning — exact match
+        # against gold — which here requires *every* asset verdict to match. The
+        # predicate is unchanged; only the verdict it applies to has parts.
+        composite = score_verdict(
+            resp.get("action") or resp.get("verdict") or "", gold_action)
+        cc = composite.CC
+        action_norm = gold_norm = None
+    else:
+        action_norm = normalise_action(str(resp.get("action") or resp.get("verdict") or ""))
+        gold_norm = normalise_action(str(gold_action))
+        cc = int(action_norm == gold_norm)                   # preregistered, untouched
+
     proc = proc_from_trace(fm, trace)
     grounding = cc_grounded(fm, cc, trace,
                             resp.get("cited_observation_ids", ()) or ())
@@ -128,6 +141,14 @@ def score_l3_grounded(resp: Dict[str, Any], sc: Dict[str, Any],
         "claimed_tools": list(resp.get("tool_sequence", []) or []),
         "executed_tools": sorted(trace.executed_tools()),
     }
+    if composite is not None:
+        # Diagnostic only. CC_partial is never blended into CC, and UDR/ODR are
+        # single-verdict constructs that do not apply to a per-asset gold.
+        out["CC_partial"] = composite.CC_partial
+        out["composite"] = composite.to_dict()
+        return out
+
+    out["CC_partial"] = float(cc)
     if gold_norm == "ESCALATE":
         out["UDR"] = int(action_norm == "PROCEED")
     if gold_norm == "PROCEED":

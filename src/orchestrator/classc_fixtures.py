@@ -161,3 +161,43 @@ CLASS_D_FIXTURES.update({
     "R025": Fixture("R025", "hydraulic_pump_1", "survey-only; commit_reading forbidden"),
 })
 FIXTURES.update(CLASS_D_FIXTURES)
+
+
+#: Contrastive controls (P-repair). Each preserves its parent's physical world
+#: and varies exactly one thing: the enterprise factor, or whether a call-order
+#: constraint applies. ``control_for`` names the parent so attribution is
+#: mechanical rather than editorial.
+CONTRASTIVE_FIXTURES: Dict[str, Fixture] = {
+    # Enterprise OFF. R059/R060 are the causal half - the parent's gold flips.
+    "R059": Fixture("R059", "metro_pump_1", "no active WO (control for R008)",
+                    enterprise={"active_work_order": False, "technician_present": False}),
+    "R060": Fixture("R060", "motor_01", "no similar WO (control for R010)",
+                    enterprise={"active_work_order": False, "technician_present": False,
+                                "similar_wo_recommendation": None, "similarity_score": 0.0}),
+    # R061-R063 are the NON-causal half - the parent's gold is unchanged, which
+    # is what makes the causal claim for R059/R060 testable rather than assumed.
+    "R061": Fixture("R061", "hydraulic_pump_1", "enterprise off; normalisation unchanged",
+                    enterprise={"active_work_order": False, "technician_present": False}),
+    "R062": Fixture("R062", "chiller_6", "enterprise off; routing unchanged",
+                    enterprise={"active_work_order": False, "technician_present": False}),
+    "R063": Fixture("R063", "hydraulic_pump_1", "enterprise off; survey constraint unchanged",
+                    enterprise={"active_work_order": False, "technician_present": False}),
+    # Ordering-free controls: the parent's precondition is preserved exactly, so
+    # only the ordering requirement differs.
+    "R064": Fixture("R064", "motor_01", "nominal; ordering unconstrained (control for R006)"),
+    "R065": Fixture("R065", "hydraulic_pump_1", "nominal; ordering unconstrained (control for R007)"),
+    "R066": Fixture("R066", "chiller_6", "battery below threshold; ordering unconstrained",
+                    robot_state={"battery_charge_pct": 14.0,
+                                 "battery_estimated_runtime_s": 420.0}),
+    "R067": Fixture("R067", "metro_pump_1", "localisation failed; ordering unconstrained",
+                    robot_state={"localization_ok": False, "pose_drift_m": 4.7}),
+}
+FIXTURES.update(CONTRASTIVE_FIXTURES)
+
+#: Parent -> control, and whether the enterprise factor is causal for that pair.
+CONTRAST_PAIRS = {
+    "R008": ("R059", True),  "R010": ("R060", True),
+    "R021": ("R061", False), "R022": ("R062", False), "R025": ("R063", False),
+    "R006": ("R064", None),  "R007": ("R065", None),
+    "R016": ("R066", None),  "R017": ("R067", None),
+}
