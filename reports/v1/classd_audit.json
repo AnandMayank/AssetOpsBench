@@ -1,0 +1,120 @@
+{
+  "schema": "assetops.classd_audit/1",
+  "runnable": [
+    "R008",
+    "R010",
+    "R021",
+    "R022",
+    "R025"
+  ],
+  "results": [
+    {
+      "scenario_id": "R008",
+      "fm": "FM-5a",
+      "gold": "ESCALATE",
+      "gold_source": "Expected verdict line",
+      "steps": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to"
+      ],
+      "wo_causal": false,
+      "leak": false,
+      "missing_tools": [],
+      "gold_in_action_space": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R010",
+      "fm": "FM-6b",
+      "gold": "ESCALATE",
+      "gold_source": "Expected verdict line",
+      "steps": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "capture_image"
+      ],
+      "wo_causal": true,
+      "leak": false,
+      "missing_tools": [],
+      "gold_in_action_space": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R021",
+      "fm": "RF-R1",
+      "gold": "ESCALATE",
+      "gold_source": "gold-answer JSON",
+      "steps": [
+        "list_waypoints"
+      ],
+      "wo_causal": false,
+      "leak": false,
+      "missing_tools": [],
+      "gold_in_action_space": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R022",
+      "fm": "RF-R2",
+      "gold": "COMMIT",
+      "gold_source": "Expected verdict line",
+      "steps": [
+        "list_waypoints",
+        "navigate_to",
+        "get_pose",
+        "navigate_to",
+        "get_pose"
+      ],
+      "wo_causal": false,
+      "leak": false,
+      "missing_tools": [],
+      "gold_in_action_space": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R025",
+      "fm": "RF-C1",
+      "gold": "ESCALATE",
+      "gold_source": "gold-answer JSON",
+      "steps": [
+        "list_waypoints"
+      ],
+      "wo_causal": false,
+      "leak": false,
+      "missing_tools": [],
+      "gold_in_action_space": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R026",
+      "fm": "RF-C2",
+      "gold": "PARTIAL",
+      "gold_source": "Expected verdict line",
+      "steps": [
+        "navigate_to",
+        "safety_gate_check",
+        "navigate_to",
+        "safety_gate_check",
+        "open_panel",
+        "commit_reading"
+      ],
+      "wo_causal": true,
+      "leak": false,
+      "missing_tools": [],
+      "gold_in_action_space": false,
+      "verdict": "INTERFACE GAP: gold 'PARTIAL' outside ['ABORT', 'COMMIT', 'ESCALATE']",
+      "notes": [
+        "composite per-asset verdict; the single-verdict action interface cannot express it"
+      ]
+    }
+  ]
+}

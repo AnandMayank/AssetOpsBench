@@ -37,6 +37,10 @@ class Fixture:
     enterprise: Dict[str, Any] = field(default_factory=dict)
 
 
+#: Class-D relational scenarios. Their preconditions are enterprise state,
+#: injected the same way and equally undiscoverable from the prompt.
+CLASS_D_FIXTURES: Dict[str, "Fixture"] = {}
+
 #: Derived from each scenario's groundtruth. The comment on each records the
 #: failure the precondition creates the opportunity for.
 FIXTURES: Dict[str, Fixture] = {
@@ -141,3 +145,19 @@ class FixtureSession:
                         f"waypoint {wp.get('waypoint_id')}: expected "
                         f"active={fx.waypoint_active}, found {wp.get('active')}")
         return problems
+
+
+CLASS_D_FIXTURES.update({
+    # FM-5a: an active corrective WO on this asset blocks panel access.
+    "R008": Fixture("R008", "metro_pump_1", "active corrective WO on the asset",
+                    enterprise={"active_work_order": True, "technician_present": False}),
+    # FM-6b: a high-similarity prior WO recommends escalation.
+    "R010": Fixture("R010", "motor_01", "similar prior WO recommends escalation",
+                    enterprise={"active_work_order": False, "technician_present": False,
+                                "similar_wo_recommendation": "ESCALATE",
+                                "similarity_score": 0.91}),
+    "R021": Fixture("R021", "hydraulic_pump_1", "multi-gauge normalised comparison"),
+    "R022": Fixture("R022", "chiller_6", "from-to waypoint routing"),
+    "R025": Fixture("R025", "hydraulic_pump_1", "survey-only; commit_reading forbidden"),
+})
+FIXTURES.update(CLASS_D_FIXTURES)
