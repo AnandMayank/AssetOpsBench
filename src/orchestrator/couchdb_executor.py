@@ -73,9 +73,15 @@ SCENARIO_DIGITAL: Dict[str, Dict[str, Any]] = {
     "R058": {"signal": "pressure_current", "value": 185.0, "unit": "bar"},
 }
 
+#: Class-C procedural scenarios require robot-state transitions (sit, stand,
+#: dock, power_on) and the enterprise write (commit_reading). All exist in
+#: src/servers/robot/main.py; they were simply absent from this surface, which
+#: made three class-C scenarios look blocked by the scenarios rather than by
+#: the executor.
 TOOLSET = ("navigate_to", "get_pose", "get_battery", "list_waypoints",
            "safety_gate_check", "open_panel", "capture_image", "read_gauge",
-           "read_iot", "get_work_order", "get_asset_state")
+           "read_iot", "get_work_order", "get_asset_state",
+           "sit", "stand", "dock", "power_on", "commit_reading")
 
 
 class CouchDBExecutor:

@@ -46,6 +46,11 @@ TOOL_MODALITY: Dict[str, str] = {
     "get_battery": "robot",
     "list_waypoints": "robot",
     "safety_gate_check": "robot",
+    "sit": "robot",
+    "stand": "robot",
+    "dock": "robot",
+    "power_on": "robot",
+    "commit_reading": "enterprise",
 }
 
 STATUS_SUCCESS = "success"
