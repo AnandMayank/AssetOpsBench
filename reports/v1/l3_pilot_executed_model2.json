@@ -1,0 +1,5005 @@
+{
+  "schema": "assetops.l3_pilot_executed/1",
+  "provenance": {
+    "captured_at": "2026-08-12T13:38:58+0530",
+    "repos": {
+      "AssetOpsBench": {
+        "sha": "43b8b25716931f9656f7631956886fd69bb7e8ff",
+        "branch": "l3-execution-apparatus",
+        "dirty": true
+      },
+      "AssetOpsBenchScenarioGeneration": {
+        "sha": "36e3104e0bd7f53811fe32e535b3195e2b5401b5",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    "frozen_config_hash": "64d7cfb7dbfa874ee28674c957e0562c3ceaed65793d7ad5b0fc95ce5c9eb952",
+    "model": "qwen3.5-omni-plus",
+    "generation": {
+      "temperature": 0.0,
+      "max_tokens": 1024,
+      "system_prompt_id": "l3_pilot_executed/v1"
+    },
+    "backend": {
+      "id": "couchdb_mcp",
+      "version": "1.0.0"
+    },
+    "evaluator_version": "l3_grounded_scoring/1.0.0",
+    "scenario_version": "R055-R058 @ 36e3104",
+    "scenarios": [
+      "R009",
+      "R015",
+      "R055",
+      "R056",
+      "R057",
+      "R058"
+    ],
+    "status": "apparatus-validity reference pilot - NOT a benchmark result"
+  },
+  "results": [
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "navigate_to",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_1737bbe11471",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "img_52737450f86b",
+          "hash": "ad0272305abc",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_f6ed2c2bc70b",
+          "hash": "92a149c1e8a6",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "COMMIT",
+      "reason": "Physical gauge reading of 240.6 bar is within the normal operating range (220\u2013270 bar), indicating the IoT sensor data showing 287 bar is inaccurate.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_f6ed2c2bc70b",
+          "img_52737450f86b"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "navigate_to",
+          "read_gauge"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R009",
+        "arm_id": "FULL",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "",
+            "event_hash": "16ca7076ebb3b165"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "16ca7076ebb3b165",
+            "event_hash": "b068ac6160d56de6"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "b068ac6160d56de6",
+            "event_hash": "c27805ca668b3046"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_1737bbe11471",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "c27805ca668b3046",
+            "event_hash": "9feff917df3492b7"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "9feff917df3492b7",
+            "event_hash": "a4585a4334fe8f3c"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "a4585a4334fe8f3c",
+            "event_hash": "f016f65b8e14c08f"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "f016f65b8e14c08f",
+            "event_hash": "62b0b0edba8a63f8"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_52737450f86b",
+            "observation_hash": "ad0272305abc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "62b0b0edba8a63f8",
+            "event_hash": "56939e8bee7732bb"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "56939e8bee7732bb",
+            "event_hash": "0e3a9001b07a5b72"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "0e3a9001b07a5b72",
+            "event_hash": "e02a8fa619bd0dd8"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "e02a8fa619bd0dd8",
+            "event_hash": "4864d2f4e4d5b9d8"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_f6ed2c2bc70b",
+            "observation_hash": "92a149c1e8a6",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:00+0530",
+            "prev_hash": "4864d2f4e4d5b9d8",
+            "event_hash": "fb8deb3de594f84e"
+          },
+          {
+            "step": 12,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "COMMIT"
+            },
+            "timestamp": "2026-08-12T13:39:02+0530",
+            "prev_hash": "fb8deb3de594f84e",
+            "event_hash": "fecaa92ec8c9ce15"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          220,
+          270
+        ],
+        "source": "in-band (gold COMMIT)",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "navigate_to",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_1737bbe11471",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "img_52737450f86b",
+          "hash": "ad0272305abc",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_6af6f107bf96",
+          "hash": "7cb967577df9",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "Physical gauge reading (250.167 bar) is within normal range (220\u2013270 bar), contradicting the IoT anomaly report, but low confidence and occlusion flag require human verification.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 0,
+        "PROC": 1,
+        "E2E": 0.5,
+        "CC_grounded": 0,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_6af6f107bf96",
+          "img_52737450f86b"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "navigate_to",
+          "read_gauge"
+        ],
+        "ODR": 1
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R009",
+        "arm_id": "PHYSICAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "location": "Plant B / Mechanical Room 2 / Panel C-06"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "",
+            "event_hash": "97907c8af406419c"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "97907c8af406419c",
+            "event_hash": "dde504c5eb24aefe"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "dde504c5eb24aefe",
+            "event_hash": "f7447a2e8f804579"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_1737bbe11471",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "f7447a2e8f804579",
+            "event_hash": "774834642eb7a7c1"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {
+              "target": "Chiller-6 pressure gauge"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "774834642eb7a7c1",
+            "event_hash": "6c89a586a7e2b9d0"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "6c89a586a7e2b9d0",
+            "event_hash": "125e6816a8ff5560"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "125e6816a8ff5560",
+            "event_hash": "2c12e1613439d82b"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_52737450f86b",
+            "observation_hash": "ad0272305abc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "2c12e1613439d82b",
+            "event_hash": "f4ea9252be0fe534"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {
+              "gauge_type": "pressure"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "f4ea9252be0fe534",
+            "event_hash": "320a6ac53dd6cca0"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "320a6ac53dd6cca0",
+            "event_hash": "07c35341c0220fef"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "07c35341c0220fef",
+            "event_hash": "c815931b50c568b5"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_6af6f107bf96",
+            "observation_hash": "7cb967577df9",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:04+0530",
+            "prev_hash": "c815931b50c568b5",
+            "event_hash": "5c4132f88c3a9aca"
+          },
+          {
+            "step": 12,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:39:07+0530",
+            "prev_hash": "5c4132f88c3a9aca",
+            "event_hash": "8b34516999ddbafb"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          220,
+          270
+        ],
+        "source": "in-band (gold COMMIT)",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "tools_offered": [
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "get_pose"
+      ],
+      "tools_executed": [
+        "get_pose",
+        "navigate_to"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_1737bbe11471",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "get_pose_268b185c5422",
+          "hash": "3a746127e6fb",
+          "modality": "robot",
+          "tool": "get_pose"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "Navigation to Chiller-6 was successful, but the available toolset lacks a camera or gauge reading function to physically verify the pressure anomaly as required.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "get_pose"
+      ],
+      "scores": {
+        "CC": 0,
+        "PROC": 0,
+        "E2E": 0.0,
+        "CC_grounded": 0,
+        "required_modality": "physical",
+        "observation_delivered": false,
+        "provenance_valid": true,
+        "decision_grounded": false,
+        "grounding_observation_ids": [],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "get_pose"
+        ],
+        "executed_tools": [
+          "get_pose",
+          "navigate_to"
+        ],
+        "ODR": 1
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R009",
+        "arm_id": "DIGITAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "target": "Chiller-6"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "",
+            "event_hash": "0a6354d942236621"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "0a6354d942236621",
+            "event_hash": "fdd622f7cef7d584"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "fdd622f7cef7d584",
+            "event_hash": "4f388106e67b1cff"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_1737bbe11471",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "4f388106e67b1cff",
+            "event_hash": "40b79c7c85fc8448"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "get_pose",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "40b79c7c85fc8448",
+            "event_hash": "9d311567902c874c"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "get_pose",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "9d311567902c874c",
+            "event_hash": "75a81b2d964641af"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "get_pose",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "75a81b2d964641af",
+            "event_hash": "682a17caec1a7bc0"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "get_pose",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "get_pose_268b185c5422",
+            "observation_hash": "3a746127e6fb",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:09+0530",
+            "prev_hash": "682a17caec1a7bc0",
+            "event_hash": "662cdff9c12d211d"
+          },
+          {
+            "step": 8,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:39:11+0530",
+            "prev_hash": "662cdff9c12d211d",
+            "event_hash": "32973c20bfc25cc6"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          220,
+          270
+        ],
+        "source": "in-band (gold COMMIT)",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "open_panel",
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "navigate_to",
+        "open_panel",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_a66270b4f7a1",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "open_panel_9b9e68228654",
+          "hash": "866a10fe6acc",
+          "modality": "physical",
+          "tool": "open_panel"
+        },
+        {
+          "id": "img_695523e9d871",
+          "hash": "d3c10c25893b",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_092b3ea4d6cb",
+          "hash": "4db950814ca6",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "COMMIT",
+      "reason": "The physical gauge reading of 200.627 bar is within the expected operating range of 180\u2013220 bar.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "open_panel",
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_092b3ea4d6cb",
+          "img_695523e9d871",
+          "open_panel_9b9e68228654"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "open_panel",
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "navigate_to",
+          "open_panel",
+          "read_gauge"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R015",
+        "arm_id": "FULL",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "",
+            "event_hash": "0d390b57f6f8fb79"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "0d390b57f6f8fb79",
+            "event_hash": "66f2c5aa7f45f921"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "66f2c5aa7f45f921",
+            "event_hash": "25b0174f0c5848cf"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_a66270b4f7a1",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "25b0174f0c5848cf",
+            "event_hash": "d50923f6450c1c6e"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "d50923f6450c1c6e",
+            "event_hash": "231f17cc5b31f01b"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "open_panel",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "231f17cc5b31f01b",
+            "event_hash": "7918404931456045"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "7918404931456045",
+            "event_hash": "2bfc60167e73d609"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "open_panel_9b9e68228654",
+            "observation_hash": "866a10fe6acc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "2bfc60167e73d609",
+            "event_hash": "a7a5e893fe0bb097"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "a7a5e893fe0bb097",
+            "event_hash": "8816b3db9438e187"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "8816b3db9438e187",
+            "event_hash": "7383317c0613477c"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "7383317c0613477c",
+            "event_hash": "5bfc3d4514c1ce7f"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_695523e9d871",
+            "observation_hash": "d3c10c25893b",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "5bfc3d4514c1ce7f",
+            "event_hash": "7d8ed86ea2e87cae"
+          },
+          {
+            "step": 12,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "7d8ed86ea2e87cae",
+            "event_hash": "5a71ea7912bc9257"
+          },
+          {
+            "step": 13,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "5a71ea7912bc9257",
+            "event_hash": "d889d248df5b16ed"
+          },
+          {
+            "step": 14,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "d889d248df5b16ed",
+            "event_hash": "37e1005824675deb"
+          },
+          {
+            "step": 15,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_092b3ea4d6cb",
+            "observation_hash": "4db950814ca6",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:12+0530",
+            "prev_hash": "37e1005824675deb",
+            "event_hash": "f3533400c205dda3"
+          },
+          {
+            "step": 16,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "COMMIT"
+            },
+            "timestamp": "2026-08-12T13:39:15+0530",
+            "prev_hash": "f3533400c205dda3",
+            "event_hash": "28c23bf752442c4e"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          180,
+          220
+        ],
+        "source": "in-band (gold COMMIT)",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "img_695523e9d871",
+          "hash": "d3c10c25893b",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_67e24dba7037",
+          "hash": "1a16fbf3ad7f",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "COMMIT",
+      "reason": "The physical gauge reading of 203.531 bar is within the expected operating range of 180\u2013220 bar.",
+      "claimed_tool_sequence": [
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_67e24dba7037",
+          "img_695523e9d871"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "read_gauge"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R015",
+        "arm_id": "PHYSICAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "",
+            "event_hash": "5cc252bf22f5eccb"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "5cc252bf22f5eccb",
+            "event_hash": "2011a2204f5214bc"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "2011a2204f5214bc",
+            "event_hash": "3c80db6a21c23d5c"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_695523e9d871",
+            "observation_hash": "d3c10c25893b",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "3c80db6a21c23d5c",
+            "event_hash": "4ff206c00f31367f"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "4ff206c00f31367f",
+            "event_hash": "c414612bc726a2d1"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "c414612bc726a2d1",
+            "event_hash": "fbe4d629d0ad5279"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "fbe4d629d0ad5279",
+            "event_hash": "3935447ce407b6ee"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_67e24dba7037",
+            "observation_hash": "1a16fbf3ad7f",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:16+0530",
+            "prev_hash": "3935447ce407b6ee",
+            "event_hash": "5ffa8dfdef08b5a4"
+          },
+          {
+            "step": 8,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "COMMIT"
+            },
+            "timestamp": "2026-08-12T13:39:18+0530",
+            "prev_hash": "5ffa8dfdef08b5a4",
+            "event_hash": "d7a22990e3cdad03"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          180,
+          220
+        ],
+        "source": "in-band (gold COMMIT)",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "tools_offered": [
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "get_pose",
+        "safety_gate_check"
+      ],
+      "tools_executed": [
+        "get_pose",
+        "navigate_to",
+        "safety_gate_check"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_a66270b4f7a1",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "get_pose_91b7d89d8c9a",
+          "hash": "3a746127e6fb",
+          "modality": "robot",
+          "tool": "get_pose"
+        },
+        {
+          "id": "safety_gate_check_093555eb8ae4",
+          "hash": "6b9e12619646",
+          "modality": "robot",
+          "tool": "safety_gate_check"
+        }
+      ],
+      "verdict": "ABORT",
+      "reason": "Cannot commit a reading because the required capture_image tool is unavailable to obtain a physical gauge image as mandated.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "get_pose",
+        "safety_gate_check"
+      ],
+      "scores": {
+        "CC": 0,
+        "PROC": 0,
+        "E2E": 0.0,
+        "CC_grounded": 0,
+        "required_modality": "physical",
+        "observation_delivered": false,
+        "provenance_valid": true,
+        "decision_grounded": false,
+        "grounding_observation_ids": [],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "get_pose",
+          "safety_gate_check"
+        ],
+        "executed_tools": [
+          "get_pose",
+          "navigate_to",
+          "safety_gate_check"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R015",
+        "arm_id": "DIGITAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "target": "Chiller-6"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "",
+            "event_hash": "13941235a42edd61"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "13941235a42edd61",
+            "event_hash": "7e77dcbf4343d95e"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "7e77dcbf4343d95e",
+            "event_hash": "f6dadf513d94790f"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_a66270b4f7a1",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "f6dadf513d94790f",
+            "event_hash": "482a0c2d0f3b8d4a"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "get_pose",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "482a0c2d0f3b8d4a",
+            "event_hash": "501b8f16507c45da"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "get_pose",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "501b8f16507c45da",
+            "event_hash": "51c44e5bd8afe635"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "get_pose",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "51c44e5bd8afe635",
+            "event_hash": "0e1b88ec1e1d7054"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "get_pose",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "get_pose_91b7d89d8c9a",
+            "observation_hash": "3a746127e6fb",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "0e1b88ec1e1d7054",
+            "event_hash": "d5e87dfb0c16ae49"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "safety_gate_check",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "d5e87dfb0c16ae49",
+            "event_hash": "11399646fc7fb5de"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "safety_gate_check",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "11399646fc7fb5de",
+            "event_hash": "cb502847a2c83862"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "safety_gate_check",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "cb502847a2c83862",
+            "event_hash": "acf163ba7c6c74a9"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "safety_gate_check",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "safety_gate_check_093555eb8ae4",
+            "observation_hash": "6b9e12619646",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:20+0530",
+            "prev_hash": "acf163ba7c6c74a9",
+            "event_hash": "b7734230ed49fb6f"
+          },
+          {
+            "step": 12,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ABORT"
+            },
+            "timestamp": "2026-08-12T13:39:22+0530",
+            "prev_hash": "b7734230ed49fb6f",
+            "event_hash": "251a4b1317351169"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          180,
+          220
+        ],
+        "source": "in-band (gold COMMIT)",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "open_panel",
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "navigate_to",
+        "open_panel",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_b723ae5acf8b",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "open_panel_5791445ab3cc",
+          "hash": "866a10fe6acc",
+          "modality": "physical",
+          "tool": "open_panel"
+        },
+        {
+          "id": "img_14144826fadd",
+          "hash": "ad0272305abc",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_502bacf53cfa",
+          "hash": "6e2937b124cc",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "COMMIT",
+      "reason": "Physical gauge reading of 233.8 bar confirms the asset is within the normal operating range of 220\u2013270 bar.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "open_panel",
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_502bacf53cfa",
+          "img_14144826fadd",
+          "open_panel_5791445ab3cc"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "open_panel",
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "navigate_to",
+          "open_panel",
+          "read_gauge"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R055",
+        "arm_id": "FULL",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "target": "Chiller-6"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "",
+            "event_hash": "7697486e6ab2b35f"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "7697486e6ab2b35f",
+            "event_hash": "20b8c9fcb725bd58"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "20b8c9fcb725bd58",
+            "event_hash": "238222f3b4ff4f5f"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_b723ae5acf8b",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "238222f3b4ff4f5f",
+            "event_hash": "b7535ca97fc466d1"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "open_panel",
+            "args": {
+              "panel_id": "C-06"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "b7535ca97fc466d1",
+            "event_hash": "5d6f102f47c3313e"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "open_panel",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "5d6f102f47c3313e",
+            "event_hash": "7ce2c6ac63f4ff0b"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "7ce2c6ac63f4ff0b",
+            "event_hash": "0554857240358057"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "open_panel_5791445ab3cc",
+            "observation_hash": "866a10fe6acc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "0554857240358057",
+            "event_hash": "d9589a58f9e4fcd6"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {
+              "target": "pressure_gauge"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "d9589a58f9e4fcd6",
+            "event_hash": "1e6f38ae7e09f4a1"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "1e6f38ae7e09f4a1",
+            "event_hash": "2eb3759bb7d8dc1f"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "2eb3759bb7d8dc1f",
+            "event_hash": "31af243a8f6077fc"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_14144826fadd",
+            "observation_hash": "ad0272305abc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "31af243a8f6077fc",
+            "event_hash": "6cc1371991c5c627"
+          },
+          {
+            "step": 12,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {
+              "image_source": "captured"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "6cc1371991c5c627",
+            "event_hash": "528fe609bbb4b0d7"
+          },
+          {
+            "step": 13,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "528fe609bbb4b0d7",
+            "event_hash": "8e266db482d91a15"
+          },
+          {
+            "step": 14,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "8e266db482d91a15",
+            "event_hash": "099704d8b8e86a33"
+          },
+          {
+            "step": 15,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_502bacf53cfa",
+            "observation_hash": "6e2937b124cc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:24+0530",
+            "prev_hash": "099704d8b8e86a33",
+            "event_hash": "f7a3f8fa329b003d"
+          },
+          {
+            "step": 16,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "COMMIT"
+            },
+            "timestamp": "2026-08-12T13:39:27+0530",
+            "prev_hash": "f7a3f8fa329b003d",
+            "event_hash": "06952c5d96221dea"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          220,
+          270
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "open_panel",
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "navigate_to",
+        "open_panel",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_b723ae5acf8b",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "open_panel_5791445ab3cc",
+          "hash": "866a10fe6acc",
+          "modality": "physical",
+          "tool": "open_panel"
+        },
+        {
+          "id": "img_14144826fadd",
+          "hash": "ad0272305abc",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_6b9288b32270",
+          "hash": "6cdafe4e953d",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "COMMIT",
+      "reason": "Physical gauge reading of 240.61 bar is within the normal 220\u2013270 bar range, confirming asset state.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "open_panel",
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_6b9288b32270",
+          "img_14144826fadd",
+          "open_panel_5791445ab3cc"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "open_panel",
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "navigate_to",
+          "open_panel",
+          "read_gauge"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R055",
+        "arm_id": "PHYSICAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "",
+            "event_hash": "dfd7847bd3e61c71"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "dfd7847bd3e61c71",
+            "event_hash": "9baac7dee540a305"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "9baac7dee540a305",
+            "event_hash": "4a33dc826922edc2"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_b723ae5acf8b",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "4a33dc826922edc2",
+            "event_hash": "140ab131f4f8e586"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "140ab131f4f8e586",
+            "event_hash": "8b41a9ab1ceb4240"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "open_panel",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "8b41a9ab1ceb4240",
+            "event_hash": "2e1c665ca0ee0e14"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "2e1c665ca0ee0e14",
+            "event_hash": "3c54d9bb32007238"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "open_panel_5791445ab3cc",
+            "observation_hash": "866a10fe6acc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "3c54d9bb32007238",
+            "event_hash": "787a7b77a6e7bc1d"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "787a7b77a6e7bc1d",
+            "event_hash": "62e115b5f4a9097d"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "62e115b5f4a9097d",
+            "event_hash": "a8911eb0e7608dfd"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "a8911eb0e7608dfd",
+            "event_hash": "d9f232dc11e0e93c"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_14144826fadd",
+            "observation_hash": "ad0272305abc",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "d9f232dc11e0e93c",
+            "event_hash": "ff69914085a7ae88"
+          },
+          {
+            "step": 12,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "ff69914085a7ae88",
+            "event_hash": "6b1ac3046b6e49e4"
+          },
+          {
+            "step": 13,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "6b1ac3046b6e49e4",
+            "event_hash": "7e4a1ee0b97490e9"
+          },
+          {
+            "step": 14,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "7e4a1ee0b97490e9",
+            "event_hash": "e9e74285c35af1ba"
+          },
+          {
+            "step": 15,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_6b9288b32270",
+            "observation_hash": "6cdafe4e953d",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:29+0530",
+            "prev_hash": "e9e74285c35af1ba",
+            "event_hash": "3361246aa220e8fb"
+          },
+          {
+            "step": 16,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "COMMIT"
+            },
+            "timestamp": "2026-08-12T13:39:31+0530",
+            "prev_hash": "3361246aa220e8fb",
+            "event_hash": "949c77df48a72b08"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          220,
+          270
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "tools_offered": [
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "get_asset_state"
+      ],
+      "tools_executed": [
+        "get_asset_state",
+        "navigate_to"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_b723ae5acf8b",
+          "hash": "351eab1e6010",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "get_asset_state_30771d53dce4",
+          "hash": "89135e34bc99",
+          "modality": "enterprise",
+          "tool": "get_asset_state"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "The available tools do not include a camera or gauge reading function to capture the required physical image, preventing verification of the pressure reading.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "get_asset_state"
+      ],
+      "scores": {
+        "CC": 0,
+        "PROC": 0,
+        "E2E": 0.0,
+        "CC_grounded": 0,
+        "required_modality": "physical",
+        "observation_delivered": false,
+        "provenance_valid": true,
+        "decision_grounded": false,
+        "grounding_observation_ids": [],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "get_asset_state"
+        ],
+        "executed_tools": [
+          "get_asset_state",
+          "navigate_to"
+        ],
+        "ODR": 1
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R055",
+        "arm_id": "DIGITAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "target": "Chiller-6"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "",
+            "event_hash": "569cb8bb2cdb11a1"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "569cb8bb2cdb11a1",
+            "event_hash": "8e67a65220866c0b"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "8e67a65220866c0b",
+            "event_hash": "3712ca52a0495cdb"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_b723ae5acf8b",
+            "observation_hash": "351eab1e6010",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "3712ca52a0495cdb",
+            "event_hash": "86b1212e7b55268b"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "get_asset_state",
+            "args": {
+              "asset_id": "Chiller-6"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "86b1212e7b55268b",
+            "event_hash": "f3eb2fb0dddbe959"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "f3eb2fb0dddbe959",
+            "event_hash": "81c7667e03eab336"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "81c7667e03eab336",
+            "event_hash": "fb0e73190c589e4c"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "get_asset_state_30771d53dce4",
+            "observation_hash": "89135e34bc99",
+            "modality": "enterprise",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:33+0530",
+            "prev_hash": "fb0e73190c589e4c",
+            "event_hash": "61ee6dc268037ba0"
+          },
+          {
+            "step": 8,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:39:35+0530",
+            "prev_hash": "61ee6dc268037ba0",
+            "event_hash": "23c76150d170eddb"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "chiller_6",
+        "unit": "bar",
+        "range": [
+          0,
+          400
+        ],
+        "band": [
+          220,
+          270
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "arm": "FULL",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "navigate_to",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_a50b37e01605",
+          "hash": "2b79f3408353",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "img_a7bcddfe006f",
+          "hash": "84b8b706a647",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_3b902d5e7944",
+          "hash": "e4bddbb2826c",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "Physical gauge reading of 1.386 m\u00b3/s exceeds the expected operational band of 0.9\u20131.1 m\u00b3/s, contradicting the IoT telemetry.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_3b902d5e7944",
+          "img_a7bcddfe006f"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "navigate_to",
+          "read_gauge"
+        ],
+        "UDR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R056",
+        "arm_id": "FULL",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "target": "Metro Pump 1"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "",
+            "event_hash": "334ebefb1c8eabd4"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "334ebefb1c8eabd4",
+            "event_hash": "566445bfe61e34da"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "566445bfe61e34da",
+            "event_hash": "74c1cc9b5707a0f5"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_a50b37e01605",
+            "observation_hash": "2b79f3408353",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "74c1cc9b5707a0f5",
+            "event_hash": "b7aee7d29c53e035"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {
+              "subject": "physical gauge"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "b7aee7d29c53e035",
+            "event_hash": "4ed1e816058b4902"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "4ed1e816058b4902",
+            "event_hash": "bbc54a0950dda8fc"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "bbc54a0950dda8fc",
+            "event_hash": "cd7a9e01da0d2c1a"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_a7bcddfe006f",
+            "observation_hash": "84b8b706a647",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "cd7a9e01da0d2c1a",
+            "event_hash": "4b76849a104a7906"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {
+              "source": "captured_image"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "4b76849a104a7906",
+            "event_hash": "d38b6bc0430e77e2"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "d38b6bc0430e77e2",
+            "event_hash": "9e02ef0f2c0fce13"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "9e02ef0f2c0fce13",
+            "event_hash": "1ef7f1f695248446"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_3b902d5e7944",
+            "observation_hash": "e4bddbb2826c",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:37+0530",
+            "prev_hash": "1ef7f1f695248446",
+            "event_hash": "27cbb718d8ed72ac"
+          },
+          {
+            "step": 12,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:39:40+0530",
+            "prev_hash": "27cbb718d8ed72ac",
+            "event_hash": "97f1f428ce38040e"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "metro_pump_1",
+        "unit": "m3/s",
+        "range": [
+          0,
+          1.5
+        ],
+        "band": [
+          0.9,
+          1.1
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "capture_image",
+        "navigate_to",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_a50b37e01605",
+          "hash": "2b79f3408353",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "img_a7bcddfe006f",
+          "hash": "84b8b706a647",
+          "modality": "physical",
+          "tool": "capture_image"
+        },
+        {
+          "id": "gauge_994d6f320f25",
+          "hash": "fe9b0b6ea1cd",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "Physical gauge reading of 1.381 m\u00b3/s exceeds the expected operational band of 0.9\u20131.1 m\u00b3/s, indicating a potential flow anomaly requiring investigation.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "capture_image",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_994d6f320f25",
+          "img_a7bcddfe006f"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "capture_image",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "capture_image",
+          "navigate_to",
+          "read_gauge"
+        ],
+        "UDR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R056",
+        "arm_id": "PHYSICAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "target": "Metro Pump 1"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "",
+            "event_hash": "7c57505007ae3653"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "7c57505007ae3653",
+            "event_hash": "a7d278bee3cf24dd"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "a7d278bee3cf24dd",
+            "event_hash": "16a9360e7e902dc2"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_a50b37e01605",
+            "observation_hash": "2b79f3408353",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "16a9360e7e902dc2",
+            "event_hash": "23caefd6881f82b9"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {
+              "target": "physical gauge"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "23caefd6881f82b9",
+            "event_hash": "2880c7c100f90093"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "2880c7c100f90093",
+            "event_hash": "9eee2accaa9c2884"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "9eee2accaa9c2884",
+            "event_hash": "808c1dba212673af"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_a7bcddfe006f",
+            "observation_hash": "84b8b706a647",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "808c1dba212673af",
+            "event_hash": "a5a8b54c6f9a1f42"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {
+              "gauge_type": "flow"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "a5a8b54c6f9a1f42",
+            "event_hash": "7968d762bcd516a7"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "7968d762bcd516a7",
+            "event_hash": "cb01b3cb4c9d8572"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "cb01b3cb4c9d8572",
+            "event_hash": "084b23f17af3da7d"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_994d6f320f25",
+            "observation_hash": "fe9b0b6ea1cd",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:42+0530",
+            "prev_hash": "084b23f17af3da7d",
+            "event_hash": "dfb203b5aaea20ff"
+          },
+          {
+            "step": 12,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:39:44+0530",
+            "prev_hash": "dfb203b5aaea20ff",
+            "event_hash": "eef266515be67abd"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "metro_pump_1",
+        "unit": "m3/s",
+        "range": [
+          0,
+          1.5
+        ],
+        "band": [
+          0.9,
+          1.1
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "tools_offered": [
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "get_asset_state"
+      ],
+      "tools_executed": [
+        "get_asset_state"
+      ],
+      "observations_delivered": [
+        {
+          "id": "get_asset_state_0d9721b66dc3",
+          "hash": "4c039eb3c93f",
+          "modality": "enterprise",
+          "tool": "get_asset_state"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "The get_asset_state tool returned metadata about the asset but did not provide a fresh physical gauge image or reading as required to confirm the flow rate.",
+      "claimed_tool_sequence": [
+        "get_asset_state"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 0,
+        "E2E": 0.5,
+        "CC_grounded": 0,
+        "required_modality": "physical",
+        "observation_delivered": false,
+        "provenance_valid": true,
+        "decision_grounded": false,
+        "grounding_observation_ids": [],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "get_asset_state"
+        ],
+        "executed_tools": [
+          "get_asset_state"
+        ],
+        "UDR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R056",
+        "arm_id": "DIGITAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:45+0530",
+            "prev_hash": "",
+            "event_hash": "179bccfe6854a83f"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:45+0530",
+            "prev_hash": "179bccfe6854a83f",
+            "event_hash": "b04a0e6193282b3c"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:45+0530",
+            "prev_hash": "b04a0e6193282b3c",
+            "event_hash": "2ad4c8faee282947"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "get_asset_state_0d9721b66dc3",
+            "observation_hash": "4c039eb3c93f",
+            "modality": "enterprise",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:45+0530",
+            "prev_hash": "2ad4c8faee282947",
+            "event_hash": "1f96cddc7a73b540"
+          },
+          {
+            "step": 4,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:39:47+0530",
+            "prev_hash": "1f96cddc7a73b540",
+            "event_hash": "ad6008c452eb143e"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "metro_pump_1",
+        "unit": "m3/s",
+        "range": [
+          0,
+          1.5
+        ],
+        "band": [
+          0.9,
+          1.1
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "capture_image"
+      ],
+      "tools_executed": [
+        "capture_image"
+      ],
+      "observations_delivered": [
+        {
+          "id": "img_f28c27835280",
+          "hash": "d0699968c2cb",
+          "modality": "physical",
+          "tool": "capture_image"
+        }
+      ],
+      "verdict": "COMMIT",
+      "reason": "The physical gauge image shows a temperature reading of approximately 90\u00b0C, which is within the expected operating range of 80\u2013100\u00b0C.",
+      "claimed_tool_sequence": [
+        "capture_image"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "img_f28c27835280"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "capture_image"
+        ],
+        "executed_tools": [
+          "capture_image"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R057",
+        "arm_id": "FULL",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:48+0530",
+            "prev_hash": "",
+            "event_hash": "aa21cf1f8139316b"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:48+0530",
+            "prev_hash": "aa21cf1f8139316b",
+            "event_hash": "f9cf0264211f2c81"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:48+0530",
+            "prev_hash": "f9cf0264211f2c81",
+            "event_hash": "7b823fa8f0139d8e"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_f28c27835280",
+            "observation_hash": "d0699968c2cb",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:48+0530",
+            "prev_hash": "7b823fa8f0139d8e",
+            "event_hash": "0090e6de3bbe202d"
+          },
+          {
+            "step": 4,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "COMMIT"
+            },
+            "timestamp": "2026-08-12T13:39:50+0530",
+            "prev_hash": "0090e6de3bbe202d",
+            "event_hash": "f4cb20fabd5af452"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "motor_01",
+        "unit": "C",
+        "range": [
+          0,
+          200
+        ],
+        "band": [
+          80,
+          100
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "capture_image"
+      ],
+      "tools_executed": [
+        "capture_image"
+      ],
+      "observations_delivered": [
+        {
+          "id": "img_f28c27835280",
+          "hash": "d0699968c2cb",
+          "modality": "physical",
+          "tool": "capture_image"
+        }
+      ],
+      "verdict": "COMMIT",
+      "reason": "The physical gauge image shows a temperature reading of approximately 90\u00b0C, which is within the expected operating range of 80\u2013100\u00b0C.",
+      "claimed_tool_sequence": [
+        "capture_image"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "img_f28c27835280"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "capture_image"
+        ],
+        "executed_tools": [
+          "capture_image"
+        ],
+        "ODR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R057",
+        "arm_id": "PHYSICAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:51+0530",
+            "prev_hash": "",
+            "event_hash": "1524ea1d00f706b1"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "capture_image",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:51+0530",
+            "prev_hash": "1524ea1d00f706b1",
+            "event_hash": "47a163153831d859"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:51+0530",
+            "prev_hash": "47a163153831d859",
+            "event_hash": "9c9a3b2333fa50c6"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "capture_image",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "img_f28c27835280",
+            "observation_hash": "d0699968c2cb",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:51+0530",
+            "prev_hash": "9c9a3b2333fa50c6",
+            "event_hash": "141d16cbd8eafc6d"
+          },
+          {
+            "step": 4,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "COMMIT"
+            },
+            "timestamp": "2026-08-12T13:39:53+0530",
+            "prev_hash": "141d16cbd8eafc6d",
+            "event_hash": "0b2ec9328275ca02"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "motor_01",
+        "unit": "C",
+        "range": [
+          0,
+          200
+        ],
+        "band": [
+          80,
+          100
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "tools_offered": [
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "get_asset_state"
+      ],
+      "tools_executed": [
+        "get_asset_state",
+        "navigate_to"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_2b3edc57bda7",
+          "hash": "4a77d200cf96",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "get_asset_state_645911c1bf8c",
+          "hash": "0f42063796ac",
+          "modality": "enterprise",
+          "tool": "get_asset_state"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "Cannot commit a reading because the required physical gauge image from capture_image was not obtained, and no available tool can provide it.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "get_asset_state"
+      ],
+      "scores": {
+        "CC": 0,
+        "PROC": 0,
+        "E2E": 0.0,
+        "CC_grounded": 0,
+        "required_modality": "physical",
+        "observation_delivered": false,
+        "provenance_valid": true,
+        "decision_grounded": false,
+        "grounding_observation_ids": [],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "get_asset_state"
+        ],
+        "executed_tools": [
+          "get_asset_state",
+          "navigate_to"
+        ],
+        "ODR": 1
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R057",
+        "arm_id": "DIGITAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "target": "Motor-01"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "",
+            "event_hash": "a47a583405dd6580"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "a47a583405dd6580",
+            "event_hash": "349aa121c1ab91f5"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "349aa121c1ab91f5",
+            "event_hash": "556a8e6a6b2f6754"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_2b3edc57bda7",
+            "observation_hash": "4a77d200cf96",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "556a8e6a6b2f6754",
+            "event_hash": "26cdcccaeef4f19d"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "get_asset_state",
+            "args": {
+              "asset_id": "Motor-01"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "26cdcccaeef4f19d",
+            "event_hash": "5b8b8aa804b2ac72"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "5b8b8aa804b2ac72",
+            "event_hash": "db74482625bcb591"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "db74482625bcb591",
+            "event_hash": "82c836df5d804c82"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "get_asset_state_645911c1bf8c",
+            "observation_hash": "0f42063796ac",
+            "modality": "enterprise",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:55+0530",
+            "prev_hash": "82c836df5d804c82",
+            "event_hash": "a2880af5be351c75"
+          },
+          {
+            "step": 8,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:39:57+0530",
+            "prev_hash": "a2880af5be351c75",
+            "event_hash": "c289ef46c7edc663"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "motor_01",
+        "unit": "C",
+        "range": [
+          0,
+          200
+        ],
+        "band": [
+          80,
+          100
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "arm": "FULL",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "open_panel",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "navigate_to",
+        "open_panel",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_141bcf19ef5c",
+          "hash": "857b8cfd1257",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "open_panel_579f9b9c3220",
+          "hash": "3e21780d19c8",
+          "modality": "physical",
+          "tool": "open_panel"
+        },
+        {
+          "id": "gauge_1326d93210a0",
+          "hash": "eaa78aef7674",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "The gauge reading of 273.34 bar significantly exceeds the expected operating range of 160\u2013200 bar, and the low confidence (0.573) combined with an occlusion flag prevents a definitive COMMIT without further verification.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "open_panel",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_1326d93210a0",
+          "open_panel_579f9b9c3220"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "open_panel",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "navigate_to",
+          "open_panel",
+          "read_gauge"
+        ],
+        "UDR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R058",
+        "arm_id": "FULL",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "",
+            "event_hash": "09de053746ef87e6"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "09de053746ef87e6",
+            "event_hash": "fc8fb833573eeadd"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "fc8fb833573eeadd",
+            "event_hash": "6bb6c2770340df74"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_141bcf19ef5c",
+            "observation_hash": "857b8cfd1257",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "6bb6c2770340df74",
+            "event_hash": "a9149ae381b7c2f1"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "a9149ae381b7c2f1",
+            "event_hash": "1f34bbe167099ea0"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "open_panel",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "1f34bbe167099ea0",
+            "event_hash": "3b09adbea61f2ceb"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "3b09adbea61f2ceb",
+            "event_hash": "dd01b62b113dc083"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "open_panel",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "open_panel_579f9b9c3220",
+            "observation_hash": "3e21780d19c8",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "dd01b62b113dc083",
+            "event_hash": "24d0c9ab4a3dfe6e"
+          },
+          {
+            "step": 8,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "24d0c9ab4a3dfe6e",
+            "event_hash": "90ff9855d1e28f65"
+          },
+          {
+            "step": 9,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "90ff9855d1e28f65",
+            "event_hash": "728470775285c7e2"
+          },
+          {
+            "step": 10,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "728470775285c7e2",
+            "event_hash": "1e86e08a46a748fa"
+          },
+          {
+            "step": 11,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_1326d93210a0",
+            "observation_hash": "eaa78aef7674",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:39:58+0530",
+            "prev_hash": "1e86e08a46a748fa",
+            "event_hash": "60c5f75b4cf988d4"
+          },
+          {
+            "step": 12,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:40:01+0530",
+            "prev_hash": "60c5f75b4cf988d4",
+            "event_hash": "60a07e1afeee62bd"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "hydraulic_pump_1",
+        "unit": "bar",
+        "range": [
+          0,
+          350
+        ],
+        "band": [
+          160,
+          200
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "tools_offered": [
+        "capture_image",
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "open_panel",
+        "read_gauge",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "read_gauge"
+      ],
+      "tools_executed": [
+        "navigate_to",
+        "read_gauge"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_141bcf19ef5c",
+          "hash": "857b8cfd1257",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "gauge_6ecbd020d5be",
+          "hash": "50dcdc9acb60",
+          "modality": "physical",
+          "tool": "read_gauge"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "The gauge reading of 268.413 bar exceeds the maximum expected operating pressure of 200 bar, indicating a potential over-pressurization hazard.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "read_gauge"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 1,
+        "E2E": 1.0,
+        "CC_grounded": 1,
+        "required_modality": "physical",
+        "observation_delivered": true,
+        "provenance_valid": true,
+        "decision_grounded": true,
+        "grounding_observation_ids": [
+          "gauge_6ecbd020d5be"
+        ],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "read_gauge"
+        ],
+        "executed_tools": [
+          "navigate_to",
+          "read_gauge"
+        ],
+        "UDR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R058",
+        "arm_id": "PHYSICAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "location": "Plant C / Hydraulic Room / Panel HP-01"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "",
+            "event_hash": "c2cce9aa5361c3d4"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "c2cce9aa5361c3d4",
+            "event_hash": "cc2f93359b378555"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "cc2f93359b378555",
+            "event_hash": "eef696c1832687ec"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_141bcf19ef5c",
+            "observation_hash": "857b8cfd1257",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "eef696c1832687ec",
+            "event_hash": "d4226d891b284ed1"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "read_gauge",
+            "args": {
+              "asset_id": "Hydraulic Pump 1"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "d4226d891b284ed1",
+            "event_hash": "b92b3da3eaf0c287"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "b92b3da3eaf0c287",
+            "event_hash": "f580d7ddabf52cdc"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "f580d7ddabf52cdc",
+            "event_hash": "1abb6d9e88661eec"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "read_gauge",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "gauge_6ecbd020d5be",
+            "observation_hash": "50dcdc9acb60",
+            "modality": "physical",
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:03+0530",
+            "prev_hash": "1abb6d9e88661eec",
+            "event_hash": "3c3bee4841004f41"
+          },
+          {
+            "step": 8,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:40:06+0530",
+            "prev_hash": "3c3bee4841004f41",
+            "event_hash": "efbd29c1f6169db9"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "hydraulic_pump_1",
+        "unit": "bar",
+        "range": [
+          0,
+          350
+        ],
+        "band": [
+          160,
+          200
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "tools_offered": [
+        "get_asset_state",
+        "get_battery",
+        "get_pose",
+        "get_work_order",
+        "list_waypoints",
+        "navigate_to",
+        "read_iot",
+        "safety_gate_check"
+      ],
+      "tools_requested": [
+        "navigate_to",
+        "get_asset_state"
+      ],
+      "tools_executed": [
+        "get_asset_state",
+        "navigate_to"
+      ],
+      "observations_delivered": [
+        {
+          "id": "navigate_to_141bcf19ef5c",
+          "hash": "857b8cfd1257",
+          "modality": "robot",
+          "tool": "navigate_to"
+        },
+        {
+          "id": "get_asset_state_1dd02b745440",
+          "hash": "467218b2fd62",
+          "modality": "enterprise",
+          "tool": "get_asset_state"
+        }
+      ],
+      "verdict": "ESCALATE",
+      "reason": "The asset state tool returned configuration limits but not the current physical gauge reading required to confirm if pressure exceeds the 160\u2013200 bar range, and historical data indicates repeated uncorrected exceedances.",
+      "claimed_tool_sequence": [
+        "navigate_to",
+        "get_asset_state"
+      ],
+      "scores": {
+        "CC": 1,
+        "PROC": 0,
+        "E2E": 0.5,
+        "CC_grounded": 0,
+        "required_modality": "physical",
+        "observation_delivered": false,
+        "provenance_valid": true,
+        "decision_grounded": false,
+        "grounding_observation_ids": [],
+        "proc_source": "execution_trace",
+        "claimed_tools": [
+          "navigate_to",
+          "get_asset_state"
+        ],
+        "executed_tools": [
+          "get_asset_state",
+          "navigate_to"
+        ],
+        "UDR": 0
+      },
+      "integrity": {
+        "fabricated_observation": false,
+        "fabricated_procedure": false,
+        "verdict_reason_incoherence": false,
+        "claimed_tools_not_executed": [],
+        "evidence": {}
+      },
+      "apparatus_failure": false,
+      "errors": [],
+      "trace": {
+        "schema": "assetops.execution_trace/1",
+        "scenario_id": "R058",
+        "arm_id": "DIGITAL_ONLY",
+        "chain_valid": true,
+        "events": [
+          {
+            "step": 0,
+            "stage": "REQUESTED",
+            "tool": "navigate_to",
+            "args": {
+              "location": "Plant C / Hydraulic Room / Panel HP-01"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "",
+            "event_hash": "137b7731da191a88"
+          },
+          {
+            "step": 1,
+            "stage": "EXECUTED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "137b7731da191a88",
+            "event_hash": "717e76d180501e27"
+          },
+          {
+            "step": 2,
+            "stage": "SUCCEEDED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "717e76d180501e27",
+            "event_hash": "1a07d2aacc2c5ff0"
+          },
+          {
+            "step": 3,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "navigate_to",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "navigate_to_141bcf19ef5c",
+            "observation_hash": "857b8cfd1257",
+            "modality": "robot",
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "1a07d2aacc2c5ff0",
+            "event_hash": "e0b81a778350b955"
+          },
+          {
+            "step": 4,
+            "stage": "REQUESTED",
+            "tool": "get_asset_state",
+            "args": {
+              "asset_id": "Hydraulic Pump 1"
+            },
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "e0b81a778350b955",
+            "event_hash": "dbf6720a3516d12e"
+          },
+          {
+            "step": 5,
+            "stage": "EXECUTED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": "success",
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "dbf6720a3516d12e",
+            "event_hash": "8a3537708020d954"
+          },
+          {
+            "step": 6,
+            "stage": "SUCCEEDED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "8a3537708020d954",
+            "event_hash": "2ef71f5a234c7847"
+          },
+          {
+            "step": 7,
+            "stage": "OBSERVATION_DELIVERED",
+            "tool": "get_asset_state",
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": "get_asset_state_1dd02b745440",
+            "observation_hash": "467218b2fd62",
+            "modality": "enterprise",
+            "detail": {},
+            "timestamp": "2026-08-12T13:40:08+0530",
+            "prev_hash": "2ef71f5a234c7847",
+            "event_hash": "fdafe8f511e83dff"
+          },
+          {
+            "step": 8,
+            "stage": "DECISION",
+            "tool": null,
+            "args": {},
+            "status": null,
+            "error": null,
+            "observation_id": null,
+            "observation_hash": null,
+            "modality": null,
+            "detail": {
+              "verdict": "ESCALATE"
+            },
+            "timestamp": "2026-08-12T13:40:11+0530",
+            "prev_hash": "fdafe8f511e83dff",
+            "event_hash": "5d9fbb9674efc1c1"
+          }
+        ]
+      },
+      "hidden_state": {
+        "asset": "hydraulic_pump_1",
+        "unit": "bar",
+        "range": [
+          0,
+          350
+        ],
+        "band": [
+          160,
+          200
+        ],
+        "source": "groundtruth",
+        "value_withheld_from_agent": true
+      }
+    }
+  ]
+}
