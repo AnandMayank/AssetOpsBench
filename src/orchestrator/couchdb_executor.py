@@ -98,6 +98,10 @@ class CouchDBExecutor:
         self._withheld: List[str] = []
         self._delivered: Dict[str, Dict[str, Any]] = {}
         self._world = None   # set by reset_from_world
+        #: Class-C scenarios express coordination preconditions (technician
+        #: on site, active WO) that have no profile field. Set by the fixture
+        #: layer so the agent must still discover them via get_work_order.
+        self.enterprise_override: Dict[str, Any] = {}
 
     # ------------------------------------------------------------------ setup
 
@@ -221,6 +225,8 @@ class CouchDBExecutor:
                 elif tool == "get_asset_state":
                     res.payload = {"asset_id": asset, "operating_band": phys["band"],
                                    "gauge_range": phys["range"], "unit": phys["unit"]}
+                elif self.enterprise_override:
+                    res.payload = {"asset_id": asset, **self.enterprise_override}
                 elif world is not None:
                     res.payload = G_to_enterprise(world)
                 else:

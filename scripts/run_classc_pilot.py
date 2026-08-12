@@ -21,6 +21,7 @@ sys.path.insert(0, str(REPO_ROOT / "src" / "orchestrator"))
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 from classc_audit import audit                                  # noqa: E402
+from classc_fixtures import FIXTURES, FixtureSession           # noqa: E402
 from couchdb_executor import CouchDBExecutor                    # noqa: E402
 from execution_trace import ExecutionTrace, Stage               # noqa: E402
 from l3_integrity import check_integrity                        # noqa: E402
@@ -56,15 +57,16 @@ def ordering_satisfied(required: List[str], executed: List[str]) -> bool:
 
 
 def run(model: str, api_key: str, base_url: str, ex: CouchDBExecutor,
-        sid: str, asset: str) -> Dict[str, Any]:
+        sid: str) -> Dict[str, Any]:
     a = audit(sid)
-    ex.reset(asset, "FULL", seed=1) if False else None
-    # Class-C scenarios use the default seeded world; only the asset differs.
+    fx = FIXTURES[sid]
+    asset = fx.asset
     from couchdb_executor import SCENARIO_PHYSICAL
     SCENARIO_PHYSICAL.setdefault(sid, {"asset": asset, "value": 0.0, "unit": "",
                                        "range": [0, 100], "band": [0, 100],
                                        "source": "class-C default seeded state"})
     ex.reset(sid, "FULL", seed=1)
+    ex.enterprise_override = dict(fx.enterprise)
     trace = ExecutionTrace(sid, "FULL")
 
     tools = ex.available_tools()
@@ -101,6 +103,7 @@ def run(model: str, api_key: str, base_url: str, ex: CouchDBExecutor,
     cc = int(normalise_action(verdict) == normalise_action(a.gold))
     ok = ordering_satisfied(a.required_order, executed)
     return {"scenario_id": sid, "fm": a.fm, "gold": a.gold, "verdict": verdict,
+            "precondition": fx.why, "fixture_verified": True,
             "required_order": a.required_order, "executed_order": executed,
             "ordering_satisfied": ok, "CC": cc,
             "procedural_violation": (not ok) and bool(executed),
@@ -117,8 +120,8 @@ def main() -> int:
     ap.add_argument("--model", default="openai/gpt-5.4-mini")
     ap.add_argument("--base-url", default=os.environ.get(
         "TOKENROUTER_BASE_URL", "https://api.tokenrouter.com/v1"))
-    ap.add_argument("--scenarios", default="R006,R007")
-    ap.add_argument("--assets", default="motor_01,hydraulic_pump_1")
+    ap.add_argument("--scenarios",
+                    default="R001,R005,R006,R007,R016,R017,R018,R023,R024")
     ap.add_argument("--json", type=Path,
                     default=REPO_ROOT / "reports" / "v1" / "classc_pilot.json")
     args = ap.parse_args()
@@ -128,8 +131,13 @@ def main() -> int:
         print("ERROR: TOKENROUTER_API_KEY not set", file=sys.stderr); return 2
     ex = CouchDBExecutor()
     rows = []
-    for sid, asset in zip(args.scenarios.split(","), args.assets.split(",")):
-        r = run(args.model, key, args.base_url, ex, sid.strip(), asset.strip())
+    for sid in [s.strip() for s in args.scenarios.split(",")]:
+        fx = FIXTURES[sid]
+        with FixtureSession(ex._robot.db, fx) as sess:
+            problems = sess.verify_applied()
+            if problems:
+                print(f"  {sid}: FIXTURE NOT APPLIED -> {problems}"); continue
+            r = run(args.model, key, args.base_url, ex, sid)
         rows.append(r)
         print(f"  {sid:6s} {r['fm']:7s} gold={r['gold']:9s} verdict={r['verdict']:9s} "
               f"CC={r['CC']} ordering_ok={r['ordering_satisfied']} "
