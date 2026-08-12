@@ -1,0 +1,156 @@
+{
+  "schema": "assetops.l3_scenario_provenance/1",
+  "question": "not whether the value was chosen with gold in mind - in a labelled benchmark it always is - but whether an agent can reach gold without consulting the evidence the scenario claims is necessary",
+  "results": [
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "hidden_value": 245.0,
+      "band": [
+        220,
+        270
+      ],
+      "value_in_band": true,
+      "gold_consistent_with_band": true,
+      "value_provenance": "instantiated \u2014 groundtruth states gold COMMIT but no numeric reading",
+      "authored_for_pilot": false,
+      "physical_state_independent_of_gold": false,
+      "gold_inferable_from_construction": false,
+      "value_chosen_to_satisfy_gold": true,
+      "prompt_leaks_gold": false,
+      "leak_evidence": [],
+      "shortcut_points_at_gold": false,
+      "notes": [
+        "gold \u2261 f(hidden value, band); the two were fixed together, so the physical state is not an independent draw",
+        "digital shortcut (pressure_6h_avg=287.0) implies ESCALATE but gold is COMMIT \u2014 reaching gold requires the physical read",
+        "IN-BAND VALUE IS GOLD-CONDITIONED: the groundtruth gives gold COMMIT without a numeric reading, so the value was chosen because only an in-band reading is consistent with that gold. It is not an independent scenario property."
+      ]
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "hidden_value": 200.0,
+      "band": [
+        180,
+        220
+      ],
+      "value_in_band": true,
+      "gold_consistent_with_band": true,
+      "value_provenance": "instantiated \u2014 groundtruth states gold COMMIT but no numeric reading",
+      "authored_for_pilot": false,
+      "physical_state_independent_of_gold": false,
+      "gold_inferable_from_construction": true,
+      "value_chosen_to_satisfy_gold": true,
+      "prompt_leaks_gold": true,
+      "leak_evidence": [
+        "\\bcommit\\b"
+      ],
+      "shortcut_points_at_gold": true,
+      "notes": [
+        "gold \u2261 f(hidden value, band); the two were fixed together, so the physical state is not an independent draw",
+        "digital shortcut (pressure_history_avg=200.0) implies COMMIT, which equals gold \u2014 an agent that never reads the gauge still scores CC=1; only PROC/CC_grounded discriminate here",
+        "IN-BAND VALUE IS GOLD-CONDITIONED: the groundtruth gives gold COMMIT without a numeric reading, so the value was chosen because only an in-band reading is consistent with that gold. It is not an independent scenario property."
+      ]
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "hidden_value": 245.0,
+      "band": [
+        220,
+        270
+      ],
+      "value_in_band": true,
+      "gold_consistent_with_band": true,
+      "value_provenance": "stated verbatim in groundtruth (245 bar)",
+      "authored_for_pilot": true,
+      "physical_state_independent_of_gold": false,
+      "gold_inferable_from_construction": true,
+      "value_chosen_to_satisfy_gold": true,
+      "prompt_leaks_gold": false,
+      "leak_evidence": [],
+      "shortcut_points_at_gold": true,
+      "notes": [
+        "gold \u2261 f(hidden value, band); the two were fixed together, so the physical state is not an independent draw",
+        "digital shortcut (pressure_current=245.0) implies COMMIT, which equals gold \u2014 an agent that never reads the gauge still scores CC=1; only PROC/CC_grounded discriminate here"
+      ]
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "hidden_value": 1.38,
+      "band": [
+        0.9,
+        1.1
+      ],
+      "value_in_band": false,
+      "gold_consistent_with_band": true,
+      "value_provenance": "stated verbatim in groundtruth (1.38 m3/s)",
+      "authored_for_pilot": true,
+      "physical_state_independent_of_gold": false,
+      "gold_inferable_from_construction": false,
+      "value_chosen_to_satisfy_gold": true,
+      "prompt_leaks_gold": false,
+      "leak_evidence": [],
+      "shortcut_points_at_gold": false,
+      "notes": [
+        "gold \u2261 f(hidden value, band); the two were fixed together, so the physical state is not an independent draw",
+        "digital shortcut (flow_current=1.02) implies COMMIT but gold is ESCALATE \u2014 reaching gold requires the physical read"
+      ]
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "hidden_value": 92.0,
+      "band": [
+        80,
+        100
+      ],
+      "value_in_band": true,
+      "gold_consistent_with_band": true,
+      "value_provenance": "stated verbatim in groundtruth (92 C)",
+      "authored_for_pilot": true,
+      "physical_state_independent_of_gold": false,
+      "gold_inferable_from_construction": true,
+      "value_chosen_to_satisfy_gold": true,
+      "prompt_leaks_gold": true,
+      "leak_evidence": [
+        "\\bcommit\\b"
+      ],
+      "shortcut_points_at_gold": true,
+      "notes": [
+        "gold \u2261 f(hidden value, band); the two were fixed together, so the physical state is not an independent draw",
+        "digital shortcut (temperature_30d_avg=92.0) implies COMMIT, which equals gold \u2014 an agent that never reads the gauge still scores CC=1; only PROC/CC_grounded discriminate here"
+      ]
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "hidden_value": 268.0,
+      "band": [
+        160,
+        200
+      ],
+      "value_in_band": false,
+      "gold_consistent_with_band": true,
+      "value_provenance": "stated verbatim in groundtruth (268 bar)",
+      "authored_for_pilot": true,
+      "physical_state_independent_of_gold": false,
+      "gold_inferable_from_construction": false,
+      "value_chosen_to_satisfy_gold": true,
+      "prompt_leaks_gold": false,
+      "leak_evidence": [],
+      "shortcut_points_at_gold": false,
+      "notes": [
+        "gold \u2261 f(hidden value, band); the two were fixed together, so the physical state is not an independent draw",
+        "digital shortcut (pressure_current=185.0) implies COMMIT but gold is ESCALATE \u2014 reaching gold requires the physical read"
+      ]
+    }
+  ]
+}
