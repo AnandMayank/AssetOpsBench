@@ -121,7 +121,8 @@ def main() -> int:
     ap.add_argument("--base-url", default=os.environ.get(
         "TOKENROUTER_BASE_URL", "https://api.tokenrouter.com/v1"))
     ap.add_argument("--scenarios",
-                    default="R001,R005,R006,R007,R016,R017,R018,R023,R024")
+                    default="R001,R005,R006,R007,R016,R017,R018,R023,R024,"
+                            "R064,R065,R066,R067,R068,R069,R070,R071,R072")
     ap.add_argument("--json", type=Path,
                     default=REPO_ROOT / "reports" / "v1" / "classc_pilot.json")
     args = ap.parse_args()
