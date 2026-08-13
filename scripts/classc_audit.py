@@ -38,6 +38,12 @@ from couchdb_executor import TOOLSET  # noqa: E402
 
 CLASS_C = ["R001", "R005", "R006", "R007", "R016", "R017", "R018", "R023", "R024"]
 
+#: Ordering-free contrastive controls. These deliberately carry no numbered
+#: call sequence in their groundtruth -- that absence *is* the design, not a
+#: parsing failure -- so they are audited separately from CLASS_C.
+CLASS_C_CONTROLS = ["R064", "R065", "R066", "R067",
+                    "R068", "R069", "R070", "R071", "R072"]
+
 # Sequences appear in two layouts: one numbered call per line, and several
 # arrow-separated on a single line ("1. navigate_to -> 2. capture_image").
 # Requiring the first layout made R023 look like a scenario defect.
@@ -54,6 +60,7 @@ class ClassCAudit:
     gold: str = ""
     required_order: List[str] = field(default_factory=list)
     ordering_recoverable: bool = False
+    ordering_free_by_design: bool = False
     gold_leak: bool = False
     order_stated_in_prompt: bool = False
     executable_tools: bool = False
@@ -85,7 +92,11 @@ def audit(sid: str) -> ClassCAudit:
     r.required_order = _STEP.findall(gt)
     # A single required call is a legitimate design: R018 escalates on
     # list_waypoints alone, with a *negative* constraint (do not navigate).
-    r.ordering_recoverable = len(r.required_order) >= 1
+    # An ordering-free control declares its absence of a required sequence in
+    # its own manifest (provenance.kind); that is the intended construction,
+    # not a parsing failure, so it must not read as a DEFECT.
+    r.ordering_free_by_design = man.get("provenance", {}).get("kind") == "ordering_free"
+    r.ordering_recoverable = len(r.required_order) >= 1 or r.ordering_free_by_design
 
     body = re.sub(r"Return \{.*", "", q, flags=re.S)
     r.gold_leak = any(re.search(p, body, re.I) for p in _ANSWER)

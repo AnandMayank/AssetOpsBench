@@ -191,13 +191,30 @@ CONTRASTIVE_FIXTURES: Dict[str, Fixture] = {
                                  "battery_estimated_runtime_s": 420.0}),
     "R067": Fixture("R067", "metro_pump_1", "localisation failed; ordering unconstrained",
                     robot_state={"localization_ok": False, "pose_drift_m": 4.7}),
+    # The remaining five class-C ordering controls, closing the gap noted in
+    # L3_FinalConstructAudit.md #7.1 (R001, R005, R018, R023, R024 previously
+    # had no matched control at all).
+    "R068": Fixture("R068", "chiller_6", "panel stuck; ordering unconstrained (control for R001)",
+                    profile={"panel_stuck": True}),
+    "R069": Fixture("R069", "metro_pump_1", "human present with an active WO; ordering unconstrained (control for R005)",
+                    enterprise={"technician_present": True, "active_work_order": True}),
+    "R070": Fixture("R070", "motor_01", "waypoint deactivated; ordering unconstrained (control for R018)",
+                    waypoint_active=False),
+    "R071": Fixture("R071", "hydraulic_pump_1", "gauge view obstructed; ordering unconstrained (control for R023)",
+                    profile={"panel_stuck": True}),
+    "R072": Fixture("R072", "motor_01", "constrained battery budget; ordering unconstrained (control for R024)",
+                    robot_state={"battery_charge_pct": 31.0,
+                                 "battery_estimated_runtime_s": 900.0}),
 }
 FIXTURES.update(CONTRASTIVE_FIXTURES)
 
 #: Parent -> control, and whether the enterprise factor is causal for that pair.
+#: ``None`` marks an ordering control, where causality is not the axis varied.
 CONTRAST_PAIRS = {
     "R008": ("R059", True),  "R010": ("R060", True),
     "R021": ("R061", False), "R022": ("R062", False), "R025": ("R063", False),
     "R006": ("R064", None),  "R007": ("R065", None),
     "R016": ("R066", None),  "R017": ("R067", None),
+    "R001": ("R068", None),  "R005": ("R069", None),
+    "R018": ("R070", None),  "R023": ("R071", None), "R024": ("R072", None),
 }

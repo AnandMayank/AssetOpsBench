@@ -125,13 +125,33 @@ def test_control_preserves_the_parents_asset(parent):
 
 # --- class-C: ordering controls isolate ordering -----------------------------
 
-@pytest.mark.parametrize("parent", ["R006", "R007", "R016", "R017"])
+ORDERING_PARENTS = ["R006", "R007", "R016", "R017",           # original 4
+                    "R001", "R005", "R018", "R023", "R024"]    # P0 completion
+
+
+@pytest.mark.parametrize("parent", ORDERING_PARENTS)
 def test_ordering_control_preserves_world_and_gold(parent):
+    """Every fixture field the parent sets (profile, robot_state, enterprise,
+    waypoint) must be reproduced exactly in the control -- not just
+    robot_state, which is empty for R001/R005/R018/R023."""
     control, _ = CONTRAST_PAIRS[parent]
-    assert FIXTURES[control].asset == FIXTURES[parent].asset
-    # Same precondition: the control must carry the parent's robot_state edits.
-    assert FIXTURES[control].robot_state == FIXTURES[parent].robot_state
+    p, c = FIXTURES[parent], FIXTURES[control]
+    assert c.asset == p.asset
+    assert c.profile == p.profile
+    assert c.robot_state == p.robot_state
+    assert c.enterprise == p.enterprise
+    assert c.waypoint_active == p.waypoint_active
     assert _gold(control) == _gold(parent), "gold changed; ordering is not isolated"
+
+
+@pytest.mark.parametrize("parent", ORDERING_PARENTS)
+def test_ordering_control_has_no_leak_or_duplicate(parent):
+    control, _ = CONTRAST_PAIRS[parent]
+    q = _question(control).lower()
+    for phrase in ("the correct answer", "the verdict is", "you should commit",
+                   "you should escalate", "you should abort", "gold:"):
+        assert phrase not in q, f"{control} leaks: {phrase!r}"
+    assert " ".join(_question(control).split()) != " ".join(_question(parent).split())
 
 
 def test_ordering_controls_cover_both_nominal_and_fault_preconditions():
@@ -142,6 +162,43 @@ def test_ordering_controls_cover_both_nominal_and_fault_preconditions():
     assert nominal and fault
     assert all(FIXTURES[c].robot_state for c in fault)
     assert all(not FIXTURES[c].robot_state for c in nominal)
+
+
+@pytest.mark.parametrize("parent", ORDERING_PARENTS)
+def test_ordering_control_is_recognised_as_intentionally_order_free(parent):
+    """``classc_audit`` must read the control's own manifest rather than
+    inferring intent from an empty required_order, which previously scored
+    every one of R064-R067 as a DEFECT."""
+    sys.path.insert(0, str(REPO_ROOT / "scripts"))
+    from classc_audit import audit  # noqa: E402 (imported lazily; needs scripts on path)
+
+    control, _ = CONTRAST_PAIRS[parent]
+    ca = audit(control)
+    assert ca.ordering_free_by_design
+    assert ca.required_order == []
+    assert ca.verdict == "RUNNABLE"
+    assert ca.gold == _gold(parent)
+
+
+@pytest.mark.parametrize("parent", ORDERING_PARENTS)
+def test_executed_trace_distinguishes_ordering(parent):
+    """The parent's audit yields a non-empty required order that a shuffled
+    trace can violate; the control's empty required order is vacuously
+    satisfied by the same shuffled trace. That gap is what makes an ordering
+    failure on the parent attributable to ordering rather than to the task."""
+    sys.path.insert(0, str(REPO_ROOT / "scripts"))
+    from classc_audit import audit  # noqa: E402
+    from run_classc_pilot import ordering_satisfied  # noqa: E402
+
+    control, _ = CONTRAST_PAIRS[parent]
+    pa, ca = audit(parent), audit(control)
+    if len(pa.required_order) < 2:
+        pytest.skip(f"{parent} has < 2 required calls; ordering is vacuous there too")
+    reversed_trace = list(reversed(pa.required_order))
+    assert not ordering_satisfied(pa.required_order, reversed_trace), (
+        f"{parent}: reversing the required order should violate it")
+    assert ordering_satisfied(ca.required_order, reversed_trace), (
+        f"{control}: an empty required order must be vacuously satisfied")
 
 
 # --- composite verdict adoption ---------------------------------------------

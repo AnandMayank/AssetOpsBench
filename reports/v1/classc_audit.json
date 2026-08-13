@@ -28,6 +28,7 @@
         "open_panel"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -46,6 +47,7 @@
         "navigate_to"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -67,6 +69,7 @@
         "capture_image"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -88,6 +91,7 @@
         "capture_image"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -107,6 +111,7 @@
         "dock"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -129,6 +134,7 @@
         "sit"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -145,6 +151,7 @@
         "list_waypoints"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -164,6 +171,7 @@
         "commit_reading"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
@@ -186,6 +194,7 @@
         "commit_reading"
       ],
       "ordering_recoverable": true,
+      "ordering_free_by_design": false,
       "gold_leak": false,
       "order_stated_in_prompt": false,
       "executable_tools": true,
