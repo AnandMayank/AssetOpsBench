@@ -206,6 +206,8 @@ class CouchDBExecutor:
         self.arm_id: Optional[str] = None
         self._withheld: List[str] = []
         self._delivered: Dict[str, Dict[str, Any]] = {}
+        self._multi_gauge_calls = 0    # per-episode read_gauge call count,
+                                        # NOT the model-supplied attempt_n (see reset())
         self._world = None   # set by reset_from_world
         #: Class-C scenarios express coordination preconditions (technician
         #: on site, active WO) that have no profile field. Set by the fixture
@@ -226,6 +228,7 @@ class CouchDBExecutor:
         self.scenario_id, self.arm_id = scenario_id, arm_id
         self._withheld = list(withheld or [])
         self._delivered = {}
+        self._multi_gauge_calls = 0
 
         phys = SCENARIO_PHYSICAL[scenario_id]
         db = getattr(self._robot, "db", None)
@@ -255,6 +258,7 @@ class CouchDBExecutor:
         self.scenario_id, self.arm_id = world.scenario_id, arm_id
         self._withheld = list(withheld or [])
         self._delivered = {}
+        self._multi_gauge_calls = 0
         self._world = world
 
         db = getattr(self._robot, "db", None)
@@ -277,28 +281,37 @@ class CouchDBExecutor:
         return observation_id("state", (self.scenario_id, self.arm_id,
                                         phys.get("value")))
 
-    def _read_multi_gauge(self, scenario_id: str, attempt_n: int) -> Dict[str, Any]:
+    def _read_multi_gauge(self, scenario_id: str, requested_attempt_n: int) -> Dict[str, Any]:
         """Noisy reading for one of a scenario's several named gauges.
 
         Mirrors ``main.read_gauge``'s noise model (1.5% of span, occasional
         occlusion) without touching the MCP server: the true value never
         appears in the returned dict, matching that module's own invariant.
-        ``attempt_n`` selects the gauge (1-indexed, cycling), so three calls
-        with attempt_n 1/2/3 see three different gauges — the construct
-        R021/R025 require and R061/R063 hold fixed as their non-causal control.
+
+        The gauge is selected by an **internal per-episode call counter**, not
+        the model-supplied ``attempt_n``. In practice models call
+        ``read_gauge`` with no arguments at all (observed: three consecutive
+        calls with empty ``args``, all defaulting to ``attempt_n=1``), which
+        would silently return the same gauge three times and reproduce the
+        bug this exists to fix, just under a different name. The internal
+        counter guarantees three calls see three different gauges regardless
+        of what the model passes.
         """
         gauges = SCENARIO_MULTI_GAUGE[scenario_id]
-        g = gauges[(attempt_n - 1) % len(gauges)]
+        idx = self._multi_gauge_calls % len(gauges)
+        self._multi_gauge_calls += 1
+        g = gauges[idx]
         rng = self._robot._rng
         span = float(g["range"][1]) - float(g["range"][0])
         noise = rng.gauss(0, 0.015 * span)
         reading = round(max(g["range"][0], min(g["range"][1], g["value"] + noise)), 3)
         occlusion = rng.random() < 0.08
         confidence = round(rng.uniform(0.80, 0.99) if not occlusion else rng.uniform(0.40, 0.65), 3)
-        return {"asset_id": g["name"], "attempt_n": attempt_n, "reading": reading,
+        return {"asset_id": g["name"], "attempt_n": requested_attempt_n, "reading": reading,
                 "confidence": confidence, "occlusion_flag": occlusion,
                 "gauge_range": list(g["range"]), "gauge_path": None,
-                "message": (f"Gauge read #{attempt_n} for '{g['name']}': "
+                "message": (f"Gauge read for '{g['name']}' "
+                           f"(call #{idx + 1} of {len(gauges)} in this episode): "
                            f"reading={reading}, confidence={confidence}"
                            + (" [OCCLUDED — reposition and retry]" if occlusion else ""))}
 
