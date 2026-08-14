@@ -153,6 +153,33 @@ SCENARIO_PHYSICAL: Dict[str, Dict[str, Any]] = {
              "range": [0, 1.5], "band": [0.9, 1.1], "source": "multi-gauge; control for R021"},
     "R063": {"asset": "hydraulic_pump_1", "value": 0.30, "unit": "bar",
              "range": [0, 1.5], "band": [0.9, 1.1], "source": "multi-gauge; control for R025"},
+
+    # --- de-leaked twins (ledger B3 repair, 2026-08-14) ----------------------
+    # Same physical world as the leaking parent named in each source note --
+    # only the prompt's stated decision rule differs, so the hidden state is
+    # copied, not re-derived.
+    "R076": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "de-leaked twin of R001"},
+    "R077": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "de-leaked twin of R005"},
+    "R078": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "de-leaked twin of R016"},
+    "R079": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "de-leaked twin of R018"},
+    "R080": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "de-leaked twin of R068"},
+    "R081": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "de-leaked twin of R069"},
+    "R082": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "de-leaked twin of R070"},
+    "R083": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "de-leaked twin of R008"},
+    "R084": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "de-leaked twin of R010"},
+    "R086": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "de-leaked twin of R059"},
+    "R087": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "de-leaked twin of R060"},
 }
 
 #: Multi-gauge scenarios (ledger B1 repair). ``read_gauge(asset_id, attempt_n)``

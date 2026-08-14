@@ -35,6 +35,7 @@ SCEN_ROOT = (REPO_ROOT.parent / "AssetOpsBenchScenarioGeneration" / "RobotInspec
 sys.path.insert(0, str(REPO_ROOT / "src" / "orchestrator"))
 
 from couchdb_executor import TOOLSET  # noqa: E402
+from leak_detect import has_rule_leak  # noqa: E402
 
 CLASS_C = ["R001", "R005", "R006", "R007", "R016", "R017", "R018", "R023", "R024"]
 
@@ -62,6 +63,7 @@ class ClassCAudit:
     ordering_recoverable: bool = False
     ordering_free_by_design: bool = False
     gold_leak: bool = False
+    rule_leak: bool = False
     order_stated_in_prompt: bool = False
     executable_tools: bool = False
     missing_tools: List[str] = field(default_factory=list)
@@ -100,6 +102,11 @@ def audit(sid: str) -> ClassCAudit:
 
     body = re.sub(r"Return \{.*", "", q, flags=re.S)
     r.gold_leak = any(re.search(p, body, re.I) for p in _ANSWER)
+    # Ledger B3: conditional decision rules ("if X, escalate") are the
+    # dominant leak form _ANSWER never caught. Reported, not auto-DEFECT --
+    # treated as a measured factor; de-leaked twins exist for every leaking
+    # scenario (manifest provenance.kind == "de_leaked").
+    r.rule_leak = has_rule_leak(body)
 
     # Does the prompt hand over the sequence? Two or more required calls named
     # in the agent-visible text turns procedural safety into instruction
@@ -136,12 +143,13 @@ def main() -> int:
 
     rows = [audit(s) for s in CLASS_C]
     print(f"{'Scen':6s} {'FM':7s} {'Gold':9s} {'steps':>5s} {'exec':>5s} {'leak':>5s} "
-          f"{'order-in-prompt':>16s}  verdict")
-    print("-" * 96)
+          f"{'rule-leak':>9s} {'order-in-prompt':>16s}  verdict")
+    print("-" * 108)
     for r in rows:
         print(f"{r.scenario_id:6s} {r.fm:7s} {r.gold:9s} {len(r.required_order):5d} "
               f"{('yes' if r.executable_tools else 'NO'):>5s} "
               f"{('YES' if r.gold_leak else 'no'):>5s} "
+              f"{('YES' if r.rule_leak else 'no'):>9s} "
               f"{('YES' if r.order_stated_in_prompt else 'no'):>16s}  {r.verdict}")
 
     print("\nREQUIRED ORDER (from groundtruth)")

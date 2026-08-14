@@ -103,7 +103,7 @@
       "id": "16",
       "name": "no class-C/D scenario carries the [0,100] placeholder signature",
       "passed": true,
-      "detail": "34 entries clean"
+      "detail": "45 entries clean"
     },
     {
       "id": "17",

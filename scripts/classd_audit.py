@@ -19,6 +19,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SCEN_ROOT = REPO_ROOT.parent / "AssetOpsBenchScenarioGeneration" / "RobotInspection"
 sys.path.insert(0, str(REPO_ROOT / "src" / "orchestrator"))
 from couchdb_executor import TOOLSET  # noqa: E402
+from leak_detect import has_rule_leak  # noqa: E402
 
 CLASS_D = ["R008", "R010", "R021", "R022", "R025", "R026"]
 ACTION_SPACE = {"COMMIT", "ESCALATE", "ABORT"}
@@ -33,7 +34,7 @@ _LEAK = (r"the (?:correct )?(?:answer|verdict) is", r"you should (?:commit|escal
 class D:
     scenario_id: str; fm: str = ""; gold: str = ""; gold_source: str = ""
     steps: List[str] = field(default_factory=list)
-    wo_causal: bool = False; leak: bool = False
+    wo_causal: bool = False; leak: bool = False; rule_leak: bool = False
     missing_tools: List[str] = field(default_factory=list)
     gold_in_action_space: bool = False
     verdict: str = ""; notes: List[str] = field(default_factory=list)
@@ -66,6 +67,10 @@ def audit(sid: str) -> D:
     r.wo_causal = bool(set(r.steps) & WO_TOOLS) or bool(
         re.search(r"work order|human_present|clearance|similarity", gt, re.I))
     r.leak = any(re.search(p, q, re.I) for p in _LEAK)
+    # Ledger B3: conditional decision rules are the dominant leak form
+    # _LEAK never caught. Measured factor, not auto-DEFECT -- de-leaked
+    # twins exist for every leaking D scenario.
+    r.rule_leak = has_rule_leak(q)
 
     if not r.gold:
         r.verdict = "DEFECT: no gold recoverable"
@@ -89,13 +94,14 @@ def main() -> int:
     a = ap.parse_args()
     rows = [audit(s) for s in CLASS_D]
     print(f"{'Scen':6s} {'FM':7s} {'Gold':9s} {'source':20s} {'WO-causal':>9s} "
-          f"{'exec':>5s} {'leak':>5s}  verdict")
-    print("-" * 108)
+          f"{'exec':>5s} {'leak':>5s} {'rule-leak':>9s}  verdict")
+    print("-" * 118)
     for r in rows:
         print(f"{r.scenario_id:6s} {r.fm:7s} {r.gold or '-':9s} {r.gold_source or '-':20s} "
               f"{('yes' if r.wo_causal else 'no'):>9s} "
               f"{('yes' if not r.missing_tools else 'NO'):>5s} "
-              f"{('YES' if r.leak else 'no'):>5s}  {r.verdict}")
+              f"{('YES' if r.leak else 'no'):>5s} "
+              f"{('YES' if r.rule_leak else 'no'):>9s}  {r.verdict}")
         for n in r.notes:
             print(f"        {n}")
     runnable = [r.scenario_id for r in rows if r.verdict == "RUNNABLE"]

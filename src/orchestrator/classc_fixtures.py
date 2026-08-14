@@ -218,3 +218,50 @@ CONTRAST_PAIRS = {
     "R001": ("R068", None),  "R005": ("R069", None),
     "R018": ("R070", None),  "R023": ("R071", None), "R024": ("R072", None),
 }
+
+#: De-leaked twins (ledger B3 repair). Each preserves its leaking parent's
+#: world exactly -- same asset, profile, robot_state, enterprise, waypoint --
+#: and varies exactly one thing: the conditional decision rule is no longer
+#: stated in the prompt. R016->R078 also resolves ledger B4: R016 previously
+#: had only one control (R066, ordering-free but still leaking), confounding
+#: the ordering and leak axes; it now has two independent single-axis
+#: controls. B and R026 twins (R073-R075, R085) are not wired here -- B has
+#: no executor fixtures yet (Phase 4) and R026 stays excluded (composite,
+#: two-asset state the executor cannot hold).
+DELEAK_FIXTURES: Dict[str, Fixture] = {
+    "R076": Fixture("R076", "chiller_6", "de-leaked twin of R001",
+                    profile={"panel_stuck": True}),
+    "R077": Fixture("R077", "metro_pump_1", "de-leaked twin of R005",
+                    enterprise={"technician_present": True, "active_work_order": True}),
+    "R078": Fixture("R078", "chiller_6", "de-leaked twin of R016",
+                    robot_state={"battery_charge_pct": 14.0,
+                                 "battery_estimated_runtime_s": 420.0}),
+    "R079": Fixture("R079", "motor_01", "de-leaked twin of R018",
+                    waypoint_active=False),
+    "R080": Fixture("R080", "chiller_6", "de-leaked twin of R068 (control for R001)",
+                    profile={"panel_stuck": True}),
+    "R081": Fixture("R081", "metro_pump_1", "de-leaked twin of R069 (control for R005)",
+                    enterprise={"technician_present": True, "active_work_order": True}),
+    "R082": Fixture("R082", "motor_01", "de-leaked twin of R070 (control for R018)",
+                    waypoint_active=False),
+    "R083": Fixture("R083", "metro_pump_1", "de-leaked twin of R008",
+                    enterprise={"active_work_order": True, "technician_present": False}),
+    "R084": Fixture("R084", "motor_01", "de-leaked twin of R010",
+                    enterprise={"active_work_order": False, "technician_present": False,
+                                "similar_wo_recommendation": "ESCALATE",
+                                "similarity_score": 0.91}),
+    "R086": Fixture("R086", "metro_pump_1", "de-leaked twin of R059 (control for R008)",
+                    enterprise={"active_work_order": False, "technician_present": False}),
+    "R087": Fixture("R087", "motor_01", "de-leaked twin of R060 (control for R010)",
+                    enterprise={"active_work_order": False, "technician_present": False,
+                                "similar_wo_recommendation": None, "similarity_score": 0.0}),
+}
+FIXTURES.update(DELEAK_FIXTURES)
+
+#: Leaking scenario -> de-leaked twin. Same world and gold by construction;
+#: only the prompt's stated decision rule differs.
+DELEAK_PAIRS = {
+    "R001": "R076", "R005": "R077", "R016": "R078", "R018": "R079",
+    "R068": "R080", "R069": "R081", "R070": "R082",
+    "R008": "R083", "R010": "R084", "R059": "R086", "R060": "R087",
+}

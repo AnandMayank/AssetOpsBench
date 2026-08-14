@@ -153,9 +153,18 @@ not)` within 120 characters:
 | D (controls) | 5 | 2 (R059, R060) |
 | **total** | **32** | **15** |
 
-**Status:** OPEN. Repair planned Phase 2 — replace the detector with the
-conditional-rule pattern; author de-leaked twins for all 15; treat leak status
-as a measured factor (per user decision) rather than only a thing to remove.
+**Status:** REPAIRED (Phase 2, 2026-08-14). `src/orchestrator/leak_detect.py`
+(`has_rule_leak`) is now used by both `classc_audit.py` and `classd_audit.py`
+(new `rule_leak` field, reported alongside the old `gold_leak`). Verified to
+fire on exactly the 15 scenarios found leaking and on none of their twins
+(`test_ledger_b3_b4_repair.py`). Fifteen de-leaked twins authored (R073–R087
+in the sibling scenario repo), each preserving its parent's world and gold
+exactly (mechanically verified) and varying only the stated decision rule.
+Treated as a measured factor, not repaired out of the corpus: both the
+leaking original and its de-leaked twin remain runnable. B and R026 twins
+(R073–R075, R085) are authored but not yet wired to an executor — B has no
+fixtures until Phase 4; R026 stays excluded per its existing composite-gold
+disposition.
 
 ---
 
@@ -175,10 +184,14 @@ design requires varying exactly one. Every other class-C/D matched pair in this
 phase is matched on leak status; this is the sole exception, and it is my
 authoring defect, not a pre-existing one.
 
-**Status:** OPEN. Repair planned Phase 2, alongside the B3 de-leaking pass —
-either state R066's rule to match R016, or (preferred, since B3 treats leak
-status as a measured factor) keep it as-is and add R016's de-leaked twin so the
-ordering and leak axes are each independently controlled.
+**Status:** REPAIRED (Phase 2, 2026-08-14). R066 is left as-is (still the
+confounded ordering+leak pair, documented rather than silently changed) and
+R016's de-leaked twin R078 is added alongside it. Three scenarios now span
+the two cells that matter: R016 (ordering=constrained, leak=True), R078
+(ordering=constrained, leak=False) and R066 (ordering=free, leak=False).
+R016→R078 isolates the leak axis; R078→R066 — not the original R016→R066 —
+is the clean ordering-axis pair, since it is the one that holds leak status
+fixed. Verified in `test_r016_has_independent_ordering_and_leak_controls`.
 
 ---
 
