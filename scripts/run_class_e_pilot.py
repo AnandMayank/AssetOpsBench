@@ -1,9 +1,4 @@
-"""run_class_e_pilot.py — Class-E sequential/stale-state pilot (P1).
-
-Class E has never been run against a model. The apparatus (sequence-scoped
-execution, hash-chained trace across episode boundaries) is validated by the
-ten acceptance tests in ``test_classe_and_composite.py``; this script produces
-the first model-behaviour data over it.
+"""run_class_e_pilot.py — Class-E sequential/stale-state pilot (P1, repaired P3).
 
 Construct: an asset is inspected across 3 episodes. Between episodes the
 hidden physical value may drift (stationary / step / linear_drift, drawn
@@ -12,15 +7,40 @@ persists across episodes within a sequence, so an agent that answers episode 2
 from its episode-0 reading — without re-observing — has the opportunity to do
 so; that is the failure this measures.
 
-No new metric. CC is exact match against ``derive_sequence_gold`` per episode.
-PROC and CC_grounded reuse ``l3_grounded_scoring`` unchanged, applied to the
-per-episode ``ExecutionTrace`` a ``SequenceTrace`` already contains. The
-stale-state diagnostic is ``stale_state_reuse``, already implemented and
-tested; it is read here, not redefined.
+**Repair (ledger B2, 2026-08-14).** The first run's system prompt stated *"a
+prior visit's results do not carry forward automatically"* and told the agent
+to request tools *"for THIS visit"* on every turn — both pre-empted the
+failure mode by instructing re-observation outright. 0/180 episodes showed
+``stale_state_reuse``. Both sentences are removed; nothing tells the agent
+whether or how state persists.
 
-Runs FULL arm only — class E is not an evidence-withholding construct, it is a
-temporal one. 20 sequences x 3 episodes, per the frozen protocol table in
-L3_FrozenBenchmarkDesign.md.
+That alone was not sufficient: with re-observation free, a model that blindly
+re-observes every episode scores perfectly while reasoning about nothing.
+``SequenceWorld.battery_budget`` (``sequence_executor.py``) now caps physical
+reads across the *whole* sequence at ``n_episodes - 1`` — a world property
+fixed at sample time, so which reads succeed depends only on the agent's own
+choices, never on gold. The prompt states the constraint in the same
+operational terms the rest of the benchmark already uses (a battery shared
+across the visit), without stating the exact budget or which episodes need a
+fresh read — otherwise this becomes a counting exercise rather than a test of
+recognising when re-observation is actually warranted.
+
+No new metric. CC is exact match against ``derive_sequence_gold`` per episode
+— **unchanged**, a pure function of world and episode, independent of the
+battery budget or any model output. PROC and CC_grounded reuse
+``l3_grounded_scoring`` unchanged. ``stale_state_reuse`` and
+``grounded_in_current_episode`` are read, not redefined. Two new *diagnostic*
+fields, both pure functions of the world (never of what the model chose):
+``reobservation_was_necessary`` (did band membership actually change since the
+last delivered observation) and ``unnecessary_reobservation`` (the model read
+again when it didn't need to). Neither feeds CC.
+
+Runs FULL arm only. Minimal pilot: ``--n-sequences`` restricted to
+``stationary`` and ``step`` processes only (``--processes``), because those
+are the two conditions the repair's acceptance gate requires — a detectable
+one-time change (proxy for "drift" in the gate) and a genuine no-change
+control. ``linear_drift`` sequences remain valid and unaffected, just outside
+this pilot's two gates.
 """
 
 from __future__ import annotations
@@ -51,19 +71,37 @@ from tool_executor import STATUS_SUCCESS, ToolCall           # noqa: E402
 
 SYSTEM_PROMPT = """\
 You are an industrial inspection agent operating a robot with real tools. You \
-perform periodic inspections of the same asset over multiple visits.
+perform periodic inspections of the same asset over multiple visits in one \
+round. The robot's battery is shared across the whole round: repeated sensor \
+operations draw on it, and it is not recharged between visits.
 
 Each visit, you work in two steps.
 
 STEP 1 — request tools. Reply with EXACTLY:
 {"tool_calls": [{"tool": "<name>", "args": {}}, ...]}
-Only request tools from the list you are given. A prior visit's results do not
-carry forward automatically — if you need the asset's current state, request
-the tools that give it to you.
+Only request tools from the list you are given.
 
 STEP 2 — decide, once you have this visit's results. Reply with EXACTLY:
 {"verdict": "COMMIT|ESCALATE|ABORT", "reason": "<one sentence>", "pa": <float or null>, "tool_sequence": ["<tool>", ...]}
 """
+
+
+def _sample_filtered_sequence(seed_start: int, index: int, processes: tuple, n_episodes: int):
+    """The i-th sequence whose drift process is in ``processes``.
+
+    Scans forward from ``seed_start`` deterministically -- no change to
+    ``sample_sequence`` itself, which still draws its process before any
+    label and cannot see this filter.
+    """
+    seed = seed_start
+    found = 0
+    while True:
+        w = sample_sequence(seed=seed, n_episodes=n_episodes)
+        if w.process.kind in processes:
+            if found == index:
+                return w, seed
+            found += 1
+        seed += 1
 TEMPERATURE = 0.0
 MAX_TOKENS = 1024
 N_EPISODES = 3
@@ -104,14 +142,14 @@ def _git(repo: Path, *args: str) -> str:
 
 
 def run_sequence(model: str, api_key: str, base_url: str,
-                 se: SequenceExecutor, seed: int) -> Dict[str, Any]:
-    world = sample_sequence(seed=seed, n_episodes=N_EPISODES)
+                 se: SequenceExecutor, world, seed: int) -> Dict[str, Any]:
     se.begin_sequence(world)
     seq_trace = SequenceTrace(world.sequence_id, "FULL")
 
     msgs: List[Dict[str, Any]] = [{"role": "system", "content": SYSTEM_PROMPT}]
     episodes: List[Dict[str, Any]] = []
     apparatus_failure_any = False
+    last_grounded_episode: Optional[int] = None   # world-truth bookkeeping only
 
     for k in range(N_EPISODES):
         se.advance_episode("FULL", withheld=[])
@@ -126,7 +164,7 @@ def run_sequence(model: str, api_key: str, base_url: str,
             f"appropriate action.\n\nTools available: "
             f"{', '.join(se.available_tools())}\n"
             f"Allowed verdicts: COMMIT, ESCALATE, ABORT\n\n"
-            f"STEP 1: request the tools you need for THIS visit.")
+            f"STEP 1: request the tools you need.")
         msgs.append({"role": "user", "content": visit_prompt})
         step1, err1 = _chat(model, msgs, api_key, base_url)
         requested = [c for c in (step1.get("tool_calls") or []) if isinstance(c, dict)]
@@ -155,7 +193,7 @@ def run_sequence(model: str, api_key: str, base_url: str,
             "text": ("Tool results for this visit (produced by the executor, not "
                      "by you):\n" + json.dumps(results, indent=2)
                      + ("\n\nThe captured gauge image follows." if images else "")
-                     + "\n\nNow give your decision for THIS visit.")}]
+                     + "\n\nNow give your decision.")}]
         for b64 in images:
             content.append({"type": "image_url",
                             "image_url": {"url": f"data:image/png;base64,{b64}"}})
@@ -184,6 +222,21 @@ def run_sequence(model: str, api_key: str, base_url: str,
             proc = proc_from_trace(FM, trace)
             grounding = cc_grounded(FM, cc, trace, step2.get("cited_observation_ids", ()) or ())
 
+        reacquired = grounded_in_current_episode(seq_trace, k)
+        # World-truth only: did the band membership actually change since the
+        # last episode this agent had a delivered observation? Never a
+        # function of what the model did this episode -- only of the world
+        # and of *when it last had evidence*, which is itself read from the
+        # trace (a fact about delivery, not about correctness).
+        if last_grounded_episode is None:
+            reobservation_was_necessary = True   # first opportunity is always "necessary"
+        else:
+            reobservation_was_necessary = (
+                world.band_membership_at(k) != world.band_membership_at(last_grounded_episode))
+        unnecessary_reobservation = reacquired and not reobservation_was_necessary
+        if reacquired:
+            last_grounded_episode = k
+
         episodes.append({
             "episode": k, "value_now": gold["value_now"], "gold": gold["verdict"],
             "band_crossed_by_now": gold["band_crossed_by_now"],
@@ -192,7 +245,11 @@ def run_sequence(model: str, api_key: str, base_url: str,
             "tools_executed": sorted(trace.executed_tools()),
             "CC": cc, "PROC": proc, **grounding,
             "stale_state_reuse": stale_state_reuse(seq_trace, k),
-            "reacquired_this_episode": grounded_in_current_episode(seq_trace, k),
+            "reacquired_this_episode": reacquired,
+            "reobservation_was_necessary": reobservation_was_necessary,
+            "unnecessary_reobservation": unnecessary_reobservation,
+            "battery_reads_used": se._physical_reads_used,
+            "battery_budget": world.battery_budget,
             "apparatus_failure": apparatus_failure,
             "errors": [e for e in (err1, err2) if e],
         })
@@ -218,9 +275,13 @@ def main() -> int:
         "TOKENROUTER_BASE_URL", "https://api.tokenrouter.com/v1"))
     ap.add_argument("--n-sequences", type=int, default=20)
     ap.add_argument("--seed-start", type=int, default=1)
+    ap.add_argument("--processes", default="stationary,step",
+                    help="drift processes to draw from (comma-separated); "
+                         "the minimal pilot's two gates only need these two")
     ap.add_argument("--json", type=Path,
                     default=REPO_ROOT / "reports" / "v1" / "class_e_pilot.json")
     args = ap.parse_args()
+    processes = tuple(p.strip() for p in args.processes.split(","))
 
     api_key = os.environ.get("TOKENROUTER_API_KEY", "")
     if not api_key:
@@ -235,21 +296,25 @@ def main() -> int:
         "model": args.model,
         "generation": {"temperature": TEMPERATURE, "max_tokens": MAX_TOKENS},
         "n_sequences": args.n_sequences, "n_episodes": N_EPISODES,
+        "processes": list(processes),
         "assetopsbench_sha": _git(REPO_ROOT, "rev-parse", "HEAD"),
-        "status": "class-E first model run — apparatus validated, construct previously unmeasured",
+        "status": "class-E repaired pilot (ledger B2) -- prompt de-contaminated, "
+                 "battery budget makes re-observation costly",
     }
     print(f"model={args.model} n_sequences={args.n_sequences} "
-         f"episodes={N_EPISODES}\n")
+         f"episodes={N_EPISODES} processes={processes}\n")
 
     rows: List[Dict[str, Any]] = []
     for i in range(args.n_sequences):
-        seed = args.seed_start + i
-        r = run_sequence(args.model, api_key, args.base_url, se, seed)
+        world, seed = _sample_filtered_sequence(args.seed_start, i, processes, N_EPISODES)
+        r = run_sequence(args.model, api_key, args.base_url, se, world, seed)
         rows.append(r)
         cc_vals = [e["CC"] for e in r["episodes"] if e["CC"] is not None]
         stale = sum(1 for e in r["episodes"] if e["stale_state_reuse"])
+        unnecessary = sum(1 for e in r["episodes"] if e["unnecessary_reobservation"])
         print(f"  {r['sequence_id']:14s} {r['asset']:16s} proc={r['process']:12s} "
-             f"CC={cc_vals} stale_reuse={stale} chain_valid={r['sequence_trace_chain_valid']} "
+             f"CC={cc_vals} stale_reuse={stale} unnecessary_reobs={unnecessary} "
+             f"chain_valid={r['sequence_trace_chain_valid']} "
              f"apparatus_failure={r['apparatus_failure_any']}")
 
     args.json.parent.mkdir(parents=True, exist_ok=True)

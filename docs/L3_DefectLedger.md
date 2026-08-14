@@ -73,9 +73,15 @@ amended (not deleted) below:
    reading is very likely a B1 artifact, not a model property. Under
    investigation in Phase 1.
 
-**Status:** OPEN. Repair planned Phase 1 (`docs/L3_DefectLedger.md` will be
-updated with a REPAIRED line once `couchdb_executor.py` carries real
-per-scenario hidden state for every class-C/D scenario ID and C/D are re-run).
+**Status:** REPAIRED (Phase 1a/1b, 2026-08-14). `couchdb_executor.py` carries
+real hidden state for all 28 class-C/D scenarios (39 including Phase-2 twins),
+plus a call-counter-based multi-gauge mechanism for R021/R025/R061/R063.
+`run_classc_pilot.py`/`run_classd_pilot.py` now assert the entry exists rather
+than falling back to a placeholder. C/D re-run unchanged on all three models:
+`docs/L3_Phase1b_B1Repair_Results.md`. The gauge-free vs gauge-touching CC gap
+that evidenced the defect is gone; the D-instability finding this defect had
+produced was re-diagnosed and substantially resolved (gemini's non-causal
+flip rate: 3/3 → 1/3).
 
 ---
 
@@ -99,11 +105,17 @@ re-observes every episode scores perfectly while demonstrating no evidence
 reasoning at all; the construct requires re-observation to have a cost so that
 choosing to skip it (when safe) or perform it (when necessary) is informative.
 
-**Status:** OPEN. Repair planned Phase 3 — remove the persistence-denying
-sentence, and give re-observation a real cost via the existing battery
-mechanism (`robot_state.battery_charge_pct`, already load-bearing for
-R016/R024). Gated behind a minimal pilot (two conditions must both pass before
-E is powered) — see plan §C.
+**Status:** REPAIRED (Phase 3, 2026-08-14). Persistence-denying sentences
+removed from `run_class_e_pilot.py`. `SequenceWorld.battery_budget`
+(`sequence_executor.py`) caps physical reads across a whole sequence at
+`n_episodes - 1`, a world property fixed at sample time — gold
+(`derive_sequence_gold`) takes no battery argument and is unchanged; this is
+now a regression test. Both pilot gates pass: 16/26 stale-reuse episodes
+scored wrong (gate 1); 7 costly-unnecessary-reobservation instances and 4
+correct-conservation instances (gate 2), across all three models. Full
+results: `docs/L3_Phase3_B2Repair_Results.md`. `linear_drift` sequences are
+unaffected by the repair but weren't part of this minimal pilot's two gates —
+noted as still open before the full 20-sequence protocol is powered.
 
 ---
 
@@ -211,10 +223,11 @@ entry. 16/16 passing throughout the P0-P3 phase gave false assurance that the
 execution apparatus was sound for scenarios the preflight had never actually
 touched.
 
-**Status:** OPEN. Repair planned Phase 1, alongside B1 — extend preflight
-coverage to include at least one scenario per family (B/C/D/E), and add a
-regression test asserting the preflight *fails* when a placeholder-range world
-is deliberately injected (proving it now catches the class of defect it
-previously missed).
+**Status:** REPAIRED (Phase 1a, 2026-08-14). `l3_execution_preflight.py` gains
+check 16 (no registered scenario carries the `[0,100]` placeholder signature)
+and check 17 (a class-C and a class-D scenario execute against real,
+non-degenerate state). A regression test injects the exact B1 defect and
+confirms check 16 now catches it. B's fixtures don't exist yet (Phase 4), so
+family-B coverage remains a gap for that later phase, not this one.
 
 ---

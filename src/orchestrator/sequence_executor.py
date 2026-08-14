@@ -77,6 +77,20 @@ class SequenceWorld:
     process: DriftProcess
     n_episodes: int
     seed: int
+    #: Total physical reads (read_gauge/capture_image) available across the
+    #: *whole* sequence (ledger B2 repair). Fixed at sample time -- a world
+    #: property, not a function of model behaviour, so gold never depends on
+    #: what the agent does with its budget. n_episodes - 1 makes "re-observe
+    #: every episode" infeasible while "read once, reuse elsewhere" always
+    #: fits, giving re-observation a real, world-grounded cost.
+    battery_budget: int = 0
+
+    def band_membership_at(self, episode: int) -> bool:
+        """True iff the reading at this episode falls inside the operating
+        band -- the only fact re-observation can actually change the agent's
+        knowledge of."""
+        lo, hi = self.operating_band
+        return lo <= self.value_at(episode) <= hi
 
     def value_at(self, episode: int) -> float:
         lo, hi = self.gauge_range
@@ -117,7 +131,8 @@ def sample_sequence(seed: int, n_episodes: int = 3,
     return SequenceWorld(
         sequence_id=f"SEQ-{seed:05d}", asset=spec.asset_id, unit=spec.unit,
         gauge_range=[gmin, gmax], operating_band=[lo, hi],
-        base_value=base, process=proc, n_episodes=n_episodes, seed=seed)
+        base_value=base, process=proc, n_episodes=n_episodes, seed=seed,
+        battery_budget=max(1, n_episodes - 1))
 
 
 def derive_sequence_gold(world: SequenceWorld, episode: int) -> Dict[str, Any]:
@@ -219,15 +234,20 @@ class SequenceExecutor:
     backend_id = "couchdb_sequence"
     backend_version = "1.0.0"
 
+    #: Tools that draw on the sequence's shared battery budget (ledger B2).
+    PHYSICAL_READ_TOOLS = ("read_gauge", "capture_image")
+
     def __init__(self, inner) -> None:
         self._inner = inner
         self.world: Optional[SequenceWorld] = None
         self.episode: int = -1
         self._saved_profile: Optional[Dict[str, Any]] = None
+        self._physical_reads_used = 0
 
     def begin_sequence(self, world: SequenceWorld) -> None:
         """Reset once, at sequence start — not between episodes."""
         self.world, self.episode = world, -1
+        self._physical_reads_used = 0
         db = self._inner._robot.db
         self._saved_profile = dict(db.get(f"profile:{world.asset}"))
 
@@ -263,6 +283,23 @@ class SequenceExecutor:
         self.world, self.episode, self._saved_profile = None, -1, None
 
     def execute(self, call):
+        """Delegates, except a physical read once the sequence's battery
+        budget is spent -- ledger B2: re-observation must have a real cost or
+        a model that always re-observes is indistinguishable from one that
+        reasons about evidence validity. The budget is a world property fixed
+        at sample time, so which episodes exhaust it depends only on how many
+        reads the agent itself chose to make, never on gold.
+        """
+        if call.tool in self.PHYSICAL_READ_TOOLS and self.world is not None:
+            if self._physical_reads_used >= self.world.battery_budget:
+                from tool_executor import STATUS_FAILED, ToolResult
+                return ToolResult(
+                    tool=call.tool, modality="physical", executed=True,
+                    status=STATUS_FAILED,
+                    error=(f"battery depleted for this visit -- "
+                          f"{self._physical_reads_used}/{self.world.battery_budget} "
+                          f"physical reads already used this sequence"))
+            self._physical_reads_used += 1
         return self._inner.execute(call)
 
     def available_tools(self) -> List[str]:
