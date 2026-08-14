@@ -25,6 +25,15 @@
 > *interpretations* built on them in §2, §3 and §5 (questions 2, 3, 5, 6, so far
 > as they draw on C/D) must be re-derived after the B1 repair and re-run.
 
+> **RESOLUTION (2026-08-14).** B1 repaired and C/D re-run unchanged on all
+> three models: `docs/L3_Phase1b_B1Repair_Results.md`. The section-3 finding
+> is **not supported** after repair -- gemini's non-causal-pair flip count
+> drops from 3/3 to 1/3 (matching, not exceeding, the per-scenario variation
+> gpt and qwen also show), confirming the flips were substantially a B1
+> artifact, not a model-specific instability. The gauge-free vs
+> gauge-touching CC gap that motivated B1 is gone post-repair. See the
+> linked report for full numbers.
+
 Produced from real API runs against the repaired executor. **No scenario was
 added, changed or removed in this phase; no frozen metric definition changed;
 no historical result (A-family three-model pilot, R009/R015, R055-R058)
