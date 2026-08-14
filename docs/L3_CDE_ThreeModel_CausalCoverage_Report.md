@@ -1,5 +1,30 @@
 # Causal-coverage report: A / C / D / E on three models
 
+> **AMENDMENT (2026-08-14), appended, nothing below deleted.** A post-hoc audit
+> found that `run_classc_pilot.py` / `run_classd_pilot.py` executed all 28
+> class-C/D scenarios lacking a `SCENARIO_PHYSICAL` entry (every one of them
+> except none) against a **degenerate placeholder world**
+> (`gauge_value=0.0`, range `[0,100]`, band `[0,100]`) rather than each
+> scenario's real gauge range and operating band. Full writeup:
+> `docs/L3_DefectLedger.md` entry **B1**. This **contaminates every
+> gauge-touching class-C/D result in §2 and §3 below** (18 of 18 C scenarios,
+> 10 of 10 D scenarios touch a gauge). Family A (§1, carried forward from the
+> pre-existing frozen pilot, which uses real `SCENARIO_PHYSICAL`/world-first
+> state) and family E (§4, which uses `reset_from_world` exclusively) are
+> **not** affected by B1.
+>
+> Specifically contaminated and **not to be relied on** until a clean re-run:
+> the claim that R007/R065 is "a genuine task-level miss, not an ordering
+> artifact" (§2); the claim that R023/R024's 2-of-3 recovery under the ordering
+> control isolates a real ordering-specific cost (§2); and the entire §3
+> reading of gemini's non-causal-pair instability as a model property — all
+> three non-causal D pairs (R021/R061, R022/R062, R025/R063) are exactly the
+> gauge-normalisation and survey scenarios, maximally exposed to B1, and
+> gemini's own reason text names the artifact directly ("a generic 0-100
+> range"). The numbers below are preserved for audit-trail purposes; the
+> *interpretations* built on them in §2, §3 and §5 (questions 2, 3, 5, 6, so far
+> as they draw on C/D) must be re-derived after the B1 repair and re-run.
+
 Produced from real API runs against the repaired executor. **No scenario was
 added, changed or removed in this phase; no frozen metric definition changed;
 no historical result (A-family three-model pilot, R009/R015, R055-R058)
