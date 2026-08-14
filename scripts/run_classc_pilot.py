@@ -60,11 +60,11 @@ def run(model: str, api_key: str, base_url: str, ex: CouchDBExecutor,
         sid: str) -> Dict[str, Any]:
     a = audit(sid)
     fx = FIXTURES[sid]
-    asset = fx.asset
+    # Ledger B1: no placeholder fallback. A scenario without a real
+    # SCENARIO_PHYSICAL entry must fail loudly (ex.reset raises KeyError)
+    # rather than run silently against a fabricated [0,100] world.
     from couchdb_executor import SCENARIO_PHYSICAL
-    SCENARIO_PHYSICAL.setdefault(sid, {"asset": asset, "value": 0.0, "unit": "",
-                                       "range": [0, 100], "band": [0, 100],
-                                       "source": "class-C default seeded state"})
+    assert sid in SCENARIO_PHYSICAL, f"{sid}: no real hidden state defined (ledger B1)"
     ex.reset(sid, "FULL", seed=1)
     ex.enterprise_override = dict(fx.enterprise)
     trace = ExecutionTrace(sid, "FULL")

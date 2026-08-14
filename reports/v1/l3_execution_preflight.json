@@ -98,6 +98,18 @@
       "name": "trace reconstructs what the agent actually observed",
       "passed": true,
       "detail": "modalities=['digital', 'physical'] chain_valid=True"
+    },
+    {
+      "id": "16",
+      "name": "no class-C/D scenario carries the [0,100] placeholder signature",
+      "passed": true,
+      "detail": "34 entries clean"
+    },
+    {
+      "id": "17",
+      "name": "at least one class-C and one class-D scenario execute against real, non-degenerate state",
+      "passed": true,
+      "detail": "2/2 (['C', 'D'])"
     }
   ]
 }

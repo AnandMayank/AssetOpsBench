@@ -25,6 +25,27 @@ operating band, not invented: where the groundtruth states the reading it is
 used verbatim; where it does not (R009, R015) a value inside the stated band is
 chosen, because the scenario's gold is COMMIT and only an in-band reading is
 consistent with that. No gold label, band or scenario text is changed.
+
+**Repair (ledger B1, 2026-08-14).** ``run_classc_pilot.py`` / ``run_classd_pilot.py``
+previously fell back to a placeholder (``gauge_value=0.0``, range/band
+``[0,100]``) for every class-C/D scenario ID absent from ``SCENARIO_PHYSICAL`` —
+which was every one of the 28 run this phase, since this table only ever covered
+the six original pilot scenarios. Every scenario now has a real entry, in-band at
+the midpoint of its asset's operating band where the groundtruth does not state a
+value and gold does not depend on the gauge reading (panel-stuck, battery,
+localisation, waypoint, work-order and similarity scenarios — the gauge must read
+*normal* there so it cannot spuriously drive the decision), or the groundtruth's
+own stated reading otherwise.
+
+**Repair (ledger B1, multi-gauge).** R021/R025 and their controls R061/R063
+require *three independently-valued named gauges* on one asset
+(``suction_line``, ``discharge_line``, ``seal_flush``), which
+``read_gauge(asset_id, attempt_n)`` cannot express — it has no gauge-name
+parameter and reads a single profile value. Rather than change that tool
+signature (``src/servers/robot/main.py`` is off-limits for this repair),
+``SCENARIO_MULTI_GAUGE`` maps ``attempt_n`` to a named gauge and this module
+synthesises the noisy reading itself, at the exact normalised fractions each
+scenario's own groundtruth states (0.20 / 0.70 / 0.14 of span) — not invented.
 """
 
 from __future__ import annotations
@@ -61,6 +82,94 @@ SCENARIO_PHYSICAL: Dict[str, Dict[str, Any]] = {
              "range": [0, 200], "band": [80, 100], "source": "groundtruth"},
     "R058": {"asset": "hydraulic_pump_1", "value": 268.0, "unit": "bar",
              "range": [0, 350], "band": [160, 200], "source": "groundtruth"},
+
+    # --- class-C / class-D (ledger B1 repair, 2026-08-14) -------------------
+    # In-band midpoint of the asset's own operating band. Gold in every one of
+    # these scenarios turns on something other than the gauge value (panel,
+    # battery, localisation, waypoint, work order, similarity) — a legible,
+    # normal-looking reading is the neutral choice so it cannot spuriously
+    # drive the decision either way. Values for R006/R007/R023/R024 and their
+    # controls, whose gold *does* require an in-band legible reading, are
+    # equally satisfied by the same midpoint.
+    "R001": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "in-band midpoint; gold turns on panel_stuck"},
+    "R005": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "in-band midpoint; gold turns on active WO"},
+    "R006": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; gold requires legible in-band reading"},
+    "R007": {"asset": "hydraulic_pump_1", "value": 180.0, "unit": "bar",
+             "range": [0, 350], "band": [160, 200], "source": "in-band midpoint; gold requires legible in-band reading"},
+    "R008": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "in-band midpoint; gold turns on active WO"},
+    "R010": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; gold turns on WO similarity"},
+    "R016": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "in-band midpoint; gold turns on battery"},
+    "R017": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "in-band midpoint; gold turns on localisation"},
+    "R018": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; gold turns on waypoint active"},
+    "R022": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "in-band midpoint; gold turns on leg ordering"},
+    "R023": {"asset": "hydraulic_pump_1", "value": 180.0, "unit": "bar",
+             "range": [0, 350], "band": [160, 200], "source": "in-band midpoint; gold requires legible in-band reading"},
+    "R024": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; gold requires legible in-band reading"},
+    "R059": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "in-band midpoint; control for R008"},
+    "R060": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; control for R010"},
+    "R062": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "in-band midpoint; control for R022"},
+    "R064": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; control for R006"},
+    "R065": {"asset": "hydraulic_pump_1", "value": 180.0, "unit": "bar",
+             "range": [0, 350], "band": [160, 200], "source": "in-band midpoint; control for R007"},
+    "R066": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "in-band midpoint; control for R016"},
+    "R067": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "in-band midpoint; control for R017"},
+    "R068": {"asset": "chiller_6", "value": 245.0, "unit": "bar",
+             "range": [0, 400], "band": [220, 270], "source": "in-band midpoint; control for R001"},
+    "R069": {"asset": "metro_pump_1", "value": 1.0, "unit": "m3/s",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "in-band midpoint; control for R005"},
+    "R070": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; control for R018"},
+    "R071": {"asset": "hydraulic_pump_1", "value": 180.0, "unit": "bar",
+             "range": [0, 350], "band": [160, 200], "source": "in-band midpoint; control for R023"},
+    "R072": {"asset": "motor_01", "value": 90.0, "unit": "C",
+             "range": [0, 200], "band": [80, 100], "source": "in-band midpoint; control for R024"},
+
+    # Fallback profile entry for the 4 multi-gauge scenarios below — used by
+    # tools other than read_gauge (capture_image, get_asset_state), and by
+    # reset()'s profile write, which needs a single (range, value). The
+    # suction_line gauge stands in; read_gauge itself never reads this for
+    # these four IDs, see SCENARIO_MULTI_GAUGE.
+    "R021": {"asset": "hydraulic_pump_1", "value": 0.30, "unit": "bar",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "multi-gauge; suction_line stand-in, see SCENARIO_MULTI_GAUGE"},
+    "R025": {"asset": "hydraulic_pump_1", "value": 0.30, "unit": "bar",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "multi-gauge; suction_line stand-in, see SCENARIO_MULTI_GAUGE"},
+    "R061": {"asset": "hydraulic_pump_1", "value": 0.30, "unit": "bar",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "multi-gauge; control for R021"},
+    "R063": {"asset": "hydraulic_pump_1", "value": 0.30, "unit": "bar",
+             "range": [0, 1.5], "band": [0.9, 1.1], "source": "multi-gauge; control for R025"},
+}
+
+#: Multi-gauge scenarios (ledger B1 repair). ``read_gauge(asset_id, attempt_n)``
+#: has no gauge-name parameter, so three independently-valued named gauges on
+#: one asset cannot come from ``SCENARIO_PHYSICAL`` alone. ``attempt_n`` (1, 2,
+#: 3, cycling) selects the gauge; each (range, value) pair reproduces the exact
+#: normalised fraction each scenario's own groundtruth states — 0.20 / 0.70 /
+#: 0.14 of span for suction_line / discharge_line / seal_flush — not invented.
+#: R061 and R063 are R021's and R025's non-causal controls: the physical world
+#: is unchanged by design, so they reuse the same three gauges.
+SCENARIO_MULTI_GAUGE: Dict[str, List[Dict[str, Any]]] = {
+    sid: [
+        {"name": "suction_line", "range": [0.0, 1.5], "value": 0.30, "unit": "bar"},
+        {"name": "discharge_line", "range": [0.0, 6.0], "value": 4.20, "unit": "bar"},
+        {"name": "seal_flush", "range": [0.0, 2.5], "value": 0.35, "unit": "bar"},
+    ]
+    for sid in ("R021", "R025", "R061", "R063")
 }
 
 #: The digital channel each scenario exposes — the shortcut, not the gold.
@@ -168,6 +277,31 @@ class CouchDBExecutor:
         return observation_id("state", (self.scenario_id, self.arm_id,
                                         phys.get("value")))
 
+    def _read_multi_gauge(self, scenario_id: str, attempt_n: int) -> Dict[str, Any]:
+        """Noisy reading for one of a scenario's several named gauges.
+
+        Mirrors ``main.read_gauge``'s noise model (1.5% of span, occasional
+        occlusion) without touching the MCP server: the true value never
+        appears in the returned dict, matching that module's own invariant.
+        ``attempt_n`` selects the gauge (1-indexed, cycling), so three calls
+        with attempt_n 1/2/3 see three different gauges — the construct
+        R021/R025 require and R061/R063 hold fixed as their non-causal control.
+        """
+        gauges = SCENARIO_MULTI_GAUGE[scenario_id]
+        g = gauges[(attempt_n - 1) % len(gauges)]
+        rng = self._robot._rng
+        span = float(g["range"][1]) - float(g["range"][0])
+        noise = rng.gauss(0, 0.015 * span)
+        reading = round(max(g["range"][0], min(g["range"][1], g["value"] + noise)), 3)
+        occlusion = rng.random() < 0.08
+        confidence = round(rng.uniform(0.80, 0.99) if not occlusion else rng.uniform(0.40, 0.65), 3)
+        return {"asset_id": g["name"], "attempt_n": attempt_n, "reading": reading,
+                "confidence": confidence, "occlusion_flag": occlusion,
+                "gauge_range": list(g["range"]), "gauge_path": None,
+                "message": (f"Gauge read #{attempt_n} for '{g['name']}': "
+                           f"reading={reading}, confidence={confidence}"
+                           + (" [OCCLUDED — reposition and retry]" if occlusion else ""))}
+
     # -------------------------------------------------------------- execution
 
     def execute(self, call: ToolCall) -> ToolResult:
@@ -206,9 +340,12 @@ class CouchDBExecutor:
                                "format": "png", "bytes": len(png),
                                "gauge_range": phys["range"], "unit": phys["unit"]}
             elif tool == "read_gauge":
-                out = self._robot.read_gauge(asset_id=asset,
-                                             attempt_n=int(call.args.get("attempt_n", 1)))
-                d = out.model_dump() if hasattr(out, "model_dump") else dict(out)
+                attempt_n = int(call.args.get("attempt_n", 1))
+                if self.scenario_id in SCENARIO_MULTI_GAUGE:
+                    d = self._read_multi_gauge(self.scenario_id, attempt_n)
+                else:
+                    out = self._robot.read_gauge(asset_id=asset, attempt_n=attempt_n)
+                    d = out.model_dump() if hasattr(out, "model_dump") else dict(out)
                 if d.get("error"):
                     res.status, res.error = STATUS_FAILED, d["error"]
                 else:

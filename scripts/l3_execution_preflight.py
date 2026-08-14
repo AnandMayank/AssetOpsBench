@@ -163,6 +163,28 @@ def run_checks() -> List[Check]:
     add("15", "trace reconstructs what the agent actually observed",
         tr.verify_chain() and {"physical", "digital"} <= tr.delivered_modalities(),
         f"modalities={sorted(tr.delivered_modalities())} chain_valid={tr.verify_chain()}")
+
+    # --- ledger B5: preflight must be able to catch B1-shaped defects -------
+    # Check 14 only ever exercised PILOT (all family A), so a class-C/D
+    # scenario falling back to a fabricated [0,100] placeholder world could
+    # never have been caught here. Both gaps closed below.
+    from couchdb_executor import SCENARIO_PHYSICAL
+
+    bad = [sid for sid, phys in SCENARIO_PHYSICAL.items()
+           if list(phys.get("range", [])) == [0, 100] and list(phys.get("band", [])) == [0, 100]]
+    add("16", "no class-C/D scenario carries the [0,100] placeholder signature",
+        not bad, f"placeholder-shaped entries: {bad}" if bad else f"{len(SCENARIO_PHYSICAL)} entries clean")
+
+    FAMILY_SAMPLE = {"C": "R006", "D": "R008"}   # a class-A scenario is PILOT; class-E is sequence-scoped
+    fam_ok = []
+    for fam, sid in FAMILY_SAMPLE.items():
+        ex.reset(sid, "FULL", seed=1)
+        i = ex.execute(ToolCall("capture_image"))
+        g = ex.execute(ToolCall("read_gauge", {"attempt_n": 1}))
+        fam_ok.append(i.delivered and g.delivered
+                      and 0.0 < g.payload.get("reading", 0.0) < g.payload.get("gauge_range", [0, 0])[1])
+    add("17", "at least one class-C and one class-D scenario execute against real, non-degenerate state",
+        all(fam_ok), f"{sum(fam_ok)}/{len(FAMILY_SAMPLE)} ({list(FAMILY_SAMPLE)})")
     return out
 
 
