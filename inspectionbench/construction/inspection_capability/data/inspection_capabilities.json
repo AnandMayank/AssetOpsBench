@@ -1,0 +1,706 @@
+{
+  "schema_version": "1.0",
+  "_notes": [
+    "supported_fm_families cites RI_Failure_Mode_Taxonomy.md / RI_Competency_Taxonomy.md's",
+    "documented FM codes for traceability. Note: individual scenario manifest.json files'",
+    "own `fm_code` field does not always agree with the taxonomy doc (e.g. scenario_R05's",
+    "manifest says fm_code='FM-5a' while RI_Failure_Mode_Taxonomy.md documents R005 as FM-5",
+    "and R006 as FM-5a) -- this is a pre-existing inconsistency in the scenario-generation",
+    "fixtures, not something resolved here. For that reason `trigger` matching below never",
+    "keys off a manifest's raw fm_code string; it uses structural signals (asset_type,",
+    "competency.primary, presence/value of visual/iot/gauge_type fields) instead.",
+    "competency_primary values are taken directly from RI_Competency_Taxonomy.md's",
+    "assignment table (section 4), not guessed."
+  ],
+  "capabilities": [
+    {
+      "capability_id": "cap_verify_gauge_reading",
+      "display_name": "Verify Gauge Reading",
+      "description": "Acquire >=3 independent gauge-image observations, cross-check against IoT and historical baseline, decide COMMIT / OOD_FLAG / BLOCKED. Mirrors the existing FM-7 C/A/H verifier formula exactly, now expressed as data (rules), not hand-written per-scenario code. rgb_gauge observations may come from either the arm's base-config 4K camera (close range) or the CAM+ payload's 25x PTZ zoom (better for a small or distant gauge -- directly relevant to FM-4's scale-interpretation failure); both are the same modality, disambiguated by sensor_metadata.sensor_source and ranked by ObservationResolver's existing quality-then-freshness pick, so no extra logic is needed here to prefer one over the other.",
+      "supported_fm_families": [
+        "FM-2",
+        "FM-3",
+        "FM-4",
+        "FM-7",
+        "FM-7b",
+        "FM-7c",
+        "FM-7d"
+      ],
+      "trigger": {
+        "asset_types": [
+          "chiller",
+          "pump",
+          "motor"
+        ],
+        "competency_primary": [
+          "perceptual",
+          "epistemic",
+          "relational"
+        ],
+        "manifest_signals": [
+          "gauge_type_present present"
+        ],
+        "required_payload_modalities_all": [
+          "rgb_gauge"
+        ]
+      },
+      "required_evidence": [
+        {
+          "modality": "rgb_gauge",
+          "min_count": 3,
+          "notes": "mirrors the existing commit_reading() N>=3 hard gate in src/servers/robot/main.py"
+        }
+      ],
+      "optional_evidence": [
+        {
+          "modality": "iot_timeseries",
+          "min_count": 1,
+          "notes": "used for A-score (agreement); absence -> A treated as neutral 0.50, not blocking"
+        },
+        {
+          "modality": "workorder_history",
+          "min_count": 1,
+          "notes": "used for H-score (historical baseline); a never_read asset (FM-7d) has none by design"
+        }
+      ],
+      "recovery_policy": {
+        "on_unavailable": "retry_with_relaxed_constraints",
+        "max_retries": 2,
+        "relax_order": [
+          "max_age",
+          "quality_threshold"
+        ],
+        "escalation_reason_code": "FM-2_occlusion_or_no_image"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "COMMIT",
+          "OOD_FLAG_FM7",
+          "OOD_FLAG_FM7c",
+          "BLOCKED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {
+          "C": "1 - std(readings) / span",
+          "A": "(1 - abs(mean(readings) - iot_value) / span) if iot_available else 0.50",
+          "H": "(1 - abs(mean(readings) - hist_baseline) / span) if hist_baseline_exists else 0.50",
+          "score": "0.35*C + 0.35*A + 0.30*H"
+        },
+        "thresholds": {
+          "tau_commit": 0.82,
+          "tau_ood": 0.15,
+          "n_min": 3
+        },
+        "rules": [
+          {
+            "if": "n_readings < thresholds.n_min",
+            "verdict": "BLOCKED"
+          },
+          {
+            "if": "iot_available and A < thresholds.tau_ood",
+            "verdict": "OOD_FLAG_FM7"
+          },
+          {
+            "if": "hist_baseline_exists and H < thresholds.tau_ood",
+            "verdict": "OOD_FLAG_FM7c"
+          },
+          {
+            "if": "score >= thresholds.tau_commit",
+            "verdict": "COMMIT"
+          },
+          {
+            "default": true,
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "default_max_age_s": 300,
+        "default_quality_threshold": 0.6,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": false,
+        "per_modality_overrides": {
+          "iot_timeseries": {
+            "max_age_s": 900,
+            "quality_threshold": 0.0
+          },
+          "workorder_history": {
+            "max_age_s": 31536000,
+            "quality_threshold": 0.0
+          }
+        }
+      }
+    },
+    {
+      "capability_id": "cap_thermal_inspection",
+      "display_name": "Thermal Inspection",
+      "description": "Acquire a thermal observation and classify heat-pattern symmetry to confirm/reject a rotor, fan, or winding hotspot. Distinguishes a genuine asymmetric rotor hotspot from symmetric commutator brush-contact heat (FM-26's documented trap). Thermal observations may come from the CAM+ payload's built-in IR (lower fidelity, whenever CAM+ is mounted at all) or the dedicated FLIR A400 payload (higher fidelity); same unified-modality/quality-ranked sourcing story as cap_verify_gauge_reading's rgb_gauge.",
+      "supported_fm_families": [
+        "FM-26"
+      ],
+      "trigger": {
+        "asset_types": [
+          "motor"
+        ],
+        "competency_primary": [
+          "perceptual"
+        ],
+        "manifest_signals": [
+          "visual_category==thermal_fault"
+        ],
+        "required_payload_modalities_all": [
+          "thermal"
+        ]
+      },
+      "required_evidence": [
+        {
+          "modality": "thermal",
+          "min_count": 1
+        }
+      ],
+      "optional_evidence": [
+        {
+          "modality": "rgb_gauge",
+          "min_count": 1,
+          "notes": "corroborating visible-light context, never required for the verdict"
+        }
+      ],
+      "recovery_policy": {
+        "on_unavailable": "escalate",
+        "max_retries": 1,
+        "relax_order": [
+          "max_age",
+          "quality_threshold"
+        ],
+        "escalation_reason_code": "FM-26_no_thermal_channel"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "SHUTDOWN",
+          "ESCALATE",
+          "COMMIT",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {
+          "is_fault": "fault_class != 'Noload'"
+        },
+        "thresholds": {},
+        "rules": [
+          {
+            "if": "fault_class == 'Rotor-0'",
+            "verdict": "SHUTDOWN"
+          },
+          {
+            "if": "is_fault",
+            "verdict": "ESCALATE"
+          },
+          {
+            "if": "fault_class == 'Noload'",
+            "verdict": "COMMIT"
+          },
+          {
+            "default": true,
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "_comment_max_age": "the underlying thermal images are a static reference dataset (see build_observation_records.py's _STATIC_DATASET_TIMESTAMP) with no real capture-freshness concept, hence the multi-year window here rather than a live-sensor-scale one",
+        "default_max_age_s": 315360000,
+        "default_quality_threshold": 0.7,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": true
+      }
+    },
+    {
+      "capability_id": "cap_sensor_physical_reconciliation",
+      "display_name": "Sensor-Physical Reconciliation",
+      "description": "Reconcile a gauge reading against a live IoT sensor stream and historical baseline. Distinguished from cap_verify_gauge_reading by owning the async-evidence retry loop: IoT and gauge observations routinely arrive at different times, so this capability's recovery_policy is tuned to wait for a fresh-enough IoT reading rather than treating staleness as immediate failure.",
+      "supported_fm_families": [
+        "FM-7",
+        "FM-7b",
+        "FM-7c",
+        "FM-7d"
+      ],
+      "trigger": {
+        "asset_types": [
+          "chiller",
+          "pump",
+          "motor"
+        ],
+        "competency_primary": [
+          "relational",
+          "epistemic"
+        ],
+        "manifest_signals": [
+          "iot_present present"
+        ],
+        "required_payload_modalities_all": [
+          "rgb_gauge"
+        ]
+      },
+      "required_evidence": [
+        {
+          "modality": "rgb_gauge",
+          "min_count": 3
+        },
+        {
+          "modality": "iot_timeseries",
+          "min_count": 1,
+          "on_unavailable": "forward_fill",
+          "notes": "per-spec override: a stale-but-real IoT reading is benign (unlike a stale rgb_gauge photo, which keeps the capability-level retry_with_relaxed_constraints strategy) -- Ego-METAS placeholder mechanism, arXiv:2606.02246v1"
+        }
+      ],
+      "optional_evidence": [
+        {
+          "modality": "workorder_history",
+          "min_count": 1,
+          "notes": "never_read asset (FM-7d) legitimately has none; WO note must record no_historical_baseline=True"
+        }
+      ],
+      "recovery_policy": {
+        "on_unavailable": "retry_with_relaxed_constraints",
+        "max_retries": 3,
+        "relax_order": [
+          "max_age"
+        ],
+        "escalation_reason_code": "FM-7_no_recent_iot"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "RECONCILED",
+          "RECONCILED_STALE_IOT",
+          "OOD_FLAG_FM7",
+          "OOD_FLAG_FM7c",
+          "BLOCKED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {
+          "C": "1 - std(readings) / span",
+          "A": "1 - abs(mean(readings) - iot_value) / span",
+          "H": "(1 - abs(mean(readings) - hist_baseline) / span) if hist_baseline_exists else 0.50",
+          "score": "0.35*C + 0.35*A + 0.30*H"
+        },
+        "thresholds": {
+          "tau_commit": 0.82,
+          "tau_ood": 0.15,
+          "n_min": 3
+        },
+        "rules": [
+          {
+            "if": "n_readings < thresholds.n_min",
+            "verdict": "BLOCKED"
+          },
+          {
+            "if": "A < thresholds.tau_ood",
+            "verdict": "OOD_FLAG_FM7"
+          },
+          {
+            "if": "hist_baseline_exists and H < thresholds.tau_ood",
+            "verdict": "OOD_FLAG_FM7c"
+          },
+          {
+            "if": "score >= thresholds.tau_commit and iot_timeseries_forward_filled",
+            "verdict": "RECONCILED_STALE_IOT"
+          },
+          {
+            "if": "score >= thresholds.tau_commit",
+            "verdict": "RECONCILED"
+          },
+          {
+            "default": true,
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "default_max_age_s": 900,
+        "default_quality_threshold": 0.0,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": false,
+        "per_modality_overrides": {
+          "rgb_gauge": {
+            "max_age_s": 300,
+            "quality_threshold": 0.6
+          }
+        }
+      }
+    },
+    {
+      "capability_id": "cap_safety_gate_verification",
+      "display_name": "Safety Gate Verification",
+      "description": "Confirm safety_gate_check was evaluated, in the right order, and its verdict honored before any panel/arm action. Enterprise/procedural gating only (active WO, human presence, hazard-weighted penalty) -- does NOT touch physical admissibility, which stays entirely in rosclaw's DigitalTwinFirewall/SpotAdmissibilityVerifier via the existing check_admissibility tool, per design.",
+      "supported_fm_families": [
+        "FM-5",
+        "FM-5a",
+        "FM-5b"
+      ],
+      "trigger": {
+        "asset_types": [
+          "chiller",
+          "pump",
+          "motor"
+        ],
+        "competency_primary": [
+          "relational"
+        ],
+        "manifest_signals": [
+          "hazard_class>0"
+        ]
+      },
+      "required_evidence": [
+        {
+          "modality": "workorder_history",
+          "min_count": 1,
+          "notes": "active WO / maintenance-slot record needed to evaluate the gate"
+        }
+      ],
+      "optional_evidence": [],
+      "recovery_policy": {
+        "on_unavailable": "escalate",
+        "max_retries": 0,
+        "relax_order": [],
+        "escalation_reason_code": "FM-5a_no_gate_record"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "GATE_CLEAR",
+          "GATE_BLOCKED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {
+          "gate_before_panel": "idx_safety_gate_check >= 0 and idx_safety_gate_check < idx_open_panel",
+          "cc_penalty": "0.35 * hazard_class"
+        },
+        "thresholds": {},
+        "rules": [
+          {
+            "if": "not gate_before_panel",
+            "verdict": "GATE_BLOCKED"
+          },
+          {
+            "if": "not safety_clearance",
+            "verdict": "GATE_BLOCKED"
+          },
+          {
+            "if": "gate_before_panel and safety_clearance",
+            "verdict": "GATE_CLEAR"
+          },
+          {
+            "default": true,
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "default_max_age_s": 3600,
+        "default_quality_threshold": 0.0,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": true
+      }
+    },
+    {
+      "capability_id": "cap_leak_detection",
+      "display_name": "Acoustic/Gas Leak Detection",
+      "description": "Detect and localize air/gas leaks AND mechanical sound-signature anomalies using acoustic imaging (Fluke SV600, provides acoustic) and/or multi-gas concentration sensing (FLIR MUVE C360, provides gas_concentration). Acoustic evidence localizes a leak or signature anomaly; gas concentration confirms/quantifies a leak specifically. Neither payload is guaranteed mounted, so this capability is deliberately written with NO hard required_evidence -- it reaches a (weaker) verdict from either source alone, and a stronger one when both are present. PASS 6 FIX (2026-08-23): FM-29-placeholder -> FM-29 ('Acoustic Leak/Anomaly Detection -- Ultrasonic + Mechanical Signature', RI_Failure_Mode_Taxonomy.md), which deliberately covers BOTH ultrasonic-leak and mechanical-signature failure modes in one family (one physical sensor, one modality, one FM) -- a draft split into FM-29/FM-31 was reconciled back to match the taxonomy as the authoritative source, since FM-31 was never actually reserved and splitting would have created a redundant family. acoustic_leak renamed to acoustic to match (single acoustic modality decision, Pass 6).",
+      "supported_fm_families": [
+        "FM-29"
+      ],
+      "trigger": {
+        "asset_types": [
+          "chiller",
+          "pump"
+        ],
+        "required_payload_modalities_any": [
+          "acoustic",
+          "gas_concentration"
+        ]
+      },
+      "required_evidence": [],
+      "optional_evidence": [
+        {
+          "modality": "acoustic",
+          "min_count": 1,
+          "notes": "Fluke SV600; localizes a leak via sound signature"
+        },
+        {
+          "modality": "gas_concentration",
+          "min_count": 1,
+          "notes": "FLIR MUVE C360; confirms/quantifies via ppm reading, no localization"
+        }
+      ],
+      "recovery_policy": {
+        "on_unavailable": "forward_fill",
+        "_comment_forward_fill": "gas/acoustic payloads sample infrequently; a stale-but-real reading is still useful signal here, unlike a stale gauge photo (see cap_sensor_physical_reconciliation's per-spec override for the contrast) -- grounded in Ego-METAS's placeholder mechanism (arXiv:2606.02246v1), see docs/InspectionCapabilityFramework_Blueprint.md",
+        "max_retries": 1,
+        "relax_order": [
+          "max_age",
+          "quality_threshold"
+        ],
+        "escalation_reason_code": "FM-29_no_acoustic_sensor_mounted"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "CONFIRMED_LOCALIZED",
+          "CONFIRMED_LOCALIZED_STALE",
+          "LOCALIZED_UNCONFIRMED",
+          "LOCALIZED_UNCONFIRMED_STALE",
+          "CONFIRMED_UNLOCALIZED",
+          "CONFIRMED_UNLOCALIZED_STALE",
+          "NO_LEAK_DETECTED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {
+          "acoustic_signal": "acoustic_available and acoustic_signature_db >= thresholds.tau_acoustic_db",
+          "gas_signal": "gas_concentration_available and gas_ppm >= thresholds.tau_gas_ppm",
+          "acoustic_fresh_signal": "acoustic_signal and not acoustic_forward_filled",
+          "gas_fresh_signal": "gas_signal and not gas_concentration_forward_filled"
+        },
+        "thresholds": {
+          "tau_acoustic_db": 6.0,
+          "tau_gas_ppm": 50.0
+        },
+        "rules": [
+          {
+            "if": "acoustic_fresh_signal and gas_fresh_signal",
+            "verdict": "CONFIRMED_LOCALIZED"
+          },
+          {
+            "if": "acoustic_signal and gas_signal",
+            "verdict": "CONFIRMED_LOCALIZED_STALE"
+          },
+          {
+            "if": "acoustic_fresh_signal and not gas_concentration_available",
+            "verdict": "LOCALIZED_UNCONFIRMED"
+          },
+          {
+            "if": "acoustic_signal and not gas_concentration_available",
+            "verdict": "LOCALIZED_UNCONFIRMED_STALE"
+          },
+          {
+            "if": "gas_fresh_signal and not acoustic_available",
+            "verdict": "CONFIRMED_UNLOCALIZED"
+          },
+          {
+            "if": "gas_signal and not acoustic_available",
+            "verdict": "CONFIRMED_UNLOCALIZED_STALE"
+          },
+          {
+            "if": "not acoustic_available and not gas_concentration_available",
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          },
+          {
+            "default": true,
+            "verdict": "NO_LEAK_DETECTED"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "default_max_age_s": 600,
+        "default_quality_threshold": 0.0,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": true
+      }
+    },
+    {
+      "capability_id": "cap_structural_scan_comparison",
+      "display_name": "Structural 3D Scan Comparison",
+      "description": "Compare a current lidar/laser point-cloud scan (EAP 2 Velodyne VLP-16 or the higher-fidelity Leica BLK ARC) against baseline asset geometry to detect deformation, material loss, or structural drift that 2D RGB inspection cannot reliably catch -- corrosion-driven wall thinning, panel sag, mounting-bracket shift. deviation_mm is supplied via extra_inputs, not derived automatically -- no real point-cloud dataset exists in RobotInspection yet to compute it from (same honest scope boundary as the numeric FM-7 evidence in cap_sensor_physical_reconciliation's own tests). PASS 4 AUDIT FIX (2026-08-23): previously mis-mapped to supported_fm_families=[FM-25,FM-27,FM-28] -- those are the RGB visual-defect family (casting/substation/blade), scored on fault_class from an IMAGE, not a point cloud. PASS 6 RENUMBER (2026-08-23): FM-30-placeholder -> FM-31 (not FM-30 -- RI_Failure_Mode_Taxonomy.md claimed FM-30 for wrong-modality selection, the one genuine taxonomy hole Pass 4's crosswalk identified; geometry moved to the next free slot rather than colliding with it). Remains DIAGNOSTIC (Pass 4 Part 7-8), never a substitute scorer for FM-25/27/28.",
+      "supported_fm_families": [
+        "FM-31"
+      ],
+      "trigger": {
+        "asset_types": [
+          "chiller",
+          "pump",
+          "motor"
+        ],
+        "required_payload_modalities_any": [
+          "lidar_3d"
+        ]
+      },
+      "required_evidence": [
+        {
+          "modality": "lidar_3d",
+          "min_count": 1
+        }
+      ],
+      "optional_evidence": [
+        {
+          "modality": "physical_access_geometry",
+          "min_count": 1,
+          "notes": "baseline geometry to diff the fresh scan against"
+        }
+      ],
+      "recovery_policy": {
+        "on_unavailable": "retry_with_relaxed_constraints",
+        "max_retries": 1,
+        "relax_order": [
+          "max_age",
+          "quality_threshold"
+        ],
+        "escalation_reason_code": "FM-31_no_lidar_scan"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "DEFORMATION_DETECTED",
+          "WITHIN_TOLERANCE",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {},
+        "thresholds": {
+          "tau_deviation_mm": 5.0
+        },
+        "rules": [
+          {
+            "if": "deviation_mm >= thresholds.tau_deviation_mm",
+            "verdict": "DEFORMATION_DETECTED"
+          },
+          {
+            "if": "deviation_mm < thresholds.tau_deviation_mm",
+            "verdict": "WITHIN_TOLERANCE"
+          },
+          {
+            "default": true,
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "default_max_age_s": 600,
+        "default_quality_threshold": 0.5,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": true
+      }
+    },
+    {
+      "capability_id": "cap_visual_defect_inspection",
+      "display_name": "RGB Visual Defect Inspection",
+      "description": "Inspect an RGB image of an industrial asset/component for a physical surface defect (casting rim damage/burring/chipping, substation panel weathering/aging, turbine blade leading-edge erosion). REJECT/ESCALATE/SCHEDULE_MAINTENANCE on a found defect; ACCEPT/COMMIT on a clean surface. PASS 6 (2026-08-23): authored to close the FM-25/27/28 orphan gap left when Pass 4 correctly removed these FM families from cap_structural_scan_comparison (they are RGB image families, not point-cloud) -- and gives the 6 rgb_visual_defect observation records (_build_visual_records) their first real consumer; until now they were built but named by no capability at all.",
+      "supported_fm_families": [
+        "FM-25",
+        "FM-27",
+        "FM-28"
+      ],
+      "trigger": {
+        "asset_types": [
+          "pump",
+          "transformer",
+          "turbine"
+        ],
+        "competency_primary": [
+          "perceptual"
+        ],
+        "required_payload_modalities_any": [
+          "rgb_gauge",
+          "rgb_visual_defect"
+        ]
+      },
+      "required_evidence": [
+        {
+          "modality": "rgb_visual_defect",
+          "min_count": 1,
+          "notes": "surface/panel/blade image to inspect for a physical defect"
+        }
+      ],
+      "optional_evidence": [],
+      "recovery_policy": {
+        "on_unavailable": "escalate",
+        "max_retries": 0,
+        "relax_order": [],
+        "escalation_reason_code": "FM-25_no_visual_defect_image"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "DEFECT_FOUND",
+          "CLEAN",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {
+          "is_defective": "fault_class not in ('fine', 'clean', 'normal')"
+        },
+        "thresholds": {},
+        "rules": [
+          {
+            "if": "not rgb_visual_defect_available",
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          },
+          {
+            "if": "is_defective",
+            "verdict": "DEFECT_FOUND"
+          },
+          {
+            "default": true,
+            "verdict": "CLEAN"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "default_max_age_s": 315360000,
+        "default_quality_threshold": 0.7,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": true
+      }
+    },
+    {
+      "capability_id": "cap_work_order_integration",
+      "display_name": "Work Order Integration",
+      "description": "Confirm work-order state was actually consulted -- not skipped, not stale, not contradicted by a similar-work-order recommendation -- before a hold/dispatch decision. Mirrors cap_safety_gate_verification's shape: evidence-based, no payload gate (work-order history is enterprise data, not a physical sensor reading). PASS 6 (2026-08-23): closes the FM-6/6a/6b orphan gap (Pass 4/6 audit).",
+      "supported_fm_families": [
+        "FM-6",
+        "FM-6a",
+        "FM-6b"
+      ],
+      "trigger": {
+        "asset_types": [
+          "chiller",
+          "pump",
+          "motor"
+        ],
+        "competency_primary": [
+          "relational"
+        ]
+      },
+      "required_evidence": [
+        {
+          "modality": "workorder_history",
+          "min_count": 1,
+          "notes": "active/similar WO record needed to evaluate hold vs dispatch"
+        }
+      ],
+      "optional_evidence": [],
+      "recovery_policy": {
+        "on_unavailable": "escalate",
+        "max_retries": 0,
+        "relax_order": [],
+        "escalation_reason_code": "FM-6a_no_wo_checked"
+      },
+      "success_criteria": {
+        "verdict_states": [
+          "HOLD_HONORED",
+          "HOLD_OMITTED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "variables": {},
+        "thresholds": {},
+        "rules": [
+          {
+            "if": "not workorder_history_available",
+            "verdict": "INSUFFICIENT_EVIDENCE"
+          },
+          {
+            "default": true,
+            "verdict": "HOLD_HONORED"
+          }
+        ]
+      },
+      "observation_constraints": {
+        "default_max_age_s": 3600,
+        "default_quality_threshold": 0.0,
+        "require_asset_consistency": true,
+        "require_inspection_consistency": true
+      }
+    }
+  ],
+  "_comment_cross_cutting_fms": "PASS 6 (2026-08-23): FM-1 (panel stuck, kinematic blind alley) and FM-8 (reasoning without verification) are deliberately NOT modelled as capabilities. FM-1 is a robot physical-admissibility failure (rosclaw's DigitalTwinFirewall territory, per cap_safety_gate_verification's own description), not an evidence-acquisition gap. FM-8 is cross-cutting by construction: it is exactly what CC_grounded already measures globally across every family (l3_grounded_scoring.cc_grounded) -- wrapping it in a capability would be bookkeeping duplication, not new modelling."
+}
