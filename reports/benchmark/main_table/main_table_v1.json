@@ -1,0 +1,236 @@
+{
+  "Claude Sonnet 4.6": {
+    "A_GSR": {
+      "value": null,
+      "ci_low": null,
+      "ci_high": null,
+      "n_valid": 2,
+      "N_nominal": 48,
+      "markers": [
+        "EXCLUDED",
+        "46/48 genuine model failure: step2_protocol_noncompliance -- EXCLUDED from A (n=2 too small), see claude_A_audit_summary.json"
+      ]
+    },
+    "B_B_AGS": {
+      "value": 0.3333,
+      "ci_low": 0.2273,
+      "ci_high": 0.4545,
+      "n_valid": 66,
+      "N_nominal": 66,
+      "markers": []
+    },
+    "C_coverage": {
+      "value": 0.3537,
+      "ci_low": 0.1778,
+      "ci_high": 0.5611,
+      "n_valid": 9,
+      "N_nominal": 9,
+      "markers": []
+    },
+    "D_CSA": {
+      "value": 0.4429,
+      "ci_low": 0.3286,
+      "ci_high": 0.5571,
+      "n_valid": 70,
+      "N_nominal": 70,
+      "markers": []
+    },
+    "E_CC_grounded": {
+      "value": 0.875,
+      "ci_low": 0.625,
+      "ci_high": 1.0,
+      "n_valid": 8,
+      "N_nominal": 8,
+      "markers": [
+        "n_sequences=6",
+        "CC_grounded_applicable=8/18"
+      ]
+    }
+  },
+  "GPT-5.2": {
+    "A_GSR": {
+      "value": 0.4375,
+      "ci_low": 0.2917,
+      "ci_high": 0.5833,
+      "n_valid": 48,
+      "N_nominal": 48,
+      "markers": []
+    },
+    "B_B_AGS": {
+      "value": 0.3485,
+      "ci_low": 0.2424,
+      "ci_high": 0.4697,
+      "n_valid": 66,
+      "N_nominal": 66,
+      "markers": []
+    },
+    "C_coverage": {
+      "value": 0.5759,
+      "ci_low": 0.3574,
+      "ci_high": 0.7722,
+      "n_valid": 9,
+      "N_nominal": 9,
+      "markers": []
+    },
+    "D_CSA": {
+      "value": 0.5714,
+      "ci_low": 0.4571,
+      "ci_high": 0.6857,
+      "n_valid": 70,
+      "N_nominal": 70,
+      "markers": []
+    },
+    "E_CC_grounded": {
+      "value": 0.2353,
+      "ci_low": 0.0588,
+      "ci_high": 0.4706,
+      "n_valid": 17,
+      "N_nominal": 17,
+      "markers": [
+        "n_sequences=6",
+        "CC_grounded_applicable=17/18"
+      ]
+    }
+  },
+  "DeepSeek V4 Pro": {
+    "A_GSR": {
+      "value": 0.1628,
+      "ci_low": 0.0698,
+      "ci_high": 0.2791,
+      "n_valid": 43,
+      "N_nominal": 43,
+      "markers": [
+        "n=43/48 (output-validity 43/48=89.6%, see appendix)",
+        "5/48 empty verdict excluded (truncation/output-budget); see A_evaluable_verification.json for full diagnostic incl. 24 additional partial-evidence episodes retained per reviewed decision (lenient N)"
+      ]
+    },
+    "B_B_AGS": {
+      "value": 0.5152,
+      "ci_low": 0.4091,
+      "ci_high": 0.6364,
+      "n_valid": 66,
+      "N_nominal": 66,
+      "markers": []
+    },
+    "C_coverage": {
+      "value": 0.1759,
+      "ci_low": 0.0278,
+      "ci_high": 0.4167,
+      "n_valid": 9,
+      "N_nominal": 9,
+      "markers": []
+    },
+    "D_CSA": {
+      "value": 0.3571,
+      "ci_low": 0.2429,
+      "ci_high": 0.4714,
+      "n_valid": 70,
+      "N_nominal": 70,
+      "markers": []
+    },
+    "E_CC_grounded": {
+      "value": 0.4286,
+      "ci_low": 0.1429,
+      "ci_high": 0.7143,
+      "n_valid": 14,
+      "N_nominal": 14,
+      "markers": [
+        "n_sequences=6",
+        "CC_grounded_applicable=14/18"
+      ]
+    }
+  },
+  "Mistral Medium 3.5": {
+    "A_GSR": {
+      "value": 0.4583,
+      "ci_low": 0.3125,
+      "ci_high": 0.6042,
+      "n_valid": 48,
+      "N_nominal": 48,
+      "markers": []
+    },
+    "B_B_AGS": {
+      "value": 0.6818,
+      "ci_low": 0.5606,
+      "ci_high": 0.7879,
+      "n_valid": 66,
+      "N_nominal": 66,
+      "markers": []
+    },
+    "C_coverage": {
+      "value": 0.3907,
+      "ci_low": 0.2278,
+      "ci_high": 0.5852,
+      "n_valid": 9,
+      "N_nominal": 9,
+      "markers": []
+    },
+    "D_CSA": {
+      "value": 0.5,
+      "ci_low": 0.3857,
+      "ci_high": 0.6143,
+      "n_valid": 70,
+      "N_nominal": 70,
+      "markers": []
+    },
+    "E_CC_grounded": {
+      "value": 0.6667,
+      "ci_low": 0.4444,
+      "ci_high": 0.8889,
+      "n_valid": 18,
+      "N_nominal": 18,
+      "markers": [
+        "n_sequences=6",
+        "CC_grounded_applicable=18/18"
+      ]
+    }
+  },
+  "Qwen3.5-397B-A17B": {
+    "A_GSR": {
+      "value": 0.4419,
+      "ci_low": 0.3023,
+      "ci_high": 0.5814,
+      "n_valid": 43,
+      "N_nominal": 43,
+      "markers": [
+        "n=43/48 (output-validity 43/48=89.6%, see appendix)",
+        "5/48 empty verdict excluded (2 truncation, 3 infrastructure); see A_evaluable_verification.json"
+      ]
+    },
+    "B_B_AGS": {
+      "value": 0.7121,
+      "ci_low": 0.6061,
+      "ci_high": 0.8182,
+      "n_valid": 66,
+      "N_nominal": 66,
+      "markers": []
+    },
+    "C_coverage": {
+      "value": 0.3722,
+      "ci_low": 0.2204,
+      "ci_high": 0.5611,
+      "n_valid": 9,
+      "N_nominal": 9,
+      "markers": []
+    },
+    "D_CSA": {
+      "value": 0.3857,
+      "ci_low": 0.2714,
+      "ci_high": 0.5,
+      "n_valid": 70,
+      "N_nominal": 70,
+      "markers": []
+    },
+    "E_CC_grounded": {
+      "value": 0.4706,
+      "ci_low": 0.2353,
+      "ci_high": 0.7059,
+      "n_valid": 17,
+      "N_nominal": 17,
+      "markers": [
+        "n_sequences=6",
+        "CC_grounded_applicable=17/18"
+      ]
+    }
+  }
+}

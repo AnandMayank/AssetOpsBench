@@ -1,0 +1,70 @@
+{
+  "identical_episode_assignment_across_models": true,
+  "per_model": {
+    "GPT-5.2": {
+      "N_total": 48,
+      "N_evaluable": 48,
+      "N_invalid": 0,
+      "N_genuine_model_failure": 0,
+      "N_truncation": 0,
+      "N_infrastructure": 0,
+      "TDA_numerator": 32,
+      "GSR_numerator": 21,
+      "TDA": 0.6667,
+      "GSR": 0.4375,
+      "TDA_minus_GSR_gap_pp": 22.9
+    },
+    "Mistral Medium 3.5": {
+      "N_total": 48,
+      "N_evaluable": 48,
+      "N_invalid": 0,
+      "N_genuine_model_failure": 0,
+      "N_truncation": 0,
+      "N_infrastructure": 0,
+      "TDA_numerator": 33,
+      "GSR_numerator": 22,
+      "TDA": 0.6875,
+      "GSR": 0.4583,
+      "TDA_minus_GSR_gap_pp": 22.9
+    },
+    "DeepSeek V4 Pro": {
+      "N_total": 48,
+      "N_evaluable": 19,
+      "N_invalid": 29,
+      "N_genuine_model_failure": 0,
+      "N_truncation": 29,
+      "N_infrastructure": 0,
+      "TDA_numerator": 15,
+      "GSR_numerator": 7,
+      "TDA": 0.7895,
+      "GSR": 0.3684,
+      "TDA_minus_GSR_gap_pp": 42.1
+    },
+    "Qwen3.5-397B-A17B": {
+      "N_total": 48,
+      "N_evaluable": 43,
+      "N_invalid": 5,
+      "N_genuine_model_failure": 0,
+      "N_truncation": 2,
+      "N_infrastructure": 3,
+      "TDA_numerator": 29,
+      "GSR_numerator": 19,
+      "TDA": 0.6744,
+      "GSR": 0.4419,
+      "TDA_minus_GSR_gap_pp": 23.3
+    },
+    "Claude Sonnet 4.6": {
+      "N_total": 48,
+      "N_evaluable": 2,
+      "N_invalid": 46,
+      "N_genuine_model_failure": 46,
+      "N_truncation": 0,
+      "N_infrastructure": 0,
+      "TDA_numerator": 1,
+      "GSR_numerator": 0,
+      "TDA": 0.5,
+      "GSR": 0.0,
+      "TDA_minus_GSR_gap_pp": 50.0
+    }
+  }
+}

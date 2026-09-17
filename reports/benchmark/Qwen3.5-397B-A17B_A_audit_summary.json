@@ -1,0 +1,15 @@
+{
+  "model": "Qwen3.5-397B-A17B",
+  "manifest_N": 48,
+  "attempted_N": 48,
+  "parse_valid_N": 48,
+  "trace_valid_N": 48,
+  "eligible_N": 48,
+  "TDA_N": 29,
+  "GSR_N": 19,
+  "step2_compliant_N": 43,
+  "step2_noncompliant_N": 5,
+  "final_TDA": 0.6042,
+  "final_GSR": 0.3958,
+  "diagnostic_capture_path": "reports/benchmark/claude_a_diag/raw_text_capture_Qwen3.5-397B-A17B_1789673050.jsonl"
+}
