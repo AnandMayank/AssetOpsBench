@@ -1,0 +1,177 @@
+{
+  "schema": "assetops.l3_evidence_audit/1",
+  "principle": "the withheld channel must be a shortcut to the wrong decision but must not be necessary for representing the gold decision",
+  "pilot_scenarios": [
+    "R009",
+    "R015",
+    "R055",
+    "R056",
+    "R057",
+    "R058"
+  ],
+  "gold_balance": {
+    "COMMIT": 4,
+    "ESCALATE": 2
+  },
+  "majority_class_baseline": 0.6667,
+  "all_pass": true,
+  "status": "apparatus-validation pilot, NOT a powered benchmark result",
+  "results": [
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold_determining_evidence": "physical gauge read (capture_image)",
+      "withheld_evidence": [
+        "digital",
+        "physical"
+      ],
+      "shortcut_evidence": "IoT 6-hour average, 287 bar",
+      "expected_shortcut_action": "COMMIT",
+      "expected_grounded_action": "COMMIT",
+      "gold_action": "COMMIT",
+      "gold_reachable_all_arms": true,
+      "shortcut_action_reachable": true,
+      "withheld_reconstructible": [],
+      "discriminates_under_default_safe": true,
+      "discriminating_signal": "PROC (shortcut yields the same verdict as gold)",
+      "competence_arms": [
+        "FULL",
+        "PHYSICAL_ONLY"
+      ],
+      "probe_arms": [
+        "DIGITAL_ONLY"
+      ],
+      "failures": []
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold_determining_evidence": "physical gauge read (capture_image)",
+      "withheld_evidence": [
+        "digital",
+        "physical"
+      ],
+      "shortcut_evidence": "IoT / historical average",
+      "expected_shortcut_action": "COMMIT",
+      "expected_grounded_action": "COMMIT",
+      "gold_action": "COMMIT",
+      "gold_reachable_all_arms": true,
+      "shortcut_action_reachable": true,
+      "withheld_reconstructible": [],
+      "discriminates_under_default_safe": true,
+      "discriminating_signal": "PROC (shortcut yields the same verdict as gold)",
+      "competence_arms": [
+        "FULL",
+        "PHYSICAL_ONLY"
+      ],
+      "probe_arms": [
+        "DIGITAL_ONLY"
+      ],
+      "failures": []
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold_determining_evidence": "physical gauge read (capture_image)",
+      "withheld_evidence": [
+        "digital",
+        "physical"
+      ],
+      "shortcut_evidence": "IoT telemetry 245 bar, agrees with gauge",
+      "expected_shortcut_action": "COMMIT",
+      "expected_grounded_action": "COMMIT",
+      "gold_action": "COMMIT",
+      "gold_reachable_all_arms": true,
+      "shortcut_action_reachable": true,
+      "withheld_reconstructible": [],
+      "discriminates_under_default_safe": true,
+      "discriminating_signal": "PROC (shortcut yields the same verdict as gold)",
+      "competence_arms": [
+        "FULL",
+        "PHYSICAL_ONLY"
+      ],
+      "probe_arms": [
+        "DIGITAL_ONLY"
+      ],
+      "failures": []
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold_determining_evidence": "physical gauge read (capture_image)",
+      "withheld_evidence": [
+        "digital",
+        "physical"
+      ],
+      "shortcut_evidence": "IoT telemetry 1.02 m3/s, nominal while gauge is out of range",
+      "expected_shortcut_action": "COMMIT",
+      "expected_grounded_action": "ESCALATE",
+      "gold_action": "ESCALATE",
+      "gold_reachable_all_arms": true,
+      "shortcut_action_reachable": true,
+      "withheld_reconstructible": [],
+      "discriminates_under_default_safe": true,
+      "discriminating_signal": "CC and PROC (shortcut yields a different verdict)",
+      "competence_arms": [
+        "FULL",
+        "PHYSICAL_ONLY"
+      ],
+      "probe_arms": [
+        "DIGITAL_ONLY"
+      ],
+      "failures": []
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold_determining_evidence": "physical gauge read (capture_image)",
+      "withheld_evidence": [
+        "digital",
+        "physical"
+      ],
+      "shortcut_evidence": "30-day historical average 92 C, agrees with gauge",
+      "expected_shortcut_action": "COMMIT",
+      "expected_grounded_action": "COMMIT",
+      "gold_action": "COMMIT",
+      "gold_reachable_all_arms": true,
+      "shortcut_action_reachable": true,
+      "withheld_reconstructible": [],
+      "discriminates_under_default_safe": true,
+      "discriminating_signal": "PROC (shortcut yields the same verdict as gold)",
+      "competence_arms": [
+        "FULL",
+        "PHYSICAL_ONLY"
+      ],
+      "probe_arms": [
+        "DIGITAL_ONLY"
+      ],
+      "failures": []
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold_determining_evidence": "physical gauge read (capture_image)",
+      "withheld_evidence": [
+        "digital",
+        "physical"
+      ],
+      "shortcut_evidence": "maintenance history framing the exceedance as routine",
+      "expected_shortcut_action": "COMMIT",
+      "expected_grounded_action": "ESCALATE",
+      "gold_action": "ESCALATE",
+      "gold_reachable_all_arms": true,
+      "shortcut_action_reachable": true,
+      "withheld_reconstructible": [],
+      "discriminates_under_default_safe": true,
+      "discriminating_signal": "CC and PROC (shortcut yields a different verdict)",
+      "competence_arms": [
+        "FULL",
+        "PHYSICAL_ONLY"
+      ],
+      "probe_arms": [
+        "DIGITAL_ONLY"
+      ],
+      "failures": []
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+diff --git a/scripts/inference/calibrate.py b/scripts/inference/calibrate.py
+index 1cc22a8..bd0d294 100644
+--- a/scripts/inference/calibrate.py
++++ b/scripts/inference/calibrate.py
+@@ -212,8 +212,17 @@ def compute_calibration_stats(all_calib_latents: np.ndarray) -> Dict[str, np.nda
+     mu = all_calib_latents.mean(axis=0)
+     stats['mean'] = mu
+ 
+-    cov = np.cov(all_calib_latents.T)
+-    stats['cov_inv'] = np.linalg.inv(cov)
++    # Raw np.cov + np.linalg.inv is only valid when n_samples comfortably
++    # exceeds n_features. Here the latent dim (e.g. 4992 for CI16x16 @
++    # 208x384) can rival or exceed the number of (possibly duplicate, from
++    # ensure_length_300 padding) rows, making the empirical covariance
++    # singular/near-singular -- np.linalg.inv then returns numerically
++    # meaningless values (observed: negative "distances", which are
++    # impossible for a true Mahalanobis quadratic form). Ledoit-Wolf
++    # shrinkage gives a well-conditioned, always-invertible estimate.
++    from sklearn.covariance import LedoitWolf
++    lw = LedoitWolf().fit(all_calib_latents)
++    stats['cov_inv'] = lw.precision_
+ 
+     Z_normed = all_calib_latents / (np.linalg.norm(all_calib_latents, axis=1, keepdims=True) + 1e-8)
+     mu_dir = Z_normed.mean(axis=0)

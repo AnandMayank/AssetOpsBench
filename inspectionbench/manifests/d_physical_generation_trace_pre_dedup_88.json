@@ -1,0 +1,4815 @@
+{
+  "benchmark_version": "phase8h1_dphys_v1_CANDIDATE_NOT_YET_MERGED",
+  "generation_timestamp": "2026-09-13T10:59:55+0530",
+  "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+  "generator_version": "dphys_generator.py@phase8h1_8h2e",
+  "episode_count_generated": 88,
+  "episode_count_admitted": 88,
+  "episode_count_rejected": 0,
+  "duplicate_fingerprints": 10,
+  "canonical_final": 70,
+  "template_counts": {
+    "T-D-PHYS-REACH": 24,
+    "T-D-PHYS-ENERGY": 24,
+    "T-D-PHYS-COUPLED": 28,
+    "T-D-PHYS-CAP-X": 12
+  },
+  "asset_counts": {
+    "chiller_6": 22,
+    "hydraulic_pump_1": 22,
+    "metro_pump_1": 22,
+    "motor_01": 22
+  },
+  "gold_distribution": {
+    "ESCALATE": 56,
+    "DISPATCH": 32
+  },
+  "stratum_counts": {
+    "single:reach": 8,
+    "single:joint_and_collision": 8,
+    "single:clearance": 8,
+    "single:grasp_payload": 8,
+    "single:stability": 8,
+    "single:energy": 8,
+    "dual:reach+clearance": 4,
+    "dual:reach+stability": 4,
+    "dual:clearance+stability": 4,
+    "dual:grasp_payload+energy": 4,
+    "dual:energy+reach": 4,
+    "dual:joint_and_collision+stability": 4,
+    "triple:reach+clearance+stability": 4,
+    "capx:comfortable_baseline": 4,
+    "capx:mixed_one_admissible": 4,
+    "capx:all_inadmissible": 4
+  },
+  "d_enterprise_status": "UNCHANGED, frozen at 20 episodes -- not touched by this script",
+  "global_benchmark_status": "NOT MERGED -- this is a candidate manifest only; final_benchmark_manifest.json (3,939 episodes) is untouched",
+  "oracle_evaluator_only": "verified structurally -- no admitted/rejected record's trace contains an admissible/violated_constraints/checks field",
+  "generation_seeds": {
+    "single_binding": 60000,
+    "coupled": 61000,
+    "capx": 62000
+  },
+  "episodes": [
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-inadmissible-chiller_6-060000",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-reach-inadmissible-chiller_6-060000",
+      "params": {
+        "constraint": "reach",
+        "margin": "inadmissible",
+        "asset": "chiller_6",
+        "seed": 60000,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "reach",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R027",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "086fbe34a17f34cd"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-comfortable-chiller_6-060001",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-reach-comfortable-chiller_6-060001",
+      "params": {
+        "constraint": "reach",
+        "margin": "comfortable",
+        "asset": "chiller_6",
+        "seed": 60001,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R028",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "07d08599b874c851"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-inadmissible-chiller_6-060002",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-inadmissible-chiller_6-060002",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "inadmissible",
+        "asset": "chiller_6",
+        "seed": 60002,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "joint_and_collision",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R029",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "d5dbe131b39244e6"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-comfortable-chiller_6-060003",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-comfortable-chiller_6-060003",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "comfortable",
+        "asset": "chiller_6",
+        "seed": 60003,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R030",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "07d08599b874c851"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-inadmissible-chiller_6-060004",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-clearance-inadmissible-chiller_6-060004",
+      "params": {
+        "constraint": "clearance",
+        "margin": "inadmissible",
+        "asset": "chiller_6",
+        "seed": 60004,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "clearance",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R031",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "76f2c28ea7d376cc"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-comfortable-chiller_6-060005",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-clearance-comfortable-chiller_6-060005",
+      "params": {
+        "constraint": "clearance",
+        "margin": "comfortable",
+        "asset": "chiller_6",
+        "seed": 60005,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R032",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "07d08599b874c851"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-inadmissible-chiller_6-060006",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-grasp_payload-inadmissible-chiller_6-060006",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "inadmissible",
+        "asset": "chiller_6",
+        "seed": 60006,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "grasp_payload",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R033",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "c920d90e48a5a35e"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-comfortable-chiller_6-060007",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-grasp_payload-comfortable-chiller_6-060007",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "comfortable",
+        "asset": "chiller_6",
+        "seed": 60007,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R034",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "78572afdbce87f0e"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-inadmissible-chiller_6-060008",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-stability-inadmissible-chiller_6-060008",
+      "params": {
+        "constraint": "stability",
+        "margin": "inadmissible",
+        "asset": "chiller_6",
+        "seed": 60008,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "stability",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R035",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "d184ce6ba6ec5bcf"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-comfortable-chiller_6-060009",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-stability-comfortable-chiller_6-060009",
+      "params": {
+        "constraint": "stability",
+        "margin": "comfortable",
+        "asset": "chiller_6",
+        "seed": 60009,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R036",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "78572afdbce87f0e"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-inadmissible-chiller_6-060010",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-energy-inadmissible-chiller_6-060010",
+      "params": {
+        "constraint": "energy",
+        "margin": "inadmissible",
+        "asset": "chiller_6",
+        "seed": 60010,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "energy",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R037",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "729a742ce1255725"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-comfortable-chiller_6-060011",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-energy-comfortable-chiller_6-060011",
+      "params": {
+        "constraint": "energy",
+        "margin": "comfortable",
+        "asset": "chiller_6",
+        "seed": 60011,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R038",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "78572afdbce87f0e"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-inadmissible-hydraulic_pump_1-060012",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-reach-inadmissible-hydraulic_pump_1-060012",
+      "params": {
+        "constraint": "reach",
+        "margin": "inadmissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 60012,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "reach",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R027",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "cf13fd9c53350514"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-comfortable-hydraulic_pump_1-060013",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-reach-comfortable-hydraulic_pump_1-060013",
+      "params": {
+        "constraint": "reach",
+        "margin": "comfortable",
+        "asset": "hydraulic_pump_1",
+        "seed": 60013,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R028",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "64e4f23e2dd9553b"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-inadmissible-hydraulic_pump_1-060014",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-inadmissible-hydraulic_pump_1-060014",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "inadmissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 60014,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "joint_and_collision",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R029",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "14f0a148270146ea"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-comfortable-hydraulic_pump_1-060015",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-comfortable-hydraulic_pump_1-060015",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "comfortable",
+        "asset": "hydraulic_pump_1",
+        "seed": 60015,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R030",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "64e4f23e2dd9553b"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-inadmissible-hydraulic_pump_1-060016",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-clearance-inadmissible-hydraulic_pump_1-060016",
+      "params": {
+        "constraint": "clearance",
+        "margin": "inadmissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 60016,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "clearance",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R031",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "7702e9316e96e2c4"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-comfortable-hydraulic_pump_1-060017",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-clearance-comfortable-hydraulic_pump_1-060017",
+      "params": {
+        "constraint": "clearance",
+        "margin": "comfortable",
+        "asset": "hydraulic_pump_1",
+        "seed": 60017,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R032",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "64e4f23e2dd9553b"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-inadmissible-hydraulic_pump_1-060018",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-grasp_payload-inadmissible-hydraulic_pump_1-060018",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "inadmissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 60018,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "grasp_payload",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R033",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "d09644918a8ff03c"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-comfortable-hydraulic_pump_1-060019",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-grasp_payload-comfortable-hydraulic_pump_1-060019",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "comfortable",
+        "asset": "hydraulic_pump_1",
+        "seed": 60019,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R034",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "17cc2906674411ee"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-inadmissible-hydraulic_pump_1-060020",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-stability-inadmissible-hydraulic_pump_1-060020",
+      "params": {
+        "constraint": "stability",
+        "margin": "inadmissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 60020,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "stability",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R035",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "71262a0466fce384"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-comfortable-hydraulic_pump_1-060021",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-stability-comfortable-hydraulic_pump_1-060021",
+      "params": {
+        "constraint": "stability",
+        "margin": "comfortable",
+        "asset": "hydraulic_pump_1",
+        "seed": 60021,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R036",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "17cc2906674411ee"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-inadmissible-hydraulic_pump_1-060022",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-energy-inadmissible-hydraulic_pump_1-060022",
+      "params": {
+        "constraint": "energy",
+        "margin": "inadmissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 60022,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "energy",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R037",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5292c8fc9f1b7c83"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-comfortable-hydraulic_pump_1-060023",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-energy-comfortable-hydraulic_pump_1-060023",
+      "params": {
+        "constraint": "energy",
+        "margin": "comfortable",
+        "asset": "hydraulic_pump_1",
+        "seed": 60023,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R038",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "17cc2906674411ee"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-inadmissible-metro_pump_1-060024",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-reach-inadmissible-metro_pump_1-060024",
+      "params": {
+        "constraint": "reach",
+        "margin": "inadmissible",
+        "asset": "metro_pump_1",
+        "seed": 60024,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "reach",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R027",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "1bd6f8c7297efd09"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-comfortable-metro_pump_1-060025",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-reach-comfortable-metro_pump_1-060025",
+      "params": {
+        "constraint": "reach",
+        "margin": "comfortable",
+        "asset": "metro_pump_1",
+        "seed": 60025,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.5,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R028",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "e8bfdddbbfb0f4ae"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-inadmissible-metro_pump_1-060026",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-inadmissible-metro_pump_1-060026",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "inadmissible",
+        "asset": "metro_pump_1",
+        "seed": 60026,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "joint_and_collision",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R029",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "aa3a891100fafe7c"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-comfortable-metro_pump_1-060027",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-comfortable-metro_pump_1-060027",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "comfortable",
+        "asset": "metro_pump_1",
+        "seed": 60027,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.5,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R030",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "e8bfdddbbfb0f4ae"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-inadmissible-metro_pump_1-060028",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-clearance-inadmissible-metro_pump_1-060028",
+      "params": {
+        "constraint": "clearance",
+        "margin": "inadmissible",
+        "asset": "metro_pump_1",
+        "seed": 60028,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "clearance",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R031",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5c918d4008d73082"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-comfortable-metro_pump_1-060029",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-clearance-comfortable-metro_pump_1-060029",
+      "params": {
+        "constraint": "clearance",
+        "margin": "comfortable",
+        "asset": "metro_pump_1",
+        "seed": 60029,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.5,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R032",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "e8bfdddbbfb0f4ae"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-inadmissible-metro_pump_1-060030",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-grasp_payload-inadmissible-metro_pump_1-060030",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "inadmissible",
+        "asset": "metro_pump_1",
+        "seed": 60030,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "grasp_payload",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R033",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "ca3e89fdb3660e8c"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-comfortable-metro_pump_1-060031",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-grasp_payload-comfortable-metro_pump_1-060031",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "comfortable",
+        "asset": "metro_pump_1",
+        "seed": 60031,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.5,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R034",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "ff4944c3018f4595"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-inadmissible-metro_pump_1-060032",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-stability-inadmissible-metro_pump_1-060032",
+      "params": {
+        "constraint": "stability",
+        "margin": "inadmissible",
+        "asset": "metro_pump_1",
+        "seed": 60032,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "stability",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R035",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "63e0ea1759cf8540"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-comfortable-metro_pump_1-060033",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-stability-comfortable-metro_pump_1-060033",
+      "params": {
+        "constraint": "stability",
+        "margin": "comfortable",
+        "asset": "metro_pump_1",
+        "seed": 60033,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.5,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R036",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "ff4944c3018f4595"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-inadmissible-metro_pump_1-060034",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-energy-inadmissible-metro_pump_1-060034",
+      "params": {
+        "constraint": "energy",
+        "margin": "inadmissible",
+        "asset": "metro_pump_1",
+        "seed": 60034,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "energy",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R037",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "2211135634f13cd8"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-comfortable-metro_pump_1-060035",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-energy-comfortable-metro_pump_1-060035",
+      "params": {
+        "constraint": "energy",
+        "margin": "comfortable",
+        "asset": "metro_pump_1",
+        "seed": 60035,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.5,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R038",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "ff4944c3018f4595"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-inadmissible-motor_01-060036",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-reach-inadmissible-motor_01-060036",
+      "params": {
+        "constraint": "reach",
+        "margin": "inadmissible",
+        "asset": "motor_01",
+        "seed": 60036,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "reach",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R027",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "f5293c5764fc3eb9"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-reach-comfortable-motor_01-060037",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:reach",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-reach-comfortable-motor_01-060037",
+      "params": {
+        "constraint": "reach",
+        "margin": "comfortable",
+        "asset": "motor_01",
+        "seed": 60037,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R028",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "2a892c7c33a99848"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-inadmissible-motor_01-060038",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-inadmissible-motor_01-060038",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "inadmissible",
+        "asset": "motor_01",
+        "seed": 60038,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "joint_and_collision",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R029",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "aefadc43e0f01337"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-joint_and_collision-comfortable-motor_01-060039",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:joint_and_collision",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-joint_and_collision-comfortable-motor_01-060039",
+      "params": {
+        "constraint": "joint_and_collision",
+        "margin": "comfortable",
+        "asset": "motor_01",
+        "seed": 60039,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R030",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "2a892c7c33a99848"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-inadmissible-motor_01-060040",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-clearance-inadmissible-motor_01-060040",
+      "params": {
+        "constraint": "clearance",
+        "margin": "inadmissible",
+        "asset": "motor_01",
+        "seed": 60040,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "clearance",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R031",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "4f96de5bb6962d2c"
+    },
+    {
+      "episode_id": "T-D-PHYS-REACH::GEN-DPHYS-clearance-comfortable-motor_01-060041",
+      "template_id": "T-D-PHYS-REACH",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:clearance",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-clearance-comfortable-motor_01-060041",
+      "params": {
+        "constraint": "clearance",
+        "margin": "comfortable",
+        "asset": "motor_01",
+        "seed": 60041,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R032",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "2a892c7c33a99848"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-inadmissible-motor_01-060042",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-grasp_payload-inadmissible-motor_01-060042",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "inadmissible",
+        "asset": "motor_01",
+        "seed": 60042,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "grasp_payload",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R033",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "ebeb414259b93d53"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-grasp_payload-comfortable-motor_01-060043",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:grasp_payload",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-grasp_payload-comfortable-motor_01-060043",
+      "params": {
+        "constraint": "grasp_payload",
+        "margin": "comfortable",
+        "asset": "motor_01",
+        "seed": 60043,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R034",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5c4cacb43b350398"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-inadmissible-motor_01-060044",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-stability-inadmissible-motor_01-060044",
+      "params": {
+        "constraint": "stability",
+        "margin": "inadmissible",
+        "asset": "motor_01",
+        "seed": 60044,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "stability",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R035",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "3bd6b765e6b4760b"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-stability-comfortable-motor_01-060045",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:stability",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-stability-comfortable-motor_01-060045",
+      "params": {
+        "constraint": "stability",
+        "margin": "comfortable",
+        "asset": "motor_01",
+        "seed": 60045,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R036",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5c4cacb43b350398"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-inadmissible-motor_01-060046",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-energy-inadmissible-motor_01-060046",
+      "params": {
+        "constraint": "energy",
+        "margin": "inadmissible",
+        "asset": "motor_01",
+        "seed": 60046,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "energy",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "R037",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "3b6758eda7ef8af7"
+    },
+    {
+      "episode_id": "T-D-PHYS-ENERGY::GEN-DPHYS-energy-comfortable-motor_01-060047",
+      "template_id": "T-D-PHYS-ENERGY",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "single:energy",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-energy-comfortable-motor_01-060047",
+      "params": {
+        "constraint": "energy",
+        "margin": "comfortable",
+        "asset": "motor_01",
+        "seed": 60047,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "R038",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5c4cacb43b350398"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance-chiller_6-061000",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+clearance",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance-chiller_6-061000",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance"
+        ],
+        "asset": "chiller_6",
+        "seed": 61000,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "141a7473bbeffdc6"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+stability-chiller_6-061001",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+stability",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+stability-chiller_6-061001",
+      "params": {
+        "coupling": [
+          "reach",
+          "stability"
+        ],
+        "asset": "chiller_6",
+        "seed": 61001,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5b417c70f9bc5e60"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-clearance+stability-chiller_6-061002",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:clearance+stability",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-COUPLED-clearance+stability-chiller_6-061002",
+      "params": {
+        "coupling": [
+          "clearance",
+          "stability"
+        ],
+        "asset": "chiller_6",
+        "seed": 61002,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "cbdd2abd4ae313d7"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-grasp_payload+energy-chiller_6-061003",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:grasp_payload+energy",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-COUPLED-grasp_payload+energy-chiller_6-061003",
+      "params": {
+        "coupling": [
+          "grasp_payload",
+          "energy"
+        ],
+        "asset": "chiller_6",
+        "seed": 61003,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5d64fd5b45d7e85f"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-energy+reach-chiller_6-061004",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:energy+reach",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-COUPLED-energy+reach-chiller_6-061004",
+      "params": {
+        "coupling": [
+          "energy",
+          "reach"
+        ],
+        "asset": "chiller_6",
+        "seed": 61004,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "d75bb38cf86e4091"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-joint_and_collision+stability-chiller_6-061005",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:joint_and_collision+stability",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-COUPLED-joint_and_collision+stability-chiller_6-061005",
+      "params": {
+        "coupling": [
+          "joint_and_collision",
+          "stability"
+        ],
+        "asset": "chiller_6",
+        "seed": 61005,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "e9d6a88af569171a"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance+stability-chiller_6-061006",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "triple:reach+clearance+stability",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance+stability-chiller_6-061006",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance",
+          "stability"
+        ],
+        "asset": "chiller_6",
+        "seed": 61006,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "22d483eab7cae0ec"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance-hydraulic_pump_1-061007",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+clearance",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance-hydraulic_pump_1-061007",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance"
+        ],
+        "asset": "hydraulic_pump_1",
+        "seed": 61007,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "270e58153d959049"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+stability-hydraulic_pump_1-061008",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+stability",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+stability-hydraulic_pump_1-061008",
+      "params": {
+        "coupling": [
+          "reach",
+          "stability"
+        ],
+        "asset": "hydraulic_pump_1",
+        "seed": 61008,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "577eff1e8f3acc78"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-clearance+stability-hydraulic_pump_1-061009",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:clearance+stability",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-clearance+stability-hydraulic_pump_1-061009",
+      "params": {
+        "coupling": [
+          "clearance",
+          "stability"
+        ],
+        "asset": "hydraulic_pump_1",
+        "seed": 61009,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "a7c11d573c2332ac"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-grasp_payload+energy-hydraulic_pump_1-061010",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:grasp_payload+energy",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-grasp_payload+energy-hydraulic_pump_1-061010",
+      "params": {
+        "coupling": [
+          "grasp_payload",
+          "energy"
+        ],
+        "asset": "hydraulic_pump_1",
+        "seed": 61010,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "e397a5a738a4f1dc"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-energy+reach-hydraulic_pump_1-061011",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:energy+reach",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-energy+reach-hydraulic_pump_1-061011",
+      "params": {
+        "coupling": [
+          "energy",
+          "reach"
+        ],
+        "asset": "hydraulic_pump_1",
+        "seed": 61011,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "9058b8c76b8209f2"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-joint_and_collision+stability-hydraulic_pump_1-061012",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:joint_and_collision+stability",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-joint_and_collision+stability-hydraulic_pump_1-061012",
+      "params": {
+        "coupling": [
+          "joint_and_collision",
+          "stability"
+        ],
+        "asset": "hydraulic_pump_1",
+        "seed": 61012,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "783b2ad93ec01926"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance+stability-hydraulic_pump_1-061013",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "triple:reach+clearance+stability",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance+stability-hydraulic_pump_1-061013",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance",
+          "stability"
+        ],
+        "asset": "hydraulic_pump_1",
+        "seed": 61013,
+        "standoff": 0.55
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "9a4189bf828dba9d"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance-metro_pump_1-061014",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+clearance",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance-metro_pump_1-061014",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance"
+        ],
+        "asset": "metro_pump_1",
+        "seed": 61014,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "4067c14cf5968515"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+stability-metro_pump_1-061015",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+stability",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+stability-metro_pump_1-061015",
+      "params": {
+        "coupling": [
+          "reach",
+          "stability"
+        ],
+        "asset": "metro_pump_1",
+        "seed": 61015,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "0bb20a3e59d5f09d"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-clearance+stability-metro_pump_1-061016",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:clearance+stability",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-clearance+stability-metro_pump_1-061016",
+      "params": {
+        "coupling": [
+          "clearance",
+          "stability"
+        ],
+        "asset": "metro_pump_1",
+        "seed": 61016,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "2c3288685e9e58ac"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-grasp_payload+energy-metro_pump_1-061017",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:grasp_payload+energy",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-grasp_payload+energy-metro_pump_1-061017",
+      "params": {
+        "coupling": [
+          "grasp_payload",
+          "energy"
+        ],
+        "asset": "metro_pump_1",
+        "seed": 61017,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "bf93d45dff34d92d"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-energy+reach-metro_pump_1-061018",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:energy+reach",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-energy+reach-metro_pump_1-061018",
+      "params": {
+        "coupling": [
+          "energy",
+          "reach"
+        ],
+        "asset": "metro_pump_1",
+        "seed": 61018,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "49f45c923a145d07"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-joint_and_collision+stability-metro_pump_1-061019",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:joint_and_collision+stability",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-joint_and_collision+stability-metro_pump_1-061019",
+      "params": {
+        "coupling": [
+          "joint_and_collision",
+          "stability"
+        ],
+        "asset": "metro_pump_1",
+        "seed": 61019,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "0825f0187d546a3d"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance+stability-metro_pump_1-061020",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "triple:reach+clearance+stability",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance+stability-metro_pump_1-061020",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance",
+          "stability"
+        ],
+        "asset": "metro_pump_1",
+        "seed": 61020,
+        "standoff": 0.5
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "8646314fa2d17851"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance-motor_01-061021",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+clearance",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance-motor_01-061021",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance"
+        ],
+        "asset": "motor_01",
+        "seed": 61021,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "657d39e65cb5764f"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+stability-motor_01-061022",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:reach+stability",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+stability-motor_01-061022",
+      "params": {
+        "coupling": [
+          "reach",
+          "stability"
+        ],
+        "asset": "motor_01",
+        "seed": 61022,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "3ef70b9007b445cc"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-clearance+stability-motor_01-061023",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:clearance+stability",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-COUPLED-clearance+stability-motor_01-061023",
+      "params": {
+        "coupling": [
+          "clearance",
+          "stability"
+        ],
+        "asset": "motor_01",
+        "seed": 61023,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "23a63a98b89e9b7a"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-grasp_payload+energy-motor_01-061024",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:grasp_payload+energy",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-COUPLED-grasp_payload+energy-motor_01-061024",
+      "params": {
+        "coupling": [
+          "grasp_payload",
+          "energy"
+        ],
+        "asset": "motor_01",
+        "seed": 61024,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "VIOLATED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "87751782bf48fad7"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-energy+reach-motor_01-061025",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:energy+reach",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-COUPLED-energy+reach-motor_01-061025",
+      "params": {
+        "coupling": [
+          "energy",
+          "reach"
+        ],
+        "asset": "motor_01",
+        "seed": 61025,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "VIOLATED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "05cc1147bc49b9e8"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-joint_and_collision+stability-motor_01-061026",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "dual:joint_and_collision+stability",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-COUPLED-joint_and_collision+stability-motor_01-061026",
+      "params": {
+        "coupling": [
+          "joint_and_collision",
+          "stability"
+        ],
+        "asset": "motor_01",
+        "seed": 61026,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "5e47fe3eb8e55b77"
+    },
+    {
+      "episode_id": "T-D-PHYS-COUPLED::GEN-DPHYS-COUPLED-reach+clearance+stability-motor_01-061027",
+      "template_id": "T-D-PHYS-COUPLED",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "triple:reach+clearance+stability",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-COUPLED-reach+clearance+stability-motor_01-061027",
+      "params": {
+        "coupling": [
+          "reach",
+          "clearance",
+          "stability"
+        ],
+        "asset": "motor_01",
+        "seed": 61027,
+        "standoff": 0.75
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "VIOLATED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": null,
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "bdcd24ff0377142a"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-comfortable_baseline-chiller_6-062000",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:comfortable_baseline",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-CAPX-comfortable_baseline-chiller_6-062000",
+      "params": {
+        "config": "comfortable_baseline",
+        "asset": "chiller_6",
+        "seed": 62000,
+        "standoffs": [
+          0.55,
+          0.8,
+          1.05
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "73a9b2224864ea8f"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-mixed_one_admissible-chiller_6-062001",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:mixed_one_admissible",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-CAPX-mixed_one_admissible-chiller_6-062001",
+      "params": {
+        "config": "mixed_one_admissible",
+        "asset": "chiller_6",
+        "seed": 62001,
+        "standoffs": [
+          0.55,
+          0.8,
+          1.05
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "73a9b2224864ea8f"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-all_inadmissible-chiller_6-062002",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:all_inadmissible",
+      "asset": "chiller_6",
+      "scenario_id": "GEN-DPHYS-CAPX-all_inadmissible-chiller_6-062002",
+      "params": {
+        "config": "all_inadmissible",
+        "asset": "chiller_6",
+        "seed": 62002,
+        "standoffs": [
+          0.55,
+          0.8,
+          1.05
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "753fb50e8a83067e"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-comfortable_baseline-hydraulic_pump_1-062003",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:comfortable_baseline",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-CAPX-comfortable_baseline-hydraulic_pump_1-062003",
+      "params": {
+        "config": "comfortable_baseline",
+        "asset": "hydraulic_pump_1",
+        "seed": 62003,
+        "standoffs": [
+          0.55,
+          0.75,
+          1.0
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.55,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "53df3454214be5b6"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-mixed_one_admissible-hydraulic_pump_1-062004",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:mixed_one_admissible",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-CAPX-mixed_one_admissible-hydraulic_pump_1-062004",
+      "params": {
+        "config": "mixed_one_admissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 62004,
+        "standoffs": [
+          0.55,
+          0.75,
+          1.0
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "539c3712713ae1e1"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-all_inadmissible-hydraulic_pump_1-062005",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:all_inadmissible",
+      "asset": "hydraulic_pump_1",
+      "scenario_id": "GEN-DPHYS-CAPX-all_inadmissible-hydraulic_pump_1-062005",
+      "params": {
+        "config": "all_inadmissible",
+        "asset": "hydraulic_pump_1",
+        "seed": 62005,
+        "standoffs": [
+          0.55,
+          0.75,
+          1.0
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "cb7c3709a08ee0ce"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-comfortable_baseline-metro_pump_1-062006",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:comfortable_baseline",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-CAPX-comfortable_baseline-metro_pump_1-062006",
+      "params": {
+        "config": "comfortable_baseline",
+        "asset": "metro_pump_1",
+        "seed": 62006,
+        "standoffs": [
+          0.5,
+          0.8,
+          1.1
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.5,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "d2b6f22e1577fc66"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-mixed_one_admissible-metro_pump_1-062007",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:mixed_one_admissible",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-CAPX-mixed_one_admissible-metro_pump_1-062007",
+      "params": {
+        "config": "mixed_one_admissible",
+        "asset": "metro_pump_1",
+        "seed": 62007,
+        "standoffs": [
+          0.5,
+          0.8,
+          1.1
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.8,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "257c88aafe70ca45"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-all_inadmissible-metro_pump_1-062008",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:all_inadmissible",
+      "asset": "metro_pump_1",
+      "scenario_id": "GEN-DPHYS-CAPX-all_inadmissible-metro_pump_1-062008",
+      "params": {
+        "config": "all_inadmissible",
+        "asset": "metro_pump_1",
+        "seed": 62008,
+        "standoffs": [
+          0.5,
+          0.8,
+          1.1
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "c24f9042f049bfd7"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-comfortable_baseline-motor_01-062009",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:comfortable_baseline",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-CAPX-comfortable_baseline-motor_01-062009",
+      "params": {
+        "config": "comfortable_baseline",
+        "asset": "motor_01",
+        "seed": 62009,
+        "standoffs": [
+          0.5,
+          0.75,
+          1.0
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "e2344e85c28b3804"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-mixed_one_admissible-motor_01-062010",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:mixed_one_admissible",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-CAPX-mixed_one_admissible-motor_01-062010",
+      "params": {
+        "config": "mixed_one_admissible",
+        "asset": "motor_01",
+        "seed": 62010,
+        "standoffs": [
+          0.5,
+          0.75,
+          1.0
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "SATISFIED",
+          "joint_and_collision": "SATISFIED",
+          "clearance": "SATISFIED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": true,
+        "limiting_constraint": null,
+        "selected_standoff": 0.75,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "DISPATCH",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": null,
+        "CS_F1": null,
+        "LCA": null,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "e2344e85c28b3804"
+    },
+    {
+      "episode_id": "T-D-PHYS-CAP-X::GEN-DPHYS-CAPX-all_inadmissible-motor_01-062011",
+      "template_id": "T-D-PHYS-CAP-X",
+      "family": "D",
+      "d_subfamily": "physical",
+      "constraint_stratum": "capx:all_inadmissible",
+      "asset": "motor_01",
+      "scenario_id": "GEN-DPHYS-CAPX-all_inadmissible-motor_01-062011",
+      "params": {
+        "config": "all_inadmissible",
+        "asset": "motor_01",
+        "seed": 62011,
+        "standoffs": [
+          0.5,
+          0.75,
+          1.0
+        ]
+      },
+      "gold": {
+        "constraints": {
+          "reach": "VIOLATED",
+          "joint_and_collision": "VIOLATED",
+          "clearance": "VIOLATED",
+          "grasp_payload": "SATISFIED",
+          "stability": "SATISFIED",
+          "energy": "SATISFIED"
+        },
+        "admissible": false,
+        "limiting_constraint": "MULTIPLE",
+        "selected_standoff": null,
+        "allowed_terminal_actions": [
+          "DISPATCH",
+          "ESCALATE"
+        ]
+      },
+      "gold_terminal_action": "ESCALATE",
+      "source_precedent": "RC003",
+      "generator_version": "dphys_generator.py@phase8h1_8h2e",
+      "schema_version": "phase8h1_c_gold_schema_freeze_plan/1+dphys_relational_gold/1",
+      "trace_chain_valid": true,
+      "score": {
+        "CC": 1,
+        "PAC": 1.0,
+        "UDR": 0.0,
+        "ODR": 0.0,
+        "CSA": 1.0,
+        "CS_precision": 1.0,
+        "CS_recall": 1.0,
+        "CS_F1": 1.0,
+        "LCA": 1.0,
+        "candidate_selection_correct": true
+      },
+      "admitted": true,
+      "rejections": [],
+      "fingerprint": "b13fb14f76952b50"
+    }
+  ]
+}

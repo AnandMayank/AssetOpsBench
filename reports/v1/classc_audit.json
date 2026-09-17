@@ -1,0 +1,216 @@
+{
+  "schema": "assetops.classc_audit/1",
+  "runnable": [
+    "R001",
+    "R005",
+    "R006",
+    "R007",
+    "R016",
+    "R017",
+    "R018",
+    "R023",
+    "R024"
+  ],
+  "conditional": [],
+  "blocked": [],
+  "results": [
+    {
+      "scenario_id": "R001",
+      "fm": "FM-1",
+      "gold": "ESCALATE",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "open_panel",
+        "open_panel"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": true,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R005",
+      "fm": "FM-5a",
+      "gold": "ESCALATE",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": true,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R006",
+      "fm": "FM-5b",
+      "gold": "COMMIT",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "capture_image"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": false,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R007",
+      "fm": "FM-5b",
+      "gold": "COMMIT",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "capture_image"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": false,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R016",
+      "fm": "FM-9",
+      "gold": "ABORT",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "sit",
+        "dock"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": true,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": [
+        "prompt names required calls: ['dock']"
+      ]
+    },
+    {
+      "scenario_id": "R017",
+      "fm": "FM-10",
+      "gold": "ABORT",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "sit"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": false,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R018",
+      "fm": "FM-11",
+      "gold": "ESCALATE",
+      "required_order": [
+        "list_waypoints"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": true,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R023",
+      "fm": "RF-M1",
+      "gold": "COMMIT",
+      "required_order": [
+        "navigate_to",
+        "capture_image",
+        "capture_image",
+        "commit_reading"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": false,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    },
+    {
+      "scenario_id": "R024",
+      "fm": "RF-M2",
+      "gold": "COMMIT",
+      "required_order": [
+        "get_battery",
+        "list_waypoints",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "get_battery",
+        "commit_reading"
+      ],
+      "ordering_recoverable": true,
+      "ordering_free_by_design": false,
+      "gold_leak": false,
+      "rule_leak": false,
+      "order_stated_in_prompt": false,
+      "executable_tools": true,
+      "missing_tools": [],
+      "gold_consistent": true,
+      "verdict": "RUNNABLE",
+      "notes": []
+    }
+  ]
+}

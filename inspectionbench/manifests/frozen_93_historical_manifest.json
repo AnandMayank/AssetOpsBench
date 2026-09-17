@@ -1,0 +1,1663 @@
+{
+  "schema": "phase8h1_pilot_manifest/1",
+  "frozen_at": "2026-09-09T18:09:16+0530",
+  "construct_validity_gate": {
+    "A": "PASS",
+    "B": "PASS WITH LIMITATION",
+    "C": "PASS WITH LIMITATION",
+    "D": "PASS WITH LIMITATION",
+    "E": "PASS",
+    "overall": "PASS WITH LIMITATION"
+  },
+  "B_scope_restriction": "B may support evidence-availability/grounding claims only. B must NOT be described as measuring sequential sufficiency, evidence-quality reassessment, or evidence-dependent commit/refrain.",
+  "C_D_gsr_status": "INTENDED_UNDEFINED -- TDA/procedural(C)/relational(D) claims only, no GSR/\u0394",
+  "models": [
+    {
+      "model": "openai/gpt-5.4-mini",
+      "provider": "tokenrouter"
+    },
+    {
+      "model": "qwen3.5-omni-plus",
+      "provider": "tokenrouter"
+    },
+    {
+      "model": "google/gemini-3.1-flash-image-preview",
+      "provider": "tokenrouter"
+    }
+  ],
+  "n_episodes": 93,
+  "n_episodes_by_dim": {
+    "A": 48,
+    "B": 12,
+    "C": 9,
+    "D": 6,
+    "E": 18
+  },
+  "excluded_from_manifest": [
+    "InspecSafe train corpus (1,278 real synchronized RGB+IR waypoints -- audited, not wired to any executor/gold rule, construct-changing to add)",
+    "9 Stage-4 C/D expansion episode RESULTS (scenario_ids ARE included above per the pre-freeze inclusion rule; the single-model outputs from that audit run are NOT merged into this pilot)"
+  ],
+  "result_schema_note": "actual_modality, observation_asset_ids, trace_id, and all model verdicts/scores are NOT part of this frozen file -- they are produced per-model during execution and reported in phase8h1_live_multi_model_report.md, never written back into this manifest.",
+  "episodes": [
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3000::FULL",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3000",
+      "world_seed": 3000,
+      "normalized_world_hash": "W-d5306f86d1b457848d6fcb25",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3000",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3000,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3000::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3000",
+      "world_seed": 3000,
+      "normalized_world_hash": "W-d5306f86d1b457848d6fcb25",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3000",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3000,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3000::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3000",
+      "world_seed": 3000,
+      "normalized_world_hash": "W-d5306f86d1b457848d6fcb25",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3000",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3000,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::FULL",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3001",
+      "world_seed": 3001,
+      "normalized_world_hash": "W-c8222fc0465b97b2cec990f4",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3001",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3001,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3001",
+      "world_seed": 3001,
+      "normalized_world_hash": "W-c8222fc0465b97b2cec990f4",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3001",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3001,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3001",
+      "world_seed": 3001,
+      "normalized_world_hash": "W-c8222fc0465b97b2cec990f4",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3001",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3001,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3002::FULL",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3002",
+      "world_seed": 3002,
+      "normalized_world_hash": "W-df54bd7b95820928cd788810",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3002",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3002,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3002::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3002",
+      "world_seed": 3002,
+      "normalized_world_hash": "W-df54bd7b95820928cd788810",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3002",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3002,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3002::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3002",
+      "world_seed": 3002,
+      "normalized_world_hash": "W-df54bd7b95820928cd788810",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3002",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3002,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3003::FULL",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3003",
+      "world_seed": 3003,
+      "normalized_world_hash": "W-4790d35848dcb540ee84c97a",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3003",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3003,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3003::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3003",
+      "world_seed": 3003,
+      "normalized_world_hash": "W-4790d35848dcb540ee84c97a",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3003",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3003,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3003::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3003",
+      "world_seed": 3003,
+      "normalized_world_hash": "W-4790d35848dcb540ee84c97a",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3003",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3003,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3004::FULL",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3004",
+      "world_seed": 3004,
+      "normalized_world_hash": "W-0c072f9182657fcd24c750e3",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3004",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3004,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3004::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3004",
+      "world_seed": 3004,
+      "normalized_world_hash": "W-0c072f9182657fcd24c750e3",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3004",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3004,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3004::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3004",
+      "world_seed": 3004,
+      "normalized_world_hash": "W-0c072f9182657fcd24c750e3",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3004",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3004,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::FULL",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3005",
+      "world_seed": 3005,
+      "normalized_world_hash": "W-f54dced4c5a68f46e8606b55",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3005",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3005,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3005",
+      "world_seed": 3005,
+      "normalized_world_hash": "W-f54dced4c5a68f46e8606b55",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3005",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3005,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3005",
+      "world_seed": 3005,
+      "normalized_world_hash": "W-f54dced4c5a68f46e8606b55",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3005",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3005,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3006::FULL",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3006",
+      "world_seed": 3006,
+      "normalized_world_hash": "W-bf261779770c41e87adaa952",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3006",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3006,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3006::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3006",
+      "world_seed": 3006,
+      "normalized_world_hash": "W-bf261779770c41e87adaa952",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3006",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3006,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3006::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3006",
+      "world_seed": 3006,
+      "normalized_world_hash": "W-bf261779770c41e87adaa952",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3006",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3006,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3007::FULL",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3007",
+      "world_seed": 3007,
+      "normalized_world_hash": "W-f45f0a3969cbae9eca7265db",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3007",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3007,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3007::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3007",
+      "world_seed": 3007,
+      "normalized_world_hash": "W-f45f0a3969cbae9eca7265db",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3007",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3007,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3007::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3007",
+      "world_seed": 3007,
+      "normalized_world_hash": "W-f45f0a3969cbae9eca7265db",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3007",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3007,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3008::FULL",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3008",
+      "world_seed": 3008,
+      "normalized_world_hash": "W-e9d71e504d2eeebba7a157ad",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3008",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3008,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3008::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3008",
+      "world_seed": 3008,
+      "normalized_world_hash": "W-e9d71e504d2eeebba7a157ad",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3008",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3008,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3008::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3008",
+      "world_seed": 3008,
+      "normalized_world_hash": "W-e9d71e504d2eeebba7a157ad",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3008",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3008,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::FULL",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3009",
+      "world_seed": 3009,
+      "normalized_world_hash": "W-212dd539f01227cf53efac79",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3009",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3009,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3009",
+      "world_seed": 3009,
+      "normalized_world_hash": "W-212dd539f01227cf53efac79",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3009",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3009,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3009",
+      "world_seed": 3009,
+      "normalized_world_hash": "W-212dd539f01227cf53efac79",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3009",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3009,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3010::FULL",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3010",
+      "world_seed": 3010,
+      "normalized_world_hash": "W-736caa41c9a3dab0b8d13931",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3010",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3010,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3010::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3010",
+      "world_seed": 3010,
+      "normalized_world_hash": "W-736caa41c9a3dab0b8d13931",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3010",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3010,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3010::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3010",
+      "world_seed": 3010,
+      "normalized_world_hash": "W-736caa41c9a3dab0b8d13931",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3010",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3010,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3011::FULL",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3011",
+      "world_seed": 3011,
+      "normalized_world_hash": "W-6a6663113ba160ce9d993a5b",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3011",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3011,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3011::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3011",
+      "world_seed": 3011,
+      "normalized_world_hash": "W-6a6663113ba160ce9d993a5b",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3011",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3011,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3011::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3011",
+      "world_seed": 3011,
+      "normalized_world_hash": "W-6a6663113ba160ce9d993a5b",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3011",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3011,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3012::FULL",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3012",
+      "world_seed": 3012,
+      "normalized_world_hash": "W-ee69496ebc37c5851fdadad5",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3012",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3012,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3012::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3012",
+      "world_seed": 3012,
+      "normalized_world_hash": "W-ee69496ebc37c5851fdadad5",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3012",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3012,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-chiller_6-phys_in__iot_agree-3012::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-chiller_6-phys_in__iot_agree-3012",
+      "world_seed": 3012,
+      "normalized_world_hash": "W-ee69496ebc37c5851fdadad5",
+      "scenario_id": "A-chiller_6-phys_in__iot_agree-3012",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3012,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "cell": "phys_in__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::FULL",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3013",
+      "world_seed": 3013,
+      "normalized_world_hash": "W-5d6c7e0ab9231df054fe3733",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3013",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3013,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3013",
+      "world_seed": 3013,
+      "normalized_world_hash": "W-5d6c7e0ab9231df054fe3733",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3013",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3013,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3013",
+      "world_seed": 3013,
+      "normalized_world_hash": "W-5d6c7e0ab9231df054fe3733",
+      "scenario_id": "A-hydraulic_pump_1-phys_in__iot_disagree-3013",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3013,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "cell": "phys_in__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3014::FULL",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3014",
+      "world_seed": 3014,
+      "normalized_world_hash": "W-e6b070fdf719f7daef66cded",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3014",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3014,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3014::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3014",
+      "world_seed": 3014,
+      "normalized_world_hash": "W-e6b070fdf719f7daef66cded",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3014",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3014,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3014::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-metro_pump_1-phys_out__iot_agree-3014",
+      "world_seed": 3014,
+      "normalized_world_hash": "W-e6b070fdf719f7daef66cded",
+      "scenario_id": "A-metro_pump_1-phys_out__iot_agree-3014",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3014,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "cell": "phys_out__iot_agree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3015::FULL",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3015",
+      "world_seed": 3015,
+      "normalized_world_hash": "W-81ba5cc1207bed8d91f7ded1",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3015",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3015,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3015::PHYSICAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3015",
+      "world_seed": 3015,
+      "normalized_world_hash": "W-81ba5cc1207bed8d91f7ded1",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3015",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3015,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "A::A-motor_01-phys_out__iot_disagree-3015::DIGITAL_ONLY",
+      "dimension": "A",
+      "world_id": "A-motor_01-phys_out__iot_disagree-3015",
+      "world_seed": 3015,
+      "normalized_world_hash": "W-81ba5cc1207bed8d91f7ded1",
+      "scenario_id": "A-motor_01-phys_out__iot_disagree-3015",
+      "scenario_template": "sample_world/FM-6a",
+      "scenario_seed": 3015,
+      "scenario_parameters": {
+        "asset": "motor_01",
+        "cell": "phys_out__iot_disagree"
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::R011::FULL",
+      "dimension": "B",
+      "world_id": "R011",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R011",
+      "scenario_template": "l3_arms/R011 (incumbent, real)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": "physical",
+      "tool_contract": "l3_arms.arms_for('R011')"
+    },
+    {
+      "episode_id": "B::R011::PHYSICAL_ONLY",
+      "dimension": "B",
+      "world_id": "R011",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R011",
+      "scenario_template": "l3_arms/R011 (incumbent, real)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": null,
+      "required_modality": "physical",
+      "tool_contract": "l3_arms.arms_for('R011')"
+    },
+    {
+      "episode_id": "B::R011::DIGITAL_ONLY",
+      "dimension": "B",
+      "world_id": "R011",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R011",
+      "scenario_template": "l3_arms/R011 (incumbent, real)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "DIGITAL_ONLY",
+      "gold_action": null,
+      "required_modality": "physical",
+      "tool_contract": "l3_arms.arms_for('R011')"
+    },
+    {
+      "episode_id": "B::B-fm7a-chiller_6-4000::FULL",
+      "dimension": "B",
+      "world_id": "B-fm7a-chiller_6-4000",
+      "world_seed": 4000,
+      "normalized_world_hash": "W-d80e798801ec2f222672b4e4",
+      "scenario_id": "B-fm7a-chiller_6-4000",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4000,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "physical_in_band": true
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-chiller_6-4000::PHYSICAL_ONLY",
+      "dimension": "B",
+      "world_id": "B-fm7a-chiller_6-4000",
+      "world_seed": 4000,
+      "normalized_world_hash": "W-d80e798801ec2f222672b4e4",
+      "scenario_id": "B-fm7a-chiller_6-4000",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4000,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "physical_in_band": true
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-chiller_6-4000::DIGITAL_ONLY",
+      "dimension": "B",
+      "world_id": "B-fm7a-chiller_6-4000",
+      "world_seed": 4000,
+      "normalized_world_hash": "W-d80e798801ec2f222672b4e4",
+      "scenario_id": "B-fm7a-chiller_6-4000",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4000,
+      "scenario_parameters": {
+        "asset": "chiller_6",
+        "physical_in_band": true
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-hydraulic_pump_1-4001::FULL",
+      "dimension": "B",
+      "world_id": "B-fm7a-hydraulic_pump_1-4001",
+      "world_seed": 4001,
+      "normalized_world_hash": "W-953987d1f352136681aa8fce",
+      "scenario_id": "B-fm7a-hydraulic_pump_1-4001",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4001,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "physical_in_band": false
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-hydraulic_pump_1-4001::PHYSICAL_ONLY",
+      "dimension": "B",
+      "world_id": "B-fm7a-hydraulic_pump_1-4001",
+      "world_seed": 4001,
+      "normalized_world_hash": "W-953987d1f352136681aa8fce",
+      "scenario_id": "B-fm7a-hydraulic_pump_1-4001",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4001,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "physical_in_band": false
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-hydraulic_pump_1-4001::DIGITAL_ONLY",
+      "dimension": "B",
+      "world_id": "B-fm7a-hydraulic_pump_1-4001",
+      "world_seed": 4001,
+      "normalized_world_hash": "W-953987d1f352136681aa8fce",
+      "scenario_id": "B-fm7a-hydraulic_pump_1-4001",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4001,
+      "scenario_parameters": {
+        "asset": "hydraulic_pump_1",
+        "physical_in_band": false
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-metro_pump_1-4002::FULL",
+      "dimension": "B",
+      "world_id": "B-fm7a-metro_pump_1-4002",
+      "world_seed": 4002,
+      "normalized_world_hash": "W-16769a7ed41ce916bdd2a842",
+      "scenario_id": "B-fm7a-metro_pump_1-4002",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4002,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "physical_in_band": true
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-metro_pump_1-4002::PHYSICAL_ONLY",
+      "dimension": "B",
+      "world_id": "B-fm7a-metro_pump_1-4002",
+      "world_seed": 4002,
+      "normalized_world_hash": "W-16769a7ed41ce916bdd2a842",
+      "scenario_id": "B-fm7a-metro_pump_1-4002",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4002,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "physical_in_band": true
+      },
+      "regime": "PHYSICAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "B::B-fm7a-metro_pump_1-4002::DIGITAL_ONLY",
+      "dimension": "B",
+      "world_id": "B-fm7a-metro_pump_1-4002",
+      "world_seed": 4002,
+      "normalized_world_hash": "W-16769a7ed41ce916bdd2a842",
+      "scenario_id": "B-fm7a-metro_pump_1-4002",
+      "scenario_template": "sample_world_fm7a_contradiction",
+      "scenario_seed": 4002,
+      "scenario_parameters": {
+        "asset": "metro_pump_1",
+        "physical_in_band": true
+      },
+      "regime": "DIGITAL_ONLY",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "couchdb_executor.TOOLSET (regime-masked)"
+    },
+    {
+      "episode_id": "C::R001::FULL",
+      "dimension": "C",
+      "world_id": "R001",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R001",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R005::FULL",
+      "dimension": "C",
+      "world_id": "R005",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R005",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R006::FULL",
+      "dimension": "C",
+      "world_id": "R006",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R006",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R007::FULL",
+      "dimension": "C",
+      "world_id": "R007",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R007",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R016::FULL",
+      "dimension": "C",
+      "world_id": "R016",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R016",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R017::FULL",
+      "dimension": "C",
+      "world_id": "R017",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R017",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R018::FULL",
+      "dimension": "C",
+      "world_id": "R018",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R018",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R023::FULL",
+      "dimension": "C",
+      "world_id": "R023",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R023",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "C::R024::FULL",
+      "dimension": "C",
+      "world_id": "R024",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R024",
+      "scenario_template": "run_classc_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "D::R008::FULL",
+      "dimension": "D",
+      "world_id": "R008",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R008",
+      "scenario_template": "run_classd_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "D::R010::FULL",
+      "dimension": "D",
+      "world_id": "R010",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R010",
+      "scenario_template": "run_classd_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "D::R021::FULL",
+      "dimension": "D",
+      "world_id": "R021",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R021",
+      "scenario_template": "run_classd_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "D::R022::FULL",
+      "dimension": "D",
+      "world_id": "R022",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R022",
+      "scenario_template": "run_classd_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "D::R059::FULL",
+      "dimension": "D",
+      "world_id": "R059",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R059",
+      "scenario_template": "run_classd_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "D::R025::FULL",
+      "dimension": "D",
+      "world_id": "R025",
+      "world_seed": null,
+      "normalized_world_hash": null,
+      "scenario_id": "R025",
+      "scenario_template": "run_classd_pilot (real fixture)",
+      "scenario_seed": null,
+      "scenario_parameters": {},
+      "regime": "FULL",
+      "gold_action": null,
+      "required_modality": null,
+      "tool_contract": "classc_fixtures.FIXTURES[sid]"
+    },
+    {
+      "episode_id": "E::SEQ-5000::ep0",
+      "dimension": "E",
+      "world_id": "SEQ-5000",
+      "world_seed": 5000,
+      "normalized_world_hash": "W-028c54184b65e385b8625df1",
+      "scenario_id": "SEQ-5000",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5000,
+      "scenario_parameters": {
+        "episode_index": 0,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5000::ep1",
+      "dimension": "E",
+      "world_id": "SEQ-5000",
+      "world_seed": 5000,
+      "normalized_world_hash": "W-028c54184b65e385b8625df1",
+      "scenario_id": "SEQ-5000",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5000,
+      "scenario_parameters": {
+        "episode_index": 1,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5000::ep2",
+      "dimension": "E",
+      "world_id": "SEQ-5000",
+      "world_seed": 5000,
+      "normalized_world_hash": "W-028c54184b65e385b8625df1",
+      "scenario_id": "SEQ-5000",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5000,
+      "scenario_parameters": {
+        "episode_index": 2,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5001::ep0",
+      "dimension": "E",
+      "world_id": "SEQ-5001",
+      "world_seed": 5001,
+      "normalized_world_hash": "W-e6b0b0655d8bf006ff58ea63",
+      "scenario_id": "SEQ-5001",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5001,
+      "scenario_parameters": {
+        "episode_index": 0,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5001::ep1",
+      "dimension": "E",
+      "world_id": "SEQ-5001",
+      "world_seed": 5001,
+      "normalized_world_hash": "W-e6b0b0655d8bf006ff58ea63",
+      "scenario_id": "SEQ-5001",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5001,
+      "scenario_parameters": {
+        "episode_index": 1,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5001::ep2",
+      "dimension": "E",
+      "world_id": "SEQ-5001",
+      "world_seed": 5001,
+      "normalized_world_hash": "W-e6b0b0655d8bf006ff58ea63",
+      "scenario_id": "SEQ-5001",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5001,
+      "scenario_parameters": {
+        "episode_index": 2,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5002::ep0",
+      "dimension": "E",
+      "world_id": "SEQ-5002",
+      "world_seed": 5002,
+      "normalized_world_hash": "W-f1a2b3c3a40418f545cc1462",
+      "scenario_id": "SEQ-5002",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5002,
+      "scenario_parameters": {
+        "episode_index": 0,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5002::ep1",
+      "dimension": "E",
+      "world_id": "SEQ-5002",
+      "world_seed": 5002,
+      "normalized_world_hash": "W-f1a2b3c3a40418f545cc1462",
+      "scenario_id": "SEQ-5002",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5002,
+      "scenario_parameters": {
+        "episode_index": 1,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5002::ep2",
+      "dimension": "E",
+      "world_id": "SEQ-5002",
+      "world_seed": 5002,
+      "normalized_world_hash": "W-f1a2b3c3a40418f545cc1462",
+      "scenario_id": "SEQ-5002",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5002,
+      "scenario_parameters": {
+        "episode_index": 2,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5003::ep0",
+      "dimension": "E",
+      "world_id": "SEQ-5003",
+      "world_seed": 5003,
+      "normalized_world_hash": "W-693dfd5a7d4827bb4bec91fb",
+      "scenario_id": "SEQ-5003",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5003,
+      "scenario_parameters": {
+        "episode_index": 0,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5003::ep1",
+      "dimension": "E",
+      "world_id": "SEQ-5003",
+      "world_seed": 5003,
+      "normalized_world_hash": "W-693dfd5a7d4827bb4bec91fb",
+      "scenario_id": "SEQ-5003",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5003,
+      "scenario_parameters": {
+        "episode_index": 1,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5003::ep2",
+      "dimension": "E",
+      "world_id": "SEQ-5003",
+      "world_seed": 5003,
+      "normalized_world_hash": "W-693dfd5a7d4827bb4bec91fb",
+      "scenario_id": "SEQ-5003",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5003,
+      "scenario_parameters": {
+        "episode_index": 2,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5004::ep0",
+      "dimension": "E",
+      "world_id": "SEQ-5004",
+      "world_seed": 5004,
+      "normalized_world_hash": "W-2646cbe3d52c33635c97213c",
+      "scenario_id": "SEQ-5004",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5004,
+      "scenario_parameters": {
+        "episode_index": 0,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5004::ep1",
+      "dimension": "E",
+      "world_id": "SEQ-5004",
+      "world_seed": 5004,
+      "normalized_world_hash": "W-2646cbe3d52c33635c97213c",
+      "scenario_id": "SEQ-5004",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5004,
+      "scenario_parameters": {
+        "episode_index": 1,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5004::ep2",
+      "dimension": "E",
+      "world_id": "SEQ-5004",
+      "world_seed": 5004,
+      "normalized_world_hash": "W-2646cbe3d52c33635c97213c",
+      "scenario_id": "SEQ-5004",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5004,
+      "scenario_parameters": {
+        "episode_index": 2,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "ESCALATE",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5005::ep0",
+      "dimension": "E",
+      "world_id": "SEQ-5005",
+      "world_seed": 5005,
+      "normalized_world_hash": "W-1743482da232ccabde2f8690",
+      "scenario_id": "SEQ-5005",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5005,
+      "scenario_parameters": {
+        "episode_index": 0,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5005::ep1",
+      "dimension": "E",
+      "world_id": "SEQ-5005",
+      "world_seed": 5005,
+      "normalized_world_hash": "W-1743482da232ccabde2f8690",
+      "scenario_id": "SEQ-5005",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5005,
+      "scenario_parameters": {
+        "episode_index": 1,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    },
+    {
+      "episode_id": "E::SEQ-5005::ep2",
+      "dimension": "E",
+      "world_id": "SEQ-5005",
+      "world_seed": 5005,
+      "normalized_world_hash": "W-1743482da232ccabde2f8690",
+      "scenario_id": "SEQ-5005",
+      "scenario_template": "sample_sequence",
+      "scenario_seed": 5005,
+      "scenario_parameters": {
+        "episode_index": 2,
+        "n_episodes": 3
+      },
+      "regime": "FULL",
+      "gold_action": "COMMIT",
+      "required_modality": "physical",
+      "tool_contract": "SequenceExecutor (shared battery_budget)"
+    }
+  ]
+}

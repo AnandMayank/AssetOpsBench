@@ -1,0 +1,388 @@
+{
+  "schema": "assetops.l3_pilot/1",
+  "provenance": {
+    "captured_at": "2026-08-12T01:36:18+0530",
+    "repos": {
+      "AssetOpsBench": {
+        "path": "/home/adityapachauri/AssetOpsBench",
+        "sha": "3b63e82f14e6b4be0fee5f2a18b3627b6ed7f770",
+        "branch": "phase0-apparatus-integrity",
+        "dirty": true
+      },
+      "AssetOpsBenchScenarioGeneration": {
+        "path": "/home/adityapachauri/AssetOpsBenchScenarioGeneration",
+        "sha": "36e3104e0bd7f53811fe32e535b3195e2b5401b5",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    "frozen_config_hash": "64d7cfb7dbfa874ee28674c957e0562c3ceaed65793d7ad5b0fc95ce5c9eb952",
+    "document_blob_shas": {
+      "V1_EvidenceContract.md": "a0c50d56adaba9407cfba6420b52b5afa9061636",
+      "L3_ScenarioClassification.md": "468d29888c8f3ccd3efccdbb4fcc356e39a55b70",
+      "FM_Crosswalk.md": "74ec5ea19dd8ea4a59f4f9e9add46bfc2efe4669"
+    },
+    "model": "openai/gpt-5.4-mini",
+    "generation": {
+      "temperature": 0.0,
+      "max_tokens": 1024,
+      "system_prompt_id": "l3_pilot/v1"
+    },
+    "scenarios": [
+      "R009",
+      "R015",
+      "R055",
+      "R056",
+      "R057",
+      "R058"
+    ],
+    "status": "apparatus/model pilot - NOT a benchmark result"
+  },
+  "results": [
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "verdict": "ESCALATE",
+      "tool_sequence": [],
+      "reason": "I cannot physically verify the gauge from the provided evidence here, so the anomaly remains unconfirmed and needs on-site inspection.",
+      "CC": 0,
+      "PROC": 0,
+      "UDR": null,
+      "ODR": 1,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.43
+    },
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "verdict": "COMMIT",
+      "tool_sequence": [
+        "capture_image"
+      ],
+      "reason": "I cannot physically verify the gauge from the provided evidence in this interface, so the anomaly cannot be confirmed here and should be escalated for on-site reading.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": null,
+      "ODR": 0,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.17
+    },
+    {
+      "scenario_id": "R009",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "get_iot_reading",
+        "get_sensor_history"
+      ],
+      "reason": "The IoT trend suggests elevated pressure, but I cannot physically verify the gauge from the provided evidence or capture a fresh image here, so a human inspection is required.",
+      "CC": 0,
+      "PROC": 0,
+      "UDR": null,
+      "ODR": 1,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 2.13
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "verdict": "ESCALATE",
+      "tool_sequence": [],
+      "reason": "I cannot verify the pressure from the provided evidence alone because a valid decision requires an actual physical gauge image from capture_image and no such image result was supplied.",
+      "CC": 0,
+      "PROC": 0,
+      "UDR": null,
+      "ODR": 1,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.59
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "verdict": "COMMIT",
+      "tool_sequence": [
+        "capture_image"
+      ],
+      "reason": "The attached physical gauge image for Chiller-6 was used to verify the pressure reading within the expected operating range.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": null,
+      "ODR": 0,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.35
+    },
+    {
+      "scenario_id": "R015",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "get_iot_reading"
+      ],
+      "reason": "No physical gauge image from capture_image was provided, so a verified pressure reading cannot be committed from the available evidence.",
+      "CC": 0,
+      "PROC": 0,
+      "UDR": null,
+      "ODR": 1,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.1
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "verdict": "COMMIT",
+      "tool_sequence": [
+        "capture_image",
+        "read_gauge"
+      ],
+      "reason": "The physical gauge reading should be confirmed from a fresh image and, if consistent with the normal band, the asset state can be accepted for scheduled pressure confirmation.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": null,
+      "ODR": 0,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.3
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "verdict": "COMMIT",
+      "tool_sequence": [
+        "capture_image"
+      ],
+      "reason": "The physical gauge reading is within the normal operating band and confirms the asset state for scheduled pressure confirmation.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": null,
+      "ODR": 0,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.2
+    },
+    {
+      "scenario_id": "R055",
+      "fm": "FM-6a",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "get_iot_reading"
+      ],
+      "reason": "A physical gauge image/readout is required to confirm the asset state, but only IoT telemetry was provided and no image capture tool is available.",
+      "CC": 0,
+      "PROC": 0,
+      "UDR": null,
+      "ODR": 1,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.16
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "arm": "FULL",
+      "probe": false,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "capture_image",
+        "read_gauge"
+      ],
+      "reason": "I cannot directly capture or read the physical gauge from the provided evidence in this interface, so the asset state cannot be confirmed from a fresh image.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": 0,
+      "ODR": null,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.62
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "verdict": "COMMIT",
+      "tool_sequence": [
+        "capture_image",
+        "read_gauge"
+      ],
+      "reason": "The physical gauge image shows the pump flow within the expected 0.9\u20131.1 m\u00b3/s band, matching routine operating conditions.",
+      "CC": 0,
+      "PROC": 1,
+      "UDR": 1,
+      "ODR": null,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.2
+    },
+    {
+      "scenario_id": "R056",
+      "fm": "FM-6a",
+      "gold": "ESCALATE",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "get_iot_reading"
+      ],
+      "reason": "A fresh physical gauge image was not provided, so the flow cannot be confirmed from the gauge and the IoT value cannot be used as a substitute.",
+      "CC": 1,
+      "PROC": 0,
+      "UDR": 0,
+      "ODR": null,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.32
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "FULL",
+      "probe": false,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "capture_image"
+      ],
+      "reason": "No physical gauge image from capture_image was provided, so a committed verification reading cannot be made from history or IoT data alone.",
+      "CC": 0,
+      "PROC": 1,
+      "UDR": null,
+      "ODR": 1,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.15
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "verdict": "COMMIT",
+      "tool_sequence": [
+        "capture_image"
+      ],
+      "reason": "The physical gauge image for Motor-01 was captured and supports a direct reading within the expected operating range.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": null,
+      "ODR": 0,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.06
+    },
+    {
+      "scenario_id": "R057",
+      "fm": "FM-8",
+      "gold": "COMMIT",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "get_iot_reading",
+        "get_sensor_history"
+      ],
+      "reason": "No physical gauge image from capture_image was provided, so I cannot commit a verification reading based solely on historical or IoT data.",
+      "CC": 0,
+      "PROC": 0,
+      "UDR": null,
+      "ODR": 1,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.25
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "arm": "FULL",
+      "probe": false,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "capture_image",
+        "get_iot_reading",
+        "get_sensor_history"
+      ],
+      "reason": "The asset has a history of repeated pressure exceedances closed without corrective action, so the gauge confirmation should be escalated rather than directly committed.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": 0,
+      "ODR": null,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.74
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "arm": "PHYSICAL_ONLY",
+      "probe": false,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "capture_image"
+      ],
+      "reason": "The attached evidence does not include a readable gauge value, so I cannot confirm the pressure is within the expected 160\u2013200 bar range from the physical gauge.",
+      "CC": 1,
+      "PROC": 1,
+      "UDR": 0,
+      "ODR": null,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.14
+    },
+    {
+      "scenario_id": "R058",
+      "fm": "FM-7c",
+      "gold": "ESCALATE",
+      "arm": "DIGITAL_ONLY",
+      "probe": true,
+      "verdict": "ESCALATE",
+      "tool_sequence": [
+        "get_sensor_history"
+      ],
+      "reason": "The provided maintenance history indicates repeated unresolved pressure exceedances, so this condition should be reviewed for corrective action rather than simply confirmed and closed.",
+      "CC": 1,
+      "PROC": 0,
+      "UDR": 0,
+      "ODR": null,
+      "apparatus_failure": false,
+      "error": null,
+      "latency_s": 1.3
+    }
+  ]
+}
