@@ -1,0 +1,7 @@
+asset_id,informal_type_label,unit/operating_band(scenario_gen.ASSETS),"canonical_episodes_nominal_sum(A+E nominal 960 each + B-Acq + C/D-ent + D-phys; excludes 12 B-legacy, no per-episode asset field found there)",capability_families_present
+chiller_6,chiller,bar; operating band 220.0-270.0,1030,"A,E,B-Acquisition,C,D-enterprise,D-physical"
+hydraulic_pump_1,pump (hydraulic),bar; operating band 160.0-200.0,1031,"A,E,B-Acquisition,C,D-enterprise,D-physical"
+metro_pump_1,pump (metro),m3/s; operating band 0.9-1.1,1023,"A,E,B-Acquisition,C,D-enterprise,D-physical"
+motor_01,motor,C (temperature); operating band 80.0-100.0,1024,"A,E,B-Acquisition,C,D-enterprise,D-physical"
+"TOTAL(nominal, pre A/E dedup)",,,4108,"4108 nominal = 4075 total - 12(B-legacy,unattributed) + 45(A/E nominal-vs-deduped gap, same 45 as canonical_count_reconstruction.json) = 4063+45=4108, consistent"
+CLAIM CHECK,six industrial asset types,"source: src/orchestrator/scenario_gen.py ASSETS dict (ground-truth asset registry, only 4 entries)","4 assets found, identical set in every family manifest checked (A/E, C/D-enterprise, D-physical, B-Acquisition)","CONTRADICTED -- actual canonical asset registry has 4 assets, not 6; at most 3 distinct informal classes (chiller / pump / motor) if metro_pump_1 and hydraulic_pump_1 count as one 'pump' class"

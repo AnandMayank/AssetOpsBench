@@ -1,0 +1,91 @@
+{
+  "definition": "Canonical episode = one admitted, fingerprint-tracked unit in a family's canonical manifest, eligible in principle for scoring (regardless of whether any model was ever run against it). Distinguished from: grounded world (a physical/parameterized environment instance, identified by world_id/world_hash), scenario template (a named generator construct, e.g. B-ACQ-1, T-C-BATTERY_ABORT), scenario instantiation (one concrete parameterization of a template before admission), evidence realization/regime (FULL/PHYSICAL_ONLY/DIGITAL_ONLY or similar evidence-delivery condition attached to an episode), model evaluation trajectory (one actual model run against one canonical episode; see evaluated_trajectory_accounting.csv).",
+  "source_manifest": "inspectionbench/manifests/final_benchmark_manifest_v3.json",
+  "final_canonical_total": 4075,
+  "computation": "final_canonical_total = old_final_canonical_total (4009) + len(b_acquisition_episodes) (66) = 4075",
+  "family_counts_as_displayed": {
+    "A": 2400,
+    "E": 1440,
+    "B": 12,
+    "C": 112,
+    "D_enterprise": 20,
+    "D_physical": 70,
+    "B_Acquisition": 66
+  },
+  "sum_of_family_counts_as_displayed": 4120,
+  "discrepancy_vs_final_total": 45,
+  "discrepancy_explanation": "family_counts['A']+family_counts['E'] = 2400+1440 = 3840 is the NOMINAL admitted count for the A/E pool (a_e_pool_manifest.json: episode_count_generated=3840, episode_count_admitted=3840, episode_count_rejected=0). But a_e_pool_manifest.json also records duplicate_fingerprints=42 (42 fingerprint groups covering 87 of the 3840 episodes share a fingerprint with at least one other episode). Collapsing each duplicate group to one canonical representative removes 87-42=45 episodes, giving the TRUE deduped A+E canonical count of 3840-45=3795, which matches source_manifests.A_E.canonical_count=3795 in final_benchmark_manifest_v3.json exactly. final_canonical_total (4075) was built on top of this already-deduped 3795 (via old_final_canonical_total=4009=3795+12(B-legacy)+112(C)+20(D_enterprise)+70(D_physical)), so it is correct; family_counts (4120) is a raw, non-deduped display sum and should never be summed directly.",
+  "table": [
+    {
+      "family": "A",
+      "canonical_count_deduped": "included in 3795 combined with E (A+E not separately deduped in source)",
+      "canonical_count_nominal": 2400,
+      "scenario_templates": "NOT FOUND (cell-parameterized, no discrete named-template registry located; 'cell' values like phys_in__iot_agree serve an analogous role)",
+      "worlds_world_id_unique": "800 (matched_group_id count for family A alone, derived from a_e_pool_manifest.json episodes where family=='A')",
+      "asset_types": 4,
+      "evidence_regimes": "FULL, PHYSICAL_ONLY, DIGITAL_ONLY (matched_group_policy: 3 per world)",
+      "notes": "generation_seeds A: [50000,50799] (800 seeds, matches 800 matched groups x 3 regimes = 2400)"
+    },
+    {
+      "family": "E",
+      "canonical_count_deduped": "included in 3795 combined with A",
+      "canonical_count_nominal": 1440,
+      "scenario_templates": "NOT FOUND (cell-parameterized)",
+      "worlds_world_id_unique": "480 (matched_group_id count for family E)",
+      "asset_types": 4,
+      "evidence_regimes": "3 temporal episodes per sequence, gold varies by design (not a fixed FULL/PHYSICAL/DIGITAL split)",
+      "notes": "generation_seeds E: [51000,51479] (480 seeds x 3 = 1440)"
+    },
+    {
+      "family": "B (legacy)",
+      "canonical_count_deduped": 12,
+      "canonical_count_nominal": 12,
+      "scenario_templates": "NOT FOUND as separate template registry; pointer into frozen-93 historical pilot pool (reports/ec/phase8h1_pilot_manifest.json)",
+      "worlds_world_id_unique": "subset of the 41 unique world_id values in the 93-episode frozen pool",
+      "asset_types": "NOT FOUND (frozen93 episodes carry no explicit asset field at top level)",
+      "evidence_regimes": "NOT independently enumerated this pass",
+      "notes": "frozen, unmodified since before the v3 merge; only 3/12 are actually scored by the existing dispatch per reports/benchmark/paper_results_v1.json data_quality_notes"
+    },
+    {
+      "family": "B-Acquisition",
+      "canonical_count_deduped": 66,
+      "canonical_count_nominal": 66,
+      "scenario_templates": 4,
+      "worlds_world_id_unique": "15 matched_group_id groups",
+      "asset_types": 4,
+      "evidence_regimes": "thermal, acoustic, workorder_history, iot_timeseries (per matched_group_id names)",
+      "notes": "template_counts: B-ACQ-1=12 (MODALITY GAP), B-ACQ-2=36 (COUNT SUFFICIENCY), B-ACQ-3=12 (UNAVAILABLE HANDLING), B-ACQ-4=6 (CROSS-MODAL RECONCILIATION); sourced from 16 prototype + 50 scale-addition episodes"
+    },
+    {
+      "family": "C",
+      "canonical_count_deduped": 112,
+      "canonical_count_nominal": 112,
+      "scenario_templates": 7,
+      "worlds_world_id_unique": "NOT independently re-derived this pass (see cd_4000_final_manifest.json episodes for per-episode world_id)",
+      "asset_types": 4,
+      "evidence_regimes": "NOT independently enumerated this pass",
+      "notes": "template_counts (C only, derived from cd_4000_final_manifest.json filtered to family=='C'): T-C-BATTERY_ABORT=36, T-C-LOCALIZATION_ABORT=24, T-C-ROUTE_BUDGET=24, T-C-PANEL_STUCK=8, T-C-WO_GATE=8, T-C-WAYPOINT_ESCALATE=8, T-C-PRECEDENCE=4 (sums to 112)"
+    },
+    {
+      "family": "D-enterprise",
+      "canonical_count_deduped": 20,
+      "canonical_count_nominal": 20,
+      "scenario_templates": 3,
+      "worlds_world_id_unique": "NOT independently re-derived this pass",
+      "asset_types": 4,
+      "evidence_regimes": "NOT independently enumerated this pass",
+      "notes": "template_counts (D only, from cd_4000_final_manifest.json filtered to family=='D'): T-D-WO_GATE=8, T-D-WO_SIMILARITY=8, T-D-ROUTE_DEPENDENCY=4 (sums to 20)"
+    },
+    {
+      "family": "D-physical",
+      "canonical_count_deduped": 70,
+      "canonical_count_nominal": 70,
+      "scenario_templates": "NOT FOUND as a separate named-template registry (d_subfamily/constraint_stratum fields used instead)",
+      "worlds_world_id_unique": "NOT independently re-derived this pass",
+      "asset_types": 4,
+      "evidence_regimes": "NOT independently enumerated this pass (feasible/infeasible + constraint_stratum axes; see d_physical_accounting.json)",
+      "notes": "extracted from a pre-dedup 88-episode trace (d_physical_generation_trace_pre_dedup_88.json); 88-70=18 episodes removed by dedup"
+    }
+  ],
+  "sum_check": "2400(A)+1440(E)+12(B-legacy)+112(C)+20(D_enterprise)+70(D_physical)+66(B_Acquisition) = 4120, NOT 4075. The correct total (4075) requires applying the -45 A/E dedup adjustment: 4120-45=4075. VERIFIED."
+}

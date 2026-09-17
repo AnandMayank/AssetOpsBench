@@ -1,0 +1,59 @@
+CURRENT ABSTRACT INVENTORY — SEARCH RESULT: NO SINGLE CANONICAL ABSTRACT TEXT FOUND
+=====================================================================================
+
+Search performed (2026-09-18) across:
+  - docs/*.md (all 45 files), docs/tutorial/*.pdf (listed, not text-searchable by grep)
+  - reports/**/*.md, reports/**/*.json (all subtrees, including reports/paper/,
+    reports/paper_audit/, reports/ec/, reports/benchmark/)
+  - src/**/*.py, inspectionbench/**/*.json
+  - Ripgrep patterns tried: "^# Abstract", "^## Abstract", "**Abstract**", "^Abstract$",
+    "execution-grounded", "We introduce InspectionBench", "InspectionBench is a",
+    "InspectionBench, a", "evidence-grounded evaluation of agentic",
+    "4,075" / "4075", "19 grounded", "93 scenario", "six industrial asset",
+    "6 industrial asset", "industrial asset type"
+  - No *.tex file exists anywhere in the repo outside .venv/site-packages (docutils
+    template files, not this project's paper).
+  - No file named abstract.md, abstract.txt, paper.md, or similar exists.
+
+RESULT: There is no single file in this repository (as of HEAD 5e5b57b on
+inspectionbench-v3-release, working tree included) that contains a verbatim "Abstract"
+section co-located with the headline numbers 4,075 / 19 / 93 / 6 as a set. This is
+itself an audit finding, not an omission by this pass: see abstract_crosscheck_report.md
+section 1.
+
+CLOSEST PRIOR MATERIAL FOUND (from an EARLIER, PRE-V3 audit pass, dated 2026-09-15,
+i.e. before the "InspectionBench V3 construction" and "frozen InspectionBench V3
+benchmark artifacts" commits on this branch — status: STALE relative to the V3/4,075
+numbers named in this task):
+
+1) reports/paper_audit/benchmark_identity.md, lines 35-46:
+   "InspectionBench is a benchmark-construction and evaluation framework — WORLD,
+   GOLD/evidence-contract derivation, a ScenarioSpec compiler, execution-trace capture,
+   and provenance-checked grounded scoring — layered on top of AssetOpsBench's
+   industrial substrate (asset, telemetry, work-order, and maintenance state served
+   through a CouchDB-backed MCP tool executor). It currently executes 93 registered
+   scenario templates, of which 19 have a populated WORLD organized into 19 matched
+   families (3 cross-asset pairs, a 4-way asset-held-out split); execution runs on the
+   `couchdb_mcp` simulator backend, not on physical hardware. ..."
+   -- This "93 templates / 19 populated worlds" pair is the only place in the repo
+   where numbers resembling "93" and "19" co-occur in prose. It describes a PRIOR,
+   pre-V3 state of the benchmark (no 4,075 canonical total existed yet when this was
+   written) and cannot be assumed to describe the current V3 4,075-episode benchmark.
+   See canonical_count_reconstruction.json and world_inventory.csv for why the current
+   V3 artifacts do NOT independently reproduce "19" or "93" as world/template counts.
+
+2) reports/paper_audit/introduction_claim_audit.md, line 8 (also pre-V3, referencing a
+   still-older draft claim of "more than 30 grounded scenario templates spanning 15
+   industrial asset classes"): already flags "15 industrial asset classes" as
+   PARTIALLY/UNSUPPORTED and recommends correcting to a small number of measured asset
+   types (chiller, impeller, motor, pump, transformer, turbine) — note this list itself
+   does NOT match the 4 assets found in the current canonical registry (see
+   asset_inventory.csv): chiller_6, hydraulic_pump_1, metro_pump_1, motor_01.
+
+CONCLUSION FOR C.1: No current, single abstract text exists to extract verbatim. This
+audit therefore treats the task prompt's four headline numbers (4,075 canonical
+episodes / 19 grounded worlds / 93 scenario templates / 6 industrial asset types) as
+the CLAIM SET under test (functionally the same role an abstract's benchmark-scale
+sentence would play), and cross-checks each against canonical artifacts in
+abstract_claim_inventory.csv and canonical_count_reconstruction.json. No paper file
+was edited to produce this conclusion.

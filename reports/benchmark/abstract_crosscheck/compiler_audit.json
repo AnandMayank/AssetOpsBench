@@ -1,0 +1,51 @@
+{
+  "implementations_found": {
+    "A_E": {"source_file": "src/orchestrator/scenario_gen.py", "functions": "sample_world, derive_gold (per generator_versions field: ae_generator.py@phase8h1_8h2d -- NOTE: the manifest's generator_version string names ae_generator.py, but the actual function implementations located in this repo live in scenario_gen.py; a separate ae_generator.py entrypoint file was not directly opened this pass due to time -- treat this file/function mapping as PARTIALLY_VERIFIED)"},
+    "C_D": {"source_file": "cd_generator.py (per generator_versions field: cd_generator.py@phase8h1_8h2c)", "note": "not directly opened this pass; existence inferred from cd_4000_final_manifest.json's generator_version field and its schema-consistent output (template_id, d_subfamily, constraint_stratum fields)"},
+    "D_physical": {"source_file": "referenced as dphys_generator.py in phase11_offline_remediation_report.md section 11 ('scenario_gen.py, cd_generator.py, dphys_generator.py, b_acquisition_generator.py: none touched')", "trace_artifact": "inspectionbench/manifests/d_physical_generation_trace_pre_dedup_88.json"},
+    "B_Acquisition": {"source_file": "referenced as b_acquisition_generator.py", "note": "not directly opened this pass"}
+  },
+  "input_representation": "World dataclass (src/orchestrator/world.py): domain/site/asset identity, robot_platform_state, operational_state (hidden ground-truth physical value/unit/range/band for gauge families), enterprise_state, historical_evidence, current_evidence, evidence_provenance tier, temporal_information, operational_constraints. Asset parameterization drawn from a small fixed registry (scenario_gen.py ASSETS: 4 entries with unit + operating band per asset).",
+  "world_fields_consumed": ["asset_id","unit","operating_band(range)","cell (e.g. phys_in__iot_agree)","seed"],
+  "scenario_template_fields": "For B-Acquisition: template_id (B-ACQ-1..4), b_subfamily, arm, initial_modality, initial_count. For C/D: template_id (T-C-*/T-D-*), d_subfamily, constraint_stratum. For A/E: no discrete template_id field found beyond a fixed literal 'sample_world/derive_gold' string across all A episodes inspected -- A/E scenarios vary by CELL and CONDITION_ID (FULL/PHYSICAL_ONLY/DIGITAL_ONLY), not by a template registry.",
+  "intervention_fields": "condition_id (A: FULL/PHYSICAL_ONLY/DIGITAL_ONLY), regime, arm (B-Acquisition), initial_modality/initial_count (B-Acquisition count-sufficiency axis)",
+  "evidence_mutations": "decisive_delivered (list of tool names the episode's evidence-delivery condition actually grants, e.g. omitting capture_image/read_gauge/open_panel under DIGITAL_ONLY) -- verified present on every A/E episode inspected.",
+  "episode_generation_process_quantified": {
+    "A_E_pool": {
+      "source": "inspectionbench/manifests/a_e_pool_manifest.json",
+      "episode_count_generated": 3840,
+      "episode_count_admitted": 3840,
+      "episode_count_rejected": 0,
+      "duplicate_fingerprints": "42 fingerprint groups covering 87 episodes (verified by direct fingerprint count on the 3840-episode list); dedup to 1 representative per group removes 45 episodes, yielding the deduped canonical total of 3795 (matches source_manifests.A_E.canonical_count in final_benchmark_manifest_v3.json exactly)",
+      "final_new_phase_total_field": 3939,
+      "final_new_phase_total_explanation": "3939 = 3795 (deduped A+E) + 12 (B_count_retained) + 112 (C_count_fixed) + 20 (D_count_fixed) -- VERIFIED by direct arithmetic",
+      "duplicate_policy": "global fingerprint over {family, asset, gold, condition_id, params-minus-seed}; matched-condition variants (different condition_id) are never collapsed (per a_e_pool_manifest.json.duplicate_policy string)",
+      "qc_status": "PASS_WITH_NOTED_DUPLICATES"
+    },
+    "C_D_pool": {
+      "source": "inspectionbench/manifests/cd_4000_final_manifest.json",
+      "episode_count_generated": 132,
+      "episode_count_admitted": 132,
+      "episode_count_rejected": 0,
+      "duplicate_fingerprints": 0,
+      "final_episode_count": 132
+    },
+    "D_physical": {
+      "source": "d_physical_generation_trace_pre_dedup_88.json (pre-dedup) -> d_physical_canonical_manifest.json (70 canonical)",
+      "pre_dedup_count": 88,
+      "canonical_count": 70,
+      "removed_by_dedup": 18,
+      "note": "88->70 arithmetic checked (88-70=18); the trace file's own internal breakdown of WHY 18 were removed was not independently re-derived this pass due to time -- see reports/benchmark/d_physical_generation_trace_pre_dedup_88.json for the raw per-candidate record if a future pass needs to classify the 18 removed candidates by rejection reason."
+    },
+    "B_Acquisition": {
+      "source": "reports/paper/final_benchmark_statistics.md section 4",
+      "prototype_episodes": 16,
+      "scale_addition_episodes": 50,
+      "combined": 66,
+      "note": "generated from a real substrate of 24,601 observation records across 6 modalities (observation_records.json); the 66 canonical episodes are NOT a 1:1 sample of these records -- most records exist only to support live resolver calls inside an episode, per final_benchmark_statistics.md section 6."
+    }
+  },
+  "validation_process": "Cross-family collision check (final_benchmark_manifest_v3.json cross_family_collision_check: 8 fingerprint/episode-id pairwise checks, all empty lists = 0 collisions found); regression test suite (930 passed/1 skipped at V3 merge time per final_benchmark_statistics.md section 5, later 1017 passed/1 skipped after Phase 11 per phase11_offline_remediation_report.md section 2).",
+  "gold_preservation_checks": "a_e_pool_manifest.json.matched_group_policy states: 'A: 3 regime-withholding conditions per world, gold invariant, verified per-group'. Per-episode trace_chain_valid=true field observed on every A/E episode sampled. No independent re-derivation of gold values against ASSETS operating bands was performed this pass (would require re-running derive_gold against operational_state.value for all 3840 episodes -- out of scope for this pass's time budget; flagged as a follow-up, not fabricated as VERIFIED).",
+  "caveat": "This audit located and quantified the generator's INPUT/OUTPUT COUNTS from manifest-level accounting fields (generated/admitted/rejected/duplicate_fingerprints), which are real and internally consistent (see sum-checks above). It did NOT re-execute the generator code end-to-end or re-derive gold values from raw physical parameters -- claims about the compiler's internal correctness beyond what the manifest's own recorded counts assert should be treated as PARTIALLY_VERIFIED, not fully re-proven."
+}

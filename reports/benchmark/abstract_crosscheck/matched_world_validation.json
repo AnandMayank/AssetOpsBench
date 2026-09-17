@@ -1,0 +1,66 @@
+{
+  "worked_example": {
+    "matched_group_id": "MG-A-GENA-phys_in__iot_agree-chiller_6-050000",
+    "family": "A",
+    "asset_id": "chiller_6",
+    "cell": "phys_in__iot_agree",
+    "members": [
+      {
+        "episode_id": "A::GENA-phys_in__iot_agree-chiller_6-050000::FULL",
+        "condition_id": "FULL",
+        "gold_terminal_action": "COMMIT",
+        "world_hash": "d310e93d13ca94b0",
+        "decisive_delivered": [
+          "capture_image",
+          "get_battery",
+          "get_pose",
+          "list_waypoints",
+          "navigate_to",
+          "open_panel",
+          "read_gauge",
+          "read_iot"
+        ]
+      },
+      {
+        "episode_id": "A::GENA-phys_in__iot_agree-chiller_6-050000::PHYSICAL_ONLY",
+        "condition_id": "PHYSICAL_ONLY",
+        "gold_terminal_action": "COMMIT",
+        "world_hash": "567938ff7422fa35",
+        "decisive_delivered": [
+          "capture_image",
+          "get_battery",
+          "get_pose",
+          "list_waypoints",
+          "navigate_to",
+          "open_panel",
+          "read_gauge"
+        ]
+      },
+      {
+        "episode_id": "A::GENA-phys_in__iot_agree-chiller_6-050000::DIGITAL_ONLY",
+        "condition_id": "DIGITAL_ONLY",
+        "gold_terminal_action": "COMMIT",
+        "world_hash": "280ff258dd05efb7",
+        "decisive_delivered": [
+          "get_battery",
+          "get_pose",
+          "list_waypoints",
+          "navigate_to",
+          "read_iot"
+        ]
+      }
+    ],
+    "identity_invariant_fields_checked": {
+      "asset_id": "invariant (chiller_6 across all 3)",
+      "cell": "invariant (phys_in__iot_agree across all 3)",
+      "gold_terminal_action": "invariant (COMMIT across all 3) -- VERIFIED",
+      "seed": "invariant (050000 embedded in world_id across all 3)"
+    },
+    "intervention_variable_fields_checked": {
+      "condition_id": "varies as intended: FULL / PHYSICAL_ONLY / DIGITAL_ONLY",
+      "decisive_delivered": "varies as intended: FULL grants all 8 tools; PHYSICAL_ONLY drops read_iot; DIGITAL_ONLY drops capture_image/open_panel/read_gauge",
+      "world_hash": "NOT invariant across the 3 members (d310e93d..., 567938ff..., 280ff258... all differ) -- IMPORTANT FINDING: world_hash appears to be a hash of the FULL episode configuration (including condition_id/decisive_delivered), not solely of the underlying physical/operational state. This means world_hash CANNOT be used on its own to prove 'same physical world, different evidence regime' -- the intervention-variable/identity-invariant distinction is only verifiable here via the explicit gold_terminal_action + asset_id + cell fields, not via world_hash equality."
+    },
+    "does_intervention_alter_physical_world_or_only_delivered_evidence": "Only delivered evidence (decisive_delivered), based on this worked example: gold_terminal_action (which depends on the hidden physical/IoT values) is identical across all 3 members, meaning the underlying physical/operational state that gold is computed from did not change -- only which of the 8 tools/evidence channels the agent may exercise changed. This supports the construction claim for the A family specifically. NOT independently re-verified for E, B-Acquisition, C, or D-physical matched groups this pass (time-limited to this one worked A example plus the aggregate counts below)."
+  }
+}

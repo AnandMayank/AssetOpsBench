@@ -1,0 +1,47 @@
+{
+  "scope_found": "Human/dual-labeling validation was found ONLY for the perception image catalog (AOBv2-REAL-0001..1296, real degraded gauge photographs), NOT for the 4,075-episode InspectionBench V3 canonical benchmark's construction (worlds/scenarios/gold actions). No SME/reviewer process for the A/B/C/D/E episode construction itself was found anywhere in the repo (searched: docs/InspectionSkillLibrary_Blueprint.md, docs/InspectionCapabilityFramework_Blueprint.md, docs/EvidenceGate_DataLineage.md, all reports/ subdirectories -- keyword grep for annotat*, SME, reviewer, agreement, kappa).",
+  "annotation_model": "NOT FOUND -- reports/v7/label_reliability.csv compares two independent LABELING CATALOGS (a 20-row dev subset vs the 1,296-row release), not two LLM-annotator runs; scripts/v7_label_adjudication.py does not name an annotation model.",
+  "exact_model_snapshot": "NOT FOUND",
+  "annotation_prompt": "NOT FOUND",
+  "cross_check_model": "NOT FOUND",
+  "number_of_reviewers": "NOT FOUND -- process described is 'dual labeling' (two independently-produced catalogs of the same images), not multiple named human reviewers; 'adjudicator' column exists in label_adjudication_worksheet.csv but is empty/unfilled in every one of the 396 rows sampled",
+  "reviewer_expertise": "NOT FOUND",
+  "number_of_scenarios_dual_labeled": "20 (the 'conflict' stratum -- all 20 shared scenario_ids between the 20-row dev catalog and the 1,296-row release catalog) + 40 (a separate seeded 'random' stratum sampled for adjudication, per label_adjudication_worksheet.csv, 320 rows / ~8 fields each = 40 scenarios) = 60 total scenarios with any worksheet entry, out of 1,296 in the full catalog (60/1296 = 4.6%)",
+  "dimensions_rated": [
+    "gauge_readable",
+    "recommended_action",
+    "category",
+    "image_role",
+    "gauge_value",
+    "asset"
+  ],
+  "rating_scale": "NOT a numeric scale -- categorical/binary field-value agreement (dev_value vs full_value), scored via raw agreement and Cohen's kappa",
+  "scale_anchors": "NOT APPLICABLE (categorical fields, not a Likert-type scale)",
+  "coverage_per_reviewer": "NOT FOUND (no per-reviewer breakdown found; only per-field aggregate agreement/kappa over the n=20 conflict stratum)",
+  "missing_rating_policy": "label_status.csv marks unreviewed scenario/field pairs as 'pending' (7,656 of 7,776 total scenario-field rows = 98.5% pending) -- these are explicitly excluded from metrics by construction via src/evaluation/label_status.py, per the script's own docstring, rather than silently included.",
+  "disagreement_resolution": "label_adjudication_worksheet.csv has an 'adjudicated_value' and 'adjudicator' column intended for human resolution of the 20 (conflict) + 40 (random) sampled disagreements; both columns were EMPTY in every sampled row -- no adjudication has actually been recorded yet in this artifact as it exists on disk.",
+  "agreement_statistic": {
+    "source": "reports/v7/label_reliability.csv",
+    "n": 20,
+    "caveat_from_source_docstring": "the conflict-stratum n=20 sample is explicitly documented in the script's own docstring as 'a biased sample by construction -- it is where disagreement already surfaced. Good for adjudication, invalid as a reliability estimate for the corpus.' The intended corpus-level reliability estimate is supposed to come from the 'random' stratum (40 scenarios sampled), but reports/v7/label_reliability.csv contains ONLY the n=20 conflict-stratum statistics -- no random-stratum kappa was found computed anywhere in the repo.",
+    "per_field_kappa": {
+      "gauge_readable": 0.4681,
+      "recommended_action": 0.7368,
+      "category": 0.7561,
+      "image_role": 0.7647,
+      "gauge_value": 0.177,
+      "asset": 0.1404
+    },
+    "per_field_raw_agreement": {
+      "gauge_readable": 0.75,
+      "recommended_action": 0.9,
+      "category": 0.9,
+      "image_role": 0.9,
+      "gauge_value": 0.5,
+      "asset": 0.25
+    },
+    "GO_gate_threshold_stated_in_docstring": "kappa >= 0.6 (corpus-level, from the random stratum -- NOT the conflict-stratum numbers actually on disk)",
+    "gate_pass_fail_on_the_only_available_n20_numbers": "3 of 6 fields (recommended_action, category, image_role) exceed 0.6; 3 of 6 fields (gauge_readable, gauge_value, asset) fall below 0.6 -- but these are the explicitly-disclaimed biased conflict-stratum numbers, not the intended corpus-level gate statistic"
+  },
+  "accepted_revised_rejected_counts": "NOT FOUND as a distinct accept/revise/reject tally; label_status.csv's 3-way status (trusted=84, contested=36, pending=7656 field-rows, i.e. 14/20 dual-labeled scenarios trusted-on-all-fields-ish, 6/20 have at least one contested field) is the closest available proxy, but it is a field-level not episode-level or scenario-level tri-state."
+}

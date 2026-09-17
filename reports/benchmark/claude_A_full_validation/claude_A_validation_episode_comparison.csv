@@ -1,0 +1,49 @@
+episode_id,original_terminal_type,validation_terminal_type,original_TDA,validation_TDA,original_GSR,validation_GSR,difference_class
+A::A-chiller_6-phys_in__iot_agree-3000::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3000::FULL,verdict,tool_calls,0,0,0,0,verdict -> tool_calls
+A::A-chiller_6-phys_in__iot_agree-3000::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3004::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3004::FULL,verdict,verdict,1,1,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3004::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3008::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3008::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3008::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3012::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3012::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-chiller_6-phys_in__iot_agree-3012::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3002::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3002::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3002::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3006::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3006::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3006::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3010::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3010::FULL,tool_calls,verdict,0,1,0,0,tool_calls -> verdict
+A::A-metro_pump_1-phys_out__iot_agree-3010::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3014::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3014::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-metro_pump_1-phys_out__iot_agree-3014::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3003::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3003::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3003::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3007::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3007::FULL,tool_calls,verdict,0,0,0,0,tool_calls -> verdict
+A::A-motor_01-phys_out__iot_disagree-3007::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3011::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3011::FULL,tool_calls,verdict,0,0,0,0,tool_calls -> verdict
+A::A-motor_01-phys_out__iot_disagree-3011::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3015::DIGITAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3015::FULL,tool_calls,tool_calls,0,0,0,0,same_terminal_type
+A::A-motor_01-phys_out__iot_disagree-3015::PHYSICAL_ONLY,tool_calls,tool_calls,0,0,0,0,same_terminal_type

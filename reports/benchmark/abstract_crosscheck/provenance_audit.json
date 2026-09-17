@@ -1,0 +1,44 @@
+{
+  "provenance_fields_found_in_code": {
+    "source": "src/orchestrator/world.py, World dataclass, lines ~50-92",
+    "fields": [
+      "domain/industrial_domain, site_id, asset_id, asset_type, asset_instance_id, inspection_point_id, episode_id",
+      "robot_platform_state (dict, e.g. waypoint, battery_low)",
+      "operational_state (hidden ground-truth physical state for gauge families; explicit {} for thermal/acoustic)",
+      "enterprise_state (work orders, asset profile, safety-gate/panel state)",
+      "historical_evidence (list of source references, evidence available BEFORE fresh acquisition)",
+      "current_evidence (list of observation_ids resolvable via (asset_id, modality, inspection_id) key)",
+      "evidence_provenance (Optional[str]) -- THE TIER FIELD, one of: L1 | L2 | L3 | NOT_APPLICABLE_DIGITAL_ENTERPRISE | SIMULATED_UNCLASSIFIED",
+      "temporal_information (capture_type, temporal_relation, timestamp, timestamp_synthetic, timezone_verified)",
+      "operational_constraints (safety gates, required minimal procedure, forbidden actions)"
+    ]
+  },
+  "provenance_source_fields_found_in_current_V3_episode_manifests": {
+    "b_acquisition_final_manifest.json": {
+      "field": "source_provenance",
+      "populated_on": "50/66 episodes (the scale-generation addition); the remaining 16 (original prototype) carry equivalent info via capability/params/scenario_id fields instead, per reports/paper/final_benchmark_statistics.md section 6",
+      "subfields": ["source_id","source_dataset","modality","asset","scenario_family","benchmark_family","world_id","episode_id","provenance_class"],
+      "provenance_class_observed_value_example": "real_substrate_deterministic_resolve"
+    },
+    "a_e_pool_manifest.json": {
+      "field": "no explicit provenance-tier field found; episodes carry world_id, matched_group_id, condition_id, asset_id, parameterization, generator_version, schema_version, world_hash, decisive_delivered, fingerprint -- a DIFFERENT provenance model (generation-time lineage) than L1/L2/L3 evidence-source tiering",
+      "L1_L2_L3_field_present": false
+    },
+    "cd_4000_final_manifest.json": {
+      "field": "provenance_policy string + per-episode generator_version/schema_version; no L1/L2/L3 field observed",
+      "L1_L2_L3_field_present": false
+    }
+  },
+  "L1_L2_L3_tier_counts_against_current_4075_episode_V3_manifest": "NOT FOUND. Grepped all 4 core V3 manifest files (a_e_pool_manifest.json, cd_4000_final_manifest.json, b_acquisition_final_manifest.json, final_benchmark_manifest_v3.json) for the literal string 'evidence_provenance' -- 0 matches in every file. The L1/L2/L3/NOT_APPLICABLE_DIGITAL_ENTERPRISE/SIMULATED_UNCLASSIFIED tier taxonomy is DEFINED in world.py's World dataclass (used at runtime to construct a World object, presumably from scenario_contract.py + observation_records.json) but is NOT a field persisted in the merged canonical episode manifests inspected this pass. Cannot report a per-tier canonical_episode_count for the current 4,075-episode V3 benchmark from these artifacts.",
+  "prior_pre_V3_tier_accounting_found_but_NOT_reconcilable_to_V3": {
+    "source": "reports/paper_audit/datasets_table.md (dated 2026-09-15, predates the V3/4075-episode merge; describes an older 93-scenario system)",
+    "example_figures": "NOT_APPLICABLE_DIGITAL_ENTERPRISE: 14,323 (IoT 14,313 + work orders 3 + geometry 7); PerceptionGauge-49 grounds 86/93 scenarios' gauge evidence as SIMULATED_UNCLASSIFIED",
+    "caveat": "These figures describe a pre-V3 state of the benchmark (a '93 scenarios' system, not the current 4,075-canonical-episode V3 system) and MUST NOT be presented as V3 provenance-tier statistics without independent re-verification against current V3 artifacts, which this pass could not perform (field absent from V3 manifests)."
+  },
+  "L2_asset_class_replay_vs_episode_actual_asset_question": {
+    "question": "How does L2 asset-class replay differ from evidence tied to the episode's actual asset?",
+    "finding": "world.py's comment at _asset_type_from_id (line ~108) explicitly warns: \"'metro_pump_1' and 'hydraulic_pump_1' are both pumps, but that must come from the registry's own asset_type/equipment_type field, not a naive substring match.\" This documents intent to distinguish an asset's TYPE (e.g. 'pump') from its INSTANCE (e.g. 'metro_pump_1' vs 'hydraulic_pump_1'), consistent with L2 being asset-class-level replay evidence (e.g. a real recording from A pump, not necessarily THIS pump instance) versus an episode's actual/L1 instance-specific evidence. The registry file itself (robot_assets_registry.json, referenced by world.py's docstring) was NOT FOUND in this repository (searched with find -iname across the whole tree, 0 results) -- it likely lives in one of the sibling working directories (AssetOpsBenchScenarioGeneration, inspection-world) not audited this pass. Cannot confirm the exact asset_type values it resolves to, or whether they total 6.",
+    "status": "PARTIALLY_SUPPORTED -- the conceptual distinction is documented in code comments, but the registry data needed to fully resolve it (and to check the '6 asset types' claim against it) was NOT FOUND in this repository."
+  },
+  "does_benchmark_support_explicit_provenance": "PARTIALLY. A provenance mechanism exists in two forms: (1) a runtime L1/L2/L3/NOT_APPLICABLE_DIGITAL_ENTERPRISE/SIMULATED_UNCLASSIFIED evidence-source tier defined in World (world.py) but not found persisted in the current V3 canonical manifests; (2) a generation-time lineage provenance (world_id, matched_group_id, generator_version, schema_version, fingerprint -- for A/E/C/D) and an explicit source_provenance block (for 50/66 B-Acquisition episodes: source_id, source_dataset, modality, asset, scenario_family, benchmark_family, world_id, episode_id, provenance_class). Both exist and are real, but they are NOT the same mechanism, and neither one alone spans the full 4,075-episode benchmark with a uniform schema. An abstract claim of 'evidence with explicit provenance' is defensible only if scoped to describe form (2) (lineage/generation-time provenance, present on effectively all canonical episodes) or explicitly caveated for form (1) (evidence-source tiering, confirmed present in code but not confirmed populated across the persisted V3 manifest)."
+}

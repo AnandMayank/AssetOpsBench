@@ -1,0 +1,114 @@
+{
+  "episode_count": 70,
+  "source": "inspectionbench/manifests/final_benchmark_manifest_v3.json (d_physical_episodes) / inspectionbench/manifests/d_physical_canonical_manifest.json",
+  "pre_dedup_trace": {
+    "pre_dedup_count": 88,
+    "canonical_count": 70,
+    "removed_by_dedup": 18,
+    "source": "inspectionbench/manifests/d_physical_generation_trace_pre_dedup_88.json"
+  },
+  "feasible_infeasible_distribution": {
+    "admissible_True_feasible": 14,
+    "admissible_False_infeasible": 56,
+    "verified_against": "gold.admissible field, direct count over all 70 episodes"
+  },
+  "terminal_action_distribution": {
+    "ESCALATE": 56,
+    "DISPATCH": 14,
+    "note": "matches admissible distribution exactly (ESCALATE<->infeasible=56, DISPATCH<->feasible=14) -- VERIFIED consistent"
+  },
+  "constraint_family_distribution_limiting_constraint": {
+    "MULTIPLE": 32,
+    "None(admissible, no violated constraint)": 14,
+    "reach": 4,
+    "joint_and_collision": 4,
+    "clearance": 4,
+    "grasp_payload": 4,
+    "stability": 4,
+    "energy": 4,
+    "note": "6 single-constraint families x 4 episodes = 24 single-constraint episodes; these 24 are exactly the LCA-applicable set (limiting_constraint not in {None, MULTIPLE}) -- INDEPENDENTLY VERIFIED to equal 24, matching Phase 11's corrected LCA applicable_n=24 exactly (70 - 32(MULTIPLE) - 14(None) = 24)"
+  },
+  "constraint_stratum_distribution": {
+    "single:reach": 8,
+    "single:grasp_payload": 8,
+    "single:joint_and_collision": 4,
+    "single:clearance": 4,
+    "single:stability": 4,
+    "single:energy": 4,
+    "dual:reach+clearance": 4,
+    "dual:reach+stability": 4,
+    "dual:clearance+stability": 4,
+    "dual:grasp_payload+energy": 4,
+    "dual:energy+reach": 4,
+    "dual:joint_and_collision+stability": 4,
+    "triple:reach+clearance+stability": 4,
+    "capx:comfortable_baseline": 4,
+    "capx:all_inadmissible": 4,
+    "capx:mixed_one_admissible": 2,
+    "note": "16 distinct strata; sums to 70. Note the apparent mismatch between constraint_stratum single-* counts (8+8+4+4+4+4=32) and limiting_constraint single-family counts (4 each x6=24) -- constraint_stratum's 'single:X' labels a SCENARIO DESIGN axis (which constraint TYPE was engineered to matter), not always identical to the SCORED limiting_constraint outcome (which constraint actually turned out to be binding, sometimes recorded as MULTIPLE even within a nominally 'single' stratum). This distinction was not fully reconciled this pass -- flagged as a discrepancy worth resolving before citing either breakdown alone."
+  },
+  "always_escalate_baseline": {
+    "value": 0.8,
+    "source": "reports/benchmark/paper_results_v1.json baselines.D_physical_always_ESCALATE",
+    "note": "0.8 differs from the raw 56/70=0.8000 ESCALATE-gold fraction -- VERIFIED consistent (56/70 = 0.8 exactly)"
+  },
+  "model_results_CC_CSA_precision_recall_F1_LCA": {
+    "note": "n=70 for CC/CSA/CS_precision; n=56 for CS_recall/CS_F1 (14 admissible/no-violated-constraint rows have undefined recall, per Phase 11 Task 5 field mapping); LCA n CORRECTED from 70 to applicable_n=24 in Phase 11 (not yet applied to on-disk paper_results_v1.json -- see result_number_crosscheck.csv)",
+    "Claude Sonnet 4.6": {
+      "CC_terminal": 0.7857,
+      "CSA_primary": 0.4429,
+      "CS_precision": 0.7667,
+      "CS_recall": 0.5417,
+      "CS_F1": 0.5917,
+      "LCA_old_n70": 0.375,
+      "LCA_corrected_n24": 0.5417
+    },
+    "GPT-5.2": {
+      "CC_terminal": 0.8714,
+      "CSA_primary": 0.5714,
+      "CS_precision": 0.8643,
+      "CS_recall": 0.7113,
+      "CS_F1": 0.7631,
+      "LCA_old_n70": 0.5714,
+      "LCA_corrected_n24": 0.7083
+    },
+    "DeepSeek V4 Pro": {
+      "CC_terminal": 0.3857,
+      "CSA_primary": 0.3571,
+      "CS_precision": 0.5238,
+      "CS_recall": 0.3214,
+      "CS_F1": 0.3488,
+      "LCA_old_n70": 0.2679,
+      "LCA_corrected_n24": 0.2917,
+      "caveat": "42/70 (60%) rows apparatus-flagged (output-token-cap truncation) -- interpret all DeepSeek D-physical numbers with this caveat"
+    },
+    "Mistral Medium 3.5": {
+      "CC_terminal": 0.6714,
+      "CSA_primary": 0.5,
+      "CS_precision": 0.6286,
+      "CS_recall": 0.5208,
+      "CS_F1": 0.5185,
+      "LCA_old_n70": 0.3571,
+      "LCA_corrected_n24": 0.375
+    },
+    "Qwen3.5-397B-A17B": {
+      "CC_terminal": 0.6143,
+      "CSA_primary": 0.3857,
+      "CS_precision": 0.6429,
+      "CS_recall": 0.4196,
+      "CS_F1": 0.4714,
+      "LCA_old_n70": 0.3036,
+      "LCA_corrected_n24": 0.5,
+      "caveat": "16/70 (22.9%) rows apparatus-flagged (output-token-cap truncation)"
+    },
+    "source": "reports/benchmark/paper_results_v1.json (old/on-disk LCA_n70) + reports/benchmark/phase11_offline_remediation_report.md section 8 (corrected LCA_n24, both value AND n change per model)"
+  },
+  "per_class_precision_recall_balanced_accuracy_macro_F1_confusion_matrix": "NOT FOUND -- src/orchestrator/dphys_scoring.py reports CC/PAC/UDR/ODR/CSA/CS_precision/CS_recall/CS_F1/LCA/candidate_selection_correct, all computed at the AGGREGATE (mean-over-episodes) level; no per-class (per-constraint-family) precision/recall breakdown, no balanced accuracy, no macro-F1, and no confusion matrix were found computed anywhere in the reachable scoring code or reports this pass.",
+  "mujoco_oracle_details": {
+    "state_variables": "NOT independently enumerated this pass (dphys_scoring.py references gold's own constraints/limiting_constraint/selected_standoff/admissible fields as authoritative, reusing them rather than re-deriving -- per dphys_scoring.py docstring: 'Reuses gold's own ... fields -- never re-derives them')",
+    "thresholds_tolerances": "NOT FOUND -- not located in dphys_scoring.py's own docstring/fields reachable this pass; likely live in a separate dphys_generator.py / MuJoCo-facing module not opened this pass",
+    "deterministic_policy": "NOT independently re-verified; 'deterministic' is asserted by the D-physical LCA/CSA scoring design (No LLM judge anywhere per dphys_scoring.py line 6) but the MuJoCo simulation's own determinism was not re-tested this pass",
+    "validation_count": "88 pre-dedup candidates -> 70 canonical (18 removed) -- the only MuJoCo-oracle-adjacent validation COUNT found this pass; a breakdown of WHY each of the 18 was removed (oracle-rejected vs duplicate vs other) was NOT independently classified this pass",
+    "oracle_checks": "NOT FOUND as an enumerated checklist this pass"
+  }
+}

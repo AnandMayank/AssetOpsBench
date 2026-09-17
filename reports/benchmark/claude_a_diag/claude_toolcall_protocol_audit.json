@@ -1,0 +1,1239 @@
+[
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3000::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3000::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3000::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "chiller_6"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "chiller_6"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3000::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "get_asset_state",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "get_work_order",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::FULL)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3001::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3002::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3002::FULL)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3002::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3002::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3002::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "read_iot",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_vibration",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_acoustic",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_thermal_image",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3002::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3003::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "motor_01"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3003::FULL)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3003::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "motor_01"
+        }
+      },
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3003::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3003::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "motor_01"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3003::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3004::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3004::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3004::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "chiller_6"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3004::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::FULL)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3005::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3006::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3006::FULL)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3006::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3006::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3006::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "read_iot",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_vibration",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_acoustic",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3006::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3007::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3007::FULL)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3007::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "stand",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3007::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3007::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "motor_01"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3007::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3008::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "chiller_6"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3008::FULL)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3008::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "chiller_6"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3008::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3008::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "chiller_6"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3008::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::FULL)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "stand",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3009::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3010::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3010::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3010::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "read_iot",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_vibration",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_acoustic",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_thermal_image",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3010::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3011::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "motor_01"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3011::FULL)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3011::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "stand",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3011::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3011::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "motor_01"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3011::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3012::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "chiller_6"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3012::FULL)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3012::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3012::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-chiller_6-phys_in__iot_agree-3012::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "chiller_6"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "chiller_6"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-chiller_6-phys_in__iot_agree-3012::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::FULL)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "stand",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "hydraulic_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "hydraulic_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-hydraulic_pump_1-phys_in__iot_disagree-3013::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3014::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3014::FULL)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3014::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "safety_gate_check",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3014::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-metro_pump_1-phys_out__iot_agree-3014::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "read_iot",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_vibration",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_acoustic",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      },
+      {
+        "tool": "read_thermal_image",
+        "args": {
+          "asset_id": "metro_pump_1"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-metro_pump_1-phys_out__iot_agree-3014::DIGITAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3015::FULL",
+    "evidence_regime": "FULL",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      },
+      {
+        "tool": "read_iot",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3015::FULL)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3015::PHYSICAL_ONLY",
+    "evidence_regime": "PHYSICAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "navigate_to",
+        "args": {
+          "waypoint": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3015::PHYSICAL_ONLY)."
+  },
+  {
+    "episode_id": "A::A-motor_01-phys_out__iot_disagree-3015::DIGITAL_ONLY",
+    "evidence_regime": "DIGITAL_ONLY",
+    "tool_calls": [
+      {
+        "tool": "list_waypoints",
+        "args": {}
+      },
+      {
+        "tool": "get_sensor_history",
+        "args": {
+          "asset_id": "motor_01"
+        }
+      }
+    ],
+    "classification": "A",
+    "classification_meaning": "Explicitly forbidden by the frozen A protocol: the system prompt (run_l3_pilot_executed.SYSTEM_PROMPT) fixes the interaction horizon to exactly two turns and requires the STEP 2 reply to be EXACTLY {\"verdict\": ...}; a tool_calls response at STEP 2 is not a permitted protocol action regardless of whether the named tools themselves are valid, because the runner (phase8h_live_pilot.run_a_episode) never re-reads step2 for tool_calls at all -- only step2.get('verdict','') is consulted.",
+    "tool_permitted": true,
+    "tool_available": true,
+    "tool_executable": false,
+    "tool_executable_reason": "The named tools ARE individually valid TOOLSET members and were available for this arm (not withheld), so they COULD have executed if requested at STEP 1 -- but the runner has no code path that inspects or executes tool_calls found in the STEP 2 response; step2 is read only for verdict/reason/tool_sequence (phase8h_live_pilot.py lines ~124-126).",
+    "terminal_required": true,
+    "scored_as_failure_under_frozen_contract": true,
+    "evidence": "scripts/phase8h_live_pilot.py:70-139 (run_a_episode); scripts/run_l3_pilot_executed.py SYSTEM_PROMPT (STEP 2 EXACT-schema requirement); diagnostic capture in reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl (episode A::A-motor_01-phys_out__iot_disagree-3015::DIGITAL_ONLY)."
+  }
+]

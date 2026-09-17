@@ -1,0 +1,25 @@
+{
+  "definition_world": "A 'world' in this codebase is instantiated inconsistently across pools: (1) in the A/E pool, world_id is assigned per matched-group-instance (parameterized seed+cell+asset), giving 1,280 unique world_id / 1,280 unique matched_group_id values across 3,840 A+E episodes (3 episodes per world_id, one per evidence regime); (2) in the frozen-93 historical pilot pool, world_id is a coarser identifier: 41 unique world_id and 26 unique normalized_world_hash values across 93 episodes.",
+  "A_E_pool": {
+    "unique_world_id": 1280,
+    "unique_matched_group_id": 1280,
+    "unique_world_hash": 3840,
+    "episodes_per_world_id": "exactly 3 (verified: 3840 episodes / 1280 world_id = 3.0)",
+    "source": "inspectionbench/manifests/a_e_pool_manifest.json"
+  },
+  "frozen_93_pool": {
+    "unique_world_id": 41,
+    "unique_world_hash_normalized": 26,
+    "episodes_per_world_id_min": 1,
+    "episodes_per_world_id_max": 3,
+    "episodes_per_world_id_mean": 2.268,
+    "source": "reports/ec/phase8h1_pilot_manifest.json"
+  },
+  "claim_19_grounded_worlds": "NOT REPRODUCED by any V3 artifact counted this pass. Neither 1,280 (A/E) nor 41 (frozen-93 world_id) nor 26 (frozen-93 world_hash) equals 19. The number 19 only appears in a PRE-V3 audit document (reports/paper_audit/benchmark_identity.md, dated before the 4,075-episode V3 merge existed) describing '19 (of 93 registered) scenario templates with a populated WORLD, organized into 19 matched families' -- a different claim (about populated TEMPLATES, not about a world count integrated across the current V3 pools) that this audit could not independently re-verify against current V3 artifacts.",
+  "asset_types_grounding_worlds": [
+    "chiller_6",
+    "hydraulic_pump_1",
+    "metro_pump_1",
+    "motor_01"
+  ]
+}

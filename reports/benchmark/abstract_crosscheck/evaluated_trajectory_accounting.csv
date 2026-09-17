@@ -1,0 +1,36 @@
+model,capability,canonical_N(pool-nominal),"evaluated_n(per paper_results_v1.json, PRE-Phase11-correction, on-disk)",status,notes/exclusion_reason,infra_failures,truncations,terminal_protocol_noncompliance,malformed_outputs,source
+Claude Sonnet 4.6,A,48,48,EXCLUDED,"46/48 invalid verdicts -- model/protocol interaction (step-2 tool-call-shaped response under the strict 2-turn design), not an infrastructure bug.",0,0,46,0,reports/benchmark/claude_A_audit_summary.json
+Claude Sonnet 4.6,B,66,66,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Claude Sonnet 4.6,B-legacy,12,3,VALID_WITH_CAVEAT,,,,,,reports/benchmark/paper_results_v1.json
+Claude Sonnet 4.6,C,9,9,VALID_WITH_CAVEAT,,,,,,reports/benchmark/paper_results_v1.json
+Claude Sonnet 4.6,D_enterprise,6,6,VALID,"CC_terminal=1.0",0,0,0,0,reports/benchmark/paper_results_v1.json
+Claude Sonnet 4.6,D-physical,70,70,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Claude Sonnet 4.6,E,18,18,VALID_WITH_CAVEAT,,,,,,reports/benchmark/paper_results_v1.json
+GPT-5.2,A,48,48,VALID,,,,,,reports/benchmark/paper_results_v1.json
+GPT-5.2,B,66,66,VALID,,,,,,reports/benchmark/paper_results_v1.json
+GPT-5.2,B-legacy,12,3,VALID_SMALL_N,,,,,,reports/benchmark/paper_results_v1.json
+GPT-5.2,C,9,9,VALID,,,,,,reports/benchmark/paper_results_v1.json
+GPT-5.2,D_enterprise,6,6,VALID,"CC_terminal=0.8333",0,0,0,0,reports/benchmark/paper_results_v1.json
+GPT-5.2,D-physical,70,70,VALID,,,,,,reports/benchmark/paper_results_v1.json
+GPT-5.2,E,18,18,VALID_WITH_CAVEAT,,,,,,reports/benchmark/paper_results_v1.json
+DeepSeek V4 Pro,A,48,48,VALID,,,,,,reports/benchmark/paper_results_v1.json
+DeepSeek V4 Pro,B,66,66,VALID,,,,,,reports/benchmark/paper_results_v1.json
+DeepSeek V4 Pro,B-legacy,12,3,VALID_SMALL_N,,,,,,reports/benchmark/paper_results_v1.json
+DeepSeek V4 Pro,C,9,9,VALID_WITH_CAVEAT,,,,,,reports/benchmark/paper_results_v1.json
+DeepSeek V4 Pro,D_enterprise,6,6,VALID,"CC_terminal=0.6667",0,0,0,0,reports/benchmark/paper_results_v1.json
+DeepSeek V4 Pro,D-physical,70,70,VALID_WITH_CAVEAT,"42/70 (60%) output-token-cap truncation flagged by dphys_apparatus.classify_dphys_row() -- primary value is the frozen full-set result, NOT excluded/replaced",0,42,0,0,reports/benchmark/phase11_offline_remediation_report.md sec.7 + reports/benchmark/paper_results_v1.json data_quality_notes
+DeepSeek V4 Pro,E,18,18,VALID_WITH_CAVEAT,,,,,,reports/benchmark/paper_results_v1.json
+Mistral Medium 3.5,A,48,48,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Mistral Medium 3.5,B,66,66,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Mistral Medium 3.5,B-legacy,12,3,VALID_SMALL_N,,,,,,reports/benchmark/paper_results_v1.json
+Mistral Medium 3.5,C,9,9,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Mistral Medium 3.5,D_enterprise,6,5,VALID_WITH_CAVEAT,"CC_terminal=0.8, n=5 not 6 per Phase11 Task2 example (N/n/n_excluded correction)",0,0,0,0,reports/benchmark/paper_results_v1.json
+Mistral Medium 3.5,D-physical,70,70,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Mistral Medium 3.5,E,18,18,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Qwen3.5-397B-A17B,A,48,48,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Qwen3.5-397B-A17B,B,66,66,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Qwen3.5-397B-A17B,B-legacy,12,3,VALID_SMALL_N,,,,,,reports/benchmark/paper_results_v1.json
+Qwen3.5-397B-A17B,C,9,9,VALID,,,,,,reports/benchmark/paper_results_v1.json
+Qwen3.5-397B-A17B,D_enterprise,6,6,VALID,"CC_terminal=0.8333",0,0,0,0,reports/benchmark/paper_results_v1.json
+Qwen3.5-397B-A17B,D-physical,70,70,VALID_WITH_CAVEAT,"16/70 (22.9%) output-token-cap truncation flagged by dphys_apparatus.classify_dphys_row() -- primary value is the frozen full-set result, NOT excluded/replaced",0,16,0,0,reports/benchmark/phase11_offline_remediation_report.md sec.7 + reports/benchmark/paper_results_v1.json data_quality_notes
+Qwen3.5-397B-A17B,E,18,18,VALID_WITH_CAVEAT,,,,,,reports/benchmark/paper_results_v1.json

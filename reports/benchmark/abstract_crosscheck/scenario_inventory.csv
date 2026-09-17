@@ -1,0 +1,19 @@
+template_id,template_name/family_label,capability_family,asset_type_coverage,construct/description,canonical_episode_count,evidence_regimes/matched_variants,notes
+B-ACQ-1,B-Acquisition,B,chiller_6/hydraulic_pump_1/metro_pump_1/motor_01,MODALITY GAP,12,3 matched groups (thermal/acoustic/workorder_history) x 4 episodes,not enumerated per-episode this pass
+B-ACQ-2,B-Acquisition,B,4 assets,COUNT SUFFICIENCY,36,"6 matched groups (acoustic-n3/n5/n8, iot_timeseries-n3/n5/n8) x 4 or 8 episodes",not enumerated per-episode this pass
+B-ACQ-3,B-Acquisition,B,4 assets,UNAVAILABLE HANDLING,12,3 matched groups (thermal/acoustic/workorder_history) x 4 episodes,not enumerated per-episode this pass
+B-ACQ-4,B-Acquisition,B,chiller_6/hydraulic_pump_1/motor_01 (3 of 4 assets),CROSS-MODAL RECONCILIATION,6,"3 matched groups (acoustic-chiller_6, acoustic-hydraulic_pump_1, thermal-motor_01) x 2 episodes",metro_pump_1 not represented in this template
+T-C-BATTERY_ABORT,C,C,4 assets (33 each x C+D pool),procedural abort on low battery,36,NOT enumerated this pass,cd_4000_final_manifest.json
+T-C-LOCALIZATION_ABORT,C,C,4 assets,procedural abort on localization failure,24,NOT enumerated this pass,
+T-C-ROUTE_BUDGET,C,C,4 assets,route/budget-constrained procedure,24,NOT enumerated this pass,
+T-C-PANEL_STUCK,C,C,4 assets,panel-stuck procedural recovery,8,NOT enumerated this pass,
+T-C-WO_GATE,C,C,4 assets,work-order gating,8,NOT enumerated this pass,
+T-C-WAYPOINT_ESCALATE,C,C,4 assets,waypoint escalation,8,NOT enumerated this pass,
+T-C-PRECEDENCE,C,C,4 assets,precedence/ordering constraint,4,NOT enumerated this pass,
+T-D-WO_GATE,D-enterprise,D,4 assets,work-order gating (enterprise),8,NOT enumerated this pass,
+T-D-WO_SIMILARITY,D-enterprise,D,4 assets,work-order similarity matching,8,NOT enumerated this pass,
+T-D-ROUTE_DEPENDENCY,D-enterprise,D,4 assets,route dependency constraint,4,NOT enumerated this pass,
+"A (cell-parameterized, no discrete template registry found)",A,A,4 assets,800 matched groups x 3 regimes (FULL/PHYSICAL_ONLY/DIGITAL_ONLY),2400,"FULL, PHYSICAL_ONLY, DIGITAL_ONLY",NOT a template in the same sense as B-ACQ-*/T-C-*/T-D-*; see canonical_count_reconstruction.json
+"E (cell-parameterized, no discrete template registry found)",E,E,4 assets,480 matched groups x 3 temporal episodes,1440,"3 temporal positions per sequence, gold varies",NOT a template in the same sense as B-ACQ-*/T-C-*/T-D-*
+B-legacy (pointer into frozen-93 pool),B-legacy,B,NOT FOUND (no per-episode asset field),"12 episodes, only 3/12 actually scored by dispatch",12,NOT independently enumerated this pass,reports/ec/phase8h1_pilot_manifest.json
+TOTAL discrete named templates found (B-Acquisition + C + D-enterprise only),,,,,198,,"4 (B-ACQ) + 7 (T-C) + 3 (T-D) = 14 discretely-named templates account for 66+112+20=198 episodes; A/E/B-legacy (3877 episodes) use a different, non-template-registry construction and are NOT included in a '14' or '93' template count"

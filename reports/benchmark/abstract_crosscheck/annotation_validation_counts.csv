@@ -1,0 +1,14 @@
+metric,value,source,status
+total scenarios in perception catalog,1296,reports/v7/label_status.csv (1296 unique scenario_id),VERIFIED
+scenarios with any dual-labeling/reliability check,20,conflict stratum (20 shared ids between dev/full catalogs),VERIFIED
+scenarios in adjudication worksheet (random stratum),40,reports/v7/label_adjudication_worksheet.csv,VERIFIED
+field-rows trusted,84,reports/v7/label_status.csv status=trusted,VERIFIED
+field-rows contested,36,reports/v7/label_status.csv status=contested,VERIFIED
+field-rows pending (unreviewed),7656,reports/v7/label_status.csv status=pending,VERIFIED
+"kappa, gauge_readable (n=20, biased conflict stratum)",0.4681,reports/v7/label_reliability.csv,VERIFIED but explicitly non-corpus-representative per source docstring
+"kappa, gauge_value (n=20, biased conflict stratum)",0.177,reports/v7/label_reliability.csv,VERIFIED but explicitly non-corpus-representative
+"kappa, asset (n=20, biased conflict stratum)",0.1404,reports/v7/label_reliability.csv,VERIFIED but explicitly non-corpus-representative
+corpus-level (random-stratum) kappa,NOT FOUND,script docstring says this is the intended GO-gate figure; not present in any artifact on disk,NOT FOUND
+human reviewers / SME count,NOT FOUND,searched all docs/ and reports/ for annotator/SME/reviewer identity,NOT FOUND
+adjudicated_value entries actually filled,0,"reports/v7/label_adjudication_worksheet.csv, adjudicated_value column empty in all 396 sampled rows",VERIFIED (absence confirmed)
+"annotation/human validation coverage of the 4,075-episode V3 canonical benchmark (A/B/C/D/E construction itself, as opposed to the perception image catalog)",NOT FOUND,exhaustive search of docs/ and reports/,NOT FOUND -- no SME/reviewer process for episode/world/gold construction was located

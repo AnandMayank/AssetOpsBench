@@ -1,0 +1,23 @@
+{
+  "manifest_N": 48,
+  "attempted_N": 48,
+  "parse_valid_N": 48,
+  "trace_valid_N": 48,
+  "eligible_N": 48,
+  "TDA_N": 1,
+  "GSR_N": 0,
+  "truncated_N": 0,
+  "missing_N": 0,
+  "blocked_N": 0,
+  "excluded_N": 0,
+  "step2_compliant_N": 2,
+  "step2_noncompliant_N": 46,
+  "final_TDA": 0.0208,
+  "final_GSR": 0.0,
+  "final_gap_pp": 2.1,
+  "root_cause_of_originally_reported_46_48_empty_verdicts": "NOT an evaluator/parser/infra bug. Live diagnostic re-run (scripts/phase8h2k_claude_a_diagnostic.py, reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl, 46/46 affected episodes re-run against the identical frozen worlds through the unmodified run_a_episode()/_chat() path with added raw-response capture) shows 44/46 cases are the model replying with a tool_calls object again at the mandatory STEP 2 decision turn instead of the required verdict schema -- valid JSON every time, finish_reason=stop (no truncation), zero API errors. 1/46 hit a transient 504 Gateway Timeout on this re-run only (the original run for that episode also had call_errors=[] and an empty verdict, so its original cause was the same step2 non-compliance, not a timeout). 1/46 complied on re-run (non-deterministic -- consistent with the 2/48 already compliant in the official run, both FULL-arm). This is genuine model behavior under the frozen 2-turn protocol: Claude Sonnet 4.6 frequently wants additional evidence before committing and the protocol has no third turn to grant that. The existing scoring convention (missing/invalid terminal_action = hard 0, matching b_acquisition_scoring._tda_post and dphys_scoring.py) already scores this correctly. No rerun, protocol change, or N inflation is justified -- doing so would change the frozen protocol specifically to help this model, which the evaluation's own constraints forbid.",
+  "action_taken": "none -- official results, frozen protocol, and frozen-93 manifest are unchanged",
+  "disclosure_for_paper": "Claude Sonnet 4.6's low A-family TDA/GSR under InspectionBench V3's frozen 2-turn protocol is substantially explained by a low STEP-2 verdict-emission compliance rate (2/48 official; 3/48 across the diagnostic sample including the non-deterministic re-run), not by incorrect terminal decisions when a decision IS emitted (1/3 observed compliant verdicts across both runs matched gold). This should be reported as a distinct, disclosed finding -- a protocol-compliance / turn-budget limitation -- not conflated with a grounding-capability finding, and not silently folded into a single TDA number without this caveat.",
+  "diagnostic_capture_path": "reports/benchmark/claude_a_diag/raw_text_capture_1789668887.jsonl",
+  "diagnostic_script_path": "scripts/phase8h2k_claude_a_diagnostic.py"
+}
