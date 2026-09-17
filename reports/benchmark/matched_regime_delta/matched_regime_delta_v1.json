@@ -1,0 +1,112 @@
+{
+  "Claude Sonnet 4.6": {
+    "FULL_vs_PHYSICAL_ONLY": {
+      "n_pairs_included": 0,
+      "n_pairs_excluded": 16,
+      "mean_TDA_delta_FULL_minus_withheld": null,
+      "mean_GSR_delta_FULL_minus_withheld": null,
+      "FULL_wins_TDA": 0,
+      "withheld_wins_TDA": 0,
+      "FULL_wins_GSR": 0,
+      "withheld_wins_GSR": 0
+    },
+    "FULL_vs_DIGITAL_ONLY": {
+      "n_pairs_included": 0,
+      "n_pairs_excluded": 16,
+      "mean_TDA_delta_FULL_minus_withheld": null,
+      "mean_GSR_delta_FULL_minus_withheld": null,
+      "FULL_wins_TDA": 0,
+      "withheld_wins_TDA": 0,
+      "FULL_wins_GSR": 0,
+      "withheld_wins_GSR": 0
+    }
+  },
+  "GPT-5.2": {
+    "FULL_vs_PHYSICAL_ONLY": {
+      "n_pairs_included": 16,
+      "n_pairs_excluded": 0,
+      "mean_TDA_delta_FULL_minus_withheld": -0.0625,
+      "mean_GSR_delta_FULL_minus_withheld": -0.0625,
+      "FULL_wins_TDA": 0,
+      "withheld_wins_TDA": 1,
+      "FULL_wins_GSR": 1,
+      "withheld_wins_GSR": 2
+    },
+    "FULL_vs_DIGITAL_ONLY": {
+      "n_pairs_included": 16,
+      "n_pairs_excluded": 0,
+      "mean_TDA_delta_FULL_minus_withheld": 0.125,
+      "mean_GSR_delta_FULL_minus_withheld": 0.625,
+      "FULL_wins_TDA": 4,
+      "withheld_wins_TDA": 2,
+      "FULL_wins_GSR": 10,
+      "withheld_wins_GSR": 0
+    }
+  },
+  "DeepSeek V4 Pro": {
+    "FULL_vs_PHYSICAL_ONLY": {
+      "n_pairs_included": 13,
+      "n_pairs_excluded": 3,
+      "mean_TDA_delta_FULL_minus_withheld": 0.3077,
+      "mean_GSR_delta_FULL_minus_withheld": 0.0769,
+      "FULL_wins_TDA": 5,
+      "withheld_wins_TDA": 1,
+      "FULL_wins_GSR": 4,
+      "withheld_wins_GSR": 3
+    },
+    "FULL_vs_DIGITAL_ONLY": {
+      "n_pairs_included": 14,
+      "n_pairs_excluded": 2,
+      "mean_TDA_delta_FULL_minus_withheld": 0.1429,
+      "mean_GSR_delta_FULL_minus_withheld": 0.2857,
+      "FULL_wins_TDA": 5,
+      "withheld_wins_TDA": 3,
+      "FULL_wins_GSR": 4,
+      "withheld_wins_GSR": 0
+    }
+  },
+  "Mistral Medium 3.5": {
+    "FULL_vs_PHYSICAL_ONLY": {
+      "n_pairs_included": 16,
+      "n_pairs_excluded": 0,
+      "mean_TDA_delta_FULL_minus_withheld": 0.0,
+      "mean_GSR_delta_FULL_minus_withheld": 0.0,
+      "FULL_wins_TDA": 1,
+      "withheld_wins_TDA": 1,
+      "FULL_wins_GSR": 1,
+      "withheld_wins_GSR": 1
+    },
+    "FULL_vs_DIGITAL_ONLY": {
+      "n_pairs_included": 16,
+      "n_pairs_excluded": 0,
+      "mean_TDA_delta_FULL_minus_withheld": 0.0,
+      "mean_GSR_delta_FULL_minus_withheld": 0.6875,
+      "FULL_wins_TDA": 2,
+      "withheld_wins_TDA": 2,
+      "FULL_wins_GSR": 11,
+      "withheld_wins_GSR": 0
+    }
+  },
+  "Qwen3.5-397B-A17B": {
+    "FULL_vs_PHYSICAL_ONLY": {
+      "n_pairs_included": 14,
+      "n_pairs_excluded": 2,
+      "mean_TDA_delta_FULL_minus_withheld": 0.0,
+      "mean_GSR_delta_FULL_minus_withheld": 0.0,
+      "FULL_wins_TDA": 0,
+      "withheld_wins_TDA": 0,
+      "FULL_wins_GSR": 0,
+      "withheld_wins_GSR": 0
+    },
+    "FULL_vs_DIGITAL_ONLY": {
+      "n_pairs_included": 12,
+      "n_pairs_excluded": 4,
+      "mean_TDA_delta_FULL_minus_withheld": -0.1667,
+      "mean_GSR_delta_FULL_minus_withheld": 0.5833,
+      "FULL_wins_TDA": 1,
+      "withheld_wins_TDA": 3,
+      "FULL_wins_GSR": 7,
+      "withheld_wins_GSR": 0
+    }
+  }
+}
