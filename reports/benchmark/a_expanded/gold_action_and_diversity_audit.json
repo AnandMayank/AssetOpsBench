@@ -1,0 +1,48 @@
+{
+  "n_candidate_worlds": 80,
+  "n_admitted_matched_worlds": 80,
+  "n_canonical_episodes": 240,
+  "gold_action_distribution_total": {
+    "COMMIT": 69,
+    "ESCALATE": 171
+  },
+  "gold_action_pct_COMMIT": 28.75,
+  "gold_action_pct_ESCALATE": 71.25,
+  "gold_action_distribution_by_regime": {
+    "FULL": {
+      "COMMIT": 23,
+      "ESCALATE": 57
+    },
+    "PHYSICAL_ONLY": {
+      "COMMIT": 23,
+      "ESCALATE": 57
+    },
+    "DIGITAL_ONLY": {
+      "COMMIT": 23,
+      "ESCALATE": 57
+    }
+  },
+  "gold_action_distribution_per_world_(80_worlds)": {
+    "COMMIT": 23,
+    "ESCALATE": 57
+  },
+  "note_on_imbalance": "Gold action is derived solely from world physical state (derive_gold: technician/work-order presence OR out-of-band physical reading -> ESCALATE; else COMMIT), identical rule to A-v1, applied before any regime masking -- evidence regime does NOT determine gold action (all 3 regime episodes of a triplet share one gold action, verified in the matched-world audit). Imbalance toward ESCALATE, if present, is a natural consequence of the frozen cell design (2 of 4 FACTORIAL cells are physical-out-of-band by construction, always ESCALATE; the other 2 can still flip to ESCALATE via technician/work-order draws) -- not fabricated, not adjusted, matching A-v1's known ESCALATE-heavy distribution.",
+  "n_distinct_world_configurations_by_hash": 80,
+  "n_distinct_asset_types": 4,
+  "asset_types": [
+    "chiller_6",
+    "hydraulic_pump_1",
+    "metro_pump_1",
+    "motor_01"
+  ],
+  "n_distinct_scenario_cells": 4,
+  "scenario_cells": [
+    "phys_in__iot_agree",
+    "phys_in__iot_disagree",
+    "phys_out__iot_agree",
+    "phys_out__iot_disagree"
+  ],
+  "n_distinct_evidence_patterns_(cells)": 4,
+  "seeds_per_cell_combination": 5,
+  "n_distinct_gold_actions_observed": 2
+}

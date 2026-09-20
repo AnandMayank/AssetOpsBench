@@ -1,0 +1,190 @@
+{
+  "GPT-5.2": {
+    "n_total": 240,
+    "n_missing_verdict": 0,
+    "output_validity_rate": 1.0,
+    "FULL": {
+      "n_evaluable": 80,
+      "TDA": 0.7625,
+      "TDA_ci": [
+        0.6625,
+        0.85
+      ],
+      "GSR": 0.7625,
+      "GSR_ci": [
+        0.6625,
+        0.85
+      ]
+    },
+    "PHYSICAL_ONLY": {
+      "n_evaluable": 80,
+      "TDA": 0.7875,
+      "TDA_ci": [
+        0.7,
+        0.875
+      ],
+      "GSR": 0.7375,
+      "GSR_ci": [
+        0.6375,
+        0.825
+      ]
+    },
+    "DIGITAL_ONLY": {
+      "n_evaluable": 80,
+      "TDA": 0.475,
+      "TDA_ci": [
+        0.3625,
+        0.575
+      ],
+      "GSR": 0.0,
+      "GSR_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": false,
+    "TDA_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true,
+    "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
+  },
+  "DeepSeek V4 Pro": {
+    "n_total": 240,
+    "n_missing_verdict": 22,
+    "output_validity_rate": 0.9083,
+    "FULL": {
+      "n_evaluable": 74,
+      "TDA": 0.5676,
+      "TDA_ci": [
+        0.4595,
+        0.6757
+      ],
+      "GSR": 0.3108,
+      "GSR_ci": [
+        0.2027,
+        0.4189
+      ]
+    },
+    "PHYSICAL_ONLY": {
+      "n_evaluable": 66,
+      "TDA": 0.4545,
+      "TDA_ci": [
+        0.3333,
+        0.5758
+      ],
+      "GSR": 0.197,
+      "GSR_ci": [
+        0.1061,
+        0.303
+      ]
+    },
+    "DIGITAL_ONLY": {
+      "n_evaluable": 78,
+      "TDA": 0.5385,
+      "TDA_ci": [
+        0.4231,
+        0.6538
+      ],
+      "GSR": 0.0,
+      "GSR_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": true,
+    "TDA_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true,
+    "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
+  },
+  "Mistral Medium 3.5": {
+    "n_total": 240,
+    "n_missing_verdict": 0,
+    "output_validity_rate": 1.0,
+    "FULL": {
+      "n_evaluable": 80,
+      "TDA": 0.8,
+      "TDA_ci": [
+        0.7125,
+        0.875
+      ],
+      "GSR": 0.8,
+      "GSR_ci": [
+        0.7125,
+        0.875
+      ]
+    },
+    "PHYSICAL_ONLY": {
+      "n_evaluable": 80,
+      "TDA": 0.8,
+      "TDA_ci": [
+        0.7125,
+        0.8875
+      ],
+      "GSR": 0.8,
+      "GSR_ci": [
+        0.7125,
+        0.8875
+      ]
+    },
+    "DIGITAL_ONLY": {
+      "n_evaluable": 80,
+      "TDA": 0.5875,
+      "TDA_ci": [
+        0.475,
+        0.6875
+      ],
+      "GSR": 0.0,
+      "GSR_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": false,
+    "TDA_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true,
+    "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
+  },
+  "Claude Sonnet 4.6": {
+    "n_total": 240,
+    "n_missing_verdict": 228,
+    "output_validity_rate": 0.05,
+    "FULL": {
+      "n_evaluable": 12,
+      "TDA": 0.5,
+      "TDA_ci": [
+        0.25,
+        0.75
+      ],
+      "GSR": 0.0,
+      "GSR_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "PHYSICAL_ONLY": {
+      "n_evaluable": 0,
+      "TDA": null,
+      "TDA_ci": [
+        null,
+        null
+      ],
+      "GSR": null,
+      "GSR_ci": [
+        null,
+        null
+      ]
+    },
+    "DIGITAL_ONLY": {
+      "n_evaluable": 0,
+      "TDA": null,
+      "TDA_ci": [
+        null,
+        null
+      ],
+      "GSR": null,
+      "GSR_ci": [
+        null,
+        null
+      ]
+    },
+    "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": null,
+    "TDA_FULL_vs_PHYSICAL_ONLY_CIs_overlap": null,
+    "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": null
+  }
+}

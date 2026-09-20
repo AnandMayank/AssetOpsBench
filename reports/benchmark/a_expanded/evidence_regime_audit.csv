@@ -1,0 +1,4 @@
+regime,withheld_modality,delivered_modalities,semantics
+FULL,none,"['physical', 'digital']",both physical and digital/IoT evidence permitted/delivered (nothing withheld)
+PHYSICAL_ONLY,['digital'],['physical'],only physical evidence permitted/delivered; digital/IoT withheld
+DIGITAL_ONLY,['physical'],['digital'],only digital/IoT evidence permitted/delivered; physical withheld
