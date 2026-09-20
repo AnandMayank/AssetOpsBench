@@ -1,0 +1,152 @@
+{
+  "Claude Sonnet 4.6": {
+    "iot_agree": {
+      "n_evaluable": 2,
+      "GSR": 0.0,
+      "GSR_ci": [
+        0.0,
+        0.0
+      ],
+      "TDA": 0.5,
+      "TDA_ci": [
+        0.0,
+        1.0
+      ]
+    },
+    "iot_disagree": {
+      "n_evaluable": 0,
+      "GSR": null,
+      "GSR_ci": [
+        null,
+        null
+      ],
+      "TDA": null,
+      "TDA_ci": [
+        null,
+        null
+      ]
+    },
+    "GSR_CIs_overlap": null,
+    "defensible_directional_claim": false
+  },
+  "GPT-5.2": {
+    "iot_agree": {
+      "n_evaluable": 8,
+      "GSR": 0.5,
+      "GSR_ci": [
+        0.125,
+        0.875
+      ],
+      "TDA": 0.625,
+      "TDA_ci": [
+        0.25,
+        0.875
+      ]
+    },
+    "iot_disagree": {
+      "n_evaluable": 8,
+      "GSR": 0.75,
+      "GSR_ci": [
+        0.375,
+        1.0
+      ],
+      "TDA": 0.75,
+      "TDA_ci": [
+        0.375,
+        1.0
+      ]
+    },
+    "GSR_CIs_overlap": true,
+    "defensible_directional_claim": false
+  },
+  "DeepSeek V4 Pro": {
+    "iot_agree": {
+      "n_evaluable": 7,
+      "GSR": 0.2857,
+      "GSR_ci": [
+        0.0,
+        0.5714
+      ],
+      "TDA": 0.8571,
+      "TDA_ci": [
+        0.5714,
+        1.0
+      ]
+    },
+    "iot_disagree": {
+      "n_evaluable": 7,
+      "GSR": 0.2857,
+      "GSR_ci": [
+        0.0,
+        0.5714
+      ],
+      "TDA": 0.7143,
+      "TDA_ci": [
+        0.4286,
+        1.0
+      ]
+    },
+    "GSR_CIs_overlap": true,
+    "defensible_directional_claim": false
+  },
+  "Mistral Medium 3.5": {
+    "iot_agree": {
+      "n_evaluable": 8,
+      "GSR": 0.625,
+      "GSR_ci": [
+        0.25,
+        0.875
+      ],
+      "TDA": 0.625,
+      "TDA_ci": [
+        0.25,
+        0.875
+      ]
+    },
+    "iot_disagree": {
+      "n_evaluable": 8,
+      "GSR": 0.75,
+      "GSR_ci": [
+        0.375,
+        1.0
+      ],
+      "TDA": 0.75,
+      "TDA_ci": [
+        0.375,
+        1.0
+      ]
+    },
+    "GSR_CIs_overlap": true,
+    "defensible_directional_claim": false
+  },
+  "Qwen3.5-397B-A17B": {
+    "iot_agree": {
+      "n_evaluable": 7,
+      "GSR": 0.5714,
+      "GSR_ci": [
+        0.1429,
+        0.8571
+      ],
+      "TDA": 0.5714,
+      "TDA_ci": [
+        0.1429,
+        0.8571
+      ]
+    },
+    "iot_disagree": {
+      "n_evaluable": 8,
+      "GSR": 0.625,
+      "GSR_ci": [
+        0.25,
+        1.0
+      ],
+      "TDA": 0.625,
+      "TDA_ci": [
+        0.25,
+        1.0
+      ]
+    },
+    "GSR_CIs_overlap": true,
+    "defensible_directional_claim": false
+  }
+}

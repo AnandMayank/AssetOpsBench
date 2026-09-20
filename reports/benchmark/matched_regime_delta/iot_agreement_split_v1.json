@@ -1,0 +1,72 @@
+{
+  "Claude Sonnet 4.6": {
+    "iot_agree": {
+      "n": 8,
+      "n_evaluable": 2,
+      "TDA": 0.5,
+      "GSR": 0.0
+    },
+    "iot_disagree": {
+      "n": 8,
+      "n_evaluable": 0,
+      "TDA": null,
+      "GSR": null
+    }
+  },
+  "GPT-5.2": {
+    "iot_agree": {
+      "n": 8,
+      "n_evaluable": 8,
+      "TDA": 0.625,
+      "GSR": 0.5
+    },
+    "iot_disagree": {
+      "n": 8,
+      "n_evaluable": 8,
+      "TDA": 0.75,
+      "GSR": 0.75
+    }
+  },
+  "DeepSeek V4 Pro": {
+    "iot_agree": {
+      "n": 8,
+      "n_evaluable": 7,
+      "TDA": 0.8571,
+      "GSR": 0.2857
+    },
+    "iot_disagree": {
+      "n": 8,
+      "n_evaluable": 7,
+      "TDA": 0.7143,
+      "GSR": 0.2857
+    }
+  },
+  "Mistral Medium 3.5": {
+    "iot_agree": {
+      "n": 8,
+      "n_evaluable": 8,
+      "TDA": 0.625,
+      "GSR": 0.625
+    },
+    "iot_disagree": {
+      "n": 8,
+      "n_evaluable": 8,
+      "TDA": 0.75,
+      "GSR": 0.75
+    }
+  },
+  "Qwen3.5-397B-A17B": {
+    "iot_agree": {
+      "n": 8,
+      "n_evaluable": 7,
+      "TDA": 0.5714,
+      "GSR": 0.5714
+    },
+    "iot_disagree": {
+      "n": 8,
+      "n_evaluable": 8,
+      "TDA": 0.625,
+      "GSR": 0.625
+    }
+  }
+}
