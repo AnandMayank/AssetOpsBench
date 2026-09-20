@@ -1,0 +1,42 @@
+{
+  "GPT-5.2": {
+    "n_full_triplets": 16,
+    "n_worlds_total": 16,
+    "FULL_GSR": 0.625,
+    "FULL_TDA": 0.6875,
+    "PHYSICAL_ONLY_GSR": 0.6875,
+    "PHYSICAL_ONLY_TDA": 0.75,
+    "DIGITAL_ONLY_GSR": 0.0,
+    "DIGITAL_ONLY_TDA": 0.5625
+  },
+  "DeepSeek V4 Pro": {
+    "n_full_triplets": 13,
+    "n_worlds_total": 16,
+    "FULL_GSR": 0.3077,
+    "FULL_TDA": 0.7692,
+    "PHYSICAL_ONLY_GSR": 0.2308,
+    "PHYSICAL_ONLY_TDA": 0.4615,
+    "DIGITAL_ONLY_GSR": 0.0,
+    "DIGITAL_ONLY_TDA": 0.6923
+  },
+  "Mistral Medium 3.5": {
+    "n_full_triplets": 16,
+    "n_worlds_total": 16,
+    "FULL_GSR": 0.6875,
+    "FULL_TDA": 0.6875,
+    "PHYSICAL_ONLY_GSR": 0.6875,
+    "PHYSICAL_ONLY_TDA": 0.6875,
+    "DIGITAL_ONLY_GSR": 0.0,
+    "DIGITAL_ONLY_TDA": 0.6875
+  },
+  "Qwen3.5-397B-A17B": {
+    "n_full_triplets": 11,
+    "n_worlds_total": 16,
+    "FULL_GSR": 0.6364,
+    "FULL_TDA": 0.6364,
+    "PHYSICAL_ONLY_GSR": 0.6364,
+    "PHYSICAL_ONLY_TDA": 0.6364,
+    "DIGITAL_ONLY_GSR": 0.0,
+    "DIGITAL_ONLY_TDA": 0.7273
+  }
+}
