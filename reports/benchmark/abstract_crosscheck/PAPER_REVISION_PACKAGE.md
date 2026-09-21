@@ -108,3 +108,29 @@ You are revising the InspectionBench ICLR paper draft. Do NOT invent, round, or 
 After editing, produce a short changelog listing every sentence/number you changed and why, plus a list of every `[NEEDS SOURCE]` flag you inserted.
 
 ---
+
+## 8. Section 3 reproducibility fixes (separate, newer pass)
+
+A second audit pass went deep on Section 3.1–3.3 (grounded-world construction, scenario compilation,
+episode generation/tool execution) against the current `InspectionBench-1.pdf` draft (ICLR 2027),
+covering Figure 3's trace-blocking mechanism, the PerceptionGauge rendering pipeline, the "14
+templates / 52 variation identifiers / 1,280 grounded worlds" claims, the annotation/adjudication
+process, the tool catalog and Spot SDK provenance, and the MuJoCo/ROSClaw physical-admissibility
+oracle. Full findings, replacement wording, and a `templates_inventory.csv` draft are in
+**`section3_reproducibility_fixes.md`** in this directory — treat it as a second, independent
+handoff document alongside this one (it duplicates none of this file's content; both should be given
+to an editor together). Headline findings not already covered above:
+
+- Figure 3's Trace A/B are real runs, but both the block reasons and Trace B's recovery framing are
+  described incorrectly in the current draft (traced to `reports/ec/phase8h_figures/qa_demo/`).
+- The "1,296 rendered scenes, 856/440" figure cannot be reproduced from any generator output on disk.
+- "52 variation identifiers" does not reproduce under any tested counting rule (61 does).
+- "Six industrial asset types" is contradicted for the actual 4,075 episodes (only 4 assets / 3 types
+  appear in any canonical episode).
+- No genuine human domain-expert adjudication exists anywhere in the benchmark's construction —
+  `"sme_adjudicated"` means hand-authored by the generator's builder, not independently reviewed; one
+  file states outright "SELF-ADJUDICATED BY CLAUDE, NOT HUMAN-REVIEWED."
+- The abstract's "22.9–46.5 percentage points" does not reproduce from any artifact; the correct range
+  is 16.2–40.0pp (or 4.2–40.0pp including Claude's corrected, currently-excluded result).
+
+---
