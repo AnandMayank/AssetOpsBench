@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 430" font-family="Helvetica,Arial,sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b4fc4"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b3261e"/>
+    </marker>
+  </defs>
+  <rect width="1180" height="430" fill="#ffffff"/>
+
+  <!-- Row label -->
+  <text x="20" y="26" font-size="15" font-weight="700" fill="#3a2f8f">F  Evaluation and scoring</text>
+  <rect x="10" y="34" width="1160" height="240" rx="10" fill="#f4f2ff" stroke="#c9c2f2" stroke-dasharray="4,3"/>
+
+  <!-- Model Outputs -->
+  <rect x="30" y="70" width="140" height="90" rx="10" fill="#5b4fc4"/>
+  <text x="100" y="92" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Model Outputs</text>
+  <text x="100" y="112" font-size="10.5" fill="#e3e0fb" text-anchor="middle">Terminal action</text>
+  <text x="100" y="127" font-size="10.5" fill="#e3e0fb" text-anchor="middle">Tool calls</text>
+  <text x="100" y="142" font-size="10.5" fill="#e3e0fb" text-anchor="middle">Cited evidence</text>
+
+  <line x1="170" y1="115" x2="205" y2="115" stroke="#5b4fc4" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Parsing -->
+  <g>
+    <circle cx="235" cy="115" r="28" fill="#ffffff" stroke="#5b4fc4" stroke-width="2"/>
+    <text x="235" y="119" font-size="11" fill="#3a2f8f" text-anchor="middle">Parsing</text>
+  </g>
+  <line x1="263" y1="115" x2="300" y2="115" stroke="#5b4fc4" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Scoring block -->
+  <rect x="300" y="55" width="330" height="185" rx="10" fill="#ffffff" stroke="#5b4fc4" stroke-width="2"/>
+  <text x="465" y="75" font-size="12.5" font-weight="700" fill="#3a2f8f" text-anchor="middle">Scoring (per capability)</text>
+
+  <rect x="315" y="85" width="95" height="30" rx="6" fill="#eceafc" stroke="#5b4fc4"/>
+  <text x="362" y="104" font-size="10.5" text-anchor="middle" fill="#3a2f8f">A  TDA / GSR</text>
+
+  <rect x="415" y="85" width="95" height="30" rx="6" fill="#eceafc" stroke="#5b4fc4"/>
+  <text x="462" y="104" font-size="10.5" text-anchor="middle" fill="#3a2f8f">B  B_AGS</text>
+
+  <rect x="515" y="85" width="100" height="30" rx="6" fill="#eceafc" stroke="#5b4fc4"/>
+  <text x="565" y="104" font-size="10.5" text-anchor="middle" fill="#3a2f8f">C  coverage</text>
+
+  <rect x="315" y="123" width="95" height="30" rx="6" fill="#eceafc" stroke="#5b4fc4"/>
+  <text x="362" y="142" font-size="10.5" text-anchor="middle" fill="#3a2f8f">D  CSA / LCA</text>
+
+  <rect x="415" y="123" width="95" height="30" rx="6" fill="#eceafc" stroke="#5b4fc4"/>
+  <text x="462" y="142" font-size="10.5" text-anchor="middle" fill="#3a2f8f">E  CC_grounded</text>
+
+  <!-- provenance sub-box, only feeding A and E -->
+  <rect x="315" y="168" width="295" height="60" rx="8" fill="#fdeceb" stroke="#b3261e" stroke-width="1.5"/>
+  <text x="462" y="184" font-size="10.5" font-weight="700" fill="#b3261e" text-anchor="middle">Evidence-provenance gate (diagnostic)</text>
+  <text x="462" y="200" font-size="9.5" fill="#7a1f1a" text-anchor="middle">L1 real · L2 class-replay · L3 diagnostic-only · SIMULATED</text>
+  <text x="462" y="215" font-size="9.5" font-weight="700" fill="#7a1f1a" text-anchor="middle">measured: 0/0 real-tier (L1/L2) in current release — A and E only</text>
+
+  <!-- dashed connectors from A and E boxes to provenance box, red, showing "checked but always fails" -->
+  <line x1="362" y1="115" x2="362" y2="168" stroke="#b3261e" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowRed)"/>
+  <line x1="462" y1="153" x2="462" y2="168" stroke="#b3261e" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowRed)"/>
+
+  <!-- B, C, D: no connector, explicitly not applicable -->
+  <text x="565" y="145" font-size="8.5" fill="#8a8a8a" text-anchor="middle">(not modality-gated)</text>
+
+  <line x1="630" y1="115" x2="665" y2="115" stroke="#5b4fc4" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Aggregated Results -->
+  <rect x="665" y="70" width="130" height="90" rx="10" fill="#5b4fc4"/>
+  <text x="730" y="100" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Aggregated</text>
+  <text x="730" y="118" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Results</text>
+  <text x="730" y="140" font-size="9.5" fill="#e3e0fb" text-anchor="middle">Figure 6 / 7 / 8</text>
+
+  <line x1="795" y1="115" x2="830" y2="115" stroke="#5b4fc4" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Analysis -->
+  <g>
+    <circle cx="860" cy="115" r="28" fill="#ffffff" stroke="#5b4fc4" stroke-width="2"/>
+    <text x="860" y="119" font-size="10.5" fill="#3a2f8f" text-anchor="middle">Analysis</text>
+  </g>
+  <line x1="888" y1="115" x2="923" y2="115" stroke="#5b4fc4" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Report -->
+  <rect x="923" y="80" width="110" height="70" rx="10" fill="#5b4fc4"/>
+  <text x="978" y="120" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Report</text>
+
+  <!-- legend / caveat strip -->
+  <rect x="30" y="290" width="1120" height="120" rx="8" fill="#fff8f6" stroke="#e8b4ae"/>
+  <text x="46" y="312" font-size="11.5" font-weight="700" fill="#7a1f1a">Reading this figure</text>
+  <text x="46" y="332" font-size="10.5" fill="#333333">Dashed red arrows mark a provenance-tier check that IS implemented (as an additive diagnostic, `phase8h2m_provenance_gated_gsr_diagnostic.py`) but currently ALWAYS fails:</text>
+  <text x="46" y="350" font-size="10.5" fill="#333333">no (asset, "physical") pair in the release has ever been assigned a real L1/L2 tag, because capture_image / read_gauge render evidence synthetically rather</text>
+  <text x="46" y="368" font-size="10.5" fill="#333333">than sourcing it from the tagged observation catalog. This is a property of the evidence-delivery path, not a per-model capability difference — it is</text>
+  <text x="46" y="386" font-size="10.5" fill="#333333">reported here as a transparency finding, not adopted as a scoring gate (gating on it would trivially zero GSR for every model on A and E alike).</text>
+  <text x="46" y="404" font-size="10.5" fill="#333333">B, C, and D are not modality-gated by construction and have no analogous provenance check to report.</text>
+</svg>

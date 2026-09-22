@@ -1,0 +1,61 @@
+{
+  "purpose": "Additive diagnostic: does gating GSR on evidence_provenance_class change results?",
+  "scope": "A and E only (the two capabilities using cc_grounded's required_modality gate)",
+  "method": "required_modality read directly from persisted raw jsonl; cross-checked against build_observation_records.py's PHYSICAL_EVIDENCE_PROVENANCE table",
+  "finding": "0 (asset,'physical') tag entries exist in the codebase; provenance-gated GSR is therefore 0 for all 5 models on both A and E -- a structural finding about the evidence-delivery path, not a per-model capability difference.",
+  "e_sequence_to_asset": {
+    "SEQ-5000": "hydraulic_pump_1",
+    "SEQ-5001": "metro_pump_1",
+    "SEQ-5002": "metro_pump_1",
+    "SEQ-5003": "hydraulic_pump_1",
+    "SEQ-5004": "metro_pump_1",
+    "SEQ-5005": "hydraulic_pump_1"
+  },
+  "results": [
+    {
+      "model": "Claude_Sonnet_4.6",
+      "A_n": 48,
+      "A_GSR": 0.0,
+      "A_provenance_gated_GSR": 0,
+      "E_n": 18,
+      "E_GSR": 0.3889,
+      "E_provenance_gated_GSR": 0
+    },
+    {
+      "model": "GPT-5.2",
+      "A_n": 48,
+      "A_GSR": 0.4375,
+      "A_provenance_gated_GSR": 0,
+      "E_n": 18,
+      "E_GSR": 0.2222,
+      "E_provenance_gated_GSR": 0
+    },
+    {
+      "model": "DeepSeek_V4_Pro",
+      "A_n": 48,
+      "A_GSR": 0.1458,
+      "A_provenance_gated_GSR": 0,
+      "E_n": 18,
+      "E_GSR": 0.3333,
+      "E_provenance_gated_GSR": 0
+    },
+    {
+      "model": "Mistral_Medium_3.5",
+      "A_n": 48,
+      "A_GSR": 0.4583,
+      "A_provenance_gated_GSR": 0,
+      "E_n": 18,
+      "E_GSR": 0.6667,
+      "E_provenance_gated_GSR": 0
+    },
+    {
+      "model": "Qwen3.5-397B-A17B",
+      "A_n": 48,
+      "A_GSR": 0.3958,
+      "A_provenance_gated_GSR": 0,
+      "E_n": 18,
+      "E_GSR": 0.4444,
+      "E_provenance_gated_GSR": 0
+    }
+  ]
+}
