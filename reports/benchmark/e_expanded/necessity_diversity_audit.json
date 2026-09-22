@@ -1,0 +1,16 @@
+{
+  "n_sequences": 30,
+  "process_kind_distribution": {
+    "linear_drift": 11,
+    "step": 9,
+    "stationary": 10
+  },
+  "asset_distribution": {
+    "hydraulic_pump_1": 12,
+    "metro_pump_1": 9,
+    "chiller_6": 5,
+    "motor_01": 4
+  },
+  "n_sequences_with_a_band_transition": 20,
+  "n_sequences_stationary_throughout": 10
+}

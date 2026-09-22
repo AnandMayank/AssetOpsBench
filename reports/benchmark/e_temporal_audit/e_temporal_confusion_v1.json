@@ -1,0 +1,117 @@
+{
+  "Claude Sonnet 4.6": {
+    "n_total": 18,
+    "n_empty_verdict": 10,
+    "n_valid": 8,
+    "confusion": {
+      "TP_necessary_and_reacquired": 5,
+      "FP_unnecessary_but_reacquired": 2,
+      "FN_necessary_but_not_reacquired": 1,
+      "TN_unnecessary_and_not_reacquired": 0
+    },
+    "reacquisition_precision": 0.7143,
+    "reacquisition_recall": 0.8333,
+    "reacquisition_F1": 0.7692,
+    "stale_state_reuse_count": 0,
+    "unnecessary_reobservation_count": 2,
+    "decision_accuracy_necessity_match": 0.625,
+    "decision_accuracy_CI": [
+      0.25,
+      0.875
+    ]
+  },
+  "GPT-5.2": {
+    "n_total": 18,
+    "n_empty_verdict": 1,
+    "n_valid": 17,
+    "confusion": {
+      "TP_necessary_and_reacquired": 6,
+      "FP_unnecessary_but_reacquired": 5,
+      "FN_necessary_but_not_reacquired": 3,
+      "TN_unnecessary_and_not_reacquired": 3
+    },
+    "reacquisition_precision": 0.5455,
+    "reacquisition_recall": 0.6667,
+    "reacquisition_F1": 0.6,
+    "stale_state_reuse_count": 6,
+    "unnecessary_reobservation_count": 5,
+    "decision_accuracy_necessity_match": 0.5294,
+    "decision_accuracy_CI": [
+      0.2941,
+      0.7647
+    ]
+  },
+  "DeepSeek V4 Pro": {
+    "n_total": 18,
+    "n_empty_verdict": 4,
+    "n_valid": 14,
+    "confusion": {
+      "TP_necessary_and_reacquired": 6,
+      "FP_unnecessary_but_reacquired": 4,
+      "FN_necessary_but_not_reacquired": 4,
+      "TN_unnecessary_and_not_reacquired": 0
+    },
+    "reacquisition_precision": 0.6,
+    "reacquisition_recall": 0.6,
+    "reacquisition_F1": 0.6,
+    "stale_state_reuse_count": 1,
+    "unnecessary_reobservation_count": 4,
+    "decision_accuracy_necessity_match": 0.4286,
+    "decision_accuracy_CI": [
+      0.1429,
+      0.7143
+    ]
+  },
+  "Mistral Medium 3.5": {
+    "n_total": 18,
+    "n_empty_verdict": 0,
+    "n_valid": 18,
+    "confusion": {
+      "TP_necessary_and_reacquired": 7,
+      "FP_unnecessary_but_reacquired": 5,
+      "FN_necessary_but_not_reacquired": 3,
+      "TN_unnecessary_and_not_reacquired": 3
+    },
+    "reacquisition_precision": 0.5833,
+    "reacquisition_recall": 0.7,
+    "reacquisition_F1": 0.6364,
+    "stale_state_reuse_count": 6,
+    "unnecessary_reobservation_count": 5,
+    "decision_accuracy_necessity_match": 0.5556,
+    "decision_accuracy_CI": [
+      0.3333,
+      0.7778
+    ]
+  },
+  "Qwen3.5-397B-A17B": {
+    "n_total": 18,
+    "n_empty_verdict": 1,
+    "n_valid": 17,
+    "confusion": {
+      "TP_necessary_and_reacquired": 7,
+      "FP_unnecessary_but_reacquired": 2,
+      "FN_necessary_but_not_reacquired": 3,
+      "TN_unnecessary_and_not_reacquired": 5
+    },
+    "reacquisition_precision": 0.7778,
+    "reacquisition_recall": 0.7,
+    "reacquisition_F1": 0.7368,
+    "stale_state_reuse_count": 8,
+    "unnecessary_reobservation_count": 2,
+    "decision_accuracy_necessity_match": 0.7059,
+    "decision_accuracy_CI": [
+      0.4706,
+      0.8824
+    ]
+  },
+  "_pooled_across_5_models": {
+    "note": "NOT independent samples in the usual sense -- pooling across models to check if ANY signal exists at all before deciding whether per-model N=18 is defensible",
+    "TP": 31,
+    "FP": 18,
+    "FN": 14,
+    "TN": 11,
+    "n_total_datapoints": 74,
+    "pooled_precision": 0.6327,
+    "pooled_recall": 0.6889
+  }
+}
