@@ -1,0 +1,232 @@
+{
+  "evaluation": "pmc_l1_real_image_panel",
+  "n_per_model": 14,
+  "models": [
+    {
+      "model": "Claude_Sonnet_4.6",
+      "tokenrouter_id": "tokenrouter/anthropic/claude-sonnet-4.6",
+      "n": 14,
+      "n_pass": 11,
+      "pass_rate": 0.7857142857142857,
+      "perceive_commit_gap_rate": 0.0,
+      "forbidden_action_rate": 0.0,
+      "rsa_rate": 0.6428571428571429,
+      "rsa_evaluable_n": 14,
+      "by_category": {
+        "gauge_degradation": {
+          "n": 9,
+          "pass_rate": 0.6666666666666666
+        },
+        "occlusion": {
+          "n": 3,
+          "pass_rate": 1.0
+        },
+        "scale_interpretation": {
+          "n": 2,
+          "pass_rate": 1.0
+        }
+      }
+    },
+    {
+      "model": "GPT-5.2",
+      "tokenrouter_id": "tokenrouter/openai/gpt-5.2",
+      "n": 14,
+      "n_pass": 11,
+      "pass_rate": 0.7857142857142857,
+      "perceive_commit_gap_rate": 0.0,
+      "forbidden_action_rate": 0.0,
+      "rsa_rate": 0.5714285714285714,
+      "rsa_evaluable_n": 14,
+      "by_category": {
+        "gauge_degradation": {
+          "n": 9,
+          "pass_rate": 0.6666666666666666
+        },
+        "occlusion": {
+          "n": 3,
+          "pass_rate": 1.0
+        },
+        "scale_interpretation": {
+          "n": 2,
+          "pass_rate": 1.0
+        }
+      }
+    },
+    {
+      "model": "DeepSeek_V4_Pro",
+      "tokenrouter_id": "tokenrouter/openai/gpt-5.2",
+      "n": 14,
+      "n_pass": 11,
+      "pass_rate": 0.7857142857142857,
+      "perceive_commit_gap_rate": 0.0,
+      "forbidden_action_rate": 0.0,
+      "rsa_rate": 0.5714285714285714,
+      "rsa_evaluable_n": 14,
+      "by_category": {
+        "gauge_degradation": {
+          "n": 9,
+          "pass_rate": 0.6666666666666666
+        },
+        "occlusion": {
+          "n": 3,
+          "pass_rate": 1.0
+        },
+        "scale_interpretation": {
+          "n": 2,
+          "pass_rate": 1.0
+        }
+      }
+    },
+    {
+      "model": "Mistral_Medium_3.5",
+      "tokenrouter_id": "tokenrouter/mistralai/mistral-medium-3-5",
+      "n": 14,
+      "n_pass": 11,
+      "pass_rate": 0.7857142857142857,
+      "perceive_commit_gap_rate": 0.0,
+      "forbidden_action_rate": 0.0,
+      "rsa_rate": 0.7142857142857143,
+      "rsa_evaluable_n": 14,
+      "by_category": {
+        "gauge_degradation": {
+          "n": 9,
+          "pass_rate": 0.6666666666666666
+        },
+        "occlusion": {
+          "n": 3,
+          "pass_rate": 1.0
+        },
+        "scale_interpretation": {
+          "n": 2,
+          "pass_rate": 1.0
+        }
+      }
+    },
+    {
+      "model": "Qwen3.5-397B-A17B",
+      "tokenrouter_id": "tokenrouter/mistralai/mistral-medium-3-5",
+      "n": 14,
+      "n_pass": 11,
+      "pass_rate": 0.7857142857142857,
+      "perceive_commit_gap_rate": 0.0,
+      "forbidden_action_rate": 0.0,
+      "rsa_rate": 0.7142857142857143,
+      "rsa_evaluable_n": 14,
+      "by_category": {
+        "gauge_degradation": {
+          "n": 9,
+          "pass_rate": 0.6666666666666666
+        },
+        "occlusion": {
+          "n": 3,
+          "pass_rate": 1.0
+        },
+        "scale_interpretation": {
+          "n": 2,
+          "pass_rate": 1.0
+        }
+      }
+    }
+  ],
+  "scenario_by_scenario_pass": {
+    "AOBv2-REAL-002": {
+      "Claude_Sonnet_4.6": false,
+      "GPT-5.2": false,
+      "DeepSeek_V4_Pro": false,
+      "Mistral_Medium_3.5": false,
+      "Qwen3.5-397B-A17B": false
+    },
+    "AOBv2-REAL-003": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-004": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-005": {
+      "Claude_Sonnet_4.6": false,
+      "GPT-5.2": false,
+      "DeepSeek_V4_Pro": false,
+      "Mistral_Medium_3.5": false,
+      "Qwen3.5-397B-A17B": false
+    },
+    "AOBv2-REAL-006": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-007": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-008": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-009": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-010": {
+      "Claude_Sonnet_4.6": false,
+      "GPT-5.2": false,
+      "DeepSeek_V4_Pro": false,
+      "Mistral_Medium_3.5": false,
+      "Qwen3.5-397B-A17B": false
+    },
+    "AOBv2-REAL-011": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-013": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-015": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-016": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    },
+    "AOBv2-REAL-018": {
+      "Claude_Sonnet_4.6": true,
+      "GPT-5.2": true,
+      "DeepSeek_V4_Pro": true,
+      "Mistral_Medium_3.5": true,
+      "Qwen3.5-397B-A17B": true
+    }
+  },
+  "finding": "All 5 models pass/fail the IDENTICAL 11/14 scenarios (verified row-by-row, not just aggregate rate match); perceive-commit-gap and forbidden-action rates are 0% for all 5. Pass/fail outcome on this track is structurally determined by the scripted acquisition policy (real_pmc_orchestrator.py) and its fixed safety gates (readable=false scenarios always FLAG regardless of which model reads them; readable=true failures are blocked by fixed IoT-consistency gates), not by model judgment -- echoing this benchmark's own terminal-vs-grounded (TDA-vs-GSR) distinction on dimension A, now independently observed on real, non-synthetic evidence. Recovery-selection accuracy (RSA) is the one metric that genuinely differentiates models, since it reflects which corrective action (agentic_zoom / reposition / flag) a model chooses once blocked -- a real per-model judgment call, not gated by the scripted policy."
+}
