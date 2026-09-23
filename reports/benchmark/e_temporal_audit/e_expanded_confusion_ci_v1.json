@@ -1,0 +1,166 @@
+{
+  "per_model": {
+    "Claude Sonnet 4.6": {
+      "n_total": 90,
+      "n_empty_verdict": 43,
+      "n_valid": 47,
+      "output_validity_rate": 0.5222,
+      "confusion": {
+        "TP": 26,
+        "FP": 14,
+        "FN": 7,
+        "TN": 0
+      },
+      "precision": 0.65,
+      "precision_ci": [
+        0.5,
+        0.7907
+      ],
+      "recall": 0.7879,
+      "recall_ci": [
+        0.6471,
+        0.9091
+      ],
+      "F1": 0.7123,
+      "stale_state_reuse_count": 0,
+      "unnecessary_reobservation_count": 14,
+      "decision_accuracy_necessity_match": 0.5532,
+      "decision_accuracy_CI": [
+        0.4255,
+        0.6809
+      ]
+    },
+    "GPT-5.2": {
+      "n_total": 90,
+      "n_empty_verdict": 0,
+      "n_valid": 90,
+      "output_validity_rate": 1.0,
+      "confusion": {
+        "TP": 40,
+        "FP": 20,
+        "FN": 10,
+        "TN": 20
+      },
+      "precision": 0.6667,
+      "precision_ci": [
+        0.541,
+        0.7843
+      ],
+      "recall": 0.8,
+      "recall_ci": [
+        0.6875,
+        0.9038
+      ],
+      "F1": 0.7273,
+      "stale_state_reuse_count": 30,
+      "unnecessary_reobservation_count": 20,
+      "decision_accuracy_necessity_match": 0.6667,
+      "decision_accuracy_CI": [
+        0.5667,
+        0.7556
+      ]
+    },
+    "DeepSeek V4 Pro": {
+      "n_total": 90,
+      "n_empty_verdict": 2,
+      "n_valid": 88,
+      "output_validity_rate": 0.9778,
+      "confusion": {
+        "TP": 41,
+        "FP": 17,
+        "FN": 18,
+        "TN": 12
+      },
+      "precision": 0.7069,
+      "precision_ci": [
+        0.5862,
+        0.8214
+      ],
+      "recall": 0.6949,
+      "recall_ci": [
+        0.5625,
+        0.8148
+      ],
+      "F1": 0.7009,
+      "stale_state_reuse_count": 18,
+      "unnecessary_reobservation_count": 17,
+      "decision_accuracy_necessity_match": 0.6023,
+      "decision_accuracy_CI": [
+        0.5,
+        0.7045
+      ]
+    },
+    "Mistral Medium 3.5": {
+      "n_total": 90,
+      "n_empty_verdict": 6,
+      "n_valid": 84,
+      "output_validity_rate": 0.9333,
+      "confusion": {
+        "TP": 37,
+        "FP": 21,
+        "FN": 12,
+        "TN": 14
+      },
+      "precision": 0.6379,
+      "precision_ci": [
+        0.5156,
+        0.7593
+      ],
+      "recall": 0.7551,
+      "recall_ci": [
+        0.6275,
+        0.8723
+      ],
+      "F1": 0.6916,
+      "stale_state_reuse_count": 25,
+      "unnecessary_reobservation_count": 21,
+      "decision_accuracy_necessity_match": 0.6071,
+      "decision_accuracy_CI": [
+        0.5,
+        0.7143
+      ]
+    },
+    "Qwen3.5-397B-A17B": {
+      "n_total": 90,
+      "n_empty_verdict": 4,
+      "n_valid": 86,
+      "output_validity_rate": 0.9556,
+      "confusion": {
+        "TP": 32,
+        "FP": 9,
+        "FN": 21,
+        "TN": 24
+      },
+      "precision": 0.7805,
+      "precision_ci": [
+        0.6452,
+        0.9
+      ],
+      "recall": 0.6038,
+      "recall_ci": [
+        0.463,
+        0.7321
+      ],
+      "F1": 0.6809,
+      "stale_state_reuse_count": 44,
+      "unnecessary_reobservation_count": 9,
+      "decision_accuracy_necessity_match": 0.6512,
+      "decision_accuracy_CI": [
+        0.5465,
+        0.7442
+      ]
+    }
+  },
+  "pairwise_accuracy_CI_overlap": {
+    "Claude Sonnet 4.6 vs GPT-5.2": true,
+    "Claude Sonnet 4.6 vs DeepSeek V4 Pro": true,
+    "Claude Sonnet 4.6 vs Mistral Medium 3.5": true,
+    "Claude Sonnet 4.6 vs Qwen3.5-397B-A17B": true,
+    "GPT-5.2 vs DeepSeek V4 Pro": true,
+    "GPT-5.2 vs Mistral Medium 3.5": true,
+    "GPT-5.2 vs Qwen3.5-397B-A17B": true,
+    "DeepSeek V4 Pro vs Mistral Medium 3.5": true,
+    "DeepSeek V4 Pro vs Qwen3.5-397B-A17B": true,
+    "Mistral Medium 3.5 vs Qwen3.5-397B-A17B": true
+  }
+}
