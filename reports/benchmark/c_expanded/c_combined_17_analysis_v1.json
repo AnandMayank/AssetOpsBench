@@ -1,0 +1,121 @@
+{
+  "Claude Sonnet 4.6": {
+    "n_total": 17,
+    "n_evaluable": 9,
+    "output_validity_rate": 0.5294,
+    "procedural_coverage_mean": 0.2315,
+    "procedural_coverage_ci": [
+      0.0833,
+      0.4537
+    ],
+    "ordering_satisfied_mean": 1.0,
+    "ordering_satisfied_ci": [
+      1.0,
+      1.0
+    ],
+    "CC_mean": 0.8889,
+    "CC_ci": [
+      0.6667,
+      1.0
+    ],
+    "apparatus_failure_scenarios": [
+      "R001",
+      "R006",
+      "R007",
+      "R017",
+      "R023",
+      "R024",
+      "R022",
+      "R025"
+    ]
+  },
+  "GPT-5.2": {
+    "n_total": 17,
+    "n_evaluable": 17,
+    "output_validity_rate": 1.0,
+    "procedural_coverage_mean": 0.5402,
+    "procedural_coverage_ci": [
+      0.3657,
+      0.6951
+    ],
+    "ordering_satisfied_mean": 0.6471,
+    "ordering_satisfied_ci": [
+      0.4118,
+      0.8824
+    ],
+    "CC_mean": 0.7059,
+    "CC_ci": [
+      0.4706,
+      0.8824
+    ],
+    "apparatus_failure_scenarios": []
+  },
+  "DeepSeek V4 Pro": {
+    "n_total": 17,
+    "n_evaluable": 16,
+    "output_validity_rate": 0.9412,
+    "procedural_coverage_mean": 0.0885,
+    "procedural_coverage_ci": [
+      0.0,
+      0.224
+    ],
+    "ordering_satisfied_mean": 1.0,
+    "ordering_satisfied_ci": [
+      1.0,
+      1.0
+    ],
+    "CC_mean": 0.5625,
+    "CC_ci": [
+      0.3125,
+      0.8125
+    ],
+    "apparatus_failure_scenarios": [
+      "R024"
+    ]
+  },
+  "Mistral Medium 3.5": {
+    "n_total": 17,
+    "n_evaluable": 15,
+    "output_validity_rate": 0.8824,
+    "procedural_coverage_mean": 0.3122,
+    "procedural_coverage_ci": [
+      0.1611,
+      0.4933
+    ],
+    "ordering_satisfied_mean": 0.7333,
+    "ordering_satisfied_ci": [
+      0.5333,
+      0.9333
+    ],
+    "CC_mean": 0.6667,
+    "CC_ci": [
+      0.4,
+      0.8667
+    ],
+    "apparatus_failure_scenarios": [
+      "R021",
+      "R025"
+    ]
+  },
+  "Qwen3.5-397B-A17B": {
+    "n_total": 17,
+    "n_evaluable": 17,
+    "output_validity_rate": 1.0,
+    "procedural_coverage_mean": 0.3147,
+    "procedural_coverage_ci": [
+      0.1863,
+      0.4618
+    ],
+    "ordering_satisfied_mean": 0.6471,
+    "ordering_satisfied_ci": [
+      0.4118,
+      0.8824
+    ],
+    "CC_mean": 0.5882,
+    "CC_ci": [
+      0.3529,
+      0.8235
+    ],
+    "apparatus_failure_scenarios": []
+  }
+}
