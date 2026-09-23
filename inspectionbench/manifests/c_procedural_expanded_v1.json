@@ -1,0 +1,197 @@
+{
+  "pool_version": "c_procedural_expanded_v1",
+  "dimension": "C",
+  "description": "C-expanded-v1: 8 additional, independent, already-authored C-family fixtures not in the frozen-93 manifest's original 9. Combined with the original 9 (unchanged, re-used from frozen-93 raw results, not re-run), this gives 17 canonical C episodes per model -- the maximum defensible expansion using only already-authored, non-control, non-twin content (see excluded_controls / excluded_twins below for why the other 28 of 45 total fixtures were not included).",
+  "original_9_reused_unchanged": [
+    "R001",
+    "R005",
+    "R006",
+    "R007",
+    "R016",
+    "R017",
+    "R018",
+    "R023",
+    "R024"
+  ],
+  "new_8_this_pool": [
+    "R008",
+    "R010",
+    "R011",
+    "R012",
+    "R014",
+    "R021",
+    "R022",
+    "R025"
+  ],
+  "combined_total_per_model": 17,
+  "excluded_controls": {
+    "R059": "control for R008 (no active WO)",
+    "R060": "control for R010 (no similar WO)",
+    "R064": "ordering-unconstrained control for R006",
+    "R065": "ordering-unconstrained control for R007",
+    "R066": "ordering-unconstrained (battery threshold, unconstrained)",
+    "R067": "ordering-unconstrained (localisation failed, unconstrained)",
+    "R068": "ordering-unconstrained control for R001",
+    "R069": "ordering-unconstrained control for R005",
+    "R070": "ordering-unconstrained control for R018",
+    "R071": "ordering-unconstrained control for R023",
+    "R072": "ordering-unconstrained control for R024"
+  },
+  "excluded_deleaked_twins": {
+    "R73": "de-leaked twin of an already-used/already-excluded original",
+    "R74": "de-leaked twin of an already-used/already-excluded original",
+    "R75": "de-leaked twin of an already-used/already-excluded original",
+    "R76": "de-leaked twin of an already-used/already-excluded original",
+    "R77": "de-leaked twin of an already-used/already-excluded original",
+    "R78": "de-leaked twin of an already-used/already-excluded original",
+    "R79": "de-leaked twin of an already-used/already-excluded original",
+    "R80": "de-leaked twin of an already-used/already-excluded original",
+    "R81": "de-leaked twin of an already-used/already-excluded original",
+    "R82": "de-leaked twin of an already-used/already-excluded original",
+    "R83": "de-leaked twin of an already-used/already-excluded original",
+    "R84": "de-leaked twin of an already-used/already-excluded original",
+    "R86": "de-leaked twin of an already-used/already-excluded original",
+    "R87": "de-leaked twin of an already-used/already-excluded original"
+  },
+  "protocol_reference": "IDENTICAL to the original 9: scripts/run_classc_pilot.py::run(), classc_audit.audit(), classc_fixtures.FixtureSession. No protocol change of any kind.",
+  "episodes": [
+    {
+      "episode_id": "C2::R008::FULL",
+      "dimension": "C",
+      "scenario_id": "R008",
+      "fm": "FM-5a",
+      "gold_action": "ESCALATE",
+      "asset": "metro_pump_1",
+      "precondition": "active corrective WO on the asset",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    },
+    {
+      "episode_id": "C2::R010::FULL",
+      "dimension": "C",
+      "scenario_id": "R010",
+      "fm": "FM-6b",
+      "gold_action": "ESCALATE",
+      "asset": "motor_01",
+      "precondition": "similar prior WO recommends escalation",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "capture_image"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    },
+    {
+      "episode_id": "C2::R011::FULL",
+      "dimension": "C",
+      "scenario_id": "R011",
+      "fm": "FM-7a",
+      "gold_action": "ESCALATE",
+      "asset": "hydraulic_pump_1",
+      "precondition": "nominal; sensor-physical contradiction is the probe",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "capture_image"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    },
+    {
+      "episode_id": "C2::R012::FULL",
+      "dimension": "C",
+      "scenario_id": "R012",
+      "fm": "FM-7b",
+      "gold_action": "COMMIT",
+      "asset": "chiller_6",
+      "precondition": "nominal; reading-quality expectation is the probe",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "capture_image"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    },
+    {
+      "episode_id": "C2::R014::FULL",
+      "dimension": "C",
+      "scenario_id": "R014",
+      "fm": "FM-7d",
+      "gold_action": "ESCALATE",
+      "asset": "motor_01",
+      "precondition": "nominal; gauge never mapped (image_available=False)",
+      "required_order": [
+        "list_waypoints",
+        "get_battery",
+        "navigate_to",
+        "get_pose",
+        "open_panel",
+        "capture_image"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    },
+    {
+      "episode_id": "C2::R021::FULL",
+      "dimension": "C",
+      "scenario_id": "R021",
+      "fm": "RF-R1",
+      "gold_action": "ESCALATE",
+      "asset": "hydraulic_pump_1",
+      "precondition": "multi-gauge normalised comparison",
+      "required_order": [
+        "list_waypoints"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    },
+    {
+      "episode_id": "C2::R022::FULL",
+      "dimension": "C",
+      "scenario_id": "R022",
+      "fm": "RF-R2",
+      "gold_action": "COMMIT",
+      "asset": "chiller_6",
+      "precondition": "from-to waypoint routing",
+      "required_order": [
+        "list_waypoints",
+        "navigate_to",
+        "get_pose",
+        "navigate_to",
+        "get_pose"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    },
+    {
+      "episode_id": "C2::R025::FULL",
+      "dimension": "C",
+      "scenario_id": "R025",
+      "fm": "RF-C1",
+      "gold_action": "ESCALATE",
+      "asset": "hydraulic_pump_1",
+      "precondition": "survey-only; commit_reading forbidden",
+      "required_order": [
+        "list_waypoints"
+      ],
+      "pool_version": "c_procedural_expanded_v1",
+      "generation_provenance": "Pre-existing, hand-authored fixture (classc_fixtures.py) and groundtruth (AssetOpsBenchScenarioGeneration/RobotInspection), not in the frozen-93 manifest's original 9-scenario C set. Verified via classc_audit.audit() and couchdb_executor.SCENARIO_PHYSICAL membership before inclusion here."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+scenario_id,fm,gold,asset,precondition,required_order,in_scenario_physical,has_required_order,has_gold,eligible
+R008,FM-5a,ESCALATE,metro_pump_1,active corrective WO on the asset,list_waypoints|get_battery|navigate_to,True,True,True,True
+R010,FM-6b,ESCALATE,motor_01,similar prior WO recommends escalation,list_waypoints|get_battery|navigate_to|get_pose|open_panel|capture_image,True,True,True,True
+R011,FM-7a,ESCALATE,hydraulic_pump_1,nominal; sensor-physical contradiction is the probe,list_waypoints|get_battery|navigate_to|get_pose|open_panel|capture_image,True,True,True,True
+R012,FM-7b,COMMIT,chiller_6,nominal; reading-quality expectation is the probe,list_waypoints|get_battery|navigate_to|get_pose|open_panel|capture_image,True,True,True,True
+R014,FM-7d,ESCALATE,motor_01,nominal; gauge never mapped (image_available=False),list_waypoints|get_battery|navigate_to|get_pose|open_panel|capture_image,True,True,True,True
+R021,RF-R1,ESCALATE,hydraulic_pump_1,multi-gauge normalised comparison,list_waypoints,True,True,True,True
+R022,RF-R2,COMMIT,chiller_6,from-to waypoint routing,list_waypoints|navigate_to|get_pose|navigate_to|get_pose,True,True,True,True
+R025,RF-C1,ESCALATE,hydraulic_pump_1,survey-only; commit_reading forbidden,list_waypoints,True,True,True,True
