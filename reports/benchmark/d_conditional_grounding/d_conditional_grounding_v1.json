@@ -1,0 +1,157 @@
+{
+  "Claude Sonnet 4.6": {
+    "n": 70,
+    "P_CC": 0.7857,
+    "P_CC_ci": [
+      0.6857,
+      0.8714
+    ],
+    "P_CSA": 0.4429,
+    "P_CSA_ci": [
+      0.3286,
+      0.5571
+    ],
+    "P_CC_and_CSA": 0.4429,
+    "P_CC_and_CSA_ci": [
+      0.3286,
+      0.5571
+    ],
+    "Delta_gap": 0.3429,
+    "n_CC1": 55,
+    "n_CC0": 15,
+    "P_CSA_given_CC1": 0.5636,
+    "P_CSA_given_CC1_ci": [
+      0.434,
+      0.6939
+    ],
+    "P_CSA_given_CC0": 0.0,
+    "P_CSA_given_CC0_ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "GPT-5.2": {
+    "n": 70,
+    "P_CC": 0.8714,
+    "P_CC_ci": [
+      0.7857,
+      0.9429
+    ],
+    "P_CSA": 0.5714,
+    "P_CSA_ci": [
+      0.4571,
+      0.6857
+    ],
+    "P_CC_and_CSA": 0.5714,
+    "P_CC_and_CSA_ci": [
+      0.4571,
+      0.6857
+    ],
+    "Delta_gap": 0.3,
+    "n_CC1": 61,
+    "n_CC0": 9,
+    "P_CSA_given_CC1": 0.6557,
+    "P_CSA_given_CC1_ci": [
+      0.541,
+      0.7759
+    ],
+    "P_CSA_given_CC0": 0.0,
+    "P_CSA_given_CC0_ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "DeepSeek V4 Pro": {
+    "n": 70,
+    "P_CC": 0.3857,
+    "P_CC_ci": [
+      0.2714,
+      0.5
+    ],
+    "P_CSA": 0.3571,
+    "P_CSA_ci": [
+      0.2429,
+      0.4714
+    ],
+    "P_CC_and_CSA": 0.2143,
+    "P_CC_and_CSA_ci": [
+      0.1143,
+      0.3143
+    ],
+    "Delta_gap": 0.1714,
+    "n_CC1": 27,
+    "n_CC0": 43,
+    "P_CSA_given_CC1": 0.5556,
+    "P_CSA_given_CC1_ci": [
+      0.3548,
+      0.75
+    ],
+    "P_CSA_given_CC0": 0.2326,
+    "P_CSA_given_CC0_ci": [
+      0.1136,
+      0.3617
+    ]
+  },
+  "Mistral Medium 3.5": {
+    "n": 70,
+    "P_CC": 0.6714,
+    "P_CC_ci": [
+      0.5571,
+      0.7714
+    ],
+    "P_CSA": 0.5,
+    "P_CSA_ci": [
+      0.3857,
+      0.6143
+    ],
+    "P_CC_and_CSA": 0.5,
+    "P_CC_and_CSA_ci": [
+      0.3857,
+      0.6143
+    ],
+    "Delta_gap": 0.1714,
+    "n_CC1": 47,
+    "n_CC0": 23,
+    "P_CSA_given_CC1": 0.7447,
+    "P_CSA_given_CC1_ci": [
+      0.6222,
+      0.8667
+    ],
+    "P_CSA_given_CC0": 0.0,
+    "P_CSA_given_CC0_ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "Qwen3.5-397B-A17B": {
+    "n": 70,
+    "P_CC": 0.6143,
+    "P_CC_ci": [
+      0.5,
+      0.7143
+    ],
+    "P_CSA": 0.3857,
+    "P_CSA_ci": [
+      0.2714,
+      0.5
+    ],
+    "P_CC_and_CSA": 0.3143,
+    "P_CC_and_CSA_ci": [
+      0.2,
+      0.4286
+    ],
+    "Delta_gap": 0.3,
+    "n_CC1": 43,
+    "n_CC0": 27,
+    "P_CSA_given_CC1": 0.5116,
+    "P_CSA_given_CC1_ci": [
+      0.359,
+      0.6667
+    ],
+    "P_CSA_given_CC0": 0.1852,
+    "P_CSA_given_CC0_ci": [
+      0.0417,
+      0.3448
+    ]
+  }
+}
