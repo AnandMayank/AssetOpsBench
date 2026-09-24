@@ -1,0 +1,260 @@
+{
+  "PG-B2::A::PGB2-412595cbab26cea872173992": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::A::PGB2-448d695b1eee161dacff8c40": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 9.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::A::PGB2-898af64d6589271c2e73de5f": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 9.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::A::PGB2-5c134df6b8170a084c80fc6b": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 9.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::B::PGB2-0e457cf4f31c0f1415b7b640": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::B::PGB2-a87e07149b60ee3a50c03473": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::B::PGB2-30e22db8cae1955e7eef5679": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::B::PGB2-e13bde458e23c19165d150f1": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::B::PGB2-1abd437be9587fea999c55d8": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::B::PGB2-a0d49ccda75df7685522730a": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::B::PGB2-880c9ab971e0a18a30942ca7": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::B::PGB2-f2b24c6cec283154ec2989fa": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::B::PGB2-44d21b7651125094024fc842": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::B::PGB2-9d9f61679bdd7190c6f3d24d": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::B::PGB2-d25cc73f5ee3eb1ca7bce327": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::B::PGB2-0525571de3d63821b44968cc": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 11.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::B::PGB2-8bd1341eef283ff3d8360a56": {
+    "world_truth": "fault",
+    "frontier_empty": true,
+    "c_min": null,
+    "g_term": "ESCALATE"
+  },
+  "PG-B2::B::PGB2-21e0337c51f97b461a32becc": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 12.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::C::PGB2-50ddd51aa14b3483bfc0d3ae": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::C::PGB2-ea666411a40b0fb393f2b87c": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 9.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::C::PGB2-9795c6403df71ef3be1fe583": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 9.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::C::PGB2-9f77eafc200731189f7f7f5a": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::C::PGB2-220f3849f84d50feb973b356": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::C::PGB2-31c93f4edf812652e29a8f90": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::C::PGB2-662f9c2f5a537ee7d57c9ebf": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::D::PGB2-d43173a9e5a5a32611a11693": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::D::PGB2-1212340ce6881d98d18df986": {
+    "world_truth": "fault",
+    "frontier_empty": true,
+    "c_min": null,
+    "g_term": "ESCALATE"
+  },
+  "PG-B2::D::PGB2-6cf6fe90cb97f9e01a3f15ff": {
+    "world_truth": "fault",
+    "frontier_empty": true,
+    "c_min": null,
+    "g_term": "ESCALATE"
+  },
+  "PG-B2::D::PGB2-dc87bafaf5f055a36dfda140": {
+    "world_truth": "fault",
+    "frontier_empty": true,
+    "c_min": null,
+    "g_term": "ESCALATE"
+  },
+  "PG-B2::D::PGB2-ad4c72a0118f8a9796b9e812": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::D::PGB2-8a66a8f4d0f291c15dcf52bb": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::D::PGB2-c32437416329ea18f6b5474f": {
+    "world_truth": "fault",
+    "frontier_empty": true,
+    "c_min": null,
+    "g_term": "ESCALATE"
+  },
+  "PG-B2::D::PGB2-b159eec3faa2d4da84b17719": {
+    "world_truth": "fault",
+    "frontier_empty": true,
+    "c_min": null,
+    "g_term": "ESCALATE"
+  },
+  "PG-B2::E::PGB2-85639ec364b2bee570cd313e": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::E::PGB2-6ae8ca587ee7e93e196aa135": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::E::PGB2-300d1b00a6c12b3222950fa9": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::E::PGB2-128c70140eafd4e5f0a507ff": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::E::PGB2-d03317f0558aa983bed56ae3": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 11.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::E::PGB2-15298ec834e1be782f1adcce": {
+    "world_truth": "fault",
+    "frontier_empty": true,
+    "c_min": null,
+    "g_term": "ESCALATE"
+  },
+  "PG-B2::E::PGB2-59fcdae011b03c7f01dee228": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 13.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::F::PGB2-07f9f4044c718167adbf1e82": {
+    "world_truth": "normal",
+    "frontier_empty": false,
+    "c_min": 3.0,
+    "g_term": "COMMIT_NORMAL"
+  },
+  "PG-B2::F::PGB2-5e665de72dc3a0d985031473": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  },
+  "PG-B2::F::PGB2-07a77abbc215ea67dd7dfa8f": {
+    "world_truth": "fault",
+    "frontier_empty": false,
+    "c_min": 10.0,
+    "g_term": "COMMIT_FAULT"
+  }
+}

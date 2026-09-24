@@ -1,0 +1,104 @@
+{
+  "results": {
+    "NeverAcquire": {
+      "EGR": 0.16279069767441862,
+      "TGS": 0.16279069767441862,
+      "SD": 1.0,
+      "wasted_acquisition_rate": 0.0,
+      "reg_min_mean": 0.0,
+      "acquisition_count_mean": 0.0,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.8372093023255814,
+      "repeat_unavailable_mean": 0.0,
+      "cost_mean": 0.0,
+      "TDA": 0.16279069767441862
+    },
+    "AlwaysEscalate": {
+      "EGR": 0.16279069767441862,
+      "TGS": 0.16279069767441862,
+      "SD": 1.0,
+      "wasted_acquisition_rate": 0.0,
+      "reg_min_mean": 0.0,
+      "acquisition_count_mean": 0.0,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.8372093023255814,
+      "repeat_unavailable_mean": 0.0,
+      "cost_mean": 0.0,
+      "TDA": 0.16279069767441862
+    },
+    "AlwaysCommit": {
+      "EGR": 0.0,
+      "TGS": 0.0,
+      "SD": 0.0,
+      "wasted_acquisition_rate": 0.0,
+      "reg_min_mean": 0.0,
+      "acquisition_count_mean": 0.0,
+      "premature_commit_rate": 1.0,
+      "premature_escalate_rate": 0.0,
+      "repeat_unavailable_mean": 0.0,
+      "cost_mean": 0.0,
+      "TDA": 0.3023255813953488
+    },
+    "AcquireEverything": {
+      "EGR": 0.13953488372093023,
+      "TGS": 0.6976744186046512,
+      "SD": 0.13953488372093023,
+      "wasted_acquisition_rate": 7.767441860465116,
+      "reg_min_mean": 3.14765361952862,
+      "acquisition_count_mean": 16.74418604651163,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.27906976744186046,
+      "repeat_unavailable_mean": 0.0,
+      "cost_mean": 23.75581395348837,
+      "TDA": 0.6976744186046512
+    },
+    "ContractRule": {
+      "EGR": 0.0,
+      "TGS": 0.046511627906976744,
+      "SD": 0.8837209302325582,
+      "wasted_acquisition_rate": 29.674418604651162,
+      "reg_min_mean": 0.0,
+      "acquisition_count_mean": 1.813953488372093,
+      "premature_commit_rate": 0.11627906976744186,
+      "premature_escalate_rate": 0.7674418604651163,
+      "repeat_unavailable_mean": 29.674418604651162,
+      "cost_mean": 38.81395348837209,
+      "TDA": 0.046511627906976744
+    },
+    "FairScriptedReference": {
+      "EGR": 0.8837209302325582,
+      "TGS": 0.8837209302325582,
+      "SD": 1.0,
+      "wasted_acquisition_rate": 0.0,
+      "reg_min_mean": 0.8359375,
+      "acquisition_count_mean": 4.790697674418604,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.0,
+      "repeat_unavailable_mean": 0.0,
+      "cost_mean": 11.30232558139535,
+      "TDA": 0.8837209302325582
+    },
+    "FrontierReplay": {
+      "EGR": 1.0,
+      "TGS": 1.0,
+      "SD": 1.0,
+      "wasted_acquisition_rate": 0.0,
+      "reg_min_mean": 0.0,
+      "acquisition_count_mean": 2.0232558139534884,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.0,
+      "repeat_unavailable_mean": 0.0,
+      "cost_mean": 6.3023255813953485,
+      "TDA": 1.0
+    }
+  },
+  "interpretation": {
+    "ContractRule": "fails because its stop/verdict rule reads only acquisition COUNTS, never content -- TDA=0.047 near the verdict base rate, EGR=0.0.",
+    "AcquireEverything": "reaches decent grounded accuracy (TGS=0.698) but EGR collapses to 0.140 because it keeps acquiring after sufficiency (mean waste=7.77).",
+    "NeverAcquire": "EGR=0.163 equals exactly the ESCALATE-gold share -- correct only on episodes where no acquisition was ever needed.",
+    "AlwaysCommit": "EGR=0.000, premature_commit_rate=1.000 -- always commits on empty (insufficient) evidence.",
+    "AlwaysEscalate": "identical to NeverAcquire here since E0 is empty in every episode -- fails exactly on the 0.837 share of episodes where a world-truth-agreeing state IS reachable.",
+    "FairScriptedReference": "EGR=0.884: a fair, non-clairvoyant content-aware policy that stops the moment evidence looks sufficient -- not 1.0 because real sensor noise can make it stop on the wrong verdict, which is expected, not a defect.",
+    "FrontierReplay": "EGR=1.000: exact replay of the offline search's own certified minimum-cost path -- proves the pool is solvable and internally consistent; NOT a fair agent baseline (it needs the answer to run)."
+  }
+}

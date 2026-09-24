@@ -1,0 +1,454 @@
+{
+  "schema": "pg_b2.manifest/1",
+  "namespace": "PG-B2",
+  "phase": "1a_offline",
+  "n_episodes": 43,
+  "n_worlds": 26,
+  "family_counts": {
+    "A": 4,
+    "B": 14,
+    "C": 7,
+    "D": 8,
+    "E": 7,
+    "F": 3
+  },
+  "matched_group_counts": {
+    "M0": 2,
+    "M1": 2,
+    "M2": 2,
+    "M3": 2,
+    "M4": 2
+  },
+  "episodes": [
+    {
+      "episode_id": "PG-B2::A::PGB2-412595cbab26cea872173992",
+      "family": "A",
+      "world_id": "PGW-a83dbfa5159b5f7a52cb06c4",
+      "asset": "motor_01",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::A::PGB2-448d695b1eee161dacff8c40",
+      "family": "A",
+      "world_id": "PGW-8c38ddb08399f2b0b9486f0a",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 9.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::A::PGB2-898af64d6589271c2e73de5f",
+      "family": "A",
+      "world_id": "PGW-79d2e000aaeab58b51382567",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 9.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::A::PGB2-5c134df6b8170a084c80fc6b",
+      "family": "A",
+      "world_id": "PGW-2cfdd59e6968644786c38f70",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 9.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-0e457cf4f31c0f1415b7b640",
+      "family": "B",
+      "world_id": "PGW-5432ee1edaab29e5ca13d847",
+      "asset": "chiller_6",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-a87e07149b60ee3a50c03473",
+      "family": "B",
+      "world_id": "PGW-2a740e5e2c70d0ecdbd8c973",
+      "asset": "chiller_6",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-30e22db8cae1955e7eef5679",
+      "family": "B",
+      "world_id": "PGW-f1738b915c51a2af327248f1",
+      "asset": "chiller_6",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-e13bde458e23c19165d150f1",
+      "family": "B",
+      "world_id": "PGW-67fe325d010026d250a77804",
+      "asset": "hydraulic_pump_1",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-1abd437be9587fea999c55d8",
+      "family": "B",
+      "world_id": "PGW-018b224c5633b7c5a0788297",
+      "asset": "hydraulic_pump_1",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-a0d49ccda75df7685522730a",
+      "family": "B",
+      "world_id": "PGW-ff602d864f5d205fcb14ff76",
+      "asset": "hydraulic_pump_1",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-880c9ab971e0a18a30942ca7",
+      "family": "B",
+      "world_id": "PGW-318c7b373a729b5ea317064c",
+      "asset": "hydraulic_pump_1",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-f2b24c6cec283154ec2989fa",
+      "family": "B",
+      "world_id": "PGW-0d634794bdba549b1fef06ed",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-44d21b7651125094024fc842",
+      "family": "B",
+      "world_id": "PGW-23abe33f91325368daceef91",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-9d9f61679bdd7190c6f3d24d",
+      "family": "B",
+      "world_id": "PGW-f7350ac546c3e498a04afed6",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-d25cc73f5ee3eb1ca7bce327",
+      "family": "B",
+      "world_id": "PGW-0e26436c2d118a28b38fdb6d",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-0525571de3d63821b44968cc",
+      "family": "B",
+      "world_id": "PGW-e51013522be185ba85473691",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 11.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-8bd1341eef283ff3d8360a56",
+      "family": "B",
+      "world_id": "PGW-66cc32076a3ec655cb7eefea",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "ESCALATE",
+      "gold_c_min": null,
+      "gold_frontier_empty": true
+    },
+    {
+      "episode_id": "PG-B2::B::PGB2-21e0337c51f97b461a32becc",
+      "family": "B",
+      "world_id": "PGW-03bf6aed753d95b6a275de57",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 12.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::C::PGB2-50ddd51aa14b3483bfc0d3ae",
+      "family": "C",
+      "world_id": "PGW-a83dbfa5159b5f7a52cb06c4",
+      "asset": "motor_01",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::C::PGB2-ea666411a40b0fb393f2b87c",
+      "family": "C",
+      "world_id": "PGW-8c38ddb08399f2b0b9486f0a",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 9.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::C::PGB2-9795c6403df71ef3be1fe583",
+      "family": "C",
+      "world_id": "PGW-79d2e000aaeab58b51382567",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 9.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::C::PGB2-9f77eafc200731189f7f7f5a",
+      "family": "C",
+      "world_id": "PGW-0d634794bdba549b1fef06ed",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::C::PGB2-220f3849f84d50feb973b356",
+      "family": "C",
+      "world_id": "PGW-23abe33f91325368daceef91",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::C::PGB2-31c93f4edf812652e29a8f90",
+      "family": "C",
+      "world_id": "PGW-f7350ac546c3e498a04afed6",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::C::PGB2-662f9c2f5a537ee7d57c9ebf",
+      "family": "C",
+      "world_id": "PGW-0e26436c2d118a28b38fdb6d",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-d43173a9e5a5a32611a11693",
+      "family": "D",
+      "world_id": "PGW-a83dbfa5159b5f7a52cb06c4",
+      "asset": "motor_01",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-1212340ce6881d98d18df986",
+      "family": "D",
+      "world_id": "PGW-8c38ddb08399f2b0b9486f0a",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "ESCALATE",
+      "gold_c_min": null,
+      "gold_frontier_empty": true
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-6cf6fe90cb97f9e01a3f15ff",
+      "family": "D",
+      "world_id": "PGW-79d2e000aaeab58b51382567",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "ESCALATE",
+      "gold_c_min": null,
+      "gold_frontier_empty": true
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-dc87bafaf5f055a36dfda140",
+      "family": "D",
+      "world_id": "PGW-2cfdd59e6968644786c38f70",
+      "asset": "motor_01",
+      "condition": "fault",
+      "gold_g_term": "ESCALATE",
+      "gold_c_min": null,
+      "gold_frontier_empty": true
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-ad4c72a0118f8a9796b9e812",
+      "family": "D",
+      "world_id": "PGW-5432ee1edaab29e5ca13d847",
+      "asset": "chiller_6",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-8a66a8f4d0f291c15dcf52bb",
+      "family": "D",
+      "world_id": "PGW-2a740e5e2c70d0ecdbd8c973",
+      "asset": "chiller_6",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-c32437416329ea18f6b5474f",
+      "family": "D",
+      "world_id": "PGW-0d634794bdba549b1fef06ed",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "ESCALATE",
+      "gold_c_min": null,
+      "gold_frontier_empty": true
+    },
+    {
+      "episode_id": "PG-B2::D::PGB2-b159eec3faa2d4da84b17719",
+      "family": "D",
+      "world_id": "PGW-23abe33f91325368daceef91",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "ESCALATE",
+      "gold_c_min": null,
+      "gold_frontier_empty": true
+    },
+    {
+      "episode_id": "PG-B2::E::PGB2-85639ec364b2bee570cd313e",
+      "family": "E",
+      "world_id": "PGW-4771e70abd0443823baea71c",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::E::PGB2-6ae8ca587ee7e93e196aa135",
+      "family": "E",
+      "world_id": "PGW-a20501847a00483c357c6978",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::E::PGB2-300d1b00a6c12b3222950fa9",
+      "family": "E",
+      "world_id": "PGW-bbec90dd68ef69b3bbf018f9",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::E::PGB2-128c70140eafd4e5f0a507ff",
+      "family": "E",
+      "world_id": "PGW-25f9da97b6df2ca4419341a0",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::E::PGB2-d03317f0558aa983bed56ae3",
+      "family": "E",
+      "world_id": "PGW-15e6d240a63f20ac9d1d2576",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 11.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::E::PGB2-15298ec834e1be782f1adcce",
+      "family": "E",
+      "world_id": "PGW-e391dc0e7b2ed194fe3f81a5",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "ESCALATE",
+      "gold_c_min": null,
+      "gold_frontier_empty": true
+    },
+    {
+      "episode_id": "PG-B2::E::PGB2-59fcdae011b03c7f01dee228",
+      "family": "E",
+      "world_id": "PGW-fe3cbea1c95de78a263d9a0b",
+      "asset": "hydraulic_pump_1",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 13.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::F::PGB2-07f9f4044c718167adbf1e82",
+      "family": "F",
+      "world_id": "PGW-58081e859c1e9b15245ae254",
+      "asset": "chiller_6",
+      "condition": "normal",
+      "gold_g_term": "COMMIT_NORMAL",
+      "gold_c_min": 3.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::F::PGB2-5e665de72dc3a0d985031473",
+      "family": "F",
+      "world_id": "PGW-4771e70abd0443823baea71c",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    },
+    {
+      "episode_id": "PG-B2::F::PGB2-07a77abbc215ea67dd7dfa8f",
+      "family": "F",
+      "world_id": "PGW-a20501847a00483c357c6978",
+      "asset": "chiller_6",
+      "condition": "fault",
+      "gold_g_term": "COMMIT_FAULT",
+      "gold_c_min": 10.0,
+      "gold_frontier_empty": false
+    }
+  ]
+}

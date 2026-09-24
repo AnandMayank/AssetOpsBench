@@ -1,0 +1,47 @@
+{
+  "schema": "pg_b2.final_audit_report/1",
+  "g1_summary": {
+    "verdict": "MARGINAL",
+    "best_overall": [
+      "hydraulic_pump_1/06:500-2000Hz|band_abs_db",
+      0.8641666666666666
+    ],
+    "excluded_keys": [
+      "('chiller_6', '02')"
+    ]
+  },
+  "g4_original": {
+    "verdict": "PASS",
+    "n_checked": 56
+  },
+  "g4_reaudit_live_env": {
+    "n_episodes_checked": 6,
+    "violations": [],
+    "clean": true
+  },
+  "world_sample_audit": {
+    "n_episodes": 43,
+    "n_unique_worlds": 26,
+    "n_independent_acoustic_source_pools": 7,
+    "n_acoustic_worlds_in_pool": 21,
+    "n_thermal_worlds_in_pool": 4,
+    "n_iot_only_worlds_in_pool": 1,
+    "family_counts": {
+      "A": 4,
+      "B": 14,
+      "C": 7,
+      "D": 8,
+      "E": 7,
+      "F": 3
+    },
+    "matched_group_counts": {
+      "M0": 2,
+      "M1": 2,
+      "M2": 2,
+      "M3": 2,
+      "M4": 2
+    },
+    "warning": "worlds != episodes != trajectories. n_episodes=43 is NOT 43 independent samples -- there are only 26 unique worlds behind them, and a future model pilot's confidence intervals MUST cluster-bootstrap at the world level, never treat episode rows as independent."
+  },
+  "n_audit_table_rows": 43
+}

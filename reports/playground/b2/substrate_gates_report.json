@@ -1,0 +1,691 @@
+{
+  "schema": "pg_b2.substrate_gates/1",
+  "g1": {
+    "gate": "G1_acoustic_indicator_informativeness",
+    "verdict": "MARGINAL",
+    "per_asset_machine": {
+      "chiller_6/00": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 407,
+        "n_neg_total": 1011,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.58,
+            "auc_best_direction": 0.58,
+            "abnormal_scores_higher": true,
+            "pos_mean": -1.9691252219925357,
+            "neg_mean": -2.0689443097876703,
+            "calibrated_threshold": -2.019034765890103
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.7394444444444445,
+            "auc_best_direction": 0.7394444444444445,
+            "abnormal_scores_higher": true,
+            "pos_mean": -44.29793131327763,
+            "neg_mean": -46.338408114562206,
+            "calibrated_threshold": -45.318169713919914
+          },
+          "crest_factor": {
+            "auc": 0.3913888888888889,
+            "auc_best_direction": 0.6086111111111111,
+            "abnormal_scores_higher": false,
+            "pos_mean": 4.147942890759009,
+            "neg_mean": 4.357429688020441,
+            "calibrated_threshold": 4.252686289389725
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.6955555555555556,
+            "auc_best_direction": 0.6955555555555556,
+            "abnormal_scores_higher": true,
+            "pos_mean": -51.997315023489044,
+            "neg_mean": -56.62096113397616,
+            "calibrated_threshold": -54.3091380787326
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.415,
+            "auc_best_direction": 0.585,
+            "abnormal_scores_higher": false,
+            "pos_mean": -11.145611756368522,
+            "neg_mean": -10.268720096460791,
+            "calibrated_threshold": -10.707165926414657
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.6252777777777778,
+            "auc_best_direction": 0.6252777777777778,
+            "abnormal_scores_higher": true,
+            "pos_mean": -53.47441784765362,
+            "neg_mean": -54.53818390123533,
+            "calibrated_threshold": -54.00630087444448
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.3763888888888889,
+            "auc_best_direction": 0.6236111111111111,
+            "abnormal_scores_higher": false,
+            "pos_mean": -22.50133652105087,
+            "neg_mean": -21.183010895069735,
+            "calibrated_threshold": -21.8421737080603
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.5186111111111111,
+            "auc_best_direction": 0.5186111111111111,
+            "abnormal_scores_higher": true,
+            "pos_mean": -64.83014261233596,
+            "neg_mean": -65.45247469984427,
+            "calibrated_threshold": -65.14130865609012
+          }
+        },
+        "best_candidate": "0-500Hz|band_abs_db",
+        "best_auc_best_direction": 0.7394444444444445,
+        "calibration": {
+          "band_stat_key": "0-500Hz|band_abs_db",
+          "threshold": -45.318169713919914,
+          "abnormal_scores_higher": true
+        }
+      },
+      "chiller_6/02": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 359,
+        "n_neg_total": 1016,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.4875,
+            "auc_best_direction": 0.5125,
+            "abnormal_scores_higher": false,
+            "pos_mean": -3.638295940196962,
+            "neg_mean": -3.5942698736425163,
+            "calibrated_threshold": -3.6162829069197393
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.4136111111111111,
+            "auc_best_direction": 0.5863888888888888,
+            "abnormal_scores_higher": false,
+            "pos_mean": -47.92088921758375,
+            "neg_mean": -47.46525785416851,
+            "calibrated_threshold": -47.69307353587613
+          },
+          "crest_factor": {
+            "auc": 0.4811111111111111,
+            "auc_best_direction": 0.518888888888889,
+            "abnormal_scores_higher": false,
+            "pos_mean": 4.649593457225091,
+            "neg_mean": 4.655831501047422,
+            "calibrated_threshold": 4.652712479136257
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.5341666666666667,
+            "auc_best_direction": 0.5341666666666667,
+            "abnormal_scores_higher": true,
+            "pos_mean": -60.59085287538224,
+            "neg_mean": -61.04677741028081,
+            "calibrated_threshold": -60.818815142831525
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.5305555555555556,
+            "auc_best_direction": 0.5305555555555556,
+            "abnormal_scores_higher": true,
+            "pos_mean": -6.09335099516997,
+            "neg_mean": -6.001941822852256,
+            "calibrated_threshold": -6.047646409011113
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.4708333333333333,
+            "auc_best_direction": 0.5291666666666667,
+            "abnormal_scores_higher": false,
+            "pos_mean": -50.37594427255677,
+            "neg_mean": -49.872929803378234,
+            "calibrated_threshold": -50.1244370379675
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.6105555555555555,
+            "auc_best_direction": 0.6105555555555555,
+            "abnormal_scores_higher": true,
+            "pos_mean": -14.920214726938266,
+            "neg_mean": -13.739821828178043,
+            "calibrated_threshold": -14.330018277558153
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.6116666666666667,
+            "auc_best_direction": 0.6116666666666667,
+            "abnormal_scores_higher": true,
+            "pos_mean": -59.202808004325064,
+            "neg_mean": -57.610809808704026,
+            "calibrated_threshold": -58.40680890651454
+          }
+        },
+        "best_candidate": "2000-8000Hz|band_abs_db",
+        "best_auc_best_direction": 0.6116666666666667,
+        "calibration": {
+          "band_stat_key": "2000-8000Hz|band_abs_db",
+          "threshold": -58.40680890651454,
+          "abnormal_scores_higher": true
+        }
+      },
+      "chiller_6/04": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 348,
+        "n_neg_total": 1033,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.6408333333333334,
+            "auc_best_direction": 0.6408333333333334,
+            "abnormal_scores_higher": true,
+            "pos_mean": -2.6941043222468526,
+            "neg_mean": -3.054218575195629,
+            "calibrated_threshold": -2.8741614487212406
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.8063888888888889,
+            "auc_best_direction": 0.8063888888888889,
+            "abnormal_scores_higher": true,
+            "pos_mean": -45.69930889245898,
+            "neg_mean": -47.25095626261596,
+            "calibrated_threshold": -46.475132577537465
+          },
+          "crest_factor": {
+            "auc": 0.5297222222222222,
+            "auc_best_direction": 0.5297222222222222,
+            "abnormal_scores_higher": true,
+            "pos_mean": 4.48319734993981,
+            "neg_mean": 4.549673779337681,
+            "calibrated_threshold": 4.516435564638746
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.74,
+            "auc_best_direction": 0.74,
+            "abnormal_scores_higher": true,
+            "pos_mean": -58.72961295133941,
+            "neg_mean": -61.21415387638762,
+            "calibrated_threshold": -59.971883413863516
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.3452777777777778,
+            "auc_best_direction": 0.6547222222222222,
+            "abnormal_scores_higher": false,
+            "pos_mean": -7.604496065855048,
+            "neg_mean": -6.753199482914805,
+            "calibrated_threshold": -7.178847774384927
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.5833333333333334,
+            "auc_best_direction": 0.5833333333333334,
+            "abnormal_scores_higher": true,
+            "pos_mean": -50.60970063606718,
+            "neg_mean": -50.94993717033513,
+            "calibrated_threshold": -50.77981890320116
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.3761111111111111,
+            "auc_best_direction": 0.6238888888888889,
+            "abnormal_scores_higher": false,
+            "pos_mean": -18.563929835230645,
+            "neg_mean": -16.819916989477825,
+            "calibrated_threshold": -17.691923412354235
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.5361111111111111,
+            "auc_best_direction": 0.5361111111111111,
+            "abnormal_scores_higher": true,
+            "pos_mean": -61.56913440544279,
+            "neg_mean": -61.01665467689815,
+            "calibrated_threshold": -61.29289454117047
+          }
+        },
+        "best_candidate": "0-500Hz|band_abs_db",
+        "best_auc_best_direction": 0.8063888888888889,
+        "calibration": {
+          "band_stat_key": "0-500Hz|band_abs_db",
+          "threshold": -46.475132577537465,
+          "abnormal_scores_higher": true
+        }
+      },
+      "chiller_6/06": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 361,
+        "n_neg_total": 1015,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.6475,
+            "auc_best_direction": 0.6475,
+            "abnormal_scores_higher": true,
+            "pos_mean": -3.439909503765974,
+            "neg_mean": -4.06096235686122,
+            "calibrated_threshold": -3.750435930313597
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.32861111111111113,
+            "auc_best_direction": 0.6713888888888888,
+            "abnormal_scores_higher": false,
+            "pos_mean": -47.84437649168638,
+            "neg_mean": -46.925823229440475,
+            "calibrated_threshold": -47.38509986056343
+          },
+          "crest_factor": {
+            "auc": 0.5644444444444444,
+            "auc_best_direction": 0.5644444444444444,
+            "abnormal_scores_higher": true,
+            "pos_mean": 4.365253585604821,
+            "neg_mean": 4.280365557225285,
+            "calibrated_threshold": 4.322809571415053
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.335,
+            "auc_best_direction": 0.665,
+            "abnormal_scores_higher": false,
+            "pos_mean": -58.657307239340426,
+            "neg_mean": -56.844845541084325,
+            "calibrated_threshold": -57.751076390212376
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.34833333333333333,
+            "auc_best_direction": 0.6516666666666666,
+            "abnormal_scores_higher": false,
+            "pos_mean": -6.657474146785447,
+            "neg_mean": -4.925396354825485,
+            "calibrated_threshold": -5.791435250805465
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.2833333333333333,
+            "auc_best_direction": 0.7166666666666667,
+            "abnormal_scores_higher": false,
+            "pos_mean": -51.06194113470587,
+            "neg_mean": -47.79025722740472,
+            "calibrated_threshold": -49.42609918105529
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.5630555555555555,
+            "auc_best_direction": 0.5630555555555555,
+            "abnormal_scores_higher": true,
+            "pos_mean": -18.248861699939937,
+            "neg_mean": -18.914236886866544,
+            "calibrated_threshold": -18.581549293403242
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.38,
+            "auc_best_direction": 0.62,
+            "abnormal_scores_higher": false,
+            "pos_mean": -62.653328687860345,
+            "neg_mean": -61.779097759445804,
+            "calibrated_threshold": -62.21621322365307
+          }
+        },
+        "best_candidate": "500-2000Hz|band_abs_db",
+        "best_auc_best_direction": 0.7166666666666667,
+        "calibration": {
+          "band_stat_key": "500-2000Hz|band_abs_db",
+          "threshold": -49.42609918105529,
+          "abnormal_scores_higher": false
+        }
+      },
+      "hydraulic_pump_1/00": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 144,
+        "n_neg_total": 1007,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.5025,
+            "auc_best_direction": 0.5025,
+            "abnormal_scores_higher": true,
+            "pos_mean": -3.4933150568981075,
+            "neg_mean": -3.4172254755220974,
+            "calibrated_threshold": -3.4552702662101025
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.8041666666666667,
+            "auc_best_direction": 0.8041666666666667,
+            "abnormal_scores_higher": true,
+            "pos_mean": -44.98311630527696,
+            "neg_mean": -48.80073438700103,
+            "calibrated_threshold": -46.89192534613899
+          },
+          "crest_factor": {
+            "auc": 0.6175,
+            "auc_best_direction": 0.6175,
+            "abnormal_scores_higher": true,
+            "pos_mean": 7.036447875819182,
+            "neg_mean": 5.94543457566985,
+            "calibrated_threshold": 6.490941225744516
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.6005555555555555,
+            "auc_best_direction": 0.6005555555555555,
+            "abnormal_scores_higher": true,
+            "pos_mean": -59.56305663470381,
+            "neg_mean": -60.14482477626221,
+            "calibrated_threshold": -59.85394070548301
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.49805555555555553,
+            "auc_best_direction": 0.5019444444444445,
+            "abnormal_scores_higher": false,
+            "pos_mean": -6.734517270865798,
+            "neg_mean": -6.737971931173657,
+            "calibrated_threshold": -6.736244601019727
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.7308333333333333,
+            "auc_best_direction": 0.7308333333333333,
+            "abnormal_scores_higher": true,
+            "pos_mean": -48.224318519244655,
+            "neg_mean": -52.12148084265259,
+            "calibrated_threshold": -50.17289968094862
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.4063888888888889,
+            "auc_best_direction": 0.5936111111111111,
+            "abnormal_scores_higher": false,
+            "pos_mean": -16.103142357201143,
+            "neg_mean": -15.456850953939503,
+            "calibrated_threshold": -15.779996655570322
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.7275,
+            "auc_best_direction": 0.7275,
+            "abnormal_scores_higher": true,
+            "pos_mean": -57.59294360558,
+            "neg_mean": -60.84035986541845,
+            "calibrated_threshold": -59.21665173549923
+          }
+        },
+        "best_candidate": "0-500Hz|band_abs_db",
+        "best_auc_best_direction": 0.8041666666666667,
+        "calibration": {
+          "band_stat_key": "0-500Hz|band_abs_db",
+          "threshold": -46.89192534613899,
+          "abnormal_scores_higher": true
+        }
+      },
+      "hydraulic_pump_1/02": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 111,
+        "n_neg_total": 1005,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.3622222222222222,
+            "auc_best_direction": 0.6377777777777778,
+            "abnormal_scores_higher": false,
+            "pos_mean": -4.3062361871389605,
+            "neg_mean": -3.7117354583918547,
+            "calibrated_threshold": -4.008985822765408
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.6377777777777778,
+            "auc_best_direction": 0.6377777777777778,
+            "abnormal_scores_higher": true,
+            "pos_mean": -48.28153004917877,
+            "neg_mean": -49.12892751718092,
+            "calibrated_threshold": -48.70522878317985
+          },
+          "crest_factor": {
+            "auc": 0.49444444444444446,
+            "auc_best_direction": 0.5055555555555555,
+            "abnormal_scores_higher": false,
+            "pos_mean": 5.923824686951531,
+            "neg_mean": 5.523125669327482,
+            "calibrated_threshold": 5.723475178139506
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.4925,
+            "auc_best_direction": 0.5075000000000001,
+            "abnormal_scores_higher": false,
+            "pos_mean": -60.419749371213555,
+            "neg_mean": -60.323806203718206,
+            "calibrated_threshold": -60.37177778746588
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.6275,
+            "auc_best_direction": 0.6275,
+            "abnormal_scores_higher": true,
+            "pos_mean": -5.423565614428245,
+            "neg_mean": -6.32454877866768,
+            "calibrated_threshold": -5.874057196547962
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.7813888888888889,
+            "auc_best_direction": 0.7813888888888889,
+            "abnormal_scores_higher": true,
+            "pos_mean": -49.398859476468076,
+            "neg_mean": -51.74174083745675,
+            "calibrated_threshold": -50.57030015696242
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.475,
+            "auc_best_direction": 0.525,
+            "abnormal_scores_higher": false,
+            "pos_mean": -14.352945411602166,
+            "neg_mean": -14.887511386644174,
+            "calibrated_threshold": -14.620228399123171
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.5291666666666667,
+            "auc_best_direction": 0.5291666666666667,
+            "abnormal_scores_higher": true,
+            "pos_mean": -58.328239273641984,
+            "neg_mean": -60.30470344543322,
+            "calibrated_threshold": -59.3164713595376
+          }
+        },
+        "best_candidate": "500-2000Hz|band_abs_db",
+        "best_auc_best_direction": 0.7813888888888889,
+        "calibration": {
+          "band_stat_key": "500-2000Hz|band_abs_db",
+          "threshold": -50.57030015696242,
+          "abnormal_scores_higher": true
+        }
+      },
+      "hydraulic_pump_1/04": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 100,
+        "n_neg_total": 702,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.4727777777777778,
+            "auc_best_direction": 0.5272222222222223,
+            "abnormal_scores_higher": false,
+            "pos_mean": -4.981728023957985,
+            "neg_mean": -4.639315021797686,
+            "calibrated_threshold": -4.810521522877836
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.4638888888888889,
+            "auc_best_direction": 0.5361111111111111,
+            "abnormal_scores_higher": false,
+            "pos_mean": -49.99073329396927,
+            "neg_mean": -49.47830561797852,
+            "calibrated_threshold": -49.734519455973896
+          },
+          "crest_factor": {
+            "auc": 0.5466666666666666,
+            "auc_best_direction": 0.5466666666666666,
+            "abnormal_scores_higher": true,
+            "pos_mean": 4.56520757016248,
+            "neg_mean": 4.624927902684041,
+            "calibrated_threshold": 4.59506773642326
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.4572222222222222,
+            "auc_best_direction": 0.5427777777777778,
+            "abnormal_scores_higher": false,
+            "pos_mean": -62.20099159985582,
+            "neg_mean": -60.83705067901964,
+            "calibrated_threshold": -61.519021139437726
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.6583333333333333,
+            "auc_best_direction": 0.6583333333333333,
+            "abnormal_scores_higher": true,
+            "pos_mean": -6.155955336730202,
+            "neg_mean": -7.273771998283887,
+            "calibrated_threshold": -6.7148636675070446
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.6055555555555555,
+            "auc_best_direction": 0.6055555555555555,
+            "abnormal_scores_higher": true,
+            "pos_mean": -51.164960606741474,
+            "neg_mean": -52.112762594464726,
+            "calibrated_threshold": -51.6388616006031
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.30333333333333334,
+            "auc_best_direction": 0.6966666666666667,
+            "abnormal_scores_higher": false,
+            "pos_mean": -9.517133923368798,
+            "neg_mean": -8.154785925644772,
+            "calibrated_threshold": -8.835959924506785
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.29777777777777775,
+            "auc_best_direction": 0.7022222222222223,
+            "abnormal_scores_higher": false,
+            "pos_mean": -54.52613919338008,
+            "neg_mean": -52.993776521825595,
+            "calibrated_threshold": -53.75995785760284
+          }
+        },
+        "best_candidate": "2000-8000Hz|band_abs_db",
+        "best_auc_best_direction": 0.7022222222222223,
+        "calibration": {
+          "band_stat_key": "2000-8000Hz|band_abs_db",
+          "threshold": -53.75995785760284,
+          "abnormal_scores_higher": false
+        }
+      },
+      "hydraulic_pump_1/06": {
+        "status": "OK",
+        "n_pos_sampled": 60,
+        "n_neg_sampled": 60,
+        "n_pos_total": 102,
+        "n_neg_total": 1036,
+        "candidates": {
+          "0-500Hz|band_rel_rms": {
+            "auc": 0.18805555555555556,
+            "auc_best_direction": 0.8119444444444445,
+            "abnormal_scores_higher": false,
+            "pos_mean": -2.967875600596392,
+            "neg_mean": -2.1718511098743827,
+            "calibrated_threshold": -2.5698633552353876
+          },
+          "0-500Hz|band_abs_db": {
+            "auc": 0.5733333333333334,
+            "auc_best_direction": 0.5733333333333334,
+            "abnormal_scores_higher": true,
+            "pos_mean": -45.282732510954816,
+            "neg_mean": -46.47449147051019,
+            "calibrated_threshold": -45.8786119907325
+          },
+          "crest_factor": {
+            "auc": 0.8363888888888888,
+            "auc_best_direction": 0.8363888888888888,
+            "abnormal_scores_higher": true,
+            "pos_mean": 5.687474722182268,
+            "neg_mean": 4.3013835300679855,
+            "calibrated_threshold": 4.994429126125127
+          },
+          "dominant_freq_mag_db": {
+            "auc": 0.20722222222222222,
+            "auc_best_direction": 0.7927777777777778,
+            "abnormal_scores_higher": false,
+            "pos_mean": -58.92249568039484,
+            "neg_mean": -55.35771931354358,
+            "calibrated_threshold": -57.14010749696921
+          },
+          "500-2000Hz|band_rel_rms": {
+            "auc": 0.8166666666666667,
+            "auc_best_direction": 0.8166666666666667,
+            "abnormal_scores_higher": true,
+            "pos_mean": -6.871442089764974,
+            "neg_mean": -9.565953156246104,
+            "calibrated_threshold": -8.21869762300554
+          },
+          "500-2000Hz|band_abs_db": {
+            "auc": 0.8641666666666666,
+            "auc_best_direction": 0.8641666666666666,
+            "abnormal_scores_higher": true,
+            "pos_mean": -49.18629900012341,
+            "neg_mean": -53.86859351688189,
+            "calibrated_threshold": -51.52744625850265
+          },
+          "2000-8000Hz|band_rel_rms": {
+            "auc": 0.6894444444444444,
+            "auc_best_direction": 0.6894444444444444,
+            "abnormal_scores_higher": true,
+            "pos_mean": -19.83361694520262,
+            "neg_mean": -21.789565944960508,
+            "calibrated_threshold": -20.811591445081564
+          },
+          "2000-8000Hz|band_abs_db": {
+            "auc": 0.6952777777777778,
+            "auc_best_direction": 0.6952777777777778,
+            "abnormal_scores_higher": true,
+            "pos_mean": -62.14847385556103,
+            "neg_mean": -66.0922063055963,
+            "calibrated_threshold": -64.12034008057867
+          }
+        },
+        "best_candidate": "500-2000Hz|band_abs_db",
+        "best_auc_best_direction": 0.8641666666666666,
+        "calibration": {
+          "band_stat_key": "500-2000Hz|band_abs_db",
+          "threshold": -51.52744625850265,
+          "abnormal_scores_higher": true
+        }
+      }
+    },
+    "best_overall": [
+      "hydraulic_pump_1/06:500-2000Hz|band_abs_db",
+      0.8641666666666666
+    ],
+    "note": "AUC computed against the HIDDEN MIMII label, using only real compute_acoustic_features() output -- never used to build the shipped indicator's threshold from labels beyond this validation check itself. verdict=PASS requires EVERY asset/machine_id combination to clear 0.65 AUC (best direction); MARGINAL means only some do; FAIL means none do."
+  },
+  "g2": {
+    "gate": "G2_acoustic_pool_independence",
+    "verdict": "PASS",
+    "sha256_overlap_count": 0,
+    "machine_types_per_asset": {
+      "chiller_6": [
+        "fan"
+      ],
+      "hydraulic_pump_1": [
+        "pump"
+      ]
+    },
+    "independent_acoustic_worlds_per_condition": 8,
+    "note": "chiller_6 draws from MIMII 'fan' clips, hydraulic_pump_1 from MIMII 'pump' clips -- disjoint machine types by construction; this check confirms no literal clip (by content sha256) is shared. 8 (asset, machine_id) acoustic pools exist per condition (normal/fault), i.e. up to 2x that many worlds total -- this is the number used for world-clustered statistics (plan I)."
+  },
+  "g3": {
+    "gate": "G3_sufficiency_rule_explicit",
+    "verdict": "REPORTED_PENDING_SME_SIGNOFF",
+    "rule_version": "b2-R-v1",
+    "fault_clause_names": [
+      "acoustic1_iot_persist2",
+      "acoustic_2plus_positive",
+      "thermal_hotspot"
+    ],
+    "normal_clause_names": [
+      "acoustic_3plus_negative_iot_inband",
+      "iot_inband_streak3"
+    ],
+    "open_question_for_sme": "Is IoT-only closure (3 consecutive in-band reads, with NO physical/acoustic/thermal evidence at all) an acceptable basis for COMMIT_NORMAL, given the same closure path is NOT offered for COMMIT_FAULT (fault always requires acoustic or thermal)? This asymmetry is intentional in the draft rule (telemetry alone can rule an asset IN as healthy but not confirm a fault) but needs domain sign-off.",
+    "note": "Code-level testability (one test per clause) is verified by playground/tests/test_semantics_r_clauses.py, run separately. SME endorsement of the rule's real-world validity is NOT established by this gate."
+  },
+  "g4": {
+    "gate": "G4_leakage_scan",
+    "verdict": "PASS",
+    "n_payloads_checked": 56,
+    "violations": []
+  }
+}

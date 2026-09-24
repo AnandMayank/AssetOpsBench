@@ -1,0 +1,254 @@
+{
+  "schema": "pg_b2.rule_sensitivity_report/1",
+  "R_primary": {
+    "rule": "primary",
+    "n_episodes": 43,
+    "family_counts": {
+      "A": 4,
+      "B": 14,
+      "C": 7,
+      "D": 8,
+      "E": 7,
+      "F": 3
+    },
+    "verdict_distribution": {
+      "fault_share": 0.5348837209302325,
+      "normal_share": 0.3023255813953488,
+      "escalate_share": 0.16279069767441862
+    },
+    "trivial_policy_egr": {
+      "NeverAcquire": 0.16279069767441862,
+      "AlwaysEscalate": 0.16279069767441862,
+      "AlwaysCommit": 0.0,
+      "AcquireEverything": 0.13953488372093023,
+      "ContractRule": 0.0
+    },
+    "trivial_policy_full": {
+      "NeverAcquire": {
+        "n": 43,
+        "EGR": 0.16279069767441862,
+        "TGS": 0.16279069767441862,
+        "SD": 1.0,
+        "TDA": 0.16279069767441862,
+        "mean_waste_count": 0.0,
+        "premature_commit_rate": 0.0,
+        "premature_escalate_rate": 0.8372093023255814,
+        "escalation_rate": 1.0,
+        "mean_total_cost": 0.0,
+        "mean_n_acquisitions": 0.0,
+        "mean_reg_min": 0.0
+      },
+      "AlwaysEscalate": {
+        "n": 43,
+        "EGR": 0.16279069767441862,
+        "TGS": 0.16279069767441862,
+        "SD": 1.0,
+        "TDA": 0.16279069767441862,
+        "mean_waste_count": 0.0,
+        "premature_commit_rate": 0.0,
+        "premature_escalate_rate": 0.8372093023255814,
+        "escalation_rate": 1.0,
+        "mean_total_cost": 0.0,
+        "mean_n_acquisitions": 0.0,
+        "mean_reg_min": 0.0
+      },
+      "AlwaysCommit": {
+        "n": 43,
+        "EGR": 0.0,
+        "TGS": 0.0,
+        "SD": 0.0,
+        "TDA": 0.3023255813953488,
+        "mean_waste_count": 0.0,
+        "premature_commit_rate": 1.0,
+        "premature_escalate_rate": 0.0,
+        "escalation_rate": 0.0,
+        "mean_total_cost": 0.0,
+        "mean_n_acquisitions": 0.0,
+        "mean_reg_min": 0.0
+      },
+      "AcquireEverything": {
+        "n": 43,
+        "EGR": 0.13953488372093023,
+        "TGS": 0.6976744186046512,
+        "SD": 0.13953488372093023,
+        "TDA": 0.6976744186046512,
+        "mean_waste_count": 7.767441860465116,
+        "premature_commit_rate": 0.0,
+        "premature_escalate_rate": 0.27906976744186046,
+        "escalation_rate": 0.4186046511627907,
+        "mean_total_cost": 23.75581395348837,
+        "mean_n_acquisitions": 16.74418604651163,
+        "mean_reg_min": 3.14765361952862
+      },
+      "ContractRule": {
+        "n": 43,
+        "EGR": 0.0,
+        "TGS": 0.046511627906976744,
+        "SD": 0.8837209302325582,
+        "TDA": 0.046511627906976744,
+        "mean_waste_count": 29.674418604651162,
+        "premature_commit_rate": 0.11627906976744186,
+        "premature_escalate_rate": 0.7674418604651163,
+        "escalation_rate": 0.813953488372093,
+        "mean_total_cost": 38.81395348837209,
+        "mean_n_acquisitions": 1.813953488372093,
+        "mean_reg_min": 0.0
+      }
+    },
+    "frontier_replay_reference": {
+      "n": 43,
+      "EGR": 1.0,
+      "TGS": 1.0,
+      "SD": 1.0,
+      "TDA": 1.0,
+      "mean_waste_count": 0.0,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.0,
+      "escalation_rate": 0.16279069767441862,
+      "mean_total_cost": 6.3023255813953485,
+      "mean_n_acquisitions": 2.0232558139534884,
+      "mean_reg_min": 0.0
+    },
+    "central_properties": {
+      "A_contract_rule_below_frontier_replay": true,
+      "B_acquire_everything_penalized": true,
+      "C_never_acquire_always_escalate_not_strong": true,
+      "D_pool_solvable": true,
+      "E_headroom_between_trivial_and_reference": true,
+      "F_not_reducible_to_bare_classification": true
+    },
+    "all_central_properties_hold": true
+  },
+  "R_strict": {
+    "rule": "strict",
+    "n_episodes": 43,
+    "family_counts": {
+      "A": 4,
+      "B": 14,
+      "C": 7,
+      "D": 8,
+      "E": 7,
+      "F": 3
+    },
+    "verdict_distribution": {
+      "fault_share": 0.5348837209302325,
+      "normal_share": 0.11627906976744186,
+      "escalate_share": 0.3488372093023256
+    },
+    "trivial_policy_egr": {
+      "NeverAcquire": 0.3488372093023256,
+      "AlwaysEscalate": 0.3488372093023256,
+      "AlwaysCommit": 0.0,
+      "AcquireEverything": 0.13953488372093023,
+      "ContractRule": 0.0
+    },
+    "trivial_policy_full": {
+      "NeverAcquire": {
+        "n": 43,
+        "EGR": 0.3488372093023256,
+        "TGS": 0.3488372093023256,
+        "SD": 1.0,
+        "TDA": 0.3488372093023256,
+        "mean_waste_count": 0.0,
+        "premature_commit_rate": 0.0,
+        "premature_escalate_rate": 0.6511627906976745,
+        "escalation_rate": 1.0,
+        "mean_total_cost": 0.0,
+        "mean_n_acquisitions": 0.0,
+        "mean_reg_min": 0.0
+      },
+      "AlwaysEscalate": {
+        "n": 43,
+        "EGR": 0.3488372093023256,
+        "TGS": 0.3488372093023256,
+        "SD": 1.0,
+        "TDA": 0.3488372093023256,
+        "mean_waste_count": 0.0,
+        "premature_commit_rate": 0.0,
+        "premature_escalate_rate": 0.6511627906976745,
+        "escalation_rate": 1.0,
+        "mean_total_cost": 0.0,
+        "mean_n_acquisitions": 0.0,
+        "mean_reg_min": 0.0
+      },
+      "AlwaysCommit": {
+        "n": 43,
+        "EGR": 0.0,
+        "TGS": 0.0,
+        "SD": 0.0,
+        "TDA": 0.11627906976744186,
+        "mean_waste_count": 0.0,
+        "premature_commit_rate": 1.0,
+        "premature_escalate_rate": 0.0,
+        "escalation_rate": 0.0,
+        "mean_total_cost": 0.0,
+        "mean_n_acquisitions": 0.0,
+        "mean_reg_min": 0.0
+      },
+      "AcquireEverything": {
+        "n": 43,
+        "EGR": 0.13953488372093023,
+        "TGS": 0.7441860465116279,
+        "SD": 0.13953488372093023,
+        "TDA": 0.8837209302325582,
+        "mean_waste_count": 7.767441860465116,
+        "premature_commit_rate": 0.13953488372093023,
+        "premature_escalate_rate": 0.09302325581395349,
+        "escalation_rate": 0.4186046511627907,
+        "mean_total_cost": 23.75581395348837,
+        "mean_n_acquisitions": 16.74418604651163,
+        "mean_reg_min": 1.5834455667789
+      },
+      "ContractRule": {
+        "n": 43,
+        "EGR": 0.0,
+        "TGS": 0.16279069767441862,
+        "SD": 0.8837209302325582,
+        "TDA": 0.16279069767441862,
+        "mean_waste_count": 29.674418604651162,
+        "premature_commit_rate": 0.11627906976744186,
+        "premature_escalate_rate": 0.6511627906976745,
+        "escalation_rate": 0.813953488372093,
+        "mean_total_cost": 38.81395348837209,
+        "mean_n_acquisitions": 1.813953488372093,
+        "mean_reg_min": 0.0
+      }
+    },
+    "frontier_replay_reference": {
+      "n": 43,
+      "EGR": 1.0,
+      "TGS": 1.0,
+      "SD": 1.0,
+      "TDA": 1.0,
+      "mean_waste_count": 0.0,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.0,
+      "escalation_rate": 0.3488372093023256,
+      "mean_total_cost": 6.837209302325581,
+      "mean_n_acquisitions": 1.627906976744186,
+      "mean_reg_min": 0.0
+    },
+    "central_properties": {
+      "A_contract_rule_below_frontier_replay": true,
+      "B_acquire_everything_penalized": true,
+      "C_never_acquire_always_escalate_not_strong": true,
+      "D_pool_solvable": true,
+      "E_headroom_between_trivial_and_reference": true,
+      "F_not_reducible_to_bare_classification": true
+    },
+    "all_central_properties_hold": true
+  },
+  "delta": {
+    "n_episodes_delta": 0,
+    "verdict_distribution_delta": {
+      "fault_share": 0.0,
+      "normal_share": -0.18604651162790697,
+      "escalate_share": 0.18604651162790697
+    },
+    "contract_rule_egr_delta": 0.0,
+    "frontier_replay_egr_delta": 0.0,
+    "acquire_everything_egr_delta": 0.0
+  },
+  "conclusions_highly_sensitive_to_rule_choice": false,
+  "note": "Gold and PRIMARY-pool episode composition are recomputed per variant using the SAME 43-episode family/world set (build_pool(rule=...) only changes what counts as sufficient, not which worlds/regimes are sampled) -- n_episodes can still differ if a world's frontier becomes empty/non-empty under the stricter rule."
+}

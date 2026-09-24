@@ -1,0 +1,126 @@
+{
+  "schema": "pg_b2.acceptance_gate_report/1",
+  "n_episodes": 43,
+  "prevalence": {
+    "escalate_share": 0.16279069767441862,
+    "fault_share": 0.5348837209302325,
+    "normal_share": 0.3023255813953488,
+    "verdict_base_rate": 0.5348837209302325
+  },
+  "trivial_policy_results": {
+    "NeverAcquire": {
+      "n": 43,
+      "EGR": 0.16279069767441862,
+      "TGS": 0.16279069767441862,
+      "SD": 1.0,
+      "TDA": 0.16279069767441862,
+      "mean_waste_count": 0.0,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.8372093023255814,
+      "escalation_rate": 1.0,
+      "mean_total_cost": 0.0,
+      "mean_n_acquisitions": 0.0,
+      "mean_reg_min": 0.0
+    },
+    "AlwaysEscalate": {
+      "n": 43,
+      "EGR": 0.16279069767441862,
+      "TGS": 0.16279069767441862,
+      "SD": 1.0,
+      "TDA": 0.16279069767441862,
+      "mean_waste_count": 0.0,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.8372093023255814,
+      "escalation_rate": 1.0,
+      "mean_total_cost": 0.0,
+      "mean_n_acquisitions": 0.0,
+      "mean_reg_min": 0.0
+    },
+    "AlwaysCommit": {
+      "n": 43,
+      "EGR": 0.0,
+      "TGS": 0.0,
+      "SD": 0.0,
+      "TDA": 0.3023255813953488,
+      "mean_waste_count": 0.0,
+      "premature_commit_rate": 1.0,
+      "premature_escalate_rate": 0.0,
+      "escalation_rate": 0.0,
+      "mean_total_cost": 0.0,
+      "mean_n_acquisitions": 0.0,
+      "mean_reg_min": 0.0
+    },
+    "AcquireEverything": {
+      "n": 43,
+      "EGR": 0.13953488372093023,
+      "TGS": 0.6976744186046512,
+      "SD": 0.13953488372093023,
+      "TDA": 0.6976744186046512,
+      "mean_waste_count": 7.767441860465116,
+      "premature_commit_rate": 0.0,
+      "premature_escalate_rate": 0.27906976744186046,
+      "escalation_rate": 0.4186046511627907,
+      "mean_total_cost": 23.75581395348837,
+      "mean_n_acquisitions": 16.74418604651163,
+      "mean_reg_min": 3.14765361952862
+    },
+    "ContractRule": {
+      "n": 43,
+      "EGR": 0.0,
+      "TGS": 0.046511627906976744,
+      "SD": 0.8837209302325582,
+      "TDA": 0.046511627906976744,
+      "mean_waste_count": 29.674418604651162,
+      "premature_commit_rate": 0.11627906976744186,
+      "premature_escalate_rate": 0.7674418604651163,
+      "escalation_rate": 0.813953488372093,
+      "mean_total_cost": 38.81395348837209,
+      "mean_n_acquisitions": 1.813953488372093,
+      "mean_reg_min": 0.0
+    }
+  },
+  "gate_checks": {
+    "NeverAcquire": {
+      "egr": 0.16279069767441862,
+      "ceiling": 0.16279069767441862,
+      "pass": true
+    },
+    "AlwaysEscalate": {
+      "egr": 0.16279069767441862,
+      "ceiling": 0.16279069767441862,
+      "pass": true
+    },
+    "AlwaysCommit": {
+      "egr": 0.0,
+      "ceiling": 0.3,
+      "pass": true
+    },
+    "AcquireEverything": {
+      "egr": 0.13953488372093023,
+      "ceiling": 0.3,
+      "pass": true
+    },
+    "ContractRule": {
+      "egr": 0.0,
+      "ceiling": 0.5348837209302325,
+      "pass": true
+    }
+  },
+  "frontier_replay_reference": {
+    "n": 43,
+    "EGR": 1.0,
+    "TGS": 1.0,
+    "SD": 1.0,
+    "TDA": 1.0,
+    "mean_waste_count": 0.0,
+    "premature_commit_rate": 0.0,
+    "premature_escalate_rate": 0.0,
+    "escalation_rate": 0.16279069767441862,
+    "mean_total_cost": 6.3023255813953485,
+    "mean_n_acquisitions": 2.0232558139534884,
+    "mean_reg_min": 0.0
+  },
+  "solvability_pass": true,
+  "GO_FOR_PHASE_1A_CONSTRUCTION": true,
+  "NOTE": "This gate covers offline construction only. pg_b2_run.py (model-facing) does not exist yet -- per the approved plan, building it is a SEPARATE, later decision, gated on this report plus G1-G4 (reports/playground/b2/substrate_gates_report.json)."
+}

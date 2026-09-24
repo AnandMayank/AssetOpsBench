@@ -1,0 +1,312 @@
+{
+  "M0": {
+    "Claude Sonnet 4.6": {
+      "enabled": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "disabled": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 5.0
+      }
+    },
+    "GPT-5.2": {
+      "enabled": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "disabled": {
+        "final_action": "ESCALATE",
+        "n_turns": 7,
+        "total_cost": 0.5
+      }
+    },
+    "DeepSeek V4 Pro": {
+      "enabled": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "disabled": {
+        "final_action": "ESCALATE",
+        "n_turns": 13,
+        "total_cost": 1.0
+      }
+    },
+    "Mistral Medium 3.5": {
+      "enabled": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      },
+      "disabled": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      }
+    },
+    "Qwen3.5-397B-A17B": {
+      "enabled": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "disabled": {
+        "final_action": "ESCALATE",
+        "n_turns": 1,
+        "total_cost": 0.0
+      }
+    }
+  },
+  "M1": {
+    "Claude Sonnet 4.6": {
+      "available": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "unavailable": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "GPT-5.2": {
+      "available": {
+        "final_action": "COMMIT_FAULT",
+        "n_turns": 5,
+        "total_cost": 3.5
+      },
+      "unavailable": {
+        "final_action": "COMMIT_FAULT",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "DeepSeek V4 Pro": {
+      "available": {
+        "final_action": "COMMIT_FAULT",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "unavailable": {
+        "final_action": "ESCALATE",
+        "n_turns": 4,
+        "total_cost": 1.5
+      }
+    },
+    "Mistral Medium 3.5": {
+      "available": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      },
+      "unavailable": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 11.0
+      }
+    },
+    "Qwen3.5-397B-A17B": {
+      "available": {
+        "final_action": "COMMIT_FAULT",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "unavailable": {
+        "final_action": "ESCALATE",
+        "n_turns": 1,
+        "total_cost": 0.0
+      }
+    }
+  },
+  "M2": {
+    "Claude Sonnet 4.6": {
+      "cheap_ratio": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "expensive_ratio": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "GPT-5.2": {
+      "cheap_ratio": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "expensive_ratio": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "DeepSeek V4 Pro": {
+      "cheap_ratio": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "expensive_ratio": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "Mistral Medium 3.5": {
+      "cheap_ratio": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      },
+      "expensive_ratio": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      }
+    },
+    "Qwen3.5-397B-A17B": {
+      "cheap_ratio": {
+        "final_action": "ESCALATE",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "expensive_ratio": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    }
+  },
+  "M3": {
+    "Claude Sonnet 4.6": {
+      "draw_default": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "draw_alt": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "GPT-5.2": {
+      "draw_default": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "draw_alt": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "DeepSeek V4 Pro": {
+      "draw_default": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "draw_alt": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "Mistral Medium 3.5": {
+      "draw_default": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      },
+      "draw_alt": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      }
+    },
+    "Qwen3.5-397B-A17B": {
+      "draw_default": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "draw_alt": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    }
+  },
+  "M4": {
+    "Claude Sonnet 4.6": {
+      "unbudgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "budgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "GPT-5.2": {
+      "unbudgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "budgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    },
+    "DeepSeek V4 Pro": {
+      "unbudgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "budgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 4,
+        "total_cost": 2.0
+      }
+    },
+    "Mistral Medium 3.5": {
+      "unbudgeted": {
+        "final_action": "ESCALATE",
+        "n_turns": 21,
+        "total_cost": 10.0
+      },
+      "budgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 15,
+        "total_cost": 8.5
+      }
+    },
+    "Qwen3.5-397B-A17B": {
+      "unbudgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      },
+      "budgeted": {
+        "final_action": "COMMIT_NORMAL",
+        "n_turns": 3,
+        "total_cost": 1.5
+      }
+    }
+  }
+}
