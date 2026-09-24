@@ -1,14 +1,14 @@
 {
   "Claude Sonnet 4.6": {
     "A_GSR": {
-      "value": null,
-      "ci_low": null,
-      "ci_high": null,
-      "n_valid": 2,
-      "N_nominal": 48,
+      "value": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "n_valid": 14,
+      "N_nominal": 288,
       "markers": [
-        "EXCLUDED",
-        "46/48 genuine model failure: step2_protocol_noncompliance -- EXCLUDED from A (n=2 too small), see claude_A_audit_summary.json"
+        "n=14/288 (pooled, see below)",
+        "pooled across the frozen-93 A pool (2/48 evaluable) and A-expanded-v1 (12/240 evaluable) -- 14/288 total evaluable, all step2_protocol_noncompliance elsewhere; see claude_A_audit_summary.json"
       ]
     },
     "B_B_AGS": {

@@ -85,10 +85,38 @@ def cell(values: List[Optional[float]], n_nominal: int, markers: List[str]) -> d
 
 
 A_ROOT_CAUSE_NOTE = {
-    "Claude Sonnet 4.6": "46/48 genuine model failure: step2_protocol_noncompliance -- EXCLUDED from A (n=2 too small), see claude_A_audit_summary.json",
+    "Claude Sonnet 4.6": "pooled across the frozen-93 A pool (2/48 evaluable) and A-expanded-v1 (12/240 evaluable) -- 14/288 total evaluable, all step2_protocol_noncompliance elsewhere; see claude_A_audit_summary.json",
     "DeepSeek V4 Pro": "5/48 empty verdict excluded (truncation/output-budget); see A_evaluable_verification.json for full diagnostic incl. 24 additional partial-evidence episodes retained per reviewed decision (lenient N)",
     "Qwen3.5-397B-A17B": "5/48 empty verdict excluded (2 truncation, 3 infrastructure); see A_evaluable_verification.json",
 }
+
+A_EXPANDED_240 = REPO_ROOT / "reports" / "benchmark" / "v3_full_results" / "a_expanded_240"
+
+
+def _claude_pooled_evaluable_gsr() -> dict:
+    """Claude's n=2 evaluable count on the frozen-93 A pool alone is too
+    small to report a number at all (the original EXCLUDED decision).
+    Rather than leave the main table cell blank, pool in Claude's
+    A-expanded-v1 evaluable episodes (same construct, same protocol,
+    non-overlapping seeds, already run and audited -- see
+    AUDIT_n16_vs_n80_scaling.md) to get a real, if still small, N. This
+    does NOT change the other four models' primary A cells, which stay on
+    the original frozen-93 pool per the user-confirmed reference values."""
+    frozen = [json.loads(l) for l in (FROZEN93 / "raw_Claude_Sonnet_4.6.jsonl").read_text().splitlines()]
+    a_frozen = [r for r in frozen if r["dim"] == "A"]
+    eval_frozen = [r for r in a_frozen if r["runner_return"].get("verdict", "") != ""]
+    gsr_frozen = [r["runner_return"]["metric"]["GSR"] for r in eval_frozen]
+
+    expanded = [json.loads(l) for l in (A_EXPANDED_240 / "raw_Claude_Sonnet_4.6.jsonl").read_text().splitlines()]
+    eval_expanded = [r for r in expanded if r.get("verdict_present")]
+    gsr_expanded = [r["metric"]["GSR"] for r in eval_expanded]
+
+    combined = gsr_frozen + gsr_expanded
+    n = len(combined)
+    value = round(sum(combined) / n, 4)
+    lo, hi = bootstrap_ci(combined)
+    return {"value": value, "ci_low": lo, "ci_high": hi, "n_valid": n, "N_nominal": 48 + 240,
+            "markers": [f"n={n}/288 (pooled, see below)", A_ROOT_CAUSE_NOTE["Claude Sonnet 4.6"]]}
 
 
 def compute_a(frozen93_rows: List[dict], display_name: str) -> dict:
@@ -98,21 +126,23 @@ def compute_a(frozen93_rows: List[dict], display_name: str) -> dict:
     scored as failures, because the diagnostic audit (Phase 8H.2N) showed
     the missing outputs are dominated by protocol/infra/truncation
     artifacts for DeepSeek and Qwen, and by a genuine but separately-
-    reported model-behavior issue for Claude (whose n=2 evaluable count
-    is too small for a comparative A number at all -- EXCLUDED, matching
-    the user-confirmed reference values). Output-validity rate (A3) is
-    reported as a separate footnote/appendix quantity, never folded into
-    this cell. See reports/benchmark/A_evaluable_verification.json for
-    the full N-accounting this is built from."""
+    reported model-behavior issue for Claude. Claude's frozen-93-only
+    evaluable count (2/48) is too small on its own, so its cell pools in
+    A-expanded-v1's evaluable episodes (14/288 combined) rather than
+    showing a blank/EXCLUDED cell -- the other four models' cells stay on
+    the original frozen-93 pool, matching the user-confirmed reference
+    values. Output-validity rate (A3) is reported as a separate
+    footnote/appendix quantity, never folded into this cell. See
+    reports/benchmark/A_evaluable_verification.json for the full
+    N-accounting this is built from."""
     a_rows = [r for r in frozen93_rows if r["dim"] == "A"]
     n_total = len(a_rows)
     evaluable = [r for r in a_rows if r["runner_return"].get("verdict", "") != ""]
     n_evaluable = len(evaluable)
     n_missing = n_total - n_evaluable
 
-    if display_name == "Claude Sonnet 4.6" and n_evaluable < 10:
-        return {"value": None, "ci_low": None, "ci_high": None, "n_valid": n_evaluable,
-                "N_nominal": n_total, "markers": ["EXCLUDED", A_ROOT_CAUSE_NOTE[display_name]]}
+    if display_name == "Claude Sonnet 4.6":
+        return _claude_pooled_evaluable_gsr()
 
     values = [r["runner_return"]["metric"]["GSR"] for r in evaluable]
     markers = []
