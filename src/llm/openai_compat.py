@@ -41,19 +41,46 @@ class OpenAICompatBackend(LLMBackend):
     def generate_with_usage(
         self, prompt: str, temperature: float = 0.0
     ) -> LLMResult:
-        from openai import OpenAI
+        """Two disclosed, model-triggered protocol fallbacks, verified
+        live at the GPT-6-Astra feasibility check (same fix as the raw-
+        urllib _chat() helpers' identical logic -- see
+        run_l3_pilot_executed._chat's docstring for the exact error text):
+        some models reject 'max_tokens' (-> retry as 'max_completion_tokens')
+        and/or reject temperature=0 (-> retry with temperature omitted,
+        a real deviation from the rest of the panel's protocol that any
+        caller must disclose, not silently absorb). Every model that
+        accepts the standard request never hits either fallback."""
+        from openai import BadRequestError, OpenAI
 
         creds = resolve_router_creds(self._model_id)  # strict: clear error if unset
         client = OpenAI(base_url=creds.base_url, api_key=creds.api_key)
-        response = client.chat.completions.create(
-            model=self._model_name,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=temperature,
-            max_tokens=2048,
-        )
+
+        tokens_kwarg, include_temperature = "max_tokens", True
+        response = None
+        for _attempt in range(3):
+            kwargs: dict = {"model": self._model_name,
+                            "messages": [{"role": "user", "content": prompt}],
+                            tokens_kwarg: 2048}
+            if include_temperature:
+                kwargs["temperature"] = temperature
+            try:
+                response = client.chat.completions.create(**kwargs)
+                break
+            except BadRequestError as exc:
+                body_text = str(exc)
+                if "max_tokens" in body_text and "max_completion_tokens" in body_text and tokens_kwarg == "max_tokens":
+                    tokens_kwarg = "max_completion_tokens"
+                    continue
+                if "temperature" in body_text and include_temperature:
+                    include_temperature = False
+                    continue
+                raise
+        if response is None:
+            raise RuntimeError(f"{self._model_id}: exhausted protocol-fallback retries")
         usage = getattr(response, "usage", None)
         return LLMResult(
             text=response.choices[0].message.content,
             input_tokens=int(getattr(usage, "prompt_tokens", 0) or 0),
             output_tokens=int(getattr(usage, "completion_tokens", 0) or 0),
+            served_model=getattr(response, "model", None),
         )

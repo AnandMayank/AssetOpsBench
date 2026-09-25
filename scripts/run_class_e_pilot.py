@@ -52,6 +52,7 @@ import re
 import subprocess
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -108,18 +109,45 @@ N_EPISODES = 3
 FM = "FM-6a"   # physical-read family; same PROC/CC_grounded branch as class A
 
 
-def _chat(model: str, messages: List[Dict[str, Any]], api_key: str,
-         base_url: str) -> Tuple[Dict[str, Any], Optional[str]]:
-    body = json.dumps({"model": model, "messages": messages,
-                       "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS}).encode()
+def _post_chat(model: str, messages: List[Dict[str, Any]], api_key: str, base_url: str,
+               *, tokens_param: str = "max_tokens", include_temperature: bool = True) -> Dict[str, Any]:
+    payload = {"model": model, "messages": messages, tokens_param: MAX_TOKENS}
+    if include_temperature:
+        payload["temperature"] = TEMPERATURE
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(f"{base_url}/chat/completions", data=body,
                                  headers={"Content-Type": "application/json",
                                           "Authorization": f"Bearer {api_key}"})
-    try:
-        with urllib.request.urlopen(req, timeout=120) as r:
-            payload = json.loads(r.read())
-    except Exception as exc:  # noqa: BLE001
-        return {}, f"call_error: {exc}"
+    with urllib.request.urlopen(req, timeout=120) as r:
+        return json.loads(r.read())
+
+
+def _chat(model: str, messages: List[Dict[str, Any]], api_key: str,
+         base_url: str) -> Tuple[Dict[str, Any], Optional[str]]:
+    """Two disclosed, model-triggered protocol fallbacks -- see
+    run_l3_pilot_executed._chat's identical fix for the verified error
+    text and reasoning (max_tokens->max_completion_tokens rename;
+    temperature=0 rejected -> omit temperature, a real deviation from the
+    rest of the panel's temperature=0 protocol, disclosed not silent)."""
+    tokens_param, include_temperature = "max_tokens", True
+    for _attempt in range(3):
+        try:
+            payload = _post_chat(model, messages, api_key, base_url,
+                                 tokens_param=tokens_param, include_temperature=include_temperature)
+            break
+        except urllib.error.HTTPError as exc:
+            body_text = exc.read().decode(errors="replace")
+            if exc.code == 400 and "max_tokens" in body_text and "max_completion_tokens" in body_text and tokens_param == "max_tokens":
+                tokens_param = "max_completion_tokens"
+                continue
+            if exc.code == 400 and "temperature" in body_text and include_temperature:
+                include_temperature = False
+                continue
+            return {}, f"call_error: HTTPError {exc.code}: {body_text[:200]}"
+        except Exception as exc:  # noqa: BLE001
+            return {}, f"call_error: {exc}"
+    else:
+        return {}, "call_error: exhausted protocol-fallback retries"
     text = (payload.get("choices") or [{}])[0].get("message", {}).get("content") or ""
     if not text.strip():
         return {}, "no_answer: empty content"

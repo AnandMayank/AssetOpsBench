@@ -25,6 +25,7 @@ import re
 import subprocess
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -70,7 +71,8 @@ def _git(repo: Path, *args: str) -> str:
         return ""
 
 
-def provenance(model: str, backend: CouchDBExecutor) -> Dict[str, Any]:
+def provenance(model: str, backend: CouchDBExecutor,
+               scenarios: Optional[List[str]] = None) -> Dict[str, Any]:
     try:
         from frozen_config import config_hash
         fc = config_hash()
@@ -94,23 +96,58 @@ def provenance(model: str, backend: CouchDBExecutor) -> Dict[str, Any]:
         "backend": {"id": backend.backend_id, "version": backend.backend_version},
         "evaluator_version": EVALUATOR_VERSION,
         "scenario_version": "R055-R058 @ " + _git(SCEN_REPO, "rev-parse", "--short", "HEAD"),
-        "scenarios": list(A.PILOT_SCENARIOS),
+        "scenarios": list(scenarios) if scenarios else list(A.PILOT_SCENARIOS),
         "status": "apparatus-validity reference pilot - NOT a benchmark result",
     }
 
 
-def _chat(model: str, messages: List[Dict[str, Any]], api_key: str,
-          base_url: str) -> Tuple[Dict[str, Any], Optional[str]]:
-    body = json.dumps({"model": model, "messages": messages,
-                       "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS}).encode()
+def _post_chat(model: str, messages: List[Dict[str, Any]], api_key: str, base_url: str,
+               *, tokens_param: str = "max_tokens", include_temperature: bool = True) -> Dict[str, Any]:
+    payload = {"model": model, "messages": messages, tokens_param: MAX_TOKENS}
+    if include_temperature:
+        payload["temperature"] = TEMPERATURE
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(f"{base_url}/chat/completions", data=body,
                                  headers={"Content-Type": "application/json",
                                           "Authorization": f"Bearer {api_key}"})
-    try:
-        with urllib.request.urlopen(req, timeout=120) as r:
-            payload = json.loads(r.read())
-    except Exception as exc:  # noqa: BLE001
-        return {}, f"call_error: {exc}"
+    with urllib.request.urlopen(req, timeout=120) as r:
+        return json.loads(r.read())
+
+
+def _chat(model: str, messages: List[Dict[str, Any]], api_key: str,
+          base_url: str) -> Tuple[Dict[str, Any], Optional[str]]:
+    """Two disclosed, model-triggered protocol fallbacks, verified live at
+    the GPT-6-Astra feasibility check and DISCLOSED as protocol deviations
+    for that model specifically (not applied speculatively to any model
+    that doesn't trigger them -- every existing call site is unchanged):
+      1. some models reject 'max_tokens' ("... Use 'max_completion_tokens'
+         instead.") -> retry with the renamed parameter.
+      2. some models reject temperature=0 ("... does not support 0 with
+         this model. Only the default (1) value is supported.") -> retry
+         with temperature omitted entirely (falls back to the API's
+         default, typically 1). This means that model runs at a different,
+         non-zero temperature than the rest of the panel -- a real
+         protocol deviation, not silently equivalent, and must be
+         disclosed in any results this produces."""
+    tokens_param, include_temperature = "max_tokens", True
+    for _attempt in range(3):
+        try:
+            payload = _post_chat(model, messages, api_key, base_url,
+                                 tokens_param=tokens_param, include_temperature=include_temperature)
+            break
+        except urllib.error.HTTPError as exc:
+            body_text = exc.read().decode(errors="replace")
+            if exc.code == 400 and "max_tokens" in body_text and "max_completion_tokens" in body_text and tokens_param == "max_tokens":
+                tokens_param = "max_completion_tokens"
+                continue
+            if exc.code == 400 and "temperature" in body_text and include_temperature:
+                include_temperature = False
+                continue
+            return {}, f"call_error: HTTPError {exc.code}: {body_text[:200]}"
+        except Exception as exc:  # noqa: BLE001
+            return {}, f"call_error: {exc}"
+    else:
+        return {}, "call_error: exhausted protocol-fallback retries"
     text = (payload.get("choices") or [{}])[0].get("message", {}).get("content") or ""
     if not text.strip():
         return {}, "no_answer: empty content"
@@ -185,9 +222,11 @@ def run_episode(model: str, api_key: str, base_url: str, executor: CouchDBExecut
 
     fm = A.SCENARIOS[scenario_id]["fm"]
     gold = A.SCENARIOS[scenario_id]["gold"]
+    asset_id = A.SCENARIOS[scenario_id].get("asset")
     apparatus_failure = bool(err2) or not verdict
     scores = (None if apparatus_failure
-              else score_l3_grounded(step2, {"fm": fm}, {"action": gold}, trace))
+              else score_l3_grounded(
+                  step2, {"fm": fm, "asset_id": asset_id}, {"action": gold}, trace))
     integ = check_integrity(step2, trace,
                             required_modality="physical").to_dict()
 
@@ -222,7 +261,12 @@ def main() -> int:
                     default=REPO_ROOT / "reports" / "v1" / "l3_pilot_executed.json")
     ap.add_argument("--skip-preflight", action="store_true",
                     help=argparse.SUPPRESS)  # for apparatus debugging only
+    ap.add_argument("--scenarios", type=str, default=None,
+                    help="Comma-separated scenario ids; default A.PILOT_SCENARIOS "
+                         "(unchanged behavior when omitted)")
     args = ap.parse_args()
+    scenario_ids = ([s.strip() for s in args.scenarios.split(",") if s.strip()]
+                    if args.scenarios else list(A.PILOT_SCENARIOS))
 
     if not args.skip_preflight:
         pf = subprocess.run([sys.executable,
@@ -241,7 +285,7 @@ def main() -> int:
         return 2
 
     executor = CouchDBExecutor()
-    prov = provenance(args.model, executor)
+    prov = provenance(args.model, executor, scenarios=scenario_ids)
     print("PROVENANCE")
     for k, v in prov["repos"].items():
         print(f"  {k:32s} {v['sha'][:12]} ({v['branch']}){'  DIRTY' if v['dirty'] else ''}")
@@ -251,7 +295,7 @@ def main() -> int:
     print(f"  {'generation':32s} temp={TEMPERATURE} max_tokens={MAX_TOKENS}\n")
 
     rows: List[Dict[str, Any]] = []
-    for sid in A.PILOT_SCENARIOS:
+    for sid in scenario_ids:
         for spec in A.arms_for(sid):
             r = run_episode(args.model, api_key, args.base_url, executor, sid, spec)
             rows.append(r)
