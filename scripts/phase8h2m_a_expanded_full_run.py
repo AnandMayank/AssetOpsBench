@@ -66,10 +66,29 @@ def run_model(model_label: str, model_bare: str, rows: List[Dict[str, Any]],
     out_path = OUT_DIR / f"raw_{model_label}.jsonl"
     print(f"\n=== {model_label} ({model_bare}) -> {out_path} ===", flush=True)
 
+    # Resume support: an interrupted prior run of this exact model should
+    # not re-spend API calls on already-completed episodes (same pattern
+    # added to phase8h2z_e_expanded_full_run.py / phase8i4_c_expanded_full_run.py
+    # after the 2026-09-23 session-teardown incident).
+    done_eids = set()
+    if out_path.exists():
+        with open(out_path) as fh:
+            for line in fh:
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if not rec.get("infra_failure"):
+                    done_eids.add(rec["episode_id"])
+        if done_eids:
+            print(f"Resuming: {len(done_eids)}/{len(rows)} episodes already complete, skipping those", flush=True)
+
     n_infra_fail = 0
-    with open(out_path, "w") as fh:
+    with open(out_path, "a") as fh:
         for i, row in enumerate(rows, 1):
             eid = row["episode_id"]
+            if eid in done_eids:
+                continue
             world = rebuild_a2_world(row)
             regime = row["regime"]
 
