@@ -19,6 +19,17 @@ from .routers import is_openai_compat, resolve_model, resolve_router_creds
 
 __all__ = ["OpenAICompatBackend", "is_openai_compat"]
 
+#: Per-model token-budget override, a disclosed protocol deviation -- NOT
+#: a global change. deepseek/deepseek-v4-pro-0813 verified live to
+#: exhaust the standard 2048-token budget on hidden reasoning before
+#: producing any visible output, 100% of the time on D-physical's
+#: single-turn protocol (70/70 episodes, output_tokens==2048,
+#: text==""). Every other model is unaffected. Checked by prefixed id
+#: (this backend's model_id) since that is what every caller passes.
+MODEL_TOKEN_OVERRIDES = {
+    "tokenrouter/deepseek/deepseek-v4-pro-0813": 16384,
+}
+
 
 class OpenAICompatBackend(LLMBackend):
     """LLM backend using the native ``openai`` SDK against a compatible router.
@@ -55,12 +66,13 @@ class OpenAICompatBackend(LLMBackend):
         creds = resolve_router_creds(self._model_id)  # strict: clear error if unset
         client = OpenAI(base_url=creds.base_url, api_key=creds.api_key)
 
+        max_tokens = MODEL_TOKEN_OVERRIDES.get(self._model_id, 2048)
         tokens_kwarg, include_temperature = "max_tokens", True
         response = None
         for _attempt in range(3):
             kwargs: dict = {"model": self._model_name,
                             "messages": [{"role": "user", "content": prompt}],
-                            tokens_kwarg: 2048}
+                            tokens_kwarg: max_tokens}
             if include_temperature:
                 kwargs["temperature"] = temperature
             try:

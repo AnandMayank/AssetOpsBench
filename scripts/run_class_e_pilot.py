@@ -108,10 +108,22 @@ MAX_TOKENS = 1024
 N_EPISODES = 3
 FM = "FM-6a"   # physical-read family; same PROC/CC_grounded branch as class A
 
+#: Per-model token-budget override -- see run_l3_pilot_executed.py's
+#: identical dict for the verified error and reasoning (this model
+#: exhausts MAX_TOKENS on hidden reasoning before producing output).
+MODEL_TOKEN_OVERRIDES = {
+    "deepseek/deepseek-v4-pro-0813": 16384,
+    "tokenrouter/deepseek/deepseek-v4-pro-0813": 16384,
+}
+
+
+def _tokens_for(model: str) -> int:
+    return MODEL_TOKEN_OVERRIDES.get(model, MAX_TOKENS)
+
 
 def _post_chat(model: str, messages: List[Dict[str, Any]], api_key: str, base_url: str,
                *, tokens_param: str = "max_tokens", include_temperature: bool = True) -> Dict[str, Any]:
-    payload = {"model": model, "messages": messages, tokens_param: MAX_TOKENS}
+    payload = {"model": model, "messages": messages, tokens_param: _tokens_for(model)}
     if include_temperature:
         payload["temperature"] = TEMPERATURE
     body = json.dumps(payload).encode()
