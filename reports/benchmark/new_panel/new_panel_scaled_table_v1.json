@@ -1,0 +1,182 @@
+{
+  "GPT-6-Astra": {
+    "A": {
+      "n_valid": 288,
+      "n_total": 288,
+      "output_validity_rate": 1.0,
+      "GSR": 0.5035,
+      "GSR_ci": [
+        0.4479,
+        0.5625
+      ],
+      "TDA": 0.7535,
+      "TDA_ci": [
+        0.7014,
+        0.8021
+      ]
+    },
+    "B": {
+      "n_valid": 66,
+      "n_total": 66,
+      "B_AGS": 0.2273,
+      "B_AGS_ci": [
+        0.1364,
+        0.3333
+      ]
+    },
+    "C": {
+      "n_valid": 17,
+      "n_total": 17,
+      "output_validity_rate": 1.0,
+      "coverage": 0.2931,
+      "coverage_ci": [
+        0.151,
+        0.4598
+      ]
+    },
+    "D": {
+      "n_valid": 70,
+      "n_total": 70,
+      "CSA": 0.5143,
+      "CSA_ci": [
+        0.4,
+        0.6286
+      ]
+    }
+  },
+  "Claude Opus 5.5": {
+    "A": {
+      "n_valid": 285,
+      "n_total": 288,
+      "output_validity_rate": 0.9896,
+      "GSR": 0.5088,
+      "GSR_ci": [
+        0.4526,
+        0.5649
+      ],
+      "TDA": 0.7614,
+      "TDA_ci": [
+        0.7123,
+        0.8105
+      ]
+    },
+    "B": {
+      "n_valid": 66,
+      "n_total": 66,
+      "B_AGS": 0.1515,
+      "B_AGS_ci": [
+        0.0758,
+        0.2424
+      ]
+    },
+    "C": {
+      "n_valid": 16,
+      "n_total": 17,
+      "output_validity_rate": 0.9412,
+      "coverage": 0.4781,
+      "coverage_ci": [
+        0.3083,
+        0.6375
+      ]
+    },
+    "D": {
+      "n_valid": 70,
+      "n_total": 70,
+      "CSA": 0.5143,
+      "CSA_ci": [
+        0.4,
+        0.6286
+      ]
+    }
+  },
+  "Gemini 3.1 Pro Preview": {
+    "A": {
+      "n_valid": 284,
+      "n_total": 288,
+      "output_validity_rate": 0.9861,
+      "GSR": 0.5106,
+      "GSR_ci": [
+        0.4542,
+        0.5669
+      ],
+      "TDA": 0.5739,
+      "TDA_ci": [
+        0.5176,
+        0.6303
+      ]
+    },
+    "B": {
+      "n_valid": 66,
+      "n_total": 66,
+      "B_AGS": 0.697,
+      "B_AGS_ci": [
+        0.5909,
+        0.803
+      ]
+    },
+    "C": {
+      "n_valid": 17,
+      "n_total": 17,
+      "output_validity_rate": 1.0,
+      "coverage": 0.1216,
+      "coverage_ci": [
+        0.0196,
+        0.2706
+      ]
+    },
+    "D": {
+      "n_valid": 70,
+      "n_total": 70,
+      "CSA": 0.4,
+      "CSA_ci": [
+        0.2857,
+        0.5143
+      ]
+    }
+  },
+  "DeepSeek V4 Pro 0813": {
+    "A": {
+      "n_valid": 196,
+      "n_total": 288,
+      "output_validity_rate": 0.6806,
+      "GSR": 0.1173,
+      "GSR_ci": [
+        0.0714,
+        0.1684
+      ],
+      "TDA": 0.6276,
+      "TDA_ci": [
+        0.5561,
+        0.6939
+      ]
+    },
+    "B": {
+      "n_valid": 66,
+      "n_total": 66,
+      "B_AGS": 0.3333,
+      "B_AGS_ci": [
+        0.2273,
+        0.4545
+      ]
+    },
+    "C": {
+      "n_valid": 9,
+      "n_total": 17,
+      "output_validity_rate": 0.5294,
+      "coverage": 0.213,
+      "coverage_ci": [
+        0.0,
+        0.463
+      ]
+    },
+    "D": {
+      "n_valid": 70,
+      "n_total": 70,
+      "CSA": 0.2,
+      "CSA_ci": [
+        0.1143,
+        0.3
+      ]
+    }
+  }
+}
