@@ -1,0 +1,272 @@
+{
+  "regime_delta": {
+    "GPT-6-Astra": {
+      "n_full_triplets": 80,
+      "FULL_GSR": 0.7875,
+      "FULL_GSR_ci": [
+        0.7,
+        0.875
+      ],
+      "FULL_TDA": 0.7875,
+      "FULL_TDA_ci": [
+        0.7,
+        0.875
+      ],
+      "PHYSICAL_ONLY_GSR": 0.7375,
+      "PHYSICAL_ONLY_GSR_ci": [
+        0.6375,
+        0.825
+      ],
+      "PHYSICAL_ONLY_TDA": 0.75,
+      "PHYSICAL_ONLY_TDA_ci": [
+        0.65,
+        0.8375
+      ],
+      "DIGITAL_ONLY_GSR": 0.0,
+      "DIGITAL_ONLY_GSR_ci": [
+        0.0,
+        0.0
+      ],
+      "DIGITAL_ONLY_TDA": 0.7125,
+      "DIGITAL_ONLY_TDA_ci": [
+        0.6125,
+        0.8125
+      ],
+      "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": true,
+      "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
+    },
+    "Claude Opus 5.5": {
+      "n_full_triplets": 78,
+      "FULL_GSR": 0.7692,
+      "FULL_GSR_ci": [
+        0.6795,
+        0.859
+      ],
+      "FULL_TDA": 0.7692,
+      "FULL_TDA_ci": [
+        0.6795,
+        0.859
+      ],
+      "PHYSICAL_ONLY_GSR": 0.7692,
+      "PHYSICAL_ONLY_GSR_ci": [
+        0.6667,
+        0.859
+      ],
+      "PHYSICAL_ONLY_TDA": 0.7949,
+      "PHYSICAL_ONLY_TDA_ci": [
+        0.7051,
+        0.8718
+      ],
+      "DIGITAL_ONLY_GSR": 0.0,
+      "DIGITAL_ONLY_GSR_ci": [
+        0.0,
+        0.0
+      ],
+      "DIGITAL_ONLY_TDA": 0.7051,
+      "DIGITAL_ONLY_TDA_ci": [
+        0.6026,
+        0.8077
+      ],
+      "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": true,
+      "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
+    },
+    "Gemini 3.1 Pro Preview": {
+      "n_full_triplets": 79,
+      "FULL_GSR": 0.7848,
+      "FULL_GSR_ci": [
+        0.6962,
+        0.8734
+      ],
+      "FULL_TDA": 0.7848,
+      "FULL_TDA_ci": [
+        0.6962,
+        0.8734
+      ],
+      "PHYSICAL_ONLY_GSR": 0.7975,
+      "PHYSICAL_ONLY_GSR_ci": [
+        0.7089,
+        0.8861
+      ],
+      "PHYSICAL_ONLY_TDA": 0.7975,
+      "PHYSICAL_ONLY_TDA_ci": [
+        0.7089,
+        0.8861
+      ],
+      "DIGITAL_ONLY_GSR": 0.0,
+      "DIGITAL_ONLY_GSR_ci": [
+        0.0,
+        0.0
+      ],
+      "DIGITAL_ONLY_TDA": 0.1899,
+      "DIGITAL_ONLY_TDA_ci": [
+        0.1139,
+        0.2785
+      ],
+      "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": false,
+      "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
+    },
+    "DeepSeek V4 Pro 0813": {
+      "n_full_triplets": 26,
+      "FULL_GSR": 0.2308,
+      "FULL_GSR_ci": [
+        0.0769,
+        0.3846
+      ],
+      "FULL_TDA": 0.5769,
+      "FULL_TDA_ci": [
+        0.3846,
+        0.7692
+      ],
+      "PHYSICAL_ONLY_GSR": 0.1154,
+      "PHYSICAL_ONLY_GSR_ci": [
+        0.0,
+        0.2692
+      ],
+      "PHYSICAL_ONLY_TDA": 0.5769,
+      "PHYSICAL_ONLY_TDA_ci": [
+        0.3846,
+        0.7692
+      ],
+      "DIGITAL_ONLY_GSR": 0.0,
+      "DIGITAL_ONLY_GSR_ci": [
+        0.0,
+        0.0
+      ],
+      "DIGITAL_ONLY_TDA": 0.6154,
+      "DIGITAL_ONLY_TDA_ci": [
+        0.4231,
+        0.8077
+      ],
+      "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": true,
+      "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
+    }
+  },
+  "d_conditional_grounding": {
+    "GPT-6-Astra": {
+      "n": 70,
+      "P_CC": 0.8857,
+      "P_CSA": 0.5143,
+      "P_CC_and_CSA": 0.4857,
+      "n_CC1": 62,
+      "n_CC0": 8,
+      "P_CSA_given_CC1": 0.5484,
+      "P_CSA_given_CC0": 0.25
+    },
+    "Claude Opus 5.5": {
+      "n": 70,
+      "P_CC": 0.8714,
+      "P_CSA": 0.5143,
+      "P_CC_and_CSA": 0.5143,
+      "n_CC1": 61,
+      "n_CC0": 9,
+      "P_CSA_given_CC1": 0.5902,
+      "P_CSA_given_CC0": 0.0
+    },
+    "Gemini 3.1 Pro Preview": {
+      "n": 70,
+      "P_CC": 0.7571,
+      "P_CSA": 0.4,
+      "P_CC_and_CSA": 0.4,
+      "n_CC1": 53,
+      "n_CC0": 17,
+      "P_CSA_given_CC1": 0.5283,
+      "P_CSA_given_CC0": 0.0
+    },
+    "DeepSeek V4 Pro 0813": {
+      "n": 70,
+      "P_CC": 0.0,
+      "P_CSA": 0.2,
+      "P_CC_and_CSA": 0.0,
+      "n_CC1": 0,
+      "n_CC0": 70,
+      "P_CSA_given_CC1": null,
+      "P_CSA_given_CC0": 0.2
+    }
+  },
+  "iot_agreement": {
+    "GPT-6-Astra": {
+      "iot_agree": {
+        "n": 40,
+        "n_valid": 40,
+        "GSR": 0.825,
+        "GSR_ci": [
+          0.7,
+          0.925
+        ]
+      },
+      "iot_disagree": {
+        "n": 40,
+        "n_valid": 40,
+        "GSR": 0.75,
+        "GSR_ci": [
+          0.625,
+          0.875
+        ]
+      },
+      "CIs_overlap": true
+    },
+    "Claude Opus 5.5": {
+      "iot_agree": {
+        "n": 40,
+        "n_valid": 40,
+        "GSR": 0.775,
+        "GSR_ci": [
+          0.65,
+          0.9
+        ]
+      },
+      "iot_disagree": {
+        "n": 40,
+        "n_valid": 40,
+        "GSR": 0.75,
+        "GSR_ci": [
+          0.625,
+          0.875
+        ]
+      },
+      "CIs_overlap": true
+    },
+    "Gemini 3.1 Pro Preview": {
+      "iot_agree": {
+        "n": 40,
+        "n_valid": 40,
+        "GSR": 0.8,
+        "GSR_ci": [
+          0.675,
+          0.925
+        ]
+      },
+      "iot_disagree": {
+        "n": 40,
+        "n_valid": 40,
+        "GSR": 0.775,
+        "GSR_ci": [
+          0.65,
+          0.9
+        ]
+      },
+      "CIs_overlap": true
+    },
+    "DeepSeek V4 Pro 0813": {
+      "iot_agree": {
+        "n": 40,
+        "n_valid": 26,
+        "GSR": 0.3077,
+        "GSR_ci": [
+          0.1538,
+          0.5
+        ]
+      },
+      "iot_disagree": {
+        "n": 40,
+        "n_valid": 27,
+        "GSR": 0.1852,
+        "GSR_ci": [
+          0.037,
+          0.3333
+        ]
+      },
+      "CIs_overlap": true
+    }
+  }
+}
