@@ -106,36 +106,36 @@
       "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
     },
     "DeepSeek V4 Pro 0813": {
-      "n_full_triplets": 26,
-      "FULL_GSR": 0.2308,
+      "n_full_triplets": 19,
+      "FULL_GSR": 0.7895,
       "FULL_GSR_ci": [
-        0.0769,
-        0.3846
+        0.5789,
+        0.9474
       ],
-      "FULL_TDA": 0.5769,
+      "FULL_TDA": 0.8421,
       "FULL_TDA_ci": [
-        0.3846,
-        0.7692
+        0.6842,
+        1.0
       ],
-      "PHYSICAL_ONLY_GSR": 0.1154,
+      "PHYSICAL_ONLY_GSR": 0.6842,
       "PHYSICAL_ONLY_GSR_ci": [
-        0.0,
-        0.2692
+        0.4737,
+        0.8947
       ],
-      "PHYSICAL_ONLY_TDA": 0.5769,
+      "PHYSICAL_ONLY_TDA": 0.7368,
       "PHYSICAL_ONLY_TDA_ci": [
-        0.3846,
-        0.7692
+        0.5263,
+        0.8947
       ],
       "DIGITAL_ONLY_GSR": 0.0,
       "DIGITAL_ONLY_GSR_ci": [
         0.0,
         0.0
       ],
-      "DIGITAL_ONLY_TDA": 0.6154,
+      "DIGITAL_ONLY_TDA": 0.6842,
       "DIGITAL_ONLY_TDA_ci": [
-        0.4231,
-        0.8077
+        0.4737,
+        0.8947
       ],
       "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": true,
       "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
@@ -174,13 +174,13 @@
     },
     "DeepSeek V4 Pro 0813": {
       "n": 70,
-      "P_CC": 0.0,
-      "P_CSA": 0.2,
-      "P_CC_and_CSA": 0.0,
-      "n_CC1": 0,
-      "n_CC0": 70,
-      "P_CSA_given_CC1": null,
-      "P_CSA_given_CC0": 0.2
+      "P_CC": 0.7286,
+      "P_CSA": 0.5429,
+      "P_CC_and_CSA": 0.5286,
+      "n_CC1": 51,
+      "n_CC0": 19,
+      "P_CSA_given_CC1": 0.7255,
+      "P_CSA_given_CC0": 0.0526
     }
   },
   "iot_agreement": {
@@ -249,21 +249,21 @@
     },
     "DeepSeek V4 Pro 0813": {
       "iot_agree": {
-        "n": 40,
-        "n_valid": 26,
-        "GSR": 0.3077,
+        "n": 13,
+        "n_valid": 13,
+        "GSR": 0.8462,
         "GSR_ci": [
-          0.1538,
-          0.5
+          0.6154,
+          1.0
         ]
       },
       "iot_disagree": {
-        "n": 40,
-        "n_valid": 27,
-        "GSR": 0.1852,
+        "n": 10,
+        "n_valid": 9,
+        "GSR": 0.6667,
         "GSR_ci": [
-          0.037,
-          0.3333
+          0.3333,
+          0.8889
         ]
       },
       "CIs_overlap": true
