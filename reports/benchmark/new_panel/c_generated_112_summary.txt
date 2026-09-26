@@ -1,0 +1,5 @@
+Claude_Opus_5.5: total=112 infra_fail=0 valid=112 CC=0.366 ordering=0.545 coverage=0.439 forbidden_viol=0.000
+GPT-6-Astra: total=112 infra_fail=0 valid=112 CC=0.357 ordering=0.804 coverage=0.346 forbidden_viol=0.000
+DeepSeek_V4_Pro_0813: total=112 infra_fail=0 valid=107 CC=0.561 ordering=0.822 coverage=0.314 forbidden_viol=0.065
+Gemini_3.1_Pro_Preview: total=112 infra_fail=0 valid=110 CC=0.364 ordering=1.000 coverage=0.124 forbidden_viol=0.100
+Qwen3.5-397B-A17B: total=112 infra_fail=0 valid=109 CC=0.633 ordering=0.752 coverage=0.273 forbidden_viol=0.000
