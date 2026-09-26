@@ -90,7 +90,7 @@ qrows = [json.loads(l) for l in (FROZEN93 / "raw_Qwen3.5-397B-A17B.jsonl").read_
 qa = [r for r in qrows if r["dim"] == "A"]
 qeval = [r for r in qa if r["runner_return"].get("verdict", "") != ""]
 q_tda = sum(r["runner_return"]["metric"]["TDA"] for r in qeval) / len(qeval)
-qd = [json.loads(l) for l in (DPHYS / "dphys_pilot_raw_tokenrouter_qwen_qwen3.5-397b-a17b_v3_full.jsonl").read_text().splitlines()]
+qd = [json.loads(l) for l in (DPHYS / "dphys_pilot_raw_tokenrouter_qwen_qwen3.5-397b-a17b_v3_full_merged.jsonl").read_text().splitlines()]
 q_cc = sum(r["score"]["CC"] for r in qd) / len(qd)
 q_lca_vals = [r["score"]["LCA"] for r in qd if r["score"].get("LCA") is not None]
 q_lca = sum(q_lca_vals) / len(q_lca_vals) if q_lca_vals else None
@@ -105,6 +105,17 @@ out["Qwen3.5-397B-A17B"] = {
     "D_CC": round(q_cc, 4), "D_LCA": round(q_lca, 4) if q_lca is not None else None,
     "E": {"value": qm["E_CC_grounded"]["value"], "n": qm["E_CC_grounded"]["n_valid"], "caveat": qm["E_CC_grounded"]["n_valid"] < 18},
 }
+
+# Scaled C: template-generated 112-episode pool (phase8j3), mean required-action recall.
+C_LABELS = {"Claude Opus 5.5": "Claude_Opus_5.5", "GPT-6-Astra": "GPT-6-Astra",
+            "DeepSeek V4 Pro 0813": "DeepSeek_V4_Pro_0813", "Gemini 3.1 Pro Preview": "Gemini_3.1_Pro_Preview",
+            "Qwen3.5-397B-A17B": "Qwen3.5-397B-A17B"}
+for mname, lab in C_LABELS.items():
+    rows = [json.loads(l) for l in (REPO / "reports/benchmark/v3_full_results/c_generated_112" / f"raw_{lab}.jsonl").read_text().splitlines()]
+    valid = [r for r in rows if not r.get("infra_failure") and not r.get("apparatus_failure")]
+    rec = [r["score"]["required_action_prf1"]["recall"] for r in valid if r["score"]["required_action_prf1"]["recall"] is not None]
+    out[mname]["C_scaled"] = {"value": round(sum(rec) / len(rec), 4), "n": len(valid), "pool": len(rows)}
+out["_N"]["C_scaled"] = 112
 
 (HERE / "new_panel_main_table_v1.json").write_text(json.dumps(out, indent=2))
 print(json.dumps(out, indent=2))

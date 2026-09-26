@@ -4,7 +4,8 @@
     "B": 66,
     "C": 9,
     "D": 70,
-    "E": 18
+    "E": 18,
+    "C_scaled": 112
   },
   "GPT-6-Astra": {
     "A": {
@@ -34,6 +35,11 @@
       "value": 0.5556,
       "n": 18,
       "caveat": false
+    },
+    "C_scaled": {
+      "value": 0.3459,
+      "n": 112,
+      "pool": 112
     }
   },
   "Claude Opus 5.5": {
@@ -64,6 +70,11 @@
       "value": 0.2778,
       "n": 18,
       "caveat": false
+    },
+    "C_scaled": {
+      "value": 0.4388,
+      "n": 112,
+      "pool": 112
     }
   },
   "Gemini 3.1 Pro Preview": {
@@ -94,6 +105,11 @@
       "value": 0.6111,
       "n": 18,
       "caveat": false
+    },
+    "C_scaled": {
+      "value": 0.124,
+      "n": 110,
+      "pool": 112
     }
   },
   "DeepSeek V4 Pro 0813": {
@@ -124,6 +140,11 @@
       "value": 0.6111,
       "n": 18,
       "caveat": false
+    },
+    "C_scaled": {
+      "value": 0.3143,
+      "n": 107,
+      "pool": 112
     }
   },
   "Qwen3.5-397B-A17B": {
@@ -148,12 +169,17 @@
       "n": 70,
       "caveat": false
     },
-    "D_CC": 0.7273,
-    "D_LCA": 0.4167,
+    "D_CC": 0.6143,
+    "D_LCA": 0.3036,
     "E": {
       "value": 0.4706,
       "n": 17,
       "caveat": true
+    },
+    "C_scaled": {
+      "value": 0.2726,
+      "n": 109,
+      "pool": 112
     }
   }
 }

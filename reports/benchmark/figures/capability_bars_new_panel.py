@@ -50,10 +50,10 @@ DIMS = ["A", "B", "C", "D", "E"]
 DIM_LABEL = {"A": "A: Evidence\nGrounding", "B": "B: Active\nAcquisition",
              "C": "C: Procedural\nGrounding", "D": "D: Relational Phys.\nGrounding",
              "E": "E: Temporal\nGrounding"}
-CAPS = [(DIM_LABEL[d], DATA_JSON["_N"][d]) for d in DIMS]
+CAPS = [(DIM_LABEL[d], DATA_JSON["_N"]["C_scaled"] if d == "C" else DATA_JSON["_N"][d]) for d in DIMS]
 
 # rows = models (order of MODELS), cols = capabilities (order of CAPS)
-DATA = np.array([[DATA_JSON[m][d]["value"] for d in DIMS] for m in MODELS])
+DATA = np.array([[DATA_JSON[m]["C_scaled"]["value"] if d == "C" else DATA_JSON[m][d]["value"] for d in DIMS] for m in MODELS])
 
 # partial-validity cells: (row, col) -> "n=<evaluated>/<N>" sub-label, for any
 # cell where the model's evaluated n fell short of the capability's full N
@@ -61,9 +61,11 @@ DATA = np.array([[DATA_JSON[m][d]["value"] for d in DIMS] for m in MODELS])
 PARTIAL = {}
 for i, m in enumerate(MODELS):
     for j, d in enumerate(DIMS):
-        cell = DATA_JSON[m][d]
-        if cell.get("caveat") and cell["value"] is not None:
-            PARTIAL[(i, j)] = f"n={cell['n']}/{DATA_JSON['_N'][d]}"
+        cell = DATA_JSON[m]["C_scaled"] if d == "C" else DATA_JSON[m][d]
+        full_n = DATA_JSON["_N"]["C_scaled"] if d == "C" else DATA_JSON["_N"][d]
+        short = cell["n"] < full_n if d == "C" else cell.get("caveat")
+        if short and cell["value"] is not None:
+            PARTIAL[(i, j)] = f"n={cell['n']}/{full_n}"
 
 # ---------------------------------------------------------------- helpers
 def shade(hex_c, f=0.72):
