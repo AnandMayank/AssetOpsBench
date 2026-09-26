@@ -1,0 +1,3 @@
+A (n=48 same episodes): GPT-5.2 TDA=0.667 GSR=0.438 | GPT-6-Astra TDA=0.771 GSR=0.479
+Same verdict: 39/48
+GPT-5.2 wrong->Astra right: 7; GPT-5.2 right->Astra wrong: 2
