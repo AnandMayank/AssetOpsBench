@@ -106,36 +106,36 @@
       "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
     },
     "DeepSeek V4 Pro 0813": {
-      "n_full_triplets": 19,
-      "FULL_GSR": 0.7895,
+      "n_full_triplets": 68,
+      "FULL_GSR": 0.7206,
       "FULL_GSR_ci": [
-        0.5789,
-        0.9474
+        0.6176,
+        0.8235
       ],
-      "FULL_TDA": 0.8421,
+      "FULL_TDA": 0.7647,
       "FULL_TDA_ci": [
-        0.6842,
-        1.0
+        0.6618,
+        0.8529
       ],
-      "PHYSICAL_ONLY_GSR": 0.6842,
+      "PHYSICAL_ONLY_GSR": 0.7794,
       "PHYSICAL_ONLY_GSR_ci": [
-        0.4737,
-        0.8947
+        0.6765,
+        0.8676
       ],
-      "PHYSICAL_ONLY_TDA": 0.7368,
+      "PHYSICAL_ONLY_TDA": 0.8382,
       "PHYSICAL_ONLY_TDA_ci": [
-        0.5263,
-        0.8947
+        0.75,
+        0.9265
       ],
       "DIGITAL_ONLY_GSR": 0.0,
       "DIGITAL_ONLY_GSR_ci": [
         0.0,
         0.0
       ],
-      "DIGITAL_ONLY_TDA": 0.6842,
+      "DIGITAL_ONLY_TDA": 0.6176,
       "DIGITAL_ONLY_TDA_ci": [
-        0.4737,
-        0.8947
+        0.5,
+        0.7353
       ],
       "TDA_FULL_vs_DIGITAL_ONLY_CIs_overlap": true,
       "GSR_FULL_vs_PHYSICAL_ONLY_CIs_overlap": true
@@ -249,21 +249,21 @@
     },
     "DeepSeek V4 Pro 0813": {
       "iot_agree": {
-        "n": 13,
-        "n_valid": 13,
-        "GSR": 0.8462,
+        "n": 40,
+        "n_valid": 38,
+        "GSR": 0.7632,
         "GSR_ci": [
-          0.6154,
-          1.0
+          0.6053,
+          0.8947
         ]
       },
       "iot_disagree": {
-        "n": 10,
-        "n_valid": 9,
-        "GSR": 0.6667,
+        "n": 40,
+        "n_valid": 38,
+        "GSR": 0.6579,
         "GSR_ci": [
-          0.3333,
-          0.8889
+          0.5,
+          0.7895
         ]
       },
       "CIs_overlap": true
